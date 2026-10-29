@@ -1,5 +1,7 @@
 # OficinaFácil
 
+![OficinaFácil](docs/branding/logo/oficinafacil-app-icon-512.png)
+
 Gestão de ordens de serviço para oficina mecânica. Projeto da disciplina de Análise e Projeto de Sistemas, desenvolvido em Flutter (web e Android).
 
 ## Rodar
