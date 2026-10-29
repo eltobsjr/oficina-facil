@@ -8,5 +8,6 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('OficinaFácil'), findsOneWidget);
+    expect(find.text('Aguardando aprovação'), findsOneWidget);
   });
 }
