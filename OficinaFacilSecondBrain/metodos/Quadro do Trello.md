@@ -38,3 +38,7 @@ Depois, dentro do Claude Code, `/mcp`, escolher o Trello e autorizar no navegado
 3. Mover os cartões entre as listas e marcar os itens dos checklists pelo MCP do Trello.
 
 O Trello é uma **vista** do vault; em caso de divergência, vale o vault.
+
+## Estado
+
+- 2026-10-30: especificação gerada (6 listas, 58 cartões, 16 etiquetas). MCP registrado e autorizado pelo usuário; o quadro **ainda não foi criado** porque as ferramentas só carregam numa sessão nova. O passo a passo da execução está no devtrack `ZZ` (seção "PEDIDO PENDENTE").

@@ -90,3 +90,33 @@ Com o usuário fora até 09/11 e a ordem de seguir o plano, a **S2 foi adiantada
 - **Descoberto:** o Riverpod 3 refaz sozinho um provider que falha; os providers de sessão e da lista de usuários desligam isso (`retry` nulo) para a tela "Tentar de novo" funcionar.
 
 **Trello:** o usuário pediu para ajustar o quadro (https://trello.com/b/6ae4da0b233ab7b22fcc5814) com o que já foi feito e o plano todo. O MCP do Trello **não está configurado nesta sessão**. A especificação do quadro já está pronta em `metodos/trello-quadro.json` (6 listas, 58 cartões, 16 etiquetas) e descrita em [[Quadro do Trello]]. Falta o usuário conectar o MCP (`claude mcp add --transport http trello https://mcp.trello.com/v1`, depois `/mcp` para autorizar) e eu criar o quadro.
+
+## PEDIDO PENDENTE PARA A PRÓXIMA SESSÃO: montar o quadro do Trello (executar sem perguntar)
+
+O usuário pediu, literalmente: usar o MCP do Trello para **ajustar todo o Trello, com as tarefas já feitas e o planejamento todo**, no quadro https://trello.com/b/6ae4da0b233ab7b22fcc5814. Ele registrou o MCP (`claude mcp add --transport http trello https://mcp.trello.com/v1`) e **já autorizou** a conta; as ferramentas só carregam numa sessão nova. **Ele pediu que, ao voltar, eu já execute isto.** Passos:
+
+1. **Confirmar que o Trello carregou:** `ToolSearch` com "trello". Se não aparecer, dizer ao usuário em uma frase (reiniciar o Claude Code, `/mcp`) e oferecer o plano B (script com a API do Trello lendo `TRELLO_KEY` e `TRELLO_TOKEN` do ambiente dele; nunca pedir esses valores no chat).
+2. **Ler o estado atual do quadro** antes de mexer: listas, cartões, etiquetas, checklists. O usuário pediu para *ajustar* o quadro, então o que já existe conta.
+3. **Fonte dos dados:** `OficinaFacilSecondBrain/metodos/trello-quadro.json` (6 listas, 58 cartões, 16 etiquetas), gerado por `metodos/gerar-trello.py` do vault. **Regerar antes** (`python3 OficinaFacilSecondBrain/metodos/gerar-trello.py`) para pegar o status mais novo dos CAs e do CHECKLIST.
+4. **Regras de execução:**
+   - Não apagar nada. Quadro vazio ou só com as listas padrão do Trello: renomear/reaproveitar essas listas. Cartões que já existem: reaproveitar quando o título corresponder; arquivar apenas duplicados exatos e **dizer ao usuário o que foi arquivado**.
+   - Criar as **etiquetas** (nome e cor do JSON), depois as **listas na ordem do JSON**, depois os **cartões** com título, descrição (Markdown), etiquetas e **vencimento**; nos cartões da lista "Concluído", marcar o vencimento como concluído quando o Trello permitir.
+   - Criar o **checklist "Tarefas"** nos cartões que têm, com cada item no estado certo (feito ou não).
+   - Cartões da lista "Próximas" na ordem de execução (já vêm ordenados por semana).
+   - Não colocar segredo, chave, string de conexão nem dado pessoal em nenhum cartão (repositório e quadro podem ser públicos).
+5. **Verificar:** reler o quadro pelo MCP e conferir a contagem (6 listas, 58 cartões, 16 etiquetas, 21 checklists); relatar ao usuário o que foi criado, reaproveitado e arquivado. Só então dizer que está pronto.
+6. **Documentar:** acrescentar a data e o resultado em [[Quadro do Trello]] e atualizar `prioridade/atual.md`.
+7. **Manutenção a cada semana ou feature fechada:** atualizar o vault (CHECKLIST), regerar o JSON, mover cartões e marcar itens pelo MCP. Em divergência, vale o vault.
+
+## Outra pendência da retomada: resultado do CI
+
+O usuário deu o `git push` (`4e9de17..9e2ad5f`, 12 commits) e o workflow `.github/workflows/ci.yml` rodou pela primeira vez: execução **41129044900**, ainda `in_progress` no fim desta sessão. Na sessão nova:
+
+- `gh run list --limit 3` para ver o resultado.
+- Se falhou: `gh run view 41129044900 --log-failed`, corrigir e commitar (o CI nunca foi validado antes; o job do app usa `subosito/flutter-action` com o canal stable, que pode ter versão diferente da 3.44 local).
+- Se passou: marcar o CA 14 da feature 000 e a tarefa de CI do CHECKLIST.
+
+## Depois disso, na ordem
+
+1. O que depende do usuário (chave de serviço, projeto de teste, pooler, rotação das credenciais), conforme `prioridade/atual.md`.
+2. S3: features 002 e 003 (clientes e veículos), conforme [[Plano de construção]] e [[Roadmap]].
