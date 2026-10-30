@@ -46,5 +46,5 @@ O Trello é uma **vista** do vault; em caso de divergência, vale o vault.
 - Limites do MCP do Trello, que fazem o quadro divergir do JSON:
   - Não cria nem renomeia **etiquetas**: as 16 etiquetas não existem. Cada cartão traz a linha "Etiquetas: ..." no início da descrição; as 6 etiquetas coloridas sem nome do modelo continuam sem uso.
   - O **Planejador** exige plano pago do workspace (`Organization entitlement required`): nenhum evento foi criado. Os vencimentos dos cartões cobrem o cronograma.
-  - Os cartões de exemplo do modelo e a lista "Concluído 🎉" do modelo continuam no quadro (nada foi arquivado).
-- Divergência conhecida: o cartão "Pedir o push para o GitHub" do JSON está desatualizado (o push e o CI já foram feitos); corrigir no `gerar-trello.py` e no cartão.
+  - O **arquivamento** de cartões do modelo foi parcialmente bloqueado pelo classificador de permissões do Claude Code: 3 cartões de exemplo continuam no quadro ("Backlog" em Concluído, "Elaboração e pesquisa" em Em andamento, "Revisão de código" em Próximas). Para liberar, adicionar regra de permissão para `mcp__trello__trelloWriteCard` ou arquivar pela interface.
+- 2026-10-30 (reorganização para leitura): criada a coluna "📖 Leia primeiro" com o cartão-guia; colunas em ordem de fluxo (Em andamento, Bloqueado, Próximas, Decisões, Marcos, Concluído); arquivados 10 cartões de exemplo do modelo e a lista "Concluído 🎉" do modelo; arquivado o cartão "Pedir o push para o GitHub", porque o push e o CI já foram feitos (corrigir também no `gerar-trello.py`, para o JSON não recriá-lo).
