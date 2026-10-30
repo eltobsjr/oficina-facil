@@ -10,7 +10,7 @@ import express, { type Express } from 'express';
 import helmet from 'helmet';
 import { pinoHttp } from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
-import { env, origensCors } from './config/env.js';
+import { type Env, env, origensCors } from './config/env.js';
 import { usuariosRouter } from './modules/usuarios/index.js';
 import { pingBanco } from './shared/db/prisma.js';
 import { rotaNaoEncontrada, tratadorDeErros } from './shared/http/erros.js';
@@ -28,8 +28,7 @@ function permitirOrigem(origem: string | undefined, e = env()): boolean {
   return origensCors(e).includes(origem);
 }
 
-export function criarApp(): Express {
-  const e = env();
+export function criarApp(e: Env = env()): Express {
   const app = express();
   app.disable('x-powered-by');
   app.set('trust proxy', 1);
@@ -75,14 +74,16 @@ export function criarApp(): Express {
 
   app.use(BASE, usuariosRouter);
 
-  // Gerado depois de todos os routers registrarem seus paths.
-  const documento = gerarDocumentoOpenApi(`http://localhost:${e.PORT}${BASE}`);
-  app.get('/openapi.json', (_req, res) => res.json(documento));
-  app.use(
-    '/docs',
-    swaggerUi.serve,
-    swaggerUi.setup(documento, { customSiteTitle: 'OficinaFácil API' }),
-  );
+  // Gerado depois de todos os routers registrarem seus paths. Em produção o contrato não é exposto.
+  if (e.NODE_ENV !== 'production') {
+    const documento = gerarDocumentoOpenApi(`http://localhost:${e.PORT}${BASE}`);
+    app.get('/openapi.json', (_req, res) => res.json(documento));
+    app.use(
+      '/docs',
+      swaggerUi.serve,
+      swaggerUi.setup(documento, { customSiteTitle: 'OficinaFácil API' }),
+    );
+  }
 
   app.use(rotaNaoEncontrada);
   app.use(tratadorDeErros);

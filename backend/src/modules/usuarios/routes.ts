@@ -109,8 +109,7 @@ registrarRota(usuariosRouter, {
   metodo: 'patch',
   caminho: '/usuarios/:id',
   resumo: 'Altera nome e perfil',
-  descricao:
-    'A troca de perfil vale a partir do próximo login. Não permite remover o último gerente.',
+  descricao: 'A troca de perfil vale na hora. Não permite remover o último gerente.',
   tags: ['usuarios'],
   seguranca: 'bearer',
   middlewares: apenasGerente,

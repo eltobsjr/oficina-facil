@@ -527,7 +527,7 @@
       },
       "patch": {
         "summary": "Altera nome e perfil",
-        "description": "A troca de perfil vale a partir do próximo login. Não permite remover o último gerente.",
+        "description": "A troca de perfil vale na hora. Não permite remover o último gerente.",
         "tags": [
           "usuarios"
         ],
