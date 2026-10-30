@@ -78,4 +78,39 @@ void main() {
       }
     });
   });
+
+  group('conversão com a API', () {
+    test('toApi usa UPPER_SNAKE, igual ao banco', () {
+      expect(
+        StatusOrdemServico.aguardandoAprovacao.toApi(),
+        'AGUARDANDO_APROVACAO',
+      );
+      expect(StatusOrdemServico.emExecucao.toApi(), 'EM_EXECUCAO');
+      expect(StatusOrdemServico.aberta.toApi(), 'ABERTA');
+    });
+
+    test('fromApi(toApi) devolve o mesmo estado, para todos os 8', () {
+      for (final estado in StatusOrdemServico.values) {
+        expect(StatusOrdemServico.fromApi(estado.toApi()), estado);
+      }
+    });
+
+    test('os 8 valores da API são distintos', () {
+      final valores = StatusOrdemServico.values.map((e) => e.toApi()).toSet();
+      expect(valores, hasLength(8));
+    });
+
+    test('valor desconhecido da API é erro, não um estado qualquer', () {
+      expect(
+        () => StatusOrdemServico.fromApi('INVENTADO'),
+        throwsFormatException,
+      );
+      expect(() => StatusOrdemServico.fromApi(''), throwsFormatException);
+      expect(
+        () => StatusOrdemServico.fromApi('aberta'),
+        throwsFormatException,
+        reason: 'só o formato UPPER_SNAKE da API é aceito',
+      );
+    });
+  });
 }

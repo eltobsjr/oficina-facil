@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_theme.dart';
+import '../widgets/api_status.dart';
 import '../widgets/status_chips.dart';
 
 class HomePage extends StatelessWidget {
@@ -57,6 +58,8 @@ class HomePage extends StatelessWidget {
                     ),
                     const SizedBox(height: 48),
                     const StatusChips(),
+                    const SizedBox(height: 32),
+                    const ApiStatus(),
                   ],
                 ),
               ),
