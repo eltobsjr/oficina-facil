@@ -53,6 +53,8 @@ Contrato completo em [[Endpoints]].
 
 - **T01 Login** — `/login` (Todos (sem sessão))
 - **T02 Início (menu por perfil)** — `/` (Todos)
+- **T25 Carregando sessão (tela técnica)** — `/carregando` (Todos (sem sessão))
+- **T26 Sem conexão (tela técnica)** — `/sem-conexao` (Todos (sem sessão))
 
 Catálogo completo em [[Mapa de telas]].
 

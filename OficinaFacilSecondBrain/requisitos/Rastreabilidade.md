@@ -11,7 +11,7 @@ RF → UC → história → feature → endpoints → telas → tabelas. Requisi
 | RF | UC | Histórias | Feature | Endpoints | Telas | Tabelas |
 |---|---|---|---|---|---|---|
 | — | — | — | [[000 - Fundação técnica]] | GET `/health`<br>GET `/docs` | — | todas (RLS) |
-| RF01, RF23 | UC01 | US01, US22 | [[001 - Autenticar]] | GET `/me` | T01, T02 | perfis |
+| RF01, RF23 | UC01 | US01, US22 | [[001 - Autenticar]] | GET `/me` | T01, T02, T25, T26 | perfis |
 | RF02 | UC02 | US02 | [[002 - Gerir clientes]] | GET `/clientes`<br>POST `/clientes`<br>GET `/clientes/:id`<br>PATCH `/clientes/:id`<br>POST `/clientes/:id/inativar` | T05, T06 | clientes |
 | RF03 | UC03 | US03 | [[003 - Gerir veículos]] | GET `/clientes/:id/veiculos`<br>POST `/clientes/:id/veiculos`<br>GET `/veiculos`<br>GET `/veiculos/:id`<br>PATCH `/veiculos/:id`<br>POST `/veiculos/:id/transferir`<br>POST `/veiculos/:id/inativar` | T07 | veiculos |
 | RF04, RF22 | UC04 | US04, US21 | [[004 - Gerir peças]] | GET `/pecas`<br>POST `/pecas`<br>GET `/pecas/:id`<br>PATCH `/pecas/:id`<br>POST `/pecas/:id/inativar` | T10, T11 | pecas |

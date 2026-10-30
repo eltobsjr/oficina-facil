@@ -339,7 +339,7 @@
         },
         {
           "titulo": "S2 · 006 Gerir usuários",
-          "descricao": "**UC06**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/006 - Gerir usuários.md`.\n\n**Critérios de aceitação**\n- 🔄 Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço\n- 🔄 E-mail (login) duplicado é recusado\n- 🔄 Trocar o perfil vale a partir do próximo login\n- 🔄 Redefinir senha\n- 🔄 Inativar usuário impede a autenticação e mantém o histórico de ações\n- 🔄 O sistema impede inativar o último gerente ativo ⚠️",
+          "descricao": "**UC06**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/006 - Gerir usuários.md`.\n\n**Critérios de aceitação**\n- 🔄 Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço\n- 🔄 E-mail (login) duplicado é recusado\n- 🔄 Trocar o perfil vale na hora (o perfil é lido de `perfis` a cada requisição)\n- 🔄 Redefinir senha\n- 🔄 Inativar usuário impede a autenticação e mantém o histórico de ações\n- 🔄 O sistema impede inativar o último gerente ativo ⚠️",
           "etiquetas": [
             "F2 Acesso"
           ],
@@ -412,15 +412,6 @@
         {
           "titulo": "Obter a string do pooler do Supabase",
           "descricao": "A conexão direta é só IPv6 e não funciona no Docker padrão nem em vários provedores. Usar a do pooler em `DATABASE_URL` em produção e no CI.",
-          "etiquetas": [
-            "Bloqueado pelo usuário",
-            "F1 Fundação"
-          ],
-          "vencimento": "2026-11-08"
-        },
-        {
-          "titulo": "Pedir o push para o GitHub (rodar o CI pela primeira vez)",
-          "descricao": "Há commits locais ainda não enviados. O workflow de CI nunca foi executado.",
           "etiquetas": [
             "Bloqueado pelo usuário",
             "F1 Fundação"

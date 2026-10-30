@@ -32,7 +32,7 @@ Entregar **UC06 — Gerir usuários** para o ator **Gerente**. Fluxo completo (p
 |---|---|---|
 | CA01 | Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço | 🔄 Em progresso — backend e telas T03/T04 testados com dublês; **falta a prova com conta real** (precisa da chave de serviço e de um usuário) |
 | CA02 | E-mail (login) duplicado é recusado | 🔄 Em progresso — backend recusa (409) e a tela mostra o erro no campo, ambos testados; falta a conta real |
-| CA03 | Trocar o perfil vale a partir do próximo login | 🔄 Em progresso — backend altera o perfil; o efeito "próximo login" vem de `perfis` ser lido a cada requisição; falta o app |
+| CA03 | Trocar o perfil vale na hora (o perfil é lido de `perfis` a cada requisição) | 🔄 Em progresso — backend e app prontos (testes de serviço, HTTP e de tela); falta provar contra o Supabase de teste |
 | CA04 | Redefinir senha | 🔄 Em progresso — backend e diálogo de redefinição testados (exige 8 caracteres); falta a conta real |
 | CA05 | Inativar usuário impede a autenticação e mantém o histórico de ações | 🔄 Em progresso — inativa o perfil e bane no Auth; `GET /me` já devolve 403 para inativo; confirmação e botão Reativar testados na tela |
 | CA06 | O sistema impede inativar o último gerente ativo ⚠️ | 🔄 Em progresso — travado no banco com `FOR UPDATE` e a tela explica o erro; o teste de concorrência está escrito e **não foi executado** (precisa do projeto de teste) |

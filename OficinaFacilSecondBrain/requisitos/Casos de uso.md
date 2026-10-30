@@ -366,7 +366,7 @@ Convenções: **Pré** = pré-condição; **Pós** = pós-condição; **FP** = f
 3. O sistema valida e confere se o login é único.
 4. O sistema salva o usuário.
 
-**FA1 — Trocar perfil.** O gerente altera o perfil; vale no próximo login.
+**FA1 — Trocar perfil.** O gerente altera o perfil; vale na hora, porque o perfil é lido a cada requisição.
 **FA2 — Redefinir senha.** O gerente define uma nova senha.
 **FA3 — Inativar.** O usuário não consegue mais autenticar; o histórico de ações é mantido.
 

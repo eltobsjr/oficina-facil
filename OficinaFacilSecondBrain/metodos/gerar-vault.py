@@ -50,6 +50,8 @@ TELAS = [
     ('T22', 'Cancelar OS (diálogo com motivo)', 'diálogo sobre T15', 'Atendente, Gerente', ['017']),
     ('T23', 'Faturamento', '/faturamento', 'Gerente', ['019']),
     ('T24', 'Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída)', '/notificacoes', 'Atendente, Almoxarife, Gerente', ['010', '013', '014']),
+    ('T25', 'Carregando sessão (tela técnica)', '/carregando', 'Todos (sem sessão)', ['001']),
+    ('T26', 'Sem conexão (tela técnica)', '/sem-conexao', 'Todos (sem sessão)', ['001']),
 ]
 
 # nnn, nome, fase, uc, us, atores, rn, deps, cas[(texto, ⚠️?)], notas
@@ -115,7 +117,7 @@ F = [
  ('006', 'Gerir usuários', 'F2', 'UC06', 'US06', 'Gerente', ['RN09'], ['001'],
   [('Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço', 0),
    ('E-mail (login) duplicado é recusado', 0),
-   ('Trocar o perfil vale a partir do próximo login', 0),
+   ('Trocar o perfil vale na hora (o perfil é lido de `perfis` a cada requisição)', 0),
    ('Redefinir senha', 0),
    ('Inativar usuário impede a autenticação e mantém o histórico de ações', 0),
    ('O sistema impede inativar o último gerente ativo', 1)],
