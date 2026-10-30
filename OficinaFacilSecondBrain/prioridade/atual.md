@@ -16,9 +16,9 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 5. Rotacionar a senha do banco e a chave anon coladas no chat.
 
 ### Meu trabalho, na ordem
-1. Fechar a [[000 - Fundação técnica]]: rodar os 24 testes de integração no projeto de teste; marcar os CAs 01, 05, 10 e 14.
-2. Backend da feature [[006 - Gerir usuários]]: cliente administrativo do Supabase, listar, criar, detalhar, alterar, redefinir senha, inativar, ativar; seed do gerente; testes.
-3. Commit por feature concluída (sem push).
+1. ✅ Backend da feature [[006 - Gerir usuários]] (commit `ac54610`).
+2. ⏳ Fechar a [[000 - Fundação técnica]]: rodar os testes de integração e o do último gerente no projeto de teste; seed do gerente; marcar os CAs 01, 05, 10 e 14. **Bloqueado pelo usuário.**
+3. ⏩ O usuário volta em 09/11: enquanto isso, seguir para o app da F2 (S2), que não depende das chaves.
 
 ## Em seguida
 - S2: app da F2 ([[001 - Autenticar]] e a parte do app da 006): marco M1.

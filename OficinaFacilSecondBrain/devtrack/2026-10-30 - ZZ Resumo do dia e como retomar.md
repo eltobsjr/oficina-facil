@@ -67,3 +67,14 @@ Aceitas: 001 persistência, 002 autenticação, 004 sem enunciado, 006 backend N
 ## Verificação do que foi dito neste resumo
 
 Conferido nesta sessão: `git log` e `git status` (acima), 110 arquivos no vault, 0 links quebrados, 0 erros de Mermaid, nenhum processo ou contêiner rodando. Os números dos testes (backend 34 passando e 24 de integração ignorados sem projeto de teste, 24/24 uma vez no projeto de desenvolvimento; app 20 testes) vêm do devtrack da F1.
+
+## Atualização: Semana 1, backend de usuários (feature 006) feito
+
+O usuário avisou que **volta só em 09/11** (início da S2) e mandou seguir o plano. Foi feito, sem depender dele:
+
+- **Backend da feature 006** commitado em `ac54610`: `GET/POST /usuarios`, `GET/PATCH /usuarios/:id`, `POST /usuarios/:id/{redefinir-senha,inativar,ativar}`, só para o gerente. Cliente administrativo do Supabase atrás de uma interface (`AdminAuth`), compensação se o perfil falhar após criar a conta, banimento no Auth ao inativar, último gerente protegido por `SELECT … FOR UPDATE`.
+- **Verificado:** `tsc`, `eslint` e `prettier` limpos, **79 testes passando** (serviço com repositório em memória e Auth falso; HTTP com matriz de permissões: atendente, mecânico e almoxarife recebem 403, sem token 401; validação 422; resposta sem senha), OpenAPI com 8 operações, build, `smoke.sh` 12/12 na API real e as consultas do repositório conferidas em modo leitura no Postgres real.
+- **Escrito e NÃO executado:** `test/integracao/usuarios.test.ts` (concorrência do último gerente) e a parte real do Auth. Dependem do projeto de teste e da `SUPABASE_SERVICE_ROLE_KEY`.
+- **Nada novo bloqueia o resto:** o app da F2 pode ser construído e testado com repositórios falsos.
+
+Commits locais agora: **7 à frente do GitHub**, sem push.
