@@ -6,6 +6,8 @@ import '../../features/autenticacao/presentation/pages/login_page.dart';
 import '../../features/autenticacao/presentation/pages/paginas_de_sessao.dart';
 import '../../features/autenticacao/presentation/providers/sessao_provider.dart';
 import '../../features/inicio/presentation/pages/inicio_page.dart';
+import '../../features/usuarios/presentation/pages/usuario_form_page.dart';
+import '../../features/usuarios/presentation/pages/usuarios_page.dart';
 import '../shell/app_shell.dart';
 import 'redirecionamento.dart';
 
@@ -38,6 +40,22 @@ final appRouterProvider = Provider<GoRouter>((ref) {
           GoRoute(
             path: AppRoutes.inicio,
             builder: (context, state) => const InicioPage(),
+          ),
+          GoRoute(
+            path: AppRoutes.usuarios,
+            builder: (context, state) => const UsuariosPage(),
+            routes: [
+              // `novo` vem antes de `:id`, senão "novo" seria lido como um id.
+              GoRoute(
+                path: 'novo',
+                builder: (context, state) => const UsuarioFormPage(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    UsuarioFormPage(usuarioId: state.pathParameters['id']),
+              ),
+            ],
           ),
         ],
       ),
