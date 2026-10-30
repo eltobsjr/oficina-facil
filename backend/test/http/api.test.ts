@@ -6,6 +6,11 @@ import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { afterAll, beforeAll, describe, expect, it, vi } from 'vitest';
 
+// Só este arquivo usa um limite de escrita baixo, para provar o 429.
+vi.hoisted(() => {
+  process.env['RATE_LIMIT_ESCRITA_POR_MINUTO'] = '3';
+});
+
 // A sonda de saúde fala com o banco; aqui é simulada. Nenhum teste deste arquivo toca em banco real.
 vi.mock('../../src/shared/db/prisma.js', async (original) => ({
   ...(await original<typeof PrismaCompartilhado>()),

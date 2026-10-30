@@ -1,6 +1,6 @@
 ---
 data: 2026-10-30
-status: planejada
+status: em andamento
 fase: F2
 uc: "UC06"
 us: "US06"
@@ -30,12 +30,12 @@ Entregar **UC06 — Gerir usuários** para o ator **Gerente**. Fluxo completo (p
 
 | # | Critério | Status |
 |---|---|---|
-| CA01 | Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço | 🔲 Pendente |
-| CA02 | E-mail (login) duplicado é recusado | 🔲 Pendente |
-| CA03 | Trocar o perfil vale a partir do próximo login | 🔲 Pendente |
-| CA04 | Redefinir senha | 🔲 Pendente |
-| CA05 | Inativar usuário impede a autenticação e mantém o histórico de ações | 🔲 Pendente |
-| CA06 | O sistema impede inativar o último gerente ativo ⚠️ | 🔲 Pendente |
+| CA01 | Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço | 🔄 Em progresso — backend testado com Auth falso (79 testes); falta o app e a prova com conta real (precisa da chave de serviço) |
+| CA02 | E-mail (login) duplicado é recusado | 🔄 Em progresso — backend recusa (409), testado; falta o app |
+| CA03 | Trocar o perfil vale a partir do próximo login | 🔄 Em progresso — backend altera o perfil; o efeito "próximo login" vem de `perfis` ser lido a cada requisição; falta o app |
+| CA04 | Redefinir senha | 🔄 Em progresso — backend testado com Auth falso; falta o app e a conta real |
+| CA05 | Inativar usuário impede a autenticação e mantém o histórico de ações | 🔄 Em progresso — inativa o perfil e bane no Auth; `GET /me` já devolve 403 para inativo; falta o app |
+| CA06 | O sistema impede inativar o último gerente ativo ⚠️ | 🔄 Em progresso — travado no banco com `FOR UPDATE`; o teste de concorrência está escrito e **não foi executado** (precisa do projeto de teste) |
 
 Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado. ⚠️ = fluxo deduzido, conferir com o documento oficial.
 

@@ -91,10 +91,10 @@ _Login com 4 perfis e gestão de usuários_
 ### [[006 - Gerir usuários]] (UC06)
 
 - [ ] **006 — Gerir usuários**
-  - [ ] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
-  - [ ] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
-  - [ ] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
-  - [ ] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
+  - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]] (sem tabela nova: usa `perfis`)
+  - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
+  - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil (unitários e HTTP passam; o de integração está escrito e não foi executado)
+  - [x] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
   - [ ] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
   - [ ] App: telas: telas do Mapa de telas e providers Riverpod
   - [ ] Testes do app: domínio e widget cobrindo os CAs
