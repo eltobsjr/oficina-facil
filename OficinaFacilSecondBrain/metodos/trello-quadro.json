@@ -1,0 +1,1427 @@
+{
+  "quadro": "OficinaFácil",
+  "url": "https://trello.com/b/6ae4da0b233ab7b22fcc5814",
+  "etiquetas": [
+    {
+      "nome": "F0 Análise",
+      "cor": "sky"
+    },
+    {
+      "nome": "F1 Fundação",
+      "cor": "black"
+    },
+    {
+      "nome": "F2 Acesso",
+      "cor": "blue"
+    },
+    {
+      "nome": "F3 Cadastros",
+      "cor": "green"
+    },
+    {
+      "nome": "F4 Catálogos",
+      "cor": "lime"
+    },
+    {
+      "nome": "F5 Orçar",
+      "cor": "orange"
+    },
+    {
+      "nome": "F6 Execução",
+      "cor": "yellow"
+    },
+    {
+      "nome": "F7 Entrega",
+      "cor": "red"
+    },
+    {
+      "nome": "F8 Gestão",
+      "cor": "purple"
+    },
+    {
+      "nome": "F9 Acabamento",
+      "cor": "pink"
+    },
+    {
+      "nome": "Backend",
+      "cor": "blue_dark"
+    },
+    {
+      "nome": "App",
+      "cor": "green_dark"
+    },
+    {
+      "nome": "Documentação",
+      "cor": "sky_light"
+    },
+    {
+      "nome": "Marco",
+      "cor": "red_dark"
+    },
+    {
+      "nome": "Decisão",
+      "cor": "orange_dark"
+    },
+    {
+      "nome": "Bloqueado pelo usuário",
+      "cor": "red_light"
+    }
+  ],
+  "listas": [
+    {
+      "nome": "✅ Concluído",
+      "cartoes": [
+        {
+          "titulo": "Tela inicial, logo, nome e ícones (Entrega 1)",
+          "descricao": "Logo porca com check `#1F4E79`, favicon, ícones web e Android, tela inicial. Kit em `OficinaFacilSecondBrain/identidade-visual/`.",
+          "etiquetas": [
+            "F0 Análise",
+            "App"
+          ]
+        },
+        {
+          "titulo": "Repositório no GitHub",
+          "descricao": "github.com/eltobsjr/oficina-facil. Monorepo com `mobile/`, `backend/` e o vault.",
+          "etiquetas": [
+            "F0 Análise"
+          ]
+        },
+        {
+          "titulo": "StatusOrdemServico no domínio, com testes",
+          "descricao": "Enum de 8 estados, transições e cancelamento; tabela 8×8 testada; conversão `fromApi`/`toApi`.",
+          "etiquetas": [
+            "F0 Análise",
+            "App"
+          ]
+        },
+        {
+          "titulo": "Casos de uso (19 UCs) e diagramas",
+          "descricao": "Atores, regras RN01 a RN09, fluxos e diagramas Mermaid. Nota `requisitos/Casos de uso`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "Histórias de usuário (23)",
+          "descricao": "Derivadas dos casos de uso. Nota `requisitos/Histórias de usuário`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "Requisitos RF e RNF, glossário",
+          "descricao": "23 requisitos funcionais e 20 não funcionais. Nota `requisitos/Requisitos`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "Modelo de dados (17 tabelas)",
+          "descricao": "ER em 3 diagramas, enums, restrições e RLS. Nota `arquitetura/Modelo de dados`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "Arquitetura e stack",
+          "descricao": "Flutter + Node/TypeScript + Supabase. Nota `arquitetura/Arquitetura`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "12 decisões registradas",
+          "descricao": "Uma por arquivo em `decisions/`: 4 aceitas, 4 propostas, 4 abertas.",
+          "etiquetas": [
+            "F0 Análise",
+            "Decisão"
+          ]
+        },
+        {
+          "titulo": "Vault SecondBrain, CHECKLIST e Roadmap semanal",
+          "descricao": "Documentação toda no vault, dentro do repositório. Cronograma de 15 semanas até 14/02/2027.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "CLAUDE.md com 30 regras e README",
+          "descricao": "Regras inviolábeis do projeto e README detalhado.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "Auditoria externa e revisão Opus",
+          "descricao": "Duas revisões independentes; todas as correções aplicadas. Notas em `auditorias/`.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "PDFs de entrega",
+          "descricao": "Nove documentos em `entregas/` com diagramas renderizados.",
+          "etiquetas": [
+            "F0 Análise",
+            "Documentação"
+          ]
+        },
+        {
+          "titulo": "F1 · Banco no Supabase com RLS",
+          "descricao": "17 tabelas, 22 CHECKs, 6 gatilhos de só-inserção, índice parcial, FK para `auth.users`, Realtime em `avisos`; app sem login recebe 401.",
+          "etiquetas": [
+            "F1 Fundação",
+            "Backend"
+          ]
+        },
+        {
+          "titulo": "F1 · Backend base",
+          "descricao": "Express 5, TypeScript, Zod, Pino, Helmet, rate limit, erros no formato único, JWT por JWKS, OpenAPI/Swagger, Docker, `smoke.sh`.",
+          "etiquetas": [
+            "F1 Fundação",
+            "Backend"
+          ]
+        },
+        {
+          "titulo": "F1 · App ligado ao Supabase e ao backend",
+          "descricao": "`supabase_flutter`, `dio`, configuração por `--dart-define`, pt-BR.",
+          "etiquetas": [
+            "F1 Fundação",
+            "App"
+          ]
+        },
+        {
+          "titulo": "S1 · Backend de usuários (006)",
+          "descricao": "Listar, criar, detalhar, alterar, redefinir senha, inativar, ativar; último gerente protegido por `FOR UPDATE`. 79 testes.",
+          "etiquetas": [
+            "F2 Acesso",
+            "Backend"
+          ]
+        },
+        {
+          "titulo": "S2 · Login, sessão e menu por perfil (001)",
+          "descricao": "T01 Login, T02 Início, redirecionamento por perfil comparado com o Mapa de telas, menu e shell responsivo.",
+          "etiquetas": [
+            "F2 Acesso",
+            "App"
+          ]
+        },
+        {
+          "titulo": "S2 · Telas de usuários T03 e T04 (006)",
+          "descricao": "Lista com busca, filtros e rolagem infinita; formulário de criar e editar; inativar, reativar e redefinir senha. 216 testes no app.",
+          "etiquetas": [
+            "F2 Acesso",
+            "App"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "🔄 Em andamento",
+      "cartoes": [
+        {
+          "titulo": "S1 · 000 Fundação técnica",
+          "descricao": "**Fundação**\n\nSemana 1 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/000 - Fundação técnica.md`.\n\n**Critérios de aceitação**\n- 🔄 Projetos Supabase de desenvolvimento e de teste criados; chaves e segredos fora do git (`backend/.env`, `mobile/env.json`); `.env.example` e `mobile/env.example.json` sem valores reais\n- ✅ Backend sobe com `npm run dev`; `GET /health` responde 200 e `/docs` mostra o Swagger\n- ✅ Variáveis de ambiente validadas com Zod: o backend recusa subir com configuração incompleta\n- ✅ Migration inicial aplicada (modelo em [[Modelo de dados]]) com RLS, gatilhos de só-inserção, índice único parcial de OS ativa e FK para `auth.users` dentro das migrations do Prisma (geradas por `prisma migrate diff` e aplicadas por `migrate deploy`, sem precisar de banco-sombra)\n- 🔄 Teste com a chave publicável comprova que o app não lê nem escreve em nenhuma tabela, exceto as próprias linhas de `avisos`\n- ✅ JWT validado por JWKS (só os algoritmos do projeto; confere `iss`, `aud` e `exp`); rota sem token recebe 401 e perfil sem permissão recebe 403\n- ✅ Erros da API padronizados num único formato JSON, sem vazar detalhe interno; logs Pino com redação de `authorization`, `senha` e `password`\n- ✅ CORS aceita só as origens do web do projeto; `helmet` e rate limit ativos\n- ✅ Teste de arquitetura impede um módulo de importar o interior de outro\n- 🔄 Seed cria o gerente inicial com e-mail e senha vindos de variável de ambiente e só dados fictícios no catálogo de dev\n- ✅ App lê a configuração por `--dart-define`, chama `GET /health` com `dio` e abre em pt-BR (`flutter_localizations`); manifesto Android principal com permissão INTERNET\n- ✅ Conversão do estado da OS entre API (`UPPER_SNAKE`) e Dart (`camelCase`) num único lugar, com teste; relógio injetável nos dois lados\n- ✅ Dockerfile do backend gera imagem que sobe e responde em `/health`\n- 🔄 Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build)",
+          "etiquetas": [
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Projetos Supabase de desenvolvimento e de teste criados; chaves guardadas fora do git; `.env.example` e `mobile/env.example.json` sem valores (desenvolvimento feito; falta o de teste)",
+                "feito": false
+              },
+              {
+                "texto": "Backend base: Express 5, TypeScript, env com Zod, Pino com redação, Helmet, rate limit, CORS, erros padronizados, `/health`",
+                "feito": true
+              },
+              {
+                "texto": "JWT validado por JWKS (algoritmos do projeto, `iss`, `aud`, `exp`) e middleware de perfil",
+                "feito": true
+              },
+              {
+                "texto": "Prisma: migration inicial do modelo de dados com RLS, gatilhos de só-inserção, índice único parcial e FK para `auth.users` (sem banco-sombra: `migrate diff` + `migrate deploy`)",
+                "feito": true
+              },
+              {
+                "texto": "Teste com a chave publicável: o app não lê nem escreve nas tabelas, exceto `avisos` do próprio usuário (escrito; falta rodar no projeto de teste)",
+                "feito": false
+              },
+              {
+                "texto": "OpenAPI + Swagger e script `openapi:gerar`",
+                "feito": true
+              },
+              {
+                "texto": "Vitest e teste de arquitetura dos módulos",
+                "feito": true
+              },
+              {
+                "texto": "Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo (catálogo e smoke feitos; falta o gerente: precisa da `SUPABASE_SERVICE_ROLE_KEY`)",
+                "feito": false
+              },
+              {
+                "texto": "Dockerfile do backend",
+                "feito": true
+              },
+              {
+                "texto": "App: `supabase_flutter`, `dio`, `--dart-define`, `flutter_localizations` pt-BR, permissão INTERNET no manifesto, `fromApi/toApi` do estado com teste, relógio injetável",
+                "feito": true
+              },
+              {
+                "texto": "CI: backend (lint, typecheck, test) e app (analyze, test, build) (arquivo criado; executa no primeiro push)",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: nota em `metodos/` com o passo a passo de rodar o backend; devtrack",
+                "feito": true
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S2 · 001 Autenticar",
+          "descricao": "**UC01**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/001 - Autenticar.md`.\n\n**Critérios de aceitação**\n- 🔄 Login e senha corretos (Supabase Auth) abrem a sessão; `GET /me` devolve nome e perfil e o app monta o menu do perfil\n- 🔄 Credenciais inválidas negam o acesso com mensagem genérica (sem dizer se o erro foi no login ou na senha)\n- 🔄 Token expirado é renovado pelo app; refresh inválido volta ao login\n- ✅ Usuário inativo vê a mensagem de que está desativado\n- ✅ Rota protegida sem sessão redireciona ao login\n- ✅ O menu mostra só o que o perfil permite (RN09)\n- ✅ \"Sair\" encerra a sessão e volta ao login (US22) ⚠️\n- ✅ Rotas do app protegidas por perfil: sem sessão vai ao login; perfil sem permissão não abre a rota",
+          "etiquetas": [
+            "F2 Acesso"
+          ],
+          "vencimento": "2026-11-15",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados (sem tabela nova)",
+                "feito": true
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": true
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": true
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": true
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": true
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": true
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs (216 testes no app, 0 falhas)",
+                "feito": true
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S2 · 006 Gerir usuários",
+          "descricao": "**UC06**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/006 - Gerir usuários.md`.\n\n**Critérios de aceitação**\n- 🔄 Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço\n- 🔄 E-mail (login) duplicado é recusado\n- 🔄 Trocar o perfil vale a partir do próximo login\n- 🔄 Redefinir senha\n- 🔄 Inativar usuário impede a autenticação e mantém o histórico de ações\n- 🔄 O sistema impede inativar o último gerente ativo ⚠️",
+          "etiquetas": [
+            "F2 Acesso"
+          ],
+          "vencimento": "2026-11-15",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados (sem tabela nova: usa `perfis`)",
+                "feito": true
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": true
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil (unitários e HTTP passam; o de integração está escrito e não foi executado)",
+                "feito": true
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": true
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": true
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": true
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": true
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "⛔ Bloqueado (depende do usuário)",
+      "cartoes": [
+        {
+          "titulo": "Criar o projeto Supabase de teste",
+          "descricao": "Preencher `TEST_*` no `backend/.env`. Destrava os testes de integração, de concorrência e de RLS nas condições da regra R19.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08"
+        },
+        {
+          "titulo": "Colocar a SUPABASE_SERVICE_ROLE_KEY no backend/.env",
+          "descricao": "Necessária para o gerente inicial (seed) e para criar usuários de verdade (UC06). Nunca colar no chat.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08"
+        },
+        {
+          "titulo": "Obter a string do pooler do Supabase",
+          "descricao": "A conexão direta é só IPv6 e não funciona no Docker padrão nem em vários provedores. Usar a do pooler em `DATABASE_URL` em produção e no CI.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08"
+        },
+        {
+          "titulo": "Pedir o push para o GitHub (rodar o CI pela primeira vez)",
+          "descricao": "Há commits locais ainda não enviados. O workflow de CI nunca foi executado.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08"
+        },
+        {
+          "titulo": "Rotacionar a senha do banco e a chave anon",
+          "descricao": "Foram coladas no chat.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "F1 Fundação"
+          ],
+          "vencimento": "2026-11-08"
+        },
+        {
+          "titulo": "Testar o app no Android real",
+          "descricao": "O celular não foi detectado pelo `adb`. Habilitar a depuração USB.",
+          "etiquetas": [
+            "Bloqueado pelo usuário",
+            "App"
+          ]
+        },
+        {
+          "titulo": "Criar a visão Board no GitHub Projects (opcional)",
+          "descricao": "Só pela interface; o `gh` não cria visões. O Trello passa a ser o quadro principal.",
+          "etiquetas": [
+            "Bloqueado pelo usuário"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "❓ Decisões",
+      "cartoes": [
+        {
+          "titulo": "Decisão 003 · Ajuste do orçamento e serviço extra",
+          "descricao": "Bloqueia a S10. Recomendação: no MVP o cliente só aprova ou recusa. Até o fim da S9.",
+          "etiquetas": [
+            "Decisão"
+          ],
+          "vencimento": "2027-01-03"
+        },
+        {
+          "titulo": "Decisão 005 · Recorte de entrega",
+          "descricao": "Tudo ao final ou por marco? Depende do que o professor pedir a cada semana.",
+          "etiquetas": [
+            "Decisão"
+          ]
+        },
+        {
+          "titulo": "Decisão 011 · UML formal",
+          "descricao": "Os diagramas são Mermaid. Confirmar com o professor se atendem ao \"UML\" pedido.",
+          "etiquetas": [
+            "Decisão"
+          ]
+        },
+        {
+          "titulo": "Confirmar as propostas 007 a 010",
+          "descricao": "Desconto assíncrono, estorno no cancelamento, pagamento só na entrega, avisos no app. Seguimos com elas até contestar. Até a S5.",
+          "etiquetas": [
+            "Decisão"
+          ],
+          "vencimento": "2026-12-06"
+        },
+        {
+          "titulo": "Aprovar anonimização LGPD, Plano de testes e Wireframes",
+          "descricao": "Exigem escopo novo (UC, RF, documentos). Aguardam aprovação.",
+          "etiquetas": [
+            "Decisão"
+          ]
+        }
+      ]
+    },
+    {
+      "nome": "⏭️ Próximas, em ordem de execução",
+      "cartoes": [
+        {
+          "titulo": "S3 · 002 Gerir clientes",
+          "descricao": "**UC02**\n\nSemana 3 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/002 - Gerir clientes.md`.\n\n**Critérios de aceitação**\n- ⬜ Cadastrar cliente com nome, documento, telefone, e-mail e endereço ⚠️\n- ⬜ Documento duplicado é recusado e mostra o cadastro existente\n- ⬜ Campos obrigatórios ausentes são destacados e o cadastro não é salvo\n- ⬜ Buscar por nome ou documento e alterar os dados\n- ⬜ Inativar cliente mantém o histórico de OS",
+          "etiquetas": [
+            "F3 Cadastros"
+          ],
+          "vencimento": "2026-11-22",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S3 · 003 Gerir veículos",
+          "descricao": "**UC03**\n\nSemana 3 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/003 - Gerir veículos.md`.\n\n**Critérios de aceitação**\n- ⬜ Cadastrar veículo vinculado a um cliente, com placa, marca, modelo, ano, cor e quilometragem ⚠️\n- ⬜ Placa duplicada é recusada e exibe o veículo existente\n- ⬜ Placa em formato inválido é recusada\n- ⬜ Buscar por placa ou por cliente e alterar os dados\n- ⬜ Transferir o veículo para outro cliente mantém o histórico de OS com o dono anterior ⚠️",
+          "etiquetas": [
+            "F3 Cadastros"
+          ],
+          "vencimento": "2026-11-22",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S4 · 004 Gerir peças",
+          "descricao": "**UC04**\n\nSemana 4 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/004 - Gerir peças.md`.\n\n**Critérios de aceitação**\n- ⬜ Cadastrar peça com código, descrição, preço e estoque mínimo; nasce com saldo zero ⚠️\n- ⬜ Código duplicado é recusado\n- ⬜ Preço menor ou igual a zero é recusado\n- ⬜ Buscar por código ou descrição e alterar os dados\n- ⬜ O saldo só muda por movimentação (entrada UC18 ou baixa UC13), nunca por edição\n- ⬜ Peças abaixo do estoque mínimo aparecem destacadas na listagem (US21) ⚠️",
+          "etiquetas": [
+            "F4 Catálogos"
+          ],
+          "vencimento": "2026-11-29",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S4 · 005 Gerir serviços",
+          "descricao": "**UC05**\n\nSemana 4 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/005 - Gerir serviços.md`.\n\n**Critérios de aceitação**\n- ⬜ Cadastrar serviço com descrição, valor da mão de obra e tempo estimado ⚠️\n- ⬜ Valor menor ou igual a zero é recusado\n- ⬜ Alterar o preço não muda orçamentos já montados\n- ⬜ Serviço inativo não aparece em orçamentos novos",
+          "etiquetas": [
+            "F4 Catálogos"
+          ],
+          "vencimento": "2026-11-29",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S5 · 018 Dar entrada no estoque",
+          "descricao": "**UC18**\n\nSemana 5 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/018 - Dar entrada no estoque.md`.\n\n**Critérios de aceitação**\n- ⬜ Registrar quantidade, custo unitário e nota de origem soma ao saldo ⚠️\n- ⬜ A entrada fica registrada com data e responsável ⚠️\n- ⬜ Quantidade menor ou igual a zero é recusada ⚠️\n- ⬜ Peça não cadastrada leva o almoxarife ao cadastro (UC04) ⚠️",
+          "etiquetas": [
+            "F4 Catálogos"
+          ],
+          "vencimento": "2026-12-06",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S6 · 007 Abrir OS",
+          "descricao": "**UC07**\n\nSemana 6 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/007 - Abrir OS.md`.\n\n**Critérios de aceitação**\n- ⬜ Confirmar a abertura cria a OS em `ABERTA` com número único e data/hora\n- ⬜ Veículo com OS ativa recusa nova abertura e mostra a OS existente\n- ⬜ Queixa do cliente é obrigatória\n- ⬜ Cliente ou veículo não cadastrado leva ao cadastro e volta para a abertura\n- ⬜ Registra a quilometragem de entrada\n- ⬜ Inativar um cliente com OS ativa é recusado (409), regra da feature 002 que só se testa aqui\n- ⬜ `GET /os` lista as OS com número, estado, cliente e veículo; `GET /os/:id` detalha uma OS",
+          "etiquetas": [
+            "F5 Orçar"
+          ],
+          "vencimento": "2026-12-13",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S7 · 008 Registrar diagnóstico",
+          "descricao": "**UC08**\n\nSemana 7 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/008 - Registrar diagnóstico.md`.\n\n**Critérios de aceitação**\n- ⬜ Salvar o diagnóstico leva a OS de `ABERTA` para `DIAGNOSTICADA` e associa o mecânico\n- ⬜ OS fora de `ABERTA` não aceita diagnóstico e mostra o estado atual\n- ⬜ Diagnóstico vazio é recusado\n- ⬜ Salvar rascunho sem mudar o estado da OS ⚠️",
+          "etiquetas": [
+            "F5 Orçar"
+          ],
+          "vencimento": "2026-12-20",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S7 · 009 Montar orçamento",
+          "descricao": "**UC09**\n\nSemana 7 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/009 - Montar orçamento.md`.\n\n**Critérios de aceitação**\n- ⬜ Confirmar leva a OS de `DIAGNOSTICADA` para `AGUARDANDO_APROVACAO`\n- ⬜ Calcula subtotal, desconto e total\n- ⬜ Orçamento sem serviço nem peça é recusado\n- ⬜ Desconto de até 10% é aplicado direto\n- ⬜ Peça sem saldo avisa, mas permite orçar ⚠️\n- ⬜ Confirmar orçamento com desconto acima de 10% e sem autorização aprovada é recusado (409)",
+          "etiquetas": [
+            "F5 Orçar"
+          ],
+          "vencimento": "2026-12-20",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S8 · 010 Autorizar desconto",
+          "descricao": "**UC10**\n\nSemana 8 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/010 - Autorizar desconto.md`.\n\n**Critérios de aceitação**\n- ⬜ O atendente solicita a autorização de um desconto acima de 10%; a solicitação nasce `PENDENTE` e o gerente recebe aviso\n- ⬜ O gerente aprova ou recusa pela própria sessão; a decisão registra gerente, valor autorizado e data\n- ⬜ O gerente pode autorizar um valor menor que o pedido (valor autorizado ≤ solicitado) ⚠️\n- ⬜ Perfil diferente de Gerente não decide (403)\n- ⬜ A autorização perde a validade se o subtotal ou o desconto do orçamento mudar depois\n- ⬜ Recusa devolve o controle ao atendente, que ajusta o desconto ou segue sem ele\n- ⬜ Aprovada e válida, a autorização permite confirmar o orçamento (feature 009)\n- ⬜ A decisão gera o aviso `DESCONTO_DECIDIDO` para o atendente e o pedido gera `DESCONTO_PENDENTE` para o gerente\n- ⬜ O usuário lista os próprios avisos, marca como lido e vê o aviso novo chegar sem recarregar (Realtime); só enxerga os dele",
+          "etiquetas": [
+            "F5 Orçar"
+          ],
+          "vencimento": "2026-12-27",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S10 · 011 Registrar aprovação do cliente",
+          "descricao": "**UC11**\n\nSemana 10 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/011 - Registrar aprovação do cliente.md`.\n\n**Critérios de aceitação**\n- ⬜ Aprovação leva a OS de `AGUARDANDO_APROVACAO` para `APROVADA`, com data/hora e forma de contato\n- ⬜ Recusa leva a OS para `CANCELADA` e registra o motivo (US12) ⚠️\n- ❌ Cliente pedir ajuste e voltar ao orçamento (FORA DO MVP até a decisão D3)\n- ⬜ Orçamento fica imutável em `AGUARDANDO_APROVACAO`: tentativa de alterar recebe 409",
+          "etiquetas": [
+            "F6 Execução"
+          ],
+          "vencimento": "2027-01-10",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S10 · 012 Executar serviço",
+          "descricao": "**UC12**\n\nSemana 10 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/012 - Executar serviço.md`.\n\n**Critérios de aceitação**\n- ⬜ Iniciar leva a OS de `APROVADA` para `EM_EXECUCAO` e registra a data/hora de início\n- ⬜ OS não aprovada não pode ser iniciada\n- ⬜ O mecânico anota observações do andamento\n- ❌ Serviço extra descoberto vira observação (fluxo de novo orçamento FORA DO MVP até a decisão D3)",
+          "etiquetas": [
+            "F6 Execução"
+          ],
+          "vencimento": "2027-01-10",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S11 · 013 Registrar peças usadas",
+          "descricao": "**UC13**\n\nSemana 11 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/013 - Registrar peças usadas.md`.\n\n**Critérios de aceitação**\n- ⬜ Lançar peça vincula à OS e baixa o saldo\n- ⬜ Saldo insuficiente é recusado e o almoxarife recebe aviso no app (D10)\n- ⬜ Peça fora do orçamento pede confirmação ⚠️\n- ⬜ Remover peça lançada por engano devolve o saldo (estorno) ⚠️\n- ⬜ Dois lançamentos simultâneos da mesma peça nunca deixam o saldo negativo (teste de concorrência)",
+          "etiquetas": [
+            "F6 Execução"
+          ],
+          "vencimento": "2027-01-17",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S12 · 014 Concluir OS",
+          "descricao": "**UC14**\n\nSemana 12 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/014 - Concluir OS.md`.\n\n**Critérios de aceitação**\n- ⬜ Concluir leva a OS de `EM_EXECUCAO` para `CONCLUIDA` com data/hora\n- ⬜ O atendente recebe aviso no app de que o veículo está pronto (D10)\n- ⬜ OS fora de `EM_EXECUCAO` não pode ser concluída",
+          "etiquetas": [
+            "F7 Entrega"
+          ],
+          "vencimento": "2027-01-24",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S12 · 015 Entregar e registrar pagamento",
+          "descricao": "**UC15**\n\nSemana 12 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/015 - Entregar e registrar pagamento.md`.\n\n**Critérios de aceitação**\n- ⬜ Entregar com pagamentos cuja soma é igual ao total leva a OS de `CONCLUIDA` para `ENTREGUE`, tudo na mesma transação\n- ⬜ Registra forma, valor, data/hora e quem entregou\n- ⬜ Soma diferente do total (a menos ou a mais) é recusada e a OS continua em `CONCLUIDA`\n- ⬜ OS fora de `CONCLUIDA` não pode ser entregue\n- ⬜ `ENTREGUE` é estado final\n- ⬜ Vários pagamentos (formas diferentes) na mesma entrega",
+          "etiquetas": [
+            "F7 Entrega"
+          ],
+          "vencimento": "2027-01-24",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S13 · 017 Cancelar OS",
+          "descricao": "**UC17**\n\nSemana 13 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/017 - Cancelar OS.md`.\n\n**Critérios de aceitação**\n- ⬜ Em qualquer estado antes de `ENTREGUE`, cancelar leva a OS para `CANCELADA`\n- ⬜ Motivo é obrigatório e a ação pede confirmação\n- ⬜ OS `ENTREGUE` ou já `CANCELADA` não pode ser cancelada\n- ⬜ Só atendente e gerente cancelam (RN06)\n- ⬜ Peças lançadas voltam ao estoque, com opção de marcar \"não devolver\" e registrar o motivo (D8)\n- ⬜ O estorno das peças acontece na mesma transação do cancelamento",
+          "etiquetas": [
+            "F7 Entrega"
+          ],
+          "vencimento": "2027-01-31",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S14 · 016 Consultar OS",
+          "descricao": "**UC16**\n\nSemana 14 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/016 - Consultar OS.md`.\n\n**Critérios de aceitação**\n- ⬜ Filtrar por número, cliente, placa, estado e período\n- ⬜ Mecânico vê só a fila da sua etapa (`ABERTA`, `APROVADA`, `EM_EXECUCAO`)\n- ⬜ Sem resultado, mostra que nada foi encontrado\n- ⬜ Abrir a OS mostra dados, estado atual, orçamento e peças\n- ⬜ Histórico de transições com estado, usuário e data/hora (US23) ⚠️\n- ⬜ A consulta não altera dados",
+          "etiquetas": [
+            "F8 Gestão"
+          ],
+          "vencimento": "2027-02-07",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S14 · 019 Ver faturamento",
+          "descricao": "**UC19**\n\nSemana 14 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/019 - Ver faturamento.md`.\n\n**Critérios de aceitação**\n- ⬜ O total soma os pagamentos de OS `ENTREGUE` no período, pela data de entrega; a agregação roda no servidor ⚠️\n- ⬜ Mostra quantidade de OS e ticket médio ⚠️\n- ⬜ Período sem OS entregues mostra total zero ⚠️\n- ⬜ Detalhar por forma de pagamento, mecânico ou serviço ⚠️",
+          "etiquetas": [
+            "F8 Gestão"
+          ],
+          "vencimento": "2027-02-07",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme Modelo de dados",
+                "feito": false
+              },
+              {
+                "texto": "API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend",
+                "feito": false
+              },
+              {
+                "texto": "Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil",
+                "feito": false
+              },
+              {
+                "texto": "Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger",
+                "feito": false
+              },
+              {
+                "texto": "App: domínio e dados: entidades, contrato do repositório e implementação com `dio`",
+                "feito": false
+              },
+              {
+                "texto": "App: telas: telas do Mapa de telas e providers Riverpod",
+                "feito": false
+              },
+              {
+                "texto": "Testes do app: domínio e widget cobrindo os CAs",
+                "feito": false
+              },
+              {
+                "texto": "Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk",
+                "feito": false
+              },
+              {
+                "texto": "Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`",
+                "feito": false
+              }
+            ]
+          }
+        },
+        {
+          "titulo": "S15 · 020 Acabamento e entrega final",
+          "descricao": "**Fundação**\n\nSemana 15 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/020 - Acabamento e entrega final.md`.\n\n**Critérios de aceitação**\n- ⬜ App testado em dispositivo Android e layout ajustado para telas pequenas\n- ⬜ Layout web responsivo conferido\n- ⬜ Teste de integração (smoke.sh) cobre o fluxo completo `ABERTA` até `ENTREGUE` contra o Supabase de dev\n- ⬜ Imagem Docker do backend publicada e API de demonstração no ar; web publicado e APK gerado\n- ⬜ Diagramas, casos de uso, histórias e PDFs atualizados com o que mudou\n- ⬜ Changelog, versão e tag criados",
+          "etiquetas": [
+            "F9 Acabamento"
+          ],
+          "vencimento": "2027-02-14",
+          "checklist": {
+            "nome": "Tarefas",
+            "itens": [
+              {
+                "texto": "Testar em dispositivo Android e ajustar o layout para telas pequenas",
+                "feito": false
+              },
+              {
+                "texto": "Conferir o layout web responsivo",
+                "feito": false
+              },
+              {
+                "texto": "Teste de integração do fluxo completo (`scripts/smoke.sh`)",
+                "feito": false
+              },
+              {
+                "texto": "Publicar a imagem Docker e a API de demonstração; publicar o web e gerar o APK",
+                "feito": false
+              },
+              {
+                "texto": "Atualizar diagramas, casos de uso, histórias, ER, API e regerar os PDFs de `entregas/`",
+                "feito": false
+              },
+              {
+                "texto": "Changelog, versão e tag",
+                "feito": false
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "nome": "🏁 Marcos e folga",
+      "cartoes": [
+        {
+          "titulo": "Marco M1 · Login com 4 perfis e gestão de usuários",
+          "descricao": "Fim da S2 (15/11/2026).",
+          "etiquetas": [
+            "Marco"
+          ],
+          "vencimento": "2026-11-15"
+        },
+        {
+          "titulo": "Marco M2 · Cadastros e estoque completos",
+          "descricao": "Fim da S5 (06/12/2026).",
+          "etiquetas": [
+            "Marco"
+          ],
+          "vencimento": "2026-12-06"
+        },
+        {
+          "titulo": "Marco M3 · OS orçada, com desconto aprovado pelo gerente",
+          "descricao": "Fim da S8 (27/12/2026).",
+          "etiquetas": [
+            "Marco"
+          ],
+          "vencimento": "2026-12-27"
+        },
+        {
+          "titulo": "Marco M4 · Ciclo completo da OS até a entrega",
+          "descricao": "Fim da S13 (31/01/2027).",
+          "etiquetas": [
+            "Marco"
+          ],
+          "vencimento": "2027-01-31"
+        },
+        {
+          "titulo": "Marco M5 · Sistema completo em web e Android, API no ar",
+          "descricao": "Fim da S15 (14/02/2027).",
+          "etiquetas": [
+            "Marco"
+          ],
+          "vencimento": "2027-02-14"
+        },
+        {
+          "titulo": "S9 · Folga de Ano-Novo e dívida técnica",
+          "descricao": "Sem feature nova: absorve atrasos, revisão geral, PDFs, atualizar o plano. **A decisão 003 precisa estar tomada até o fim desta semana.**",
+          "etiquetas": [
+            "Documentação"
+          ],
+          "vencimento": "2027-01-03"
+        }
+      ]
+    }
+  ]
+}

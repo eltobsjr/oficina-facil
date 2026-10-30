@@ -18,10 +18,10 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 ### Meu trabalho, na ordem
 1. ✅ Backend da feature [[006 - Gerir usuários]] (commit `ac54610`).
 2. ⏳ Fechar a [[000 - Fundação técnica]]: rodar os testes de integração e o do último gerente no projeto de teste; seed do gerente; marcar os CAs 01, 05, 10 e 14. **Bloqueado pelo usuário.**
-3. ⏩ O usuário volta em 09/11: enquanto isso, seguir para o app da F2 (S2), que não depende das chaves.
+3. ✅ App da F2 feito (login, sessão, menu, T03 e T04), 216 testes. Falta só a prova com conta real.
+4. ⛔ **Trello:** conectar o MCP (ver [[Quadro do Trello]]) e eu monto o quadro a partir de `metodos/trello-quadro.json`.
 
 ## Em seguida
-- S2: app da F2 ([[001 - Autenticar]] e a parte do app da 006): marco M1.
 - S3: F3 ([[002 - Gerir clientes]] e [[003 - Gerir veículos]]).
 
 ## Decisões pendentes

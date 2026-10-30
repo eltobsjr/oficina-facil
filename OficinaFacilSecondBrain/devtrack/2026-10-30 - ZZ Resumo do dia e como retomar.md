@@ -78,3 +78,15 @@ O usuário avisou que **volta só em 09/11** (início da S2) e mandou seguir o p
 - **Nada novo bloqueia o resto:** o app da F2 pode ser construído e testado com repositórios falsos.
 
 Commits locais agora: **7 à frente do GitHub**, sem push.
+
+## Atualização: Semana 2 adiantada (app da F2) e Trello
+
+Com o usuário fora até 09/11 e a ordem de seguir o plano, a **S2 foi adiantada** (não depende das chaves):
+
+- **App, features 001 e 006** (commit `d4729ef` e o seguinte): T01 Login, T02 Início, sessão com Riverpod que confirma o token em `GET /me`, redirecionamento e menu por perfil, shell responsivo, T03 lista de usuários (busca com espera, filtros, rolagem infinita) e T04 formulário (criar, editar, inativar, reativar, redefinir senha). A tela inicial de apresentação foi removida.
+- **Backend:** `GET /me` passou a devolver `usuario_inativo` e `usuario_sem_perfil` (commit `769fecf`).
+- **Verificado:** `flutter analyze` limpo, `dart format` limpo, **216 testes** passando, `flutter build web` e `build apk` compilam, e o **web real abre no login** (captura de tela conferida). Backend: 79 testes.
+- **Ainda sem prova real:** login com conta de verdade, criação de usuário no Auth e a concorrência do último gerente. Dependem da chave de serviço, de um usuário e do projeto de teste.
+- **Descoberto:** o Riverpod 3 refaz sozinho um provider que falha; os providers de sessão e da lista de usuários desligam isso (`retry` nulo) para a tela "Tentar de novo" funcionar.
+
+**Trello:** o usuário pediu para ajustar o quadro (https://trello.com/b/6ae4da0b233ab7b22fcc5814) com o que já foi feito e o plano todo. O MCP do Trello **não está configurado nesta sessão**. A especificação do quadro já está pronta em `metodos/trello-quadro.json` (6 listas, 58 cartões, 16 etiquetas) e descrita em [[Quadro do Trello]]. Falta o usuário conectar o MCP (`claude mcp add --transport http trello https://mcp.trello.com/v1`, depois `/mcp` para autorizar) e eu criar o quadro.

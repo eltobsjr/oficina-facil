@@ -78,13 +78,13 @@ _Login com 4 perfis e gestão de usuários_
 ### [[001 - Autenticar]] (UC01)
 
 - [ ] **001 — Autenticar**
-  - [ ] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
-  - [ ] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
-  - [ ] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
-  - [ ] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
-  - [ ] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
-  - [ ] App: telas: telas do Mapa de telas e providers Riverpod
-  - [ ] Testes do app: domínio e widget cobrindo os CAs
+  - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]] (sem tabela nova)
+  - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
+  - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
+  - [x] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
+  - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
+  - [x] App: telas: telas do Mapa de telas e providers Riverpod
+  - [x] Testes do app: domínio e widget cobrindo os CAs (216 testes no app, 0 falhas)
   - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
   - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
@@ -95,9 +95,9 @@ _Login com 4 perfis e gestão de usuários_
   - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
   - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil (unitários e HTTP passam; o de integração está escrito e não foi executado)
   - [x] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
-  - [ ] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
-  - [ ] App: telas: telas do Mapa de telas e providers Riverpod
-  - [ ] Testes do app: domínio e widget cobrindo os CAs
+  - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
+  - [x] App: telas: telas do Mapa de telas e providers Riverpod
+  - [x] Testes do app: domínio e widget cobrindo os CAs
   - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
   - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
