@@ -34,7 +34,7 @@ oficina_facil/
 ├── backend/     API: src/modules/<modulo>/{index,routes,service,repository,schemas}.ts, prisma/, supabase/policies.sql, test/
 ├── CLAUDE.md
 ├── README.md    apresentação do projeto; a especificação fica no vault
-└── OficinaFacilSecondBrain/   documentação (fora do git)
+└── OficinaFacilSecondBrain/   documentação (vault), versionado junto com o código
 ```
 
 ## 3b. Comandos do dia a dia
@@ -57,7 +57,7 @@ bash scripts/smoke.sh            # fluxo ponta a ponta no Supabase de dev: antes
 
 ## 4. Documentação
 
-**Toda a documentação fica no vault** `OficinaFacilSecondBrain/` (fora do git). Mapa em `00 - Índice.md`; onde cada coisa vive em `Convenções.md`.
+**Toda a documentação fica no vault** `OficinaFacilSecondBrain/`, **dentro deste repositório** (app, backend e vault no mesmo repo). Mapa em `00 - Índice.md`; onde cada coisa vive em `Convenções.md`.
 
 - Logs de sessão: `devtrack/`, formato `YYYY-MM-DD - Título.md`.
 - Decisões: `decisions/NNN - Título.md`, uma por arquivo.
@@ -141,4 +141,4 @@ bash scripts/smoke.sh            # fluxo ponta a ponta no Supabase de dev: antes
 
 **R29. Datas e fuso.** Datas em `timestamptz`; relatórios por período em `America/Sao_Paulo`. Hora sempre pelo relógio injetável (R15).
 
-**R30. Backup do vault.** O vault está fora do git. Ao fim de cada sessão, avisar se ele não tem cópia recente, e nunca rodar o gerador sem conferir `--dry-run` (R2, R10).
+**R30. Vault versionado e público.** O vault é commitado junto com o código (R8), e o repositório é **público**: nada de segredo, e-mail, telefone, chave, string de conexão ou dado pessoal real dentro do vault, nem em devtrack, auditoria ou exemplo. Antes de commitar o vault, conferir isso. Nunca rodar o gerador sem conferir `--dry-run` (R2, R10).

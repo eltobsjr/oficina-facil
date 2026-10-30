@@ -169,7 +169,7 @@ gateway de pagamento, mapas nem painel admin.
 
 ## 9. Estrutura do repositório
 
-Monorepo:
+Monorepo com app, backend e documentação no mesmo repositório:
 
 ```
 oficina_facil/
@@ -186,7 +186,7 @@ oficina_facil/
 ├── backend/                      API Node/TypeScript (a criar na F1)
 ├── CLAUDE.md                     regras do projeto
 ├── README.md
-└── OficinaFacilSecondBrain/      documentação (fora do git)
+└── OficinaFacilSecondBrain/      documentação (vault), versionado junto com o código
 ```
 
 Novas features seguem `mobile/lib/features/<feature>/{domain,data,presentation}`. O backend seguirá
@@ -257,7 +257,7 @@ A porca remete à oficina; o check, à tarefa concluída. O kit completo (SVGs, 
 
 ## 14. Documentação
 
-Toda a documentação fica no vault `OficinaFacilSecondBrain/`, **que não é versionado**. Ponto de partida:
+Toda a documentação fica no vault `OficinaFacilSecondBrain/`, **versionado neste mesmo repositório**. Ponto de partida:
 nota `00 - Índice`. Principais notas:
 
 | Nota | Conteúdo |
