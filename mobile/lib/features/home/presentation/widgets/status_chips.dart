@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../ordem_servico/domain/entities/status_ordem_servico.dart';
-import 'status_label.dart';
+import '../../../ordem_servico/presentation/status_label.dart';
 
 class StatusChips extends StatelessWidget {
   const StatusChips({super.key});

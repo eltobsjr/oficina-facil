@@ -1,4 +1,4 @@
-/// Ciclo de vida da ordem de serviço (diagrama de estados em docs/diagramas.md).
+/// Ciclo de vida da ordem de serviço (vault: Casos de uso, seção 5).
 enum StatusOrdemServico {
   aberta,
   diagnosticada,
@@ -23,11 +23,8 @@ enum StatusOrdemServico {
 
   bool get terminal => this == entregue || this == cancelada;
 
-  /// Cancelar é permitido em qualquer estado antes da entrega.
-  bool get podeCancelar => !terminal;
-
   bool podeTransitarPara(StatusOrdemServico destino) {
-    if (destino == cancelada) return podeCancelar;
+    if (destino == cancelada) return !terminal;
     return proximo == destino;
   }
 }

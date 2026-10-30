@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../../../core/theme/app_theme.dart';
 import '../widgets/status_chips.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
-  static const _topo = Color(0xFF1F4E79);
   static const _base = Color(0xFF0E2238);
 
   @override
@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [_topo, _base],
+            colors: [AppTheme.marca, _base],
           ),
         ),
         child: SafeArea(

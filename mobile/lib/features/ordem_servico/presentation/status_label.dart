@@ -1,4 +1,4 @@
-import '../../../ordem_servico/domain/entities/status_ordem_servico.dart';
+import '../domain/entities/status_ordem_servico.dart';
 
 extension StatusOrdemServicoLabel on StatusOrdemServico {
   String get rotulo => switch (this) {

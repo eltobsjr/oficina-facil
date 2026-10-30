@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract final class AppTheme {
-  static const _seed = Color(0xFF1F4E79); // cor da marca
+  static const marca = Color(0xFF1F4E79);
 
   static ThemeData get light => _build(Brightness.light);
 
@@ -11,7 +11,7 @@ abstract final class AppTheme {
     return ThemeData(
       useMaterial3: true,
       colorScheme: ColorScheme.fromSeed(
-        seedColor: _seed,
+        seedColor: marca,
         brightness: brightness,
       ),
     );
