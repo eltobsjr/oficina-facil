@@ -2,7 +2,7 @@
  * Helper que define uma rota Express e a documenta no OpenAPI de uma vez só.
  *
  * `registrarRota(router, { metodo, caminho, body, params, query, handler, ... })`:
- * valida entrada com Zod (400 padronizado em caso de erro), registra o path no OpenAPI,
+ * valida entrada com Zod (422 padronizado em caso de erro), registra o path no OpenAPI,
  * executa os middlewares (autenticação e perfis) e serializa a resposta.
  * O handler recebe dados já tipados e validados; nunca lê `req.body` cru.
  */
