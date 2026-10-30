@@ -4,7 +4,10 @@ import 'package:dio/dio.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:oficina_facil/core/config/app_config.dart';
 import 'package:oficina_facil/core/network/api_client.dart';
+import 'package:oficina_facil/core/network/api_exception.dart';
 import 'package:oficina_facil/core/relogio.dart';
+
+import '../helpers/dio_falso.dart';
 
 /// Adaptador falso: registra a requisição e devolve o status combinado, sem rede.
 class _AdaptadorFalso implements HttpClientAdapter {
@@ -87,6 +90,35 @@ void main() {
       await cliente.dio.get<dynamic>('/me');
 
       expect(adaptador.ultima?.headers.containsKey('Authorization'), isFalse);
+    });
+  });
+
+  group('ApiClient.chamar', () {
+    test('devolve o corpo quando a resposta é de sucesso', () async {
+      final cliente = ApiClient(
+        baseUrl: 'http://localhost:3000/api/v1',
+        dio: Dio()
+          ..httpClientAdapter = AdaptadorFalso({
+            'GET /me': const RespostaFalsa(200, {'nome': 'Ana'}),
+          }),
+      );
+      expect(await cliente.chamar('GET', '/me'), {'nome': 'Ana'});
+    });
+
+    test('status de erro vira ApiException', () async {
+      final cliente = ApiClient(
+        baseUrl: 'http://localhost:3000/api/v1',
+        dio: Dio()
+          ..httpClientAdapter = AdaptadorFalso({
+            'GET /me': const RespostaFalsa(409, {
+              'erro': {'codigo': 'conflito', 'mensagem': 'x'},
+            }),
+          }),
+      );
+      await expectLater(
+        cliente.chamar('GET', '/me'),
+        throwsA(isA<ApiException>().having((e) => e.status, 'status', 409)),
+      );
     });
   });
 

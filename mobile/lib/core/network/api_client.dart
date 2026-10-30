@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../config/app_config.dart';
+import 'api_exception.dart';
 
 /// Cliente HTTP da API do backend. Anexa o token do Supabase quando há sessão.
 class ApiClient {
@@ -35,6 +36,29 @@ class ApiClient {
 
   final String _baseUrl;
   final Dio dio;
+
+  /// Faz a chamada e devolve o corpo; qualquer status de erro vira [ApiException] e falha de rede
+  /// vira [SemConexaoException]. Quem chama nunca lida com `DioException`.
+  Future<dynamic> chamar(
+    String metodo,
+    String caminho, {
+    Object? corpo,
+    Map<String, dynamic>? query,
+  }) async {
+    try {
+      final resposta = await dio.request<dynamic>(
+        caminho,
+        data: corpo,
+        queryParameters: query,
+        options: Options(method: metodo),
+      );
+      final status = resposta.statusCode ?? 0;
+      if (status >= 400) throw ApiException.deResposta(status, resposta.data);
+      return resposta.data;
+    } on DioException {
+      throw const SemConexaoException();
+    }
+  }
 
   /// `/health` fica na raiz do servidor, fora de `/api/v1`.
   Future<bool> saude() async {

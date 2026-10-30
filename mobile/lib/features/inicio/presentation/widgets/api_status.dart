@@ -20,7 +20,7 @@ class ApiStatus extends ConsumerWidget {
       texto,
       style: Theme.of(
         context,
-      ).textTheme.bodySmall?.copyWith(color: Colors.white54),
+      ).textTheme.bodySmall?.copyWith(color: Theme.of(context).hintColor),
     );
   }
 }
