@@ -105,10 +105,11 @@ flowchart LR
     UC19(UC19 Ver faturamento)
   end
 
-  AT --- UC01 & UC02 & UC03 & UC07 & UC09 & UC11 & UC15 & UC16 & UC17
-  ME --- UC01 & UC08 & UC12 & UC14
-  AL --- UC01 & UC04 & UC18
-  GE --- UC01 & UC05 & UC06 & UC10 & UC16 & UC17 & UC19
+  TD([Todos os perfis]) --- UC01
+  AT --- UC02 & UC03 & UC07 & UC09 & UC11 & UC15 & UC16 & UC17
+  ME --- UC08 & UC12 & UC14
+  AL --- UC04 & UC18
+  GE --- UC05 & UC06 & UC10 & UC16 & UC17 & UC19
 
   UC12 -. "«include»" .-> UC13
   UC10 -. "«extend»" .-> UC09
@@ -168,7 +169,6 @@ flowchart LR
   ME --- UC08 & UC12 & UC14
   GE --- UC10 & UC16 & UC17
 
-  UC07 --> UC08 --> UC09 --> UC11 --> UC12 --> UC14 --> UC15
   UC12 -. "«include»" .-> UC13
   UC10 -. "«extend»" .-> UC09
   UC17 -. "«extend»" .-> UC16
