@@ -175,7 +175,7 @@ erDiagram
   historico_transicoes {
     uuid id PK
     uuid os_id FK
-    status_enum de
+    status_enum de "nulo na abertura da OS"
     status_enum para
     uuid usuario_id FK
     text motivo

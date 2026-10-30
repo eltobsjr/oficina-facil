@@ -55,18 +55,18 @@ _Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend
 ### [[000 - Fundação técnica]]
 
 - [ ] **000 — Fundação técnica**
-  - [ ] Projetos Supabase de desenvolvimento e de teste criados; chaves guardadas fora do git; `.env.example` e `mobile/env.example.json` sem valores
-  - [ ] Backend base: Express 5, TypeScript, env com Zod, Pino com redação, Helmet, rate limit, CORS, erros padronizados, `/health`
-  - [ ] JWT validado por JWKS (algoritmos do projeto, `iss`, `aud`, `exp`) e middleware de perfil
-  - [ ] Prisma: migration inicial do modelo de dados com RLS, gatilhos de só-inserção, índice único parcial e FK para `auth.users`; `shadowDatabaseUrl` no projeto de teste
-  - [ ] Teste com a chave publicável: o app não lê nem escreve nas tabelas, exceto `avisos` do próprio usuário
-  - [ ] OpenAPI + Swagger e script `openapi:gerar`
-  - [ ] Vitest e teste de arquitetura dos módulos
-  - [ ] Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo
-  - [ ] Dockerfile do backend
-  - [ ] App: `supabase_flutter`, `dio`, `--dart-define`, `flutter_localizations` pt-BR, permissão INTERNET no manifesto, `fromApi/toApi` do estado com teste, relógio injetável
-  - [ ] CI: backend (lint, typecheck, test) e app (analyze, test, build)
-  - [ ] Documentação: nota em `metodos/` com o passo a passo de rodar o backend; devtrack
+  - [ ] Projetos Supabase de desenvolvimento e de teste criados; chaves guardadas fora do git; `.env.example` e `mobile/env.example.json` sem valores (desenvolvimento feito; falta o de teste)
+  - [x] Backend base: Express 5, TypeScript, env com Zod, Pino com redação, Helmet, rate limit, CORS, erros padronizados, `/health`
+  - [x] JWT validado por JWKS (algoritmos do projeto, `iss`, `aud`, `exp`) e middleware de perfil
+  - [x] Prisma: migration inicial do modelo de dados com RLS, gatilhos de só-inserção, índice único parcial e FK para `auth.users` (sem banco-sombra: `migrate diff` + `migrate deploy`)
+  - [ ] Teste com a chave publicável: o app não lê nem escreve nas tabelas, exceto `avisos` do próprio usuário (escrito; falta rodar no projeto de teste)
+  - [x] OpenAPI + Swagger e script `openapi:gerar`
+  - [x] Vitest e teste de arquitetura dos módulos
+  - [ ] Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo (catálogo e smoke feitos; falta o gerente: precisa da `SUPABASE_SERVICE_ROLE_KEY`)
+  - [x] Dockerfile do backend
+  - [x] App: `supabase_flutter`, `dio`, `--dart-define`, `flutter_localizations` pt-BR, permissão INTERNET no manifesto, `fromApi/toApi` do estado com teste, relógio injetável
+  - [ ] CI: backend (lint, typecheck, test) e app (analyze, test, build) (arquivo criado; executa no primeiro push)
+  - [x] Documentação: nota em `metodos/` com o passo a passo de rodar o backend; devtrack
 
 ## F2 — Acesso e usuários
 

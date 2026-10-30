@@ -9,6 +9,7 @@ data: 2026-10-30
 - [[CHECKLIST]] — lista mestra marcável
 - [[Mapa de telas]]
 - [[Roadmap]]
+- [[Rodar o projeto]] — backend, app, Docker e problemas conhecidos
 - [[00 - Índice de decisões]]
 - [[atual|Prioridades atuais]]
 

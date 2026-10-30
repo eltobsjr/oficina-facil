@@ -180,6 +180,8 @@ Duas pessoas lançando a mesma peça ao mesmo tempo não deixam o saldo negativo
 | Teste automatizado e CI | — | `npm test` | Projeto Supabase de **teste**, onde `prisma migrate reset` é permitido; também serve de `shadowDatabaseUrl` |
 | Produção (demonstração) | Web estática + APK | Container Docker em Railway ou Render (a confirmar) | Projeto Supabase separado |
 
+**Conexão com o banco (achado na F1):** a conexão *direta* do Supabase (`db.<projeto>.supabase.co`) só tem endereço IPv6. Funciona na máquina de desenvolvimento, mas **não** em ambientes só IPv4: a rede padrão do Docker e vários provedores de hospedagem. Por isso `DIRECT_URL` (migrations) pode ser a direta, mas `DATABASE_URL` da API em produção e no CI deve ser a string do **pooler** (Supavisor), que tem IPv4. Verificado: o contêiner na rede padrão marcou o banco como indisponível; com a rede do host (IPv6) respondeu `ok`.
+
 Nunca usar o projeto de produção sem liberação explícita. Banco **não** roda em container: Auth e Realtime só existem no Supabase. Testes de integração (concorrência, falha injetada, RLS com a chave publicável) rodam no projeto de teste, nunca no de desenvolvimento compartilhado.
 
 ## 9. Qualidade e verificação

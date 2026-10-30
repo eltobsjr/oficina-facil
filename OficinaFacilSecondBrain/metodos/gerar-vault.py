@@ -512,7 +512,7 @@ for fase, (titulo, desc) in FASES.items():
 (V / '00 - Índice.md').write_text('\n'.join([
  '---', f'data: {HOJE}', '---', '', '# OficinaFácil — Índice do vault', '',
  '- [[OficinaFácil — Visão Geral]]', '- [[Convenções]]', '- [[CHECKLIST]] — lista mestra marcável', '- [[Mapa de telas]]',
- '- [[Roadmap]]', '- [[00 - Índice de decisões]]', '- [[atual|Prioridades atuais]]', '',
+ '- [[Roadmap]]', '- [[Rodar o projeto]] — backend, app, Docker e problemas conhecidos', '- [[00 - Índice de decisões]]', '- [[atual|Prioridades atuais]]', '',
  '## Especificação', '', '- [[Requisitos]] · [[Casos de uso]] · [[Histórias de usuário]] · [[Rastreabilidade]]',
  '- [[Arquitetura]] · [[Modelo de dados]] · [[Diagramas]] · [[Endpoints]]', '',
  '## Features (numeração = número do caso de uso)', '', '| Feature | Fase | UC | RF | Histórias |', '|---|---|---|---|---|',
