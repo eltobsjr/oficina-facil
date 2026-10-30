@@ -12,9 +12,9 @@
 import type { Papel } from '../../shared/db/prisma.js';
 import type { ClaimsSupabase } from '../../shared/auth/jwt.js';
 import {
+  AppError,
   Conflito,
   NaoEncontrado,
-  Proibido,
   RegraDeNegocio,
 } from '../../shared/errors/app-error.js';
 import { logger } from '../../shared/logger.js';
@@ -40,8 +40,9 @@ export async function usuarioDoToken(
   buscar: BuscarPerfil = buscarPerfil,
 ): Promise<UsuarioAutenticado> {
   const registro = await buscar(claims.sub);
-  if (!registro) throw new Proibido('Usuário sem perfil cadastrado');
-  if (!registro.ativo) throw new Proibido('Usuário inativo');
+  // Códigos próprios para o app mostrar a mensagem certa (sem perfil x desativado).
+  if (!registro) throw new AppError(403, 'usuario_sem_perfil', 'Usuário sem perfil cadastrado');
+  if (!registro.ativo) throw new AppError(403, 'usuario_inativo', 'Usuário inativo');
   return {
     id: registro.usuarioId,
     nome: registro.nome,

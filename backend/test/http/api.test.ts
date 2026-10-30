@@ -122,11 +122,14 @@ describe('GET /api/v1/me', () => {
   it('token válido de quem não tem perfil recebe 403', async () => {
     const r = await get('/api/v1/me', await token('id-sem-perfil'));
     expect(r.status).toBe(403);
+    expect(((await r.json()) as CorpoErro).erro.codigo).toBe('usuario_sem_perfil');
   });
   it('token válido de usuário inativo recebe 403', async () => {
     const r = await get('/api/v1/me', await token('id-inativo'));
     expect(r.status).toBe(403);
-    expect(((await r.json()) as CorpoErro).erro.mensagem).toBe('Usuário inativo');
+    const corpo = (await r.json()) as CorpoErro;
+    expect(corpo.erro.mensagem).toBe('Usuário inativo');
+    expect(corpo.erro.codigo).toBe('usuario_inativo');
   });
 });
 
