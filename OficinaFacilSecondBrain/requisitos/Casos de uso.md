@@ -465,7 +465,7 @@ Convenções: **Pré** = pré-condição; **Pós** = pós-condição; **FP** = f
 **FP** (decisão 007, revisada: autorização assíncrona)
 1. O atendente, ao montar o orçamento com desconto acima de 10%, solicita a autorização. A solicitação nasce `PENDENTE` e o gerente recebe um aviso no app.
 2. O gerente abre as solicitações pendentes, confere OS, cliente, subtotal, desconto pedido e percentual, e decide **pela própria sessão** (nenhuma senha de gerente passa pela sessão do atendente).
-3. O sistema registra a decisão (gerente, valor autorizado, data) e avisa o atendente.
+3. O sistema registra a decisão (gerente, valor autorizado, data) e envia o aviso `DESCONTO_DECIDIDO` ao atendente.
 4. Aprovada e válida, a autorização permite o atendente confirmar o orçamento (UC09).
 
 **FA1 — Recusa.** O gerente recusa; o atendente ajusta o desconto ou segue sem ele.

@@ -50,7 +50,7 @@ Contrato completo em [[Endpoints]].
 ## Telas
 
 - **T20 Execução e peças usadas** — `/os/:id/execucao` (Mecânico)
-- **T24 Notificações no app (OS concluída, saldo insuficiente)** — `/notificacoes` (Atendente, Almoxarife)
+- **T24 Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída)** — `/notificacoes` (Atendente, Almoxarife, Gerente)
 
 Catálogo completo em [[Mapa de telas]].
 

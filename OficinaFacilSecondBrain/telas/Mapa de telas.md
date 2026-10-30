@@ -32,7 +32,7 @@ Rotas definidas aqui valem para o `go_router`; se uma rota mudar, muda aqui prim
 | T21 | Pagamento e entrega | `/os/:id/entrega` | Atendente | [[015 - Entregar e registrar pagamento]] |
 | T22 | Cancelar OS (diálogo com motivo) | `diálogo sobre T15` | Atendente, Gerente | [[017 - Cancelar OS]] |
 | T23 | Faturamento | `/faturamento` | Gerente | [[019 - Ver faturamento]] |
-| T24 | Notificações no app (OS concluída, saldo insuficiente) | `/notificacoes` | Atendente, Almoxarife | [[013 - Registrar peças usadas]], [[014 - Concluir OS]] |
+| T24 | Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída) | `/notificacoes` | Atendente, Almoxarife, Gerente | [[010 - Autorizar desconto]], [[013 - Registrar peças usadas]], [[014 - Concluir OS]] |
 
 ## Acesso por perfil (RN09)
 
@@ -41,4 +41,4 @@ Rotas definidas aqui valem para o `go_router`; se uma rota mudar, muda aqui prim
 | Atendente | T01, T02, T05, T06, T07, T13, T14, T15, T17, T19, T21, T22, T24 |
 | Mecânico | T01, T02, T14, T15, T16, T20 |
 | Almoxarife | T01, T02, T10, T11, T12, T24 |
-| Gerente | T01, T02, T03, T04, T08, T09, T14, T15, T18, T22, T23 |
+| Gerente | T01, T02, T03, T04, T08, T09, T14, T15, T18, T22, T23, T24 |

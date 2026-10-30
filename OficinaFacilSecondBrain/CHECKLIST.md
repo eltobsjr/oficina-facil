@@ -6,6 +6,7 @@ data: 2026-10-30
 
 Lista mestra de tudo que o projeto precisa ter. Marque com `[x]` conforme avança.
 Stack: Flutter + backend Node/TypeScript + Supabase ([[Arquitetura]]).
+**Semana atual: S1 (02/11 a 08/11)**, ver [[Roadmap]] e [[atual|Prioridades atuais]].
 
 **Regras para marcar:**
 1. Cada feature de caso de uso tem 9 tarefas fixas (modelo, API, testes da API, contrato, app em dois blocos, testes do app, verificação, documentação). A `000` e a `020` têm tarefas próprias.

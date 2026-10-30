@@ -37,6 +37,8 @@ Entregar **UC10 — Autorizar desconto** para o ator **Atendente (solicita), Ger
 | CA05 | A autorização perde a validade se o subtotal ou o desconto do orçamento mudar depois | 🔲 Pendente |
 | CA06 | Recusa devolve o controle ao atendente, que ajusta o desconto ou segue sem ele | 🔲 Pendente |
 | CA07 | Aprovada e válida, a autorização permite confirmar o orçamento (feature 009) | 🔲 Pendente |
+| CA08 | A decisão gera o aviso `DESCONTO_DECIDIDO` para o atendente e o pedido gera `DESCONTO_PENDENTE` para o gerente | 🔲 Pendente |
+| CA09 | O usuário lista os próprios avisos, marca como lido e vê o aviso novo chegar sem recarregar (Realtime); só enxerga os dele | 🔲 Pendente |
 
 Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado. ⚠️ = fluxo deduzido, conferir com o documento oficial.
 
@@ -46,7 +48,9 @@ Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado.
 |---|---|---|---|
 | POST | `/os/:id/orcamento/solicitacao-desconto` | Atendente | Pede autorização de desconto acima de 10% (nasce `PENDENTE`, avisa o gerente) |
 | GET | `/solicitacoes-desconto` | Gerente | Lista pendentes e decididas |
-| POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT |
+| POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT; avisa o atendente |
+| GET | `/avisos` | Todos | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
+| POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
 
 Contrato completo em [[Endpoints]].
 
@@ -54,6 +58,7 @@ Contrato completo em [[Endpoints]].
 
 - **T17 Orçamento (inclui pedir autorização de desconto)** — `/os/:id/orcamento` (Atendente)
 - **T18 Solicitações de desconto (pendentes e decididas)** — `/descontos` (Gerente)
+- **T24 Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída)** — `/notificacoes` (Atendente, Almoxarife, Gerente)
 
 Catálogo completo em [[Mapa de telas]].
 

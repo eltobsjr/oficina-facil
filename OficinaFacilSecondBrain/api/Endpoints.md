@@ -56,15 +56,15 @@ Contrato resumido por caso de uso. O contrato completo e sempre atual é o OpenA
 | [[009 - Montar orçamento]] | UC09 | POST | `/os/:id/orcamento/confirmar` | Atendente | Confirma e leva a `AGUARDANDO_APROVACAO` |
 | [[010 - Autorizar desconto]] | UC10 | POST | `/os/:id/orcamento/solicitacao-desconto` | Atendente | Pede autorização de desconto acima de 10% (nasce `PENDENTE`, avisa o gerente) |
 | [[010 - Autorizar desconto]] | UC10 | GET | `/solicitacoes-desconto` | Gerente | Lista pendentes e decididas |
-| [[010 - Autorizar desconto]] | UC10 | POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT |
+| [[010 - Autorizar desconto]] | UC10 | POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT; avisa o atendente |
+| [[010 - Autorizar desconto]] | UC10 | GET | `/avisos` | Todos | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
+| [[010 - Autorizar desconto]] | UC10 | POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
 | [[011 - Registrar aprovação do cliente]] | UC11 | POST | `/os/:id/aprovacao` | Atendente | Aprova (`APROVADA`) ou recusa (`CANCELADA`) |
 | [[012 - Executar serviço]] | UC12 | POST | `/os/:id/execucao` | Mecânico | Inicia e leva a `EM_EXECUCAO` |
 | [[012 - Executar serviço]] | UC12 | POST | `/os/:id/observacoes` | Mecânico | Anota andamento |
 | [[013 - Registrar peças usadas]] | UC13 | POST | `/os/:id/pecas-usadas` | Mecânico | Lança peça e baixa o saldo |
 | [[013 - Registrar peças usadas]] | UC13 | DELETE | `/os/:id/pecas-usadas/:pecaUsadaId` | Mecânico | Estorna lançamento |
 | [[014 - Concluir OS]] | UC14 | POST | `/os/:id/concluir` | Mecânico | Leva a `CONCLUIDA` e cria aviso para o atendente |
-| [[014 - Concluir OS]] | UC14 | GET | `/avisos` | Todos | Avisos do próprio usuário (T24) |
-| [[014 - Concluir OS]] | UC14 | POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
 | [[015 - Entregar e registrar pagamento]] | UC15 | POST | `/os/:id/entregar` | Atendente | Corpo com `pagamentos[]` (forma, valor); exige soma igual ao total e leva a `ENTREGUE` numa transação |
 | [[016 - Consultar OS]] | UC16 | GET | `/os` | Atendente, Gerente, Mecânico | Estende a lista da 007 com filtros: numero, cliente, placa, estado, de, ate (cliente e placa vão no corpo de busca ou em parâmetro sem PII nos logs) |
 | [[016 - Consultar OS]] | UC16 | GET | `/os/:id/historico` | Atendente, Gerente, Mecânico | Transições |
@@ -74,4 +74,4 @@ Contrato resumido por caso de uso. O contrato completo e sempre atual é o OpenA
 | [[019 - Ver faturamento]] | UC19 | GET | `/faturamento` | Gerente | Total, quantidade e ticket médio no período (`de`, `ate`) |
 
 Login e logout não têm endpoint: são do Supabase Auth, chamados direto pelo app.
-Avisos entre perfis (RF20) chegam por Supabase Realtime, sem endpoint próprio.
+Avisos entre perfis (RF20): o app lê pela API (`GET /avisos`) e o Supabase Realtime só avisa que chegou um novo.

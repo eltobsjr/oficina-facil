@@ -4,25 +4,31 @@ data: 2026-10-30
 
 # Prioridades atuais
 
-Editada à mão a cada sessão. Estado em [[CHECKLIST]].
+Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi feito e como retomar: [[2026-10-30 - ZZ Resumo do dia e como retomar]].
 
-## Agora
+## Semana atual: S1 (02/11 a 08/11), ver [[Roadmap]]
 
-0. **O usuário cria os projetos Supabase** (desenvolvimento e teste) e resolve as demais pendências manuais. Projeto de desenvolvimento já criado; falta o de teste e as credenciais do backend.
-1. ~~Decisão 004~~ resolvida: o professor não entregou documento, segue o que foi deduzido.
-3. Confirmar as decisões propostas 007 a 010 e decidir a 003 (ver [[00 - Índice de decisões]]).
-4. Decidir o escopo de **anonimização LGPD**, **Plano de testes** e **Wireframes**.
-5. Criar os projetos Supabase (desenvolvimento e teste) e começar a [[000 - Fundação técnica]].
+### Depende do usuário (bloqueia o fechamento da F1)
+1. Criar o projeto Supabase de **teste** e preencher `TEST_*` no `backend/.env`.
+2. Colocar a `SUPABASE_SERVICE_ROLE_KEY` no `backend/.env`.
+3. String do **pooler** para `DATABASE_URL` (produção e CI).
+4. Pedir o **push** (o CI nunca rodou).
+5. Rotacionar a senha do banco e a chave anon coladas no chat.
+
+### Meu trabalho, na ordem
+1. Fechar a [[000 - Fundação técnica]]: rodar os 24 testes de integração no projeto de teste; marcar os CAs 01, 05, 10 e 14.
+2. Backend da feature [[006 - Gerir usuários]]: cliente administrativo do Supabase, listar, criar, detalhar, alterar, redefinir senha, inativar, ativar; seed do gerente; testes.
+3. Commit por feature concluída (sem push).
 
 ## Em seguida
+- S2: app da F2 ([[001 - Autenticar]] e a parte do app da 006): marco M1.
+- S3: F3 ([[002 - Gerir clientes]] e [[003 - Gerir veículos]]).
 
-6. F2: [[001 - Autenticar]] e [[006 - Gerir usuários]].
-7. F3: [[002 - Gerir clientes]] e [[003 - Gerir veículos]].
-
-## Quando o celular conectar
-
-- Testar em dispositivo Android (pendência transversal do [[CHECKLIST]]).
+## Decisões pendentes
+- Confirmar as propostas 007 a 010 até a S5; **decidir a 003 até o fim da S9**; 005 e 011 conforme o professor pedir.
+- Aprovar (ou não) anonimização LGPD, Plano de testes e Wireframes.
 
 ## Outras pendências
-
-- Criar a visão Board no GitHub Projects (manual) e atualizar o quadro com as fases novas.
+- Teste no Android real (celular não detectado pelo `adb`).
+- Visão Board do GitHub Projects (manual) e atualizar o quadro com as fases novas.
+- Alterações do vault ainda não commitadas (ver o resumo do dia).

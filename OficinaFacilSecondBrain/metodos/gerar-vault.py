@@ -49,7 +49,7 @@ TELAS = [
     ('T21', 'Pagamento e entrega', '/os/:id/entrega', 'Atendente', ['015']),
     ('T22', 'Cancelar OS (diálogo com motivo)', 'diálogo sobre T15', 'Atendente, Gerente', ['017']),
     ('T23', 'Faturamento', '/faturamento', 'Gerente', ['019']),
-    ('T24', 'Notificações no app (OS concluída, saldo insuficiente)', '/notificacoes', 'Atendente, Almoxarife', ['013', '014']),
+    ('T24', 'Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída)', '/notificacoes', 'Atendente, Almoxarife, Gerente', ['010', '013', '014']),
 ]
 
 # nnn, nome, fase, uc, us, atores, rn, deps, cas[(texto, ⚠️?)], notas
@@ -261,7 +261,9 @@ mod('010', us='US10', atores='Atendente (solicita), Gerente (decide)', cas=[
   ('Perfil diferente de Gerente não decide (403)', 0),
   ('A autorização perde a validade se o subtotal ou o desconto do orçamento mudar depois', 0),
   ('Recusa devolve o controle ao atendente, que ajusta o desconto ou segue sem ele', 0),
-  ('Aprovada e válida, a autorização permite confirmar o orçamento (feature 009)', 0)],
+  ('Aprovada e válida, a autorização permite confirmar o orçamento (feature 009)', 0),
+  ('A decisão gera o aviso `DESCONTO_DECIDIDO` para o atendente e o pedido gera `DESCONTO_PENDENTE` para o gerente', 0),
+  ('O usuário lista os próprios avisos, marca como lido e vê o aviso novo chegar sem recarregar (Realtime); só enxerga os dele', 0)],
   notas='Extensão de UC09 (`«extend»`). Decisão 007 revisada: autorização assíncrona, sem senha de gerente passando pelo backend.')
 mod('011', drop='Orçamento alterado', add_cas=[('Orçamento fica imutável em `AGUARDANDO_APROVACAO`: tentativa de alterar recebe 409', 0)])
 mod('011', cas=[(t, 2 if t.startswith('Cliente pedir ajuste') else f) for t, f in [x for x in F if x[0] == '011'][0][8]])
@@ -320,14 +322,15 @@ X = {
          'orcamentos, itens_orcamento, ordens_servico, historico_transicoes'),
  '010': ('RF10', [('POST', '/os/:id/orcamento/solicitacao-desconto', 'Atendente', 'Pede autorização de desconto acima de 10% (nasce `PENDENTE`, avisa o gerente)'),
                   ('GET', '/solicitacoes-desconto', 'Gerente', 'Lista pendentes e decididas'),
-                  ('POST', '/solicitacoes-desconto/:id/decisao', 'Gerente', 'Aprova (valor igual ou menor) ou recusa, com o próprio JWT')], 'autorizacoes_desconto, avisos'),
+                  ('POST', '/solicitacoes-desconto/:id/decisao', 'Gerente', 'Aprova (valor igual ou menor) ou recusa, com o próprio JWT; avisa o atendente'),
+                  ('GET', '/avisos', 'Todos', 'Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta'),
+                  ('POST', '/avisos/:id/lido', 'Todos', 'Marca aviso como lido')], 'autorizacoes_desconto, avisos'),
  '011': ('RF11', [('POST', '/os/:id/aprovacao', 'Atendente', 'Aprova (`APROVADA`) ou recusa (`CANCELADA`)')], 'aprovacoes, ordens_servico, historico_transicoes'),
  '012': ('RF12', [('POST', '/os/:id/execucao', 'Mecânico', 'Inicia e leva a `EM_EXECUCAO`'), ('POST', '/os/:id/observacoes', 'Mecânico', 'Anota andamento')],
          'ordens_servico, observacoes, historico_transicoes'),
  '013': ('RF13, RF20', [('POST', '/os/:id/pecas-usadas', 'Mecânico', 'Lança peça e baixa o saldo'), ('DELETE', '/os/:id/pecas-usadas/:pecaUsadaId', 'Mecânico', 'Estorna lançamento')],
          'pecas_usadas, movimentacoes_estoque, pecas, avisos'),
- '014': ('RF14, RF20', [('POST', '/os/:id/concluir', 'Mecânico', 'Leva a `CONCLUIDA` e cria aviso para o atendente'), ('GET', '/avisos', 'Todos', 'Avisos do próprio usuário (T24)'),
-                  ('POST', '/avisos/:id/lido', 'Todos', 'Marca aviso como lido')], 'ordens_servico, historico_transicoes, avisos'),
+ '014': ('RF14, RF20', [('POST', '/os/:id/concluir', 'Mecânico', 'Leva a `CONCLUIDA` e cria aviso para o atendente')], 'ordens_servico, historico_transicoes, avisos'),
  '015': ('RF15', [('POST', '/os/:id/entregar', 'Atendente', 'Corpo com `pagamentos[]` (forma, valor); exige soma igual ao total e leva a `ENTREGUE` numa transação')],
          'pagamentos, ordens_servico, historico_transicoes'),
  '017': ('RF17', [('POST', '/os/:id/cancelar', 'Atendente, Gerente', 'Cancela com motivo e estorna as peças na mesma transação (decisão 008)')], 'ordens_servico, historico_transicoes, pecas_usadas, movimentacoes_estoque'),

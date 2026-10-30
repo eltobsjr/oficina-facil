@@ -35,7 +35,7 @@ Um RF por caso de uso, com o mesmo número (RF01 = UC01), mais os complementares
 | RF17 | Cancelar uma OS antes da entrega, com motivo | UC17 | Atendente, Gerente |
 | RF18 | Registrar a entrada de peças no estoque ⚠️ | UC18 | Almoxarife |
 | RF19 | Apresentar o faturamento por período ⚠️ | UC19 | Gerente |
-| RF20 | Gravar e exibir avisos dentro do app: OS concluída (atendente), saldo insuficiente (almoxarife) e desconto pendente (gerente) ⚠️ | UC10, UC13, UC14 | Atendente, Almoxarife, Gerente |
+| RF20 | Gravar e exibir avisos dentro do app: OS concluída (atendente), saldo insuficiente (almoxarife) e desconto pendente (gerente) e desconto decidido (atendente) ⚠️ | UC10, UC13, UC14 | Atendente, Almoxarife, Gerente |
 | RF21 | Guardar e exibir o histórico de transições da OS ⚠️ | UC16 | Atendente, Gerente |
 | RF22 | Destacar peças abaixo do estoque mínimo ⚠️ | UC04 | Almoxarife |
 | RF23 | Encerrar a sessão do usuário ⚠️ | UC01 | Todos |

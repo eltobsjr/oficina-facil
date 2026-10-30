@@ -22,5 +22,6 @@ Os avisos são **gravados** na tabela `avisos` pelo backend (OS concluída, sald
 ## Consequências
 
 - Quem estava com o app fechado vê os avisos ao abrir, porque ficam gravados (`lido_em` marca a leitura).
-- Tela T24 (Notificações) e endpoints `GET /avisos` e `POST /avisos/:id/lido`.
+- Tela T24 (Notificações) e endpoints `GET /avisos` e `POST /avisos/:id/lido`, entregues na **feature 010** (F5), a primeira que produz avisos, e não na 014.
+- O aviso `DESCONTO_DECIDIDO` (decisão do gerente, para o atendente) é um quarto tipo; entra por migration na F5.
 - `avisos` é a única tabela que o app lê direto, com RLS por `destinatario_id`.

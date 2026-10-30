@@ -21,7 +21,7 @@ Decidida em [[001 - Persistência no Supabase Postgres via backend]], [[002 - Au
 | Empacotamento | Docker (só o backend); o banco nunca roda em container |
 | Diagramas | Mermaid |
 
-Estado hoje: só o app existe (tela inicial + `StatusOrdemServico`). Backend e Supabase ainda não foram criados.
+Estado hoje: backend base, banco com RLS e app ligado ao backend existem (F1); as funcionalidades de negócio ainda não.
 
 ## Atores
 
@@ -42,6 +42,7 @@ Cancelar vale em qualquer estado antes da entrega. Implementado em `StatusOrdemS
 - Especificação: [[Requisitos]], [[Casos de uso]], [[Histórias de usuário]], [[Rastreabilidade]]
 - Arquitetura: [[Arquitetura]], [[Modelo de dados]], [[Diagramas]], [[Endpoints]]
 - Decisões: [[00 - Índice de decisões]]
+- Plano: [[Plano de construção]] · [[Rodar o projeto]]
 - Telas: [[Mapa de telas]] · Features: `features/` · Auditorias: `auditorias/` · PDFs: `entregas/` · Logo: [[00 - Identidade visual]]
 
 ## Como rodar (app, hoje)
@@ -61,7 +62,7 @@ Comandos do backend entram na feature [[000 - Fundação técnica]].
 ```
 oficina_facil/
 ├── mobile/      app Flutter (web e Android): lib/, test/, android/, web/, assets/, pubspec.yaml
-├── backend/     API Node/TypeScript (a criar na F1)
+├── backend/     API Node/TypeScript (base pronta)
 ├── CLAUDE.md    regras do projeto
 ├── README.md    apresentação do projeto (a especificação fica aqui no vault)
 └── OficinaFacilSecondBrain/   documentação (este vault), versionado junto com o código
@@ -77,4 +78,6 @@ Dentro de `mobile/`: `lib/core/` (tema e roteamento) e `lib/features/<feature>/{
 
 ## Estado atual
 
-Entrega 1 concluída em 2026-10-29. Em 2026-10-30: casos de uso, histórias, requisitos, modelo de dados, arquitetura, 12 decisões, features e checklist, **tudo dentro deste vault**; stack definida (Flutter + Node/TypeScript + Supabase). Próximo passo: resolver a [[004 - Conferência com o enunciado oficial]] e começar a [[000 - Fundação técnica]]. Prioridades em `prioridade/atual.md`.
+Em 2026-10-30: análise completa, documentação toda neste vault, monorepo (`mobile/`, `backend/`, vault no mesmo repositório) e a **F1 (fundação técnica) construída e verificada**: banco com RLS no Supabase de desenvolvimento, backend com `GET /me`, JWT por JWKS, Swagger, Docker e CI, e o app ligado ao Supabase e ao backend. Nenhum dos 19 casos de uso de negócio está implementado ainda.
+
+Próximo: **Semana 1 do [[Roadmap]]** (fechar a F1 e backend de usuários). Plano por tela e componente em [[Plano de construção]]. Para retomar, leia [[2026-10-30 - ZZ Resumo do dia e como retomar]] e `prioridade/atual.md`.

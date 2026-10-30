@@ -41,15 +41,13 @@ Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado.
 | Método | Caminho (`/api/v1`) | Perfis | O que faz |
 |---|---|---|---|
 | POST | `/os/:id/concluir` | Mecânico | Leva a `CONCLUIDA` e cria aviso para o atendente |
-| GET | `/avisos` | Todos | Avisos do próprio usuário (T24) |
-| POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
 
 Contrato completo em [[Endpoints]].
 
 ## Telas
 
 - **T15 Detalhe da OS (dados, orçamento, peças, histórico, ações por estado)** — `/os/:id` (Atendente, Gerente, Mecânico (sem documento e telefone do cliente))
-- **T24 Notificações no app (OS concluída, saldo insuficiente)** — `/notificacoes` (Atendente, Almoxarife)
+- **T24 Notificações no app (desconto pendente ou decidido, saldo insuficiente, OS concluída)** — `/notificacoes` (Atendente, Almoxarife, Gerente)
 
 Catálogo completo em [[Mapa de telas]].
 

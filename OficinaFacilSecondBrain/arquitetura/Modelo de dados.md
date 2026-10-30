@@ -184,7 +184,7 @@ erDiagram
   avisos {
     uuid id PK
     uuid destinatario_id FK
-    aviso_enum tipo "OS_CONCLUIDA, SALDO_INSUFICIENTE ou DESCONTO_PENDENTE"
+    aviso_enum tipo "OS_CONCLUIDA, SALDO_INSUFICIENTE, DESCONTO_PENDENTE ou DESCONTO_DECIDIDO"
     uuid os_id FK "opcional"
     uuid peca_id FK "opcional"
     timestamptz lido_em
@@ -243,7 +243,7 @@ erDiagram
 | `status_desconto_enum` | `PENDENTE`, `APROVADA`, `RECUSADA` |
 | `canal_enum` | `BALCAO`, `TELEFONE` |
 | `forma_enum` | `DINHEIRO`, `CARTAO`, `PIX` |
-| `aviso_enum` | `OS_CONCLUIDA`, `SALDO_INSUFICIENTE`, `DESCONTO_PENDENTE` |
+| `aviso_enum` | `OS_CONCLUIDA`, `SALDO_INSUFICIENTE`, `DESCONTO_PENDENTE`, `DESCONTO_DECIDIDO` (**entra numa migration da F5**; o banco de desenvolvimento ainda tem os três primeiros) |
 
 **Mapeamento do estado da OS.** No banco e na API o estado é `AGUARDANDO_APROVACAO` (igual às notas). No Dart, o enum `StatusOrdemServico` usa `aguardandoAprovacao`. A conversão é explícita, num único lugar (`fromApi`/`toApi`), e tem teste.
 
@@ -266,7 +266,7 @@ erDiagram
 | `pecas_usadas` | Peças efetivamente consumidas; guarda estorno e "não devolver" | UC13, UC17 |
 | `pagamentos` | Pagamentos gravados no ato da entrega | UC15, UC19 |
 | `historico_transicoes` | Toda mudança de estado, com autor e data | UC16 |
-| `avisos` | Avisos entre perfis (OS concluída, saldo insuficiente, desconto pendente) | UC13, UC14, UC10 |
+| `avisos` | Avisos entre perfis (OS concluída, saldo insuficiente, desconto pendente, desconto decidido) | UC10, UC13, UC14 |
 
 ## 4. Restrições e índices
 
