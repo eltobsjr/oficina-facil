@@ -66,7 +66,7 @@ _Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend
   - [ ] Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo (catálogo e smoke feitos; falta o gerente: precisa da `SUPABASE_SERVICE_ROLE_KEY`)
   - [x] Dockerfile do backend
   - [x] App: `supabase_flutter`, `dio`, `--dart-define`, `flutter_localizations` pt-BR, permissão INTERNET no manifesto, `fromApi/toApi` do estado com teste, relógio injetável
-  - [ ] CI: backend (lint, typecheck, test) e app (analyze, test, build) (arquivo criado; executa no primeiro push)
+  - [x] CI: backend (lint, typecheck, test) e app (analyze, test, build) (rodou no GitHub em 2026-10-30: backend e mobile passaram)
   - [x] Documentação: nota em `metodos/` com o passo a passo de rodar o backend; devtrack
 
 ## F2 — Acesso e usuários

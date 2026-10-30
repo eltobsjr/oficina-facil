@@ -108,13 +108,9 @@ O usuário pediu, literalmente: usar o MCP do Trello para **ajustar todo o Trell
 6. **Documentar:** acrescentar a data e o resultado em [[Quadro do Trello]] e atualizar `prioridade/atual.md`.
 7. **Manutenção a cada semana ou feature fechada:** atualizar o vault (CHECKLIST), regerar o JSON, mover cartões e marcar itens pelo MCP. Em divergência, vale o vault.
 
-## Outra pendência da retomada: resultado do CI
+## CI: resolvido
 
-O usuário deu o `git push` (`4e9de17..9e2ad5f`, 12 commits) e o workflow `.github/workflows/ci.yml` rodou pela primeira vez: execução **41129044900**, ainda `in_progress` no fim desta sessão. Na sessão nova:
-
-- `gh run list --limit 3` para ver o resultado.
-- Se falhou: `gh run view 41129044900 --log-failed`, corrigir e commitar (o CI nunca foi validado antes; o job do app usa `subosito/flutter-action` com o canal stable, que pode ter versão diferente da 3.44 local).
-- Se passou: marcar o CA 14 da feature 000 e a tarefa de CI do CHECKLIST.
+O usuário deu o `git push` (`4e9de17..9e2ad5f`) e o workflow rodou pela primeira vez (execução 41129044900): **passou nos dois jobs, backend e mobile**. Só avisos: as ações `checkout@v4` e `setup-node@v4` ainda usam Node 20 (o GitHub as força para Node 24) e o rótulo `ubuntu-latest` migra para o Ubuntu 26 em 19/10/2026; vale subir as versões das ações quando houver tempo. O CA 14 da feature 000 e a tarefa de CI do CHECKLIST foram marcados.
 
 ## Depois disso, na ordem
 

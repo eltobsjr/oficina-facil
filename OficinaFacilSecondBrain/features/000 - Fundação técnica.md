@@ -43,7 +43,7 @@ Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend,
 | CA11 | App lê a configuração por `--dart-define`, chama `GET /health` com `dio` e abre em pt-BR (`flutter_localizations`); manifesto Android principal com permissão INTERNET | ✅ Concluído — configuração, `/health` com `dio`, pt-BR e INTERNET; `flutter analyze`, 20 testes, `build web` e `build apk` passam |
 | CA12 | Conversão do estado da OS entre API (`UPPER_SNAKE`) e Dart (`camelCase`) num único lugar, com teste; relógio injetável nos dois lados | ✅ Concluído — `fromApi`/`toApi` com 4 testes e `Relogio` injetável |
 | CA13 | Dockerfile do backend gera imagem que sobe e responde em `/health` | ✅ Concluído — imagem de 712 MB roda como usuário `node` e responde em `/health` (com rede que tem IPv6) |
-| CA14 | Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build) | 🔄 Em progresso — checagens locais verdes; `.github/workflows/ci.yml` criado mas **ainda não executado** (depende do push) |
+| CA14 | Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build) | ✅ Concluído — CI rodou no GitHub (execução 41129044900): jobs backend e mobile passaram |
 
 Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado. ⚠️ = fluxo deduzido, conferir com o documento oficial.
 
