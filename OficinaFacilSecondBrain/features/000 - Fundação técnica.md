@@ -1,0 +1,73 @@
+---
+data: 2026-10-30
+status: planejada
+fase: F1
+uc: "—"
+us: "—"
+rf: "—"
+---
+
+# 000 — Fundação técnica
+
+## Objetivo
+
+Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend, seed e CI.
+
+## Referências
+
+| Item | Valor |
+|---|---|
+| Fase | F1 — Fundação técnica |
+| Caso de uso | — |
+| Histórias | — |
+| Requisitos | — |
+| Ator | Time de desenvolvimento |
+| Regras de negócio | — |
+| Tabelas | todas (RLS) |
+| Especificação | [[Casos de uso]], [[Histórias de usuário]], [[Requisitos]], [[Modelo de dados]] |
+
+## Critérios de aceitação
+
+| # | Critério | Status |
+|---|---|---|
+| CA01 | Projetos Supabase de desenvolvimento e de teste criados; chaves e segredos fora do git (`backend/.env`, `mobile/env.json`); `.env.example` e `mobile/env.example.json` sem valores reais | 🔲 Pendente |
+| CA02 | Backend sobe com `npm run dev`; `GET /health` responde 200 e `/docs` mostra o Swagger | 🔲 Pendente |
+| CA03 | Variáveis de ambiente validadas com Zod: o backend recusa subir com configuração incompleta | 🔲 Pendente |
+| CA04 | Migration inicial aplicada (modelo em [[Modelo de dados]]) com RLS, gatilhos de só-inserção, índice único parcial de OS ativa e FK para `auth.users` dentro das migrations do Prisma; `shadowDatabaseUrl` aponta para o projeto de teste | 🔲 Pendente |
+| CA05 | Teste com a chave publicável comprova que o app não lê nem escreve em nenhuma tabela, exceto as próprias linhas de `avisos` | 🔲 Pendente |
+| CA06 | JWT validado por JWKS (só os algoritmos do projeto; confere `iss`, `aud` e `exp`); rota sem token recebe 401 e perfil sem permissão recebe 403 | 🔲 Pendente |
+| CA07 | Erros da API padronizados num único formato JSON, sem vazar detalhe interno; logs Pino com redação de `authorization`, `senha` e `password` | 🔲 Pendente |
+| CA08 | CORS aceita só as origens do web do projeto; `helmet` e rate limit ativos | 🔲 Pendente |
+| CA09 | Teste de arquitetura impede um módulo de importar o interior de outro | 🔲 Pendente |
+| CA10 | Seed cria o gerente inicial com e-mail e senha vindos de variável de ambiente e só dados fictícios no catálogo de dev | 🔲 Pendente |
+| CA11 | App lê a configuração por `--dart-define`, chama `GET /health` com `dio` e abre em pt-BR (`flutter_localizations`); manifesto Android principal com permissão INTERNET | 🔲 Pendente |
+| CA12 | Conversão do estado da OS entre API (`UPPER_SNAKE`) e Dart (`camelCase`) num único lugar, com teste; relógio injetável nos dois lados | 🔲 Pendente |
+| CA13 | Dockerfile do backend gera imagem que sobe e responde em `/health` | 🔲 Pendente |
+| CA14 | Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build) | 🔲 Pendente |
+
+Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado. ⚠️ = fluxo deduzido, conferir com o documento oficial.
+
+## API
+
+| Método | Caminho (`/api/v1`) | Perfis | O que faz |
+|---|---|---|---|
+| GET | `/health` | Público | Estado do serviço |
+| GET | `/docs` | Público (dev) | Swagger a partir do OpenAPI |
+
+Contrato completo em [[Endpoints]].
+
+## Telas
+
+Sem tela própria.
+
+## Dependências
+
+Nenhuma.
+
+## Tarefas
+
+As tarefas desta feature ficam no [[CHECKLIST]], na seção da fase.
+
+## Notas técnicas
+
+Stack e arquitetura em [[Arquitetura]]. Decisões 001, 002, 006 e 012 já aceitas. Nada de BullMQ/Redis. O login por perfil no app (`redirect`) é da feature 001.
