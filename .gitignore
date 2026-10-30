@@ -43,3 +43,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+
+# SecondBrain — documentação pessoal local
+OficinaFacilSecondBrain/
