@@ -57,8 +57,8 @@ Contrato resumido por caso de uso. O contrato completo e sempre atual é o OpenA
 | [[010 - Autorizar desconto]] | UC10 | POST | `/os/:id/orcamento/solicitacao-desconto` | Atendente | Pede autorização de desconto acima de 10% (nasce `PENDENTE`, avisa o gerente) |
 | [[010 - Autorizar desconto]] | UC10 | GET | `/solicitacoes-desconto` | Gerente | Lista pendentes e decididas |
 | [[010 - Autorizar desconto]] | UC10 | POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT; avisa o atendente |
-| [[010 - Autorizar desconto]] | UC10 | GET | `/avisos` | Todos | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
-| [[010 - Autorizar desconto]] | UC10 | POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
+| [[010 - Autorizar desconto]] | UC10 | GET | `/avisos` | Atendente, Almoxarife, Gerente | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
+| [[010 - Autorizar desconto]] | UC10 | POST | `/avisos/:id/lido` | Atendente, Almoxarife, Gerente | Marca aviso como lido |
 | [[011 - Registrar aprovação do cliente]] | UC11 | POST | `/os/:id/aprovacao` | Atendente | Aprova (`APROVADA`) ou recusa (`CANCELADA`) |
 | [[012 - Executar serviço]] | UC12 | POST | `/os/:id/execucao` | Mecânico | Inicia e leva a `EM_EXECUCAO` |
 | [[012 - Executar serviço]] | UC12 | POST | `/os/:id/observacoes` | Mecânico | Anota andamento |

@@ -49,8 +49,8 @@ Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado.
 | POST | `/os/:id/orcamento/solicitacao-desconto` | Atendente | Pede autorização de desconto acima de 10% (nasce `PENDENTE`, avisa o gerente) |
 | GET | `/solicitacoes-desconto` | Gerente | Lista pendentes e decididas |
 | POST | `/solicitacoes-desconto/:id/decisao` | Gerente | Aprova (valor igual ou menor) ou recusa, com o próprio JWT; avisa o atendente |
-| GET | `/avisos` | Todos | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
-| POST | `/avisos/:id/lido` | Todos | Marca aviso como lido |
+| GET | `/avisos` | Atendente, Almoxarife, Gerente | Avisos do próprio usuário (T24); a primeira feature a produzir avisos é esta |
+| POST | `/avisos/:id/lido` | Atendente, Almoxarife, Gerente | Marca aviso como lido |
 
 Contrato completo em [[Endpoints]].
 

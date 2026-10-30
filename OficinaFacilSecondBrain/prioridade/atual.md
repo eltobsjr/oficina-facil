@@ -32,7 +32,7 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 ## Decisões pendentes
 - Confirmar as propostas 007 a 010 até a S5; **decidir a 003 até o fim da S9**; 005 e 011 conforme o professor pedir.
 - Aprovar (ou não) anonimização LGPD, Plano de testes e Wireframes.
-- `GET /avisos` para o Mecânico (Endpoints diz "Todos"; Mapa de telas T24 exclui o Mecânico). Recomendação: alinhar o Endpoints a `Atendente, Almoxarife, Gerente` (RF20); aguardando confirmação do usuário.
+- `GET /avisos` para o Mecânico (Endpoints diz "Todos"; Mapa de telas T24 exclui o Mecânico). **Resolvido:** o usuário deixou a escolha comigo; Endpoints, feature 010 e gerador agora dizem `Atendente, Almoxarife, Gerente` (RF20), e o Mecânico recebe 403.
 - Decidido: os nomes "Anthony" e "Roberto" **ficam** no vault.
 
 ## Outras pendências
