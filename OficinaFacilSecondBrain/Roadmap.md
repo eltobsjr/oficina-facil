@@ -68,7 +68,7 @@ gantt
 | S15 | 08/02 a 14/02 | F9 | Android real, deploy, APK, documentos e tag | **M5** |
 
 ### S1 (02/11 a 08/11): fechar a F1 e backend da F2
-- **F1, o que falta** (depende de você): projeto Supabase de **teste**; `SUPABASE_SERVICE_ROLE_KEY` no `backend/.env`; string do **pooler**; primeiro push para o CI rodar. Ao receber o projeto de teste, rodar os 24 testes de integração nele e marcar os CAs 01, 05, 10 e 14 da feature 000.
+- **F1, o que falta** (depende de você): projeto Supabase de **teste**; `SUPABASE_SERVICE_ROLE_KEY` no `backend/.env`; string do **pooler**. (O primeiro push já foi feito e o CI passou.) Ao receber o projeto de teste, rodar os testes de integração nele e marcar os CAs 01, 05 e 10 da feature 000.
 - **Backend da F2 (feature 006):** cliente administrativo do Supabase; listar, criar, detalhar, alterar, redefinir senha, inativar e ativar usuário; compensação ao falhar; banir no Auth ao inativar; último gerente protegido; seed do gerente rodando.
 - **Testes:** permissões por perfil, e-mail duplicado, último gerente, integração no projeto de teste.
 - **Demonstração:** criar e inativar usuários pela API (Swagger) com o JWT de um gerente real.

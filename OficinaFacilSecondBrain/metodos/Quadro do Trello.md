@@ -41,4 +41,10 @@ O Trello é uma **vista** do vault; em caso de divergência, vale o vault.
 
 ## Estado
 
-- 2026-10-30: especificação gerada (6 listas, 58 cartões, 16 etiquetas). MCP registrado e autorizado pelo usuário; o quadro **ainda não foi criado** porque as ferramentas só carregam numa sessão nova. O passo a passo da execução está no devtrack `ZZ` (seção "PEDIDO PENDENTE").
+- 2026-10-30: especificação gerada (6 listas, 58 cartões, 16 etiquetas).
+- 2026-10-30: quadro montado pelo MCP a partir do JSON, reaproveitando as listas do modelo do Trello: 6 listas renomeadas, 58 cartões (descrição e vencimento; 19 de Concluído marcados como feitos) e 21 checklists "Tarefas" (itens feitos já marcados nas features 000, 001 e 006).
+- Limites do MCP do Trello, que fazem o quadro divergir do JSON:
+  - Não cria nem renomeia **etiquetas**: as 16 etiquetas não existem. Cada cartão traz a linha "Etiquetas: ..." no início da descrição; as 6 etiquetas coloridas sem nome do modelo continuam sem uso.
+  - O **Planejador** exige plano pago do workspace (`Organization entitlement required`): nenhum evento foi criado. Os vencimentos dos cartões cobrem o cronograma.
+  - Os cartões de exemplo do modelo e a lista "Concluído 🎉" do modelo continuam no quadro (nada foi arquivado).
+- Divergência conhecida: o cartão "Pedir o push para o GitHub" do JSON está desatualizado (o push e o CI já foram feitos); corrigir no `gerar-trello.py` e no cartão.

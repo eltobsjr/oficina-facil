@@ -46,8 +46,8 @@ flowchart LR
   mobile --> lib & test & android & web & assets
   lib --> main.dart & app.dart & core & features
   core --> theme & router
-  features --> home & ordem_servico
-  home --> hp[presentation/pages e widgets]
+  features --> inicio & ordem_servico
+  inicio --> hp[presentation/pages e widgets]
   ordem_servico --> od[domain/entities]
 ```
 

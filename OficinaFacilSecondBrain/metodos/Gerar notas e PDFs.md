@@ -10,7 +10,7 @@ Parte do vault é **gerada por script** a partir de uma única fonte de dados, p
 
 | Saída | Origem |
 |---|---|
-| `features/*.md`, `CHECKLIST.md`, `telas/Mapa de telas.md`, `00 - Índice.md`, `Convenções.md`, `prioridade/atual.md` | dados dentro de `gerar-vault.py` |
+| `features/*.md`, `CHECKLIST.md`, `telas/Mapa de telas.md`, `00 - Índice.md` | dados dentro de `gerar-vault.py` |
 | `api/Endpoints.md`, `requisitos/Rastreabilidade.md` | os mesmos dados |
 | `entregas/*.pdf` | notas do vault, por `gerar-pdf.mjs` |
 

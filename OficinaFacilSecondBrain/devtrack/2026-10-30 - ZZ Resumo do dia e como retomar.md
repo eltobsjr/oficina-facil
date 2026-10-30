@@ -91,7 +91,11 @@ Com o usuário fora até 09/11 e a ordem de seguir o plano, a **S2 foi adiantada
 
 **Trello:** o usuário pediu para ajustar o quadro (https://trello.com/b/6ae4da0b233ab7b22fcc5814) com o que já foi feito e o plano todo. O MCP do Trello **não está configurado nesta sessão**. A especificação do quadro já está pronta em `metodos/trello-quadro.json` (6 listas, 58 cartões, 16 etiquetas) e descrita em [[Quadro do Trello]]. Falta o usuário conectar o MCP (`claude mcp add --transport http trello https://mcp.trello.com/v1`, depois `/mcp` para autorizar) e eu criar o quadro.
 
-## PEDIDO PENDENTE PARA A PRÓXIMA SESSÃO: montar o quadro do Trello (executar sem perguntar)
+## ✅ CONCLUÍDO (2026-10-30, sessão seguinte): montar o quadro do Trello
+
+Atenção: este pedido já foi executado; o resultado e os limites do MCP (etiquetas e Planejador) estão em [[Quadro do Trello]]. O texto abaixo é o registro original do pedido e do passo a passo. O push também já foi feito e o CI passou.
+
+### Pedido original
 
 O usuário pediu, literalmente: usar o MCP do Trello para **ajustar todo o Trello, com as tarefas já feitas e o planejamento todo**, no quadro https://trello.com/b/6ae4da0b233ab7b22fcc5814. Ele registrou o MCP (`claude mcp add --transport http trello https://mcp.trello.com/v1`) e **já autorizou** a conta; as ferramentas só carregam numa sessão nova. **Ele pediu que, ao voltar, eu já execute isto.** Passos:
 
@@ -116,3 +120,11 @@ O usuário deu o `git push` (`4e9de17..9e2ad5f`) e o workflow rodou pela primeir
 
 1. O que depende do usuário (chave de serviço, projeto de teste, pooler, rotação das credenciais), conforme `prioridade/atual.md`.
 2. S3: features 002 e 003 (clientes e veículos), conforme [[Plano de construção]] e [[Roadmap]].
+
+## Fim do dia: Trello montado e auditoria de coerência
+
+- **Trello:** quadro montado pelo MCP a partir de `metodos/trello-quadro.json` (listas renomeadas, 58 cartões com vencimento, 21 checklists, 19 cartões de Concluído marcados). Depois, reorganizado para leitura: coluna "Leia primeiro" com cartão-guia, colunas em ordem de fluxo, cartões de exemplo do modelo arquivados (3 ficaram por bloqueio de permissão: "Backlog", "Elaboração e pesquisa", "Revisão de código"). Limites do MCP (sem criar etiquetas; Planejador exige plano pago) em [[Quadro do Trello]].
+- **Auditoria de coerência (agente somente leitura):** 0 violações das regras invioláveis; backend 79 testes e app 216 passando. Corrigidos: README desatualizado (estado, estrutura, comandos, contagem de decisões), item do push em `prioridade/atual`, CA14 no Roadmap, tabela do gerador, devtrack antigo, comentário 400/422 em `rota.ts`, `home`→`inicio` em Diagramas, `backend/.gitkeep`, teste de status movido para o espelho de `lib/`.
+- **Pendências que dependem do usuário (R3):** `/docs` em produção (esconder ou manter), CA03 da feature 006 (perfil vale na hora ou no próximo login), telas técnicas `/carregando` e `/sem-conexao` no Mapa de telas, `GET /avisos` para o Mecânico, nomes "Anthony" e "Roberto" no vault público.
+- **Depois:** regerar os PDFs de `entregas/` antes da próxima entrega ao professor.
+- **WhatsApp:** o pedido de enviar o resumo e o planejamento ao grupo "trabalho semanal de anthony" não foi executado porque o servidor do WhatsApp não devolveu nenhuma conversa.

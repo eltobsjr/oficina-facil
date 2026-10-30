@@ -13,7 +13,7 @@ Stack: Flutter + backend Node/TypeScript + Supabase ([[Arquitetura]]).
 2. A linha da feature só é marcada quando as tarefas estão marcadas **e** todos os CAs do arquivo da feature estão ✅.
 3. A fase só é marcada quando todas as suas features estão marcadas.
 4. O comportamento esperado vive no arquivo da feature (CAs). O que construir vive aqui. Não duplicar texto entre os dois.
-5. Ao concluir uma feature: atualizar o devtrack, o quadro do GitHub Projects e, se mudou algo, as notas do vault e os PDFs de `entregas/`.
+5. Ao concluir uma feature: atualizar o devtrack, o quadro do Trello e, se mudou algo, as notas do vault e os PDFs de `entregas/`.
 
 ## Entrega 1 (concluída)
 

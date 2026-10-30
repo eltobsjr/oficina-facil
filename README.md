@@ -46,26 +46,30 @@ O que o sistema resolve:
 - **Visão gerencial:** consulta de OS e faturamento por período.
 
 **Em construção:** vai funcionar em **web e Android**, com dados compartilhados entre os aparelhos (o atendente no
-navegador verá o que o mecânico atualizou no celular). Hoje só existe a tela inicial do app.
+navegador verá o que o mecânico atualizou no celular). Hoje já existem a API base, o banco com segurança por linha, o
+login com menu por perfil e a gestão de usuários; os demais casos de uso ainda não foram construídos.
 
 ## 2. Estado atual
 
-A **Entrega 1** está concluída. A análise e o planejamento estão prontos; a implementação dos casos de uso ainda
-não começou.
+A **Entrega 1** está concluída, a análise e o planejamento estão prontos e a construção começou: a fundação técnica
+(F1) está feita no essencial e a F2 (acesso e usuários) está em andamento.
 
 | Área | Situação |
 |---|---|
-| App Flutter (web e Android) com tela inicial, tema e rotas | ✅ |
-| `StatusOrdemServico` no domínio, com testes (5 testes passando, `flutter analyze` limpo) | ✅ |
+| App Flutter (web e Android) com tema, rotas, login, menu por perfil e telas de usuários | ✅ |
+| `StatusOrdemServico` no domínio, com testes | ✅ |
 | Logo, nome e ícones (web e Android) | ✅ |
 | Requisitos, casos de uso, histórias, modelo de dados, arquitetura, decisões | ✅ |
 | Checklist e roadmap de desenvolvimento | ✅ |
-| Backend (Node/TypeScript), projeto Supabase, migrations | ⏳ próxima fase (F1) |
-| Os 19 casos de uso | ⏳ |
+| Backend (Node/TypeScript), projeto Supabase de desenvolvimento, migration inicial com RLS, CI | ✅ |
+| UC01 (autenticar) e UC06 (gerir usuários) | 🔄 código pronto; falta a prova com conta real |
+| Testes de integração, de concorrência e de RLS | ⏳ dependem do projeto Supabase de teste |
+| Os demais casos de uso (UC02 a UC05, UC07 a UC19) | ⏳ |
 | Teste em dispositivo Android | ⏳ |
 
-Das 12 decisões, 4 estão aceitas (stack, autenticação, backend, estrutura), 4 propostas (regras de desconto,
-estoque, pagamento e avisos) e 4 abertas, que dependem do enunciado oficial do professor. UC18 e UC19 foram deduzidos (o resumo oficial descreve 17 casos de uso).
+Das 12 decisões, 5 estão aceitas (persistência, autenticação, conferência com o enunciado, backend e estrutura do
+repositório), 4 propostas (regras de desconto, estoque, pagamento e avisos) e 3 abertas (ajuste do orçamento, recorte
+de entrega e UML formal). UC18 e UC19 foram deduzidos (o resumo oficial descreve 17 casos de uso).
 
 ## 3. Perfis de usuário
 
@@ -178,12 +182,14 @@ oficina_facil/
 │   │   ├── main.dart · app.dart
 │   │   ├── core/                 tema e roteamento
 │   │   └── features/
-│   │       ├── home/presentation/        tela inicial
+│   │       ├── autenticacao/             login e sessão
+│   │       ├── inicio/                   tela inicial e menu por perfil
+│   │       ├── usuarios/                 gestão de usuários
 │   │       └── ordem_servico/domain/     StatusOrdemServico
-│   ├── test/                     testes de domínio e de widget
+│   ├── test/                     testes de domínio, de dados e de widget
 │   ├── android/ · web/ · assets/
 │   └── pubspec.yaml
-├── backend/                      API Node/TypeScript (a criar na F1)
+├── backend/                      API Node/TypeScript (src/modules, prisma, test, Dockerfile)
 ├── CLAUDE.md                     regras do projeto
 ├── README.md
 └── OficinaFacilSecondBrain/      documentação (vault), versionado junto com o código
@@ -211,7 +217,7 @@ flutter pub get
 | APK de depuração | `flutter build apk --debug` |
 | Dispositivos | `flutter devices` |
 
-O backend entra na fase F1; os comandos serão `npm run dev` (API na porta 3000, Swagger em `/docs`) e
+Backend (dentro de `backend/`): `npm install`, `npm run dev` (API na porta 3000, Swagger em `/docs`) e
 `bash scripts/smoke.sh`. Segredos ficam em `backend/.env` e `mobile/env.json`, ambos ignorados pelo git.
 
 ## 11. Qualidade e testes
@@ -223,15 +229,15 @@ Antes de qualquer commit, na parte alterada:
 | App (`mobile/`) | `dart format --output=none --set-exit-if-changed lib test`, `flutter analyze`, `flutter test`, `flutter build web`, `flutter build apk --debug` |
 | Backend (`backend/`) | `npm run lint && npm run format:check && npm run typecheck && npm test` e `bash scripts/smoke.sh` |
 
-Hoje: 6 testes (5 de domínio sobre `StatusOrdemServico`, incluindo a tabela completa de transições, e 1 de widget da tela inicial).
+Hoje: 216 testes no app e 79 no backend passando (26 de integração do backend ficam ignorados até existir o projeto Supabase de teste).
 
 ## 12. Roadmap
 
 | Fase | Entrega | Casos de uso |
 |---|---|---|
 | F0 | Entrega 1 e base de documentação | ✅ concluída |
-| F1 | Fundação: Supabase, backend base, banco com RLS, app ligado ao backend, CI | — |
-| F2 | Acesso e usuários | UC01, UC06 |
+| F1 | Fundação: Supabase, backend base, banco com RLS, app ligado ao backend, CI | ✅ no essencial |
+| F2 | Acesso e usuários | UC01, UC06 (🔄 em andamento) |
 | F3 | Clientes e veículos | UC02, UC03 |
 | F4 | Catálogos e estoque | UC05, UC04, UC18 |
 | F5 | Abrir, diagnosticar e orçar | UC07 a UC10 |
@@ -243,7 +249,7 @@ Hoje: 6 testes (5 de domínio sobre `StatusOrdemServico`, incluindo a tabela com
 Marcos: **M1** login com 4 perfis (F2) · **M2** cadastros e estoque (F4) · **M3** OS orçada (F5) ·
 **M4** ciclo completo até a entrega (F7) · **M5** sistema completo em web e Android (F9).
 Cada feature segue as mesmas 9 tarefas (modelo, API, testes da API, contrato, app em dois blocos, testes do app,
-verificação, documentação). Há um quadro no GitHub Projects, ainda com o plano anterior; a lista mestra atual é o CHECKLIST do vault.
+verificação, documentação). O acompanhamento é feito num quadro do Trello, que é uma vista do vault; a lista mestra é o CHECKLIST.
 
 ## 13. Identidade visual
 
@@ -270,7 +276,7 @@ nota `00 - Índice`. Principais notas:
 | Endpoints | Contrato da API por caso de uso |
 | Roadmap | Fases, dependências, marcos e riscos |
 | CHECKLIST | Lista mestra marcável do que construir |
-| `decisions/` | 12 decisões, uma por arquivo (4 aceitas, 4 propostas, 4 abertas) |
+| `decisions/` | 12 decisões, uma por arquivo (5 aceitas, 4 propostas, 3 abertas) |
 | `features/` | Uma especificação por feature, com critérios de aceitação |
 
 Os PDFs para entrega ao professor são gerados em `OficinaFacilSecondBrain/entregas/`.
@@ -287,6 +293,7 @@ Os PDFs para entrega ao professor são gerados em `OficinaFacilSecondBrain/entre
 
 Projeto da disciplina **Análise e Projeto de Sistemas**. O professor (Anthony) pede uma entrega por semana, cada uma
 com diagrama UML e código correspondente. Os atores, a OS de 8 estados e os casos de uso UC01 a UC17 vêm do enunciado;
-UC18, UC19 e as histórias de usuário foram deduzidos e aguardam conferência.
+UC18, UC19 e as histórias de usuário foram deduzidos; o professor não entregou documento oficial, e a decisão 004
+registra que a conferência fica pendente até ele pedir.
 
-Repositório: `github.com/eltobsjr/oficina-facil` · Quadro: `github.com/users/eltobsjr/projects/4`
+Repositório: `github.com/eltobsjr/oficina-facil`
