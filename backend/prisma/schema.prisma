@@ -1,0 +1,432 @@
+// Schema do OficinaFácil (vault: arquitetura/Modelo de dados).
+// Dinheiro sempre em centavos inteiros. Nada é apagado: cadastros usam `ativo`; movimentação de
+// estoque, histórico de transições e pagamentos são só de inserção (gatilho na migration).
+// RLS, gatilhos, CHECKs, índice parcial e a FK para auth.users vão dentro da migration (R19).
+//
+// Módulos donos das tabelas:
+//   usuarios  → perfis, avisos
+//   clientes  → clientes
+//   veiculos  → veiculos
+//   servicos  → servicos
+//   pecas     → pecas, movimentacoes_estoque
+//   ordens    → ordens_servico, diagnosticos, orcamentos, itens_orcamento, autorizacoes_desconto,
+//               aprovacoes, observacoes, pecas_usadas, pagamentos, historico_transicoes
+
+generator client {
+  provider               = "prisma-client"
+  output                 = "../src/generated/prisma"
+  runtime                = "nodejs"
+  moduleFormat           = "esm"
+  generatedFileExtension = "ts"
+  importFileExtension    = "js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ---------------------------------------------------------------- enums
+
+enum Papel {
+  ATENDENTE
+  MECANICO
+  ALMOXARIFE
+  GERENTE
+
+  @@map("perfil_enum")
+}
+
+enum StatusOs {
+  ABERTA
+  DIAGNOSTICADA
+  AGUARDANDO_APROVACAO
+  APROVADA
+  EM_EXECUCAO
+  CONCLUIDA
+  ENTREGUE
+  CANCELADA
+
+  @@map("status_enum")
+}
+
+enum TipoMovimentacao {
+  ENTRADA
+  BAIXA
+  ESTORNO
+
+  @@map("tipo_mov_enum")
+}
+
+enum TipoItem {
+  SERVICO
+  PECA
+
+  @@map("tipo_item_enum")
+}
+
+enum ResultadoAprovacao {
+  APROVADA
+  RECUSADA
+
+  @@map("resultado_enum")
+}
+
+enum StatusDesconto {
+  PENDENTE
+  APROVADA
+  RECUSADA
+
+  @@map("status_desconto_enum")
+}
+
+enum CanalAprovacao {
+  BALCAO
+  TELEFONE
+
+  @@map("canal_enum")
+}
+
+enum FormaPagamento {
+  DINHEIRO
+  CARTAO
+  PIX
+
+  @@map("forma_enum")
+}
+
+enum TipoAviso {
+  OS_CONCLUIDA
+  SALDO_INSUFICIENTE
+  DESCONTO_PENDENTE
+
+  @@map("aviso_enum")
+}
+
+// ---------------------------------------------------------------- usuarios
+
+/// Perfil e situação de cada usuário. `usuarioId` é o id do usuário no Supabase Auth (FK na migration).
+model PerfilUsuario {
+  usuarioId String   @id @map("usuario_id") @db.Uuid
+  nome      String
+  email     String   @unique
+  perfil    Papel
+  ativo     Boolean  @default(true)
+  criadoEm  DateTime @default(now()) @map("criado_em") @db.Timestamptz()
+
+  ordensAbertas           OrdemServico[]        @relation("OsAbertaPor")
+  ordensComoMecanico      OrdemServico[]        @relation("OsMecanico")
+  ordensEntregues         OrdemServico[]        @relation("OsEntreguePor")
+  diagnosticos            Diagnostico[]
+  movimentacoes           MovimentacaoEstoque[]
+  autorizacoesSolicitadas AutorizacaoDesconto[] @relation("DescontoAtendente")
+  autorizacoesDecididas   AutorizacaoDesconto[] @relation("DescontoGerente")
+  aprovacoes              Aprovacao[]
+  observacoes             Observacao[]
+  pecasUsadas             PecaUsada[]
+  pagamentos              Pagamento[]
+  transicoes              HistoricoTransicao[]
+  avisos                  Aviso[]
+
+  @@map("perfis")
+}
+
+/// Aviso entre perfis. É a única tabela que o app lê direto (RLS por destinatário).
+model Aviso {
+  id             String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  destinatarioId String    @map("destinatario_id") @db.Uuid
+  tipo           TipoAviso
+  osId           String?   @map("os_id") @db.Uuid
+  pecaId         String?   @map("peca_id") @db.Uuid
+  lidoEm         DateTime? @map("lido_em") @db.Timestamptz()
+  criadoEm       DateTime  @default(now()) @map("criado_em") @db.Timestamptz()
+
+  destinatario PerfilUsuario @relation(fields: [destinatarioId], references: [usuarioId])
+
+  @@index([destinatarioId, criadoEm])
+  @@map("avisos")
+}
+
+// ---------------------------------------------------------------- cadastros
+
+model Cliente {
+  id        String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  nome      String
+  /// CPF ou CNPJ, só dígitos, com dígito verificador (validado no serviço).
+  documento String  @unique
+  telefone  String
+  email     String?
+  endereco  String?
+  ativo     Boolean @default(true)
+
+  veiculos Veiculo[]
+  ordens   OrdemServico[]
+
+  @@map("clientes")
+}
+
+model Veiculo {
+  id            String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  clienteId     String  @map("cliente_id") @db.Uuid
+  /// Normalizada (maiúscula, sem hífen), padrão antigo ou Mercosul.
+  placa         String  @unique
+  marca         String
+  modelo        String
+  ano           Int
+  cor           String?
+  quilometragem Int
+  ativo         Boolean @default(true)
+
+  cliente Cliente        @relation(fields: [clienteId], references: [id])
+  ordens  OrdemServico[]
+
+  @@index([clienteId])
+  @@map("veiculos")
+}
+
+model Servico {
+  id               String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  codigo           String  @unique
+  descricao        String
+  valorCentavos    Int     @map("valor_centavos")
+  tempoEstimadoMin Int     @map("tempo_estimado_min")
+  ativo            Boolean @default(true)
+
+  itens ItemOrcamento[]
+
+  @@map("servicos")
+}
+
+model Peca {
+  id            String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  codigo        String  @unique
+  descricao     String
+  precoCentavos Int     @map("preco_centavos")
+  /// Consequência do razão de movimentações; só muda por entrada, baixa ou estorno.
+  saldo         Int     @default(0)
+  estoqueMinimo Int     @default(0) @map("estoque_minimo")
+  ativo         Boolean @default(true)
+
+  movimentacoes MovimentacaoEstoque[]
+  itens         ItemOrcamento[]
+  usadas        PecaUsada[]
+
+  @@map("pecas")
+}
+
+/// Razão do estoque. Só de inserção (gatilho).
+model MovimentacaoEstoque {
+  id                    String           @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  pecaId                String           @map("peca_id") @db.Uuid
+  tipo                  TipoMovimentacao
+  quantidade            Int
+  custoUnitarioCentavos Int?             @map("custo_unitario_centavos")
+  documentoOrigem       String?          @map("documento_origem")
+  osId                  String?          @map("os_id") @db.Uuid
+  usuarioId             String           @map("usuario_id") @db.Uuid
+  criadoEm              DateTime         @default(now()) @map("criado_em") @db.Timestamptz()
+
+  peca    Peca          @relation(fields: [pecaId], references: [id])
+  os      OrdemServico? @relation(fields: [osId], references: [id])
+  usuario PerfilUsuario @relation(fields: [usuarioId], references: [usuarioId])
+
+  @@index([pecaId, criadoEm])
+  @@map("movimentacoes_estoque")
+}
+
+// ---------------------------------------------------------------- ordem de serviço
+
+model OrdemServico {
+  id                   String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  /// Sequence do Postgres; lacunas na numeração são aceitas (rollback consome número).
+  numero               Int       @unique @default(autoincrement())
+  clienteId            String    @map("cliente_id") @db.Uuid
+  veiculoId            String    @map("veiculo_id") @db.Uuid
+  queixa               String
+  quilometragemEntrada Int       @map("quilometragem_entrada")
+  status               StatusOs  @default(ABERTA)
+  abertaPorId          String    @map("aberta_por") @db.Uuid
+  mecanicoId           String?   @map("mecanico_id") @db.Uuid
+  abertaEm             DateTime  @default(now()) @map("aberta_em") @db.Timestamptz()
+  iniciadaEm           DateTime? @map("iniciada_em") @db.Timestamptz()
+  concluidaEm          DateTime? @map("concluida_em") @db.Timestamptz()
+  entregueEm           DateTime? @map("entregue_em") @db.Timestamptz()
+  entreguePorId        String?   @map("entregue_por") @db.Uuid
+  motivoCancelamento   String?   @map("motivo_cancelamento")
+
+  cliente     Cliente        @relation(fields: [clienteId], references: [id])
+  veiculo     Veiculo        @relation(fields: [veiculoId], references: [id])
+  abertaPor   PerfilUsuario  @relation("OsAbertaPor", fields: [abertaPorId], references: [usuarioId])
+  mecanico    PerfilUsuario? @relation("OsMecanico", fields: [mecanicoId], references: [usuarioId])
+  entreguePor PerfilUsuario? @relation("OsEntreguePor", fields: [entreguePorId], references: [usuarioId])
+
+  diagnostico   Diagnostico?
+  orcamento     Orcamento?
+  aprovacoes    Aprovacao[]
+  observacoes   Observacao[]
+  pecasUsadas   PecaUsada[]
+  pagamentos    Pagamento[]
+  transicoes    HistoricoTransicao[]
+  movimentacoes MovimentacaoEstoque[]
+
+  @@index([status])
+  @@index([veiculoId])
+  @@index([clienteId])
+  @@index([abertaEm])
+  @@index([entregueEm])
+  @@map("ordens_servico")
+}
+
+model Diagnostico {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId         String   @unique @map("os_id") @db.Uuid
+  texto        String
+  /// false = rascunho; a OS continua ABERTA até finalizar.
+  finalizado   Boolean  @default(false)
+  mecanicoId   String   @map("mecanico_id") @db.Uuid
+  atualizadoEm DateTime @default(now()) @updatedAt @map("atualizado_em") @db.Timestamptz()
+
+  os       OrdemServico  @relation(fields: [osId], references: [id])
+  mecanico PerfilUsuario @relation(fields: [mecanicoId], references: [usuarioId])
+
+  @@map("diagnosticos")
+}
+
+model Orcamento {
+  id               String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId             String    @unique @map("os_id") @db.Uuid
+  subtotalCentavos Int       @map("subtotal_centavos")
+  descontoCentavos Int       @default(0) @map("desconto_centavos")
+  totalCentavos    Int       @map("total_centavos")
+  confirmadoEm     DateTime? @map("confirmado_em") @db.Timestamptz()
+
+  os           OrdemServico          @relation(fields: [osId], references: [id])
+  itens        ItemOrcamento[]
+  autorizacoes AutorizacaoDesconto[]
+
+  @@map("orcamentos")
+}
+
+model ItemOrcamento {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  orcamentoId           String   @map("orcamento_id") @db.Uuid
+  tipo                  TipoItem
+  servicoId             String?  @map("servico_id") @db.Uuid
+  pecaId                String?  @map("peca_id") @db.Uuid
+  descricao             String
+  quantidade            Int
+  valorUnitarioCentavos Int      @map("valor_unitario_centavos")
+
+  orcamento Orcamento @relation(fields: [orcamentoId], references: [id])
+  servico   Servico?  @relation(fields: [servicoId], references: [id])
+  peca      Peca?     @relation(fields: [pecaId], references: [id])
+
+  @@index([orcamentoId])
+  @@map("itens_orcamento")
+}
+
+/// Pedido do atendente e decisão do gerente para desconto acima de 10% (decisão 007).
+model AutorizacaoDesconto {
+  id                         String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  orcamentoId                String         @map("orcamento_id") @db.Uuid
+  atendenteId                String         @map("atendente_id") @db.Uuid
+  gerenteId                  String?        @map("gerente_id") @db.Uuid
+  status                     StatusDesconto @default(PENDENTE)
+  /// Subtotal no momento do pedido; a autorização perde a validade se o orçamento mudar.
+  subtotalCentavosRef        Int            @map("subtotal_centavos_ref")
+  descontoSolicitadoCentavos Int            @map("desconto_solicitado_centavos")
+  descontoAutorizadoCentavos Int?           @map("desconto_autorizado_centavos")
+  criadoEm                   DateTime       @default(now()) @map("criado_em") @db.Timestamptz()
+  decididoEm                 DateTime?      @map("decidido_em") @db.Timestamptz()
+
+  orcamento Orcamento      @relation(fields: [orcamentoId], references: [id])
+  atendente PerfilUsuario  @relation("DescontoAtendente", fields: [atendenteId], references: [usuarioId])
+  gerente   PerfilUsuario? @relation("DescontoGerente", fields: [gerenteId], references: [usuarioId])
+
+  @@index([orcamentoId])
+  @@index([status])
+  @@map("autorizacoes_desconto")
+}
+
+model Aprovacao {
+  id        String             @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId      String             @map("os_id") @db.Uuid
+  resultado ResultadoAprovacao
+  canal     CanalAprovacao
+  motivo    String?
+  usuarioId String             @map("usuario_id") @db.Uuid
+  criadoEm  DateTime           @default(now()) @map("criado_em") @db.Timestamptz()
+
+  os      OrdemServico  @relation(fields: [osId], references: [id])
+  usuario PerfilUsuario @relation(fields: [usuarioId], references: [usuarioId])
+
+  @@index([osId])
+  @@map("aprovacoes")
+}
+
+model Observacao {
+  id        String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId      String   @map("os_id") @db.Uuid
+  texto     String
+  usuarioId String   @map("usuario_id") @db.Uuid
+  criadoEm  DateTime @default(now()) @map("criado_em") @db.Timestamptz()
+
+  os      OrdemServico  @relation(fields: [osId], references: [id])
+  usuario PerfilUsuario @relation(fields: [usuarioId], references: [usuarioId])
+
+  @@index([osId])
+  @@map("observacoes")
+}
+
+model PecaUsada {
+  id                    String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId                  String   @map("os_id") @db.Uuid
+  pecaId                String   @map("peca_id") @db.Uuid
+  quantidade            Int
+  valorUnitarioCentavos Int      @map("valor_unitario_centavos")
+  mecanicoId            String   @map("mecanico_id") @db.Uuid
+  estornada             Boolean  @default(false)
+  /// Nulo se não estornada; false = "não devolver" (peça já aplicada no veículo).
+  devolvida             Boolean?
+  motivoNaoDevolucao    String?  @map("motivo_nao_devolucao")
+  criadoEm              DateTime @default(now()) @map("criado_em") @db.Timestamptz()
+
+  os       OrdemServico  @relation(fields: [osId], references: [id])
+  peca     Peca          @relation(fields: [pecaId], references: [id])
+  mecanico PerfilUsuario @relation(fields: [mecanicoId], references: [usuarioId])
+
+  @@index([osId])
+  @@map("pecas_usadas")
+}
+
+/// Pagamentos só existem a partir da entrega (decisão 009). Só de inserção (gatilho).
+model Pagamento {
+  id            String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId          String         @map("os_id") @db.Uuid
+  forma         FormaPagamento
+  valorCentavos Int            @map("valor_centavos")
+  usuarioId     String         @map("usuario_id") @db.Uuid
+  criadoEm      DateTime       @default(now()) @map("criado_em") @db.Timestamptz()
+
+  os      OrdemServico  @relation(fields: [osId], references: [id])
+  usuario PerfilUsuario @relation(fields: [usuarioId], references: [usuarioId])
+
+  @@index([osId])
+  @@map("pagamentos")
+}
+
+/// Toda mudança de estado da OS. Só de inserção (gatilho).
+model HistoricoTransicao {
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  osId      String    @map("os_id") @db.Uuid
+  de        StatusOs?
+  para      StatusOs
+  usuarioId String    @map("usuario_id") @db.Uuid
+  motivo    String?
+  criadoEm  DateTime  @default(now()) @map("criado_em") @db.Timestamptz()
+
+  os      OrdemServico  @relation(fields: [osId], references: [id])
+  usuario PerfilUsuario @relation(fields: [usuarioId], references: [usuarioId])
+
+  @@index([osId])
+  @@map("historico_transicoes")
+}

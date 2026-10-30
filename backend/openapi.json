@@ -1,0 +1,162 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "OficinaFácil API",
+    "version": "0.1.0",
+    "description": "API do OficinaFácil. Toda regra de negócio vive aqui; o app só exibe. Valores sempre em centavos inteiros."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    }
+  ],
+  "tags": [
+    {
+      "name": "usuarios"
+    },
+    {
+      "name": "clientes"
+    },
+    {
+      "name": "veiculos"
+    },
+    {
+      "name": "servicos"
+    },
+    {
+      "name": "pecas"
+    },
+    {
+      "name": "ordens"
+    },
+    {
+      "name": "faturamento"
+    },
+    {
+      "name": "avisos"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "access_token emitido pelo Supabase Auth"
+      }
+    },
+    "schemas": {
+      "UsuarioAtual": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "perfil": {
+            "$ref": "#/components/schemas/Perfil"
+          }
+        },
+        "required": [
+          "id",
+          "nome",
+          "email",
+          "perfil"
+        ]
+      },
+      "Perfil": {
+        "type": "string",
+        "enum": [
+          "ATENDENTE",
+          "MECANICO",
+          "ALMOXARIFE",
+          "GERENTE"
+        ]
+      },
+      "Erro": {
+        "type": "object",
+        "properties": {
+          "erro": {
+            "type": "object",
+            "properties": {
+              "codigo": {
+                "type": "string"
+              },
+              "mensagem": {
+                "type": "string"
+              },
+              "detalhes": {}
+            },
+            "required": [
+              "codigo",
+              "mensagem"
+            ]
+          }
+        },
+        "required": [
+          "erro"
+        ]
+      }
+    },
+    "parameters": {}
+  },
+  "paths": {
+    "/me": {
+      "get": {
+        "summary": "Usuário autenticado",
+        "description": "Nome, e-mail e perfil do usuário dono do token. O app usa para montar o menu do perfil.",
+        "tags": [
+          "usuarios"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Usuário autenticado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioAtual"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Usuário sem perfil ou inativo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    }
+  },
+  "webhooks": {}
+}
