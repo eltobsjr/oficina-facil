@@ -229,7 +229,7 @@
       "cartoes": [
         {
           "titulo": "S1 · 000 Fundação técnica",
-          "descricao": "**Fundação**\n\nSemana 1 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/000 - Fundação técnica.md`.\n\n**Critérios de aceitação**\n- 🔄 Projetos Supabase de desenvolvimento e de teste criados; chaves e segredos fora do git (`backend/.env`, `mobile/env.json`); `.env.example` e `mobile/env.example.json` sem valores reais\n- ✅ Backend sobe com `npm run dev`; `GET /health` responde 200 e `/docs` mostra o Swagger\n- ✅ Variáveis de ambiente validadas com Zod: o backend recusa subir com configuração incompleta\n- ✅ Migration inicial aplicada (modelo em [[Modelo de dados]]) com RLS, gatilhos de só-inserção, índice único parcial de OS ativa e FK para `auth.users` dentro das migrations do Prisma (geradas por `prisma migrate diff` e aplicadas por `migrate deploy`, sem precisar de banco-sombra)\n- 🔄 Teste com a chave publicável comprova que o app não lê nem escreve em nenhuma tabela, exceto as próprias linhas de `avisos`\n- ✅ JWT validado por JWKS (só os algoritmos do projeto; confere `iss`, `aud` e `exp`); rota sem token recebe 401 e perfil sem permissão recebe 403\n- ✅ Erros da API padronizados num único formato JSON, sem vazar detalhe interno; logs Pino com redação de `authorization`, `senha` e `password`\n- ✅ CORS aceita só as origens do web do projeto; `helmet` e rate limit ativos\n- ✅ Teste de arquitetura impede um módulo de importar o interior de outro\n- 🔄 Seed cria o gerente inicial com e-mail e senha vindos de variável de ambiente e só dados fictícios no catálogo de dev\n- ✅ App lê a configuração por `--dart-define`, chama `GET /health` com `dio` e abre em pt-BR (`flutter_localizations`); manifesto Android principal com permissão INTERNET\n- ✅ Conversão do estado da OS entre API (`UPPER_SNAKE`) e Dart (`camelCase`) num único lugar, com teste; relógio injetável nos dois lados\n- ✅ Dockerfile do backend gera imagem que sobe e responde em `/health`\n- ✅ Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build)",
+          "descricao": "**Fundação**\n\nSemana 1 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/000 - Fundação técnica.md`.\n\n**Critérios de aceitação**\n- ✅ Projeto Supabase de desenvolvimento criado (sem projeto de teste separado, por decisão do usuário); chaves e segredos fora do git (`backend/.env`, `mobile/env.json`); `.env.example` e `mobile/env.example.json` sem valores reais\n- ✅ Backend sobe com `npm run dev`; `GET /health` responde 200 e `/docs` mostra o Swagger\n- ✅ Variáveis de ambiente validadas com Zod: o backend recusa subir com configuração incompleta\n- ✅ Migration inicial aplicada (modelo em [[Modelo de dados]]) com RLS, gatilhos de só-inserção, índice único parcial de OS ativa e FK para `auth.users` dentro das migrations do Prisma (geradas por `prisma migrate diff` e aplicadas por `migrate deploy`, sem precisar de banco-sombra)\n- ✅ Teste com a chave publicável comprova que o app não lê nem escreve em nenhuma tabela, exceto as próprias linhas de `avisos`\n- ✅ JWT validado por JWKS (só os algoritmos do projeto; confere `iss`, `aud` e `exp`); rota sem token recebe 401 e perfil sem permissão recebe 403\n- ✅ Erros da API padronizados num único formato JSON, sem vazar detalhe interno; logs Pino com redação de `authorization`, `senha` e `password`\n- ✅ CORS aceita só as origens do web do projeto; `helmet` e rate limit ativos\n- ✅ Teste de arquitetura impede um módulo de importar o interior de outro\n- 🔄 Seed cria o gerente inicial com e-mail e senha vindos de variável de ambiente e só dados fictícios no catálogo de dev\n- ✅ App lê a configuração por `--dart-define`, chama `GET /health` com `dio` e abre em pt-BR (`flutter_localizations`); manifesto Android principal com permissão INTERNET\n- ✅ Conversão do estado da OS entre API (`UPPER_SNAKE`) e Dart (`camelCase`) num único lugar, com teste; relógio injetável nos dois lados\n- ✅ Dockerfile do backend gera imagem que sobe e responde em `/health`\n- ✅ Verificações verdes no backend e no app, e CI rodando (analyze, test, lint, typecheck, build)",
           "etiquetas": [
             "F1 Fundação"
           ],
@@ -238,8 +238,8 @@
             "nome": "Tarefas",
             "itens": [
               {
-                "texto": "Projetos Supabase de desenvolvimento e de teste criados; chaves guardadas fora do git; `.env.example` e `mobile/env.example.json` sem valores (desenvolvimento feito; falta o de teste)",
-                "feito": false
+                "texto": "Projeto Supabase de desenvolvimento criado (sem projeto de teste separado, por decisão do usuário); chaves guardadas fora do git; `.env.example` e `mobile/env.example.json` sem valores",
+                "feito": true
               },
               {
                 "texto": "Backend base: Express 5, TypeScript, env com Zod, Pino com redação, Helmet, rate limit, CORS, erros padronizados, `/health`",
@@ -254,8 +254,8 @@
                 "feito": true
               },
               {
-                "texto": "Teste com a chave publicável: o app não lê nem escreve nas tabelas, exceto `avisos` do próprio usuário (escrito; falta rodar no projeto de teste)",
-                "feito": false
+                "texto": "Teste com a chave publicável: o app não lê nem escreve nas tabelas, exceto `avisos` do próprio usuário (26 testes de integração passaram em 2026-10-30)",
+                "feito": true
               },
               {
                 "texto": "OpenAPI + Swagger e script `openapi:gerar`",
@@ -266,7 +266,7 @@
                 "feito": true
               },
               {
-                "texto": "Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo (catálogo e smoke feitos; falta o gerente: precisa da `SUPABASE_SERVICE_ROLE_KEY`)",
+                "texto": "Seed do gerente inicial e do catálogo fictício de dev; `scripts/smoke.sh` com o primeiro fluxo (catálogo e smoke feitos; falta o gerente: precisa de `SEED_GERENTE_EMAIL` e `SEED_GERENTE_SENHA` no `.env`)",
                 "feito": false
               },
               {
@@ -339,7 +339,7 @@
         },
         {
           "titulo": "S2 · 006 Gerir usuários",
-          "descricao": "**UC06**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/006 - Gerir usuários.md`.\n\n**Critérios de aceitação**\n- 🔄 Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço\n- 🔄 E-mail (login) duplicado é recusado\n- 🔄 Trocar o perfil vale na hora (o perfil é lido de `perfis` a cada requisição)\n- 🔄 Redefinir senha\n- 🔄 Inativar usuário impede a autenticação e mantém o histórico de ações\n- 🔄 O sistema impede inativar o último gerente ativo ⚠️",
+          "descricao": "**UC06**\n\nSemana 2 do Roadmap. Especificação: `OficinaFacilSecondBrain/features/006 - Gerir usuários.md`.\n\n**Critérios de aceitação**\n- 🔄 Criar usuário com nome, e-mail, perfil (Atendente, Mecânico, Almoxarife ou Gerente) e senha inicial; o backend cria a conta no Supabase Auth com a chave de serviço\n- 🔄 E-mail (login) duplicado é recusado\n- 🔄 Trocar o perfil vale na hora (o perfil é lido de `perfis` a cada requisição)\n- 🔄 Redefinir senha\n- 🔄 Inativar usuário impede a autenticação e mantém o histórico de ações\n- ✅ O sistema impede inativar o último gerente ativo ⚠️",
           "etiquetas": [
             "F2 Acesso"
           ],
@@ -391,33 +391,6 @@
     {
       "nome": "⛔ Bloqueado (depende do usuário)",
       "cartoes": [
-        {
-          "titulo": "Criar o projeto Supabase de teste",
-          "descricao": "Preencher `TEST_*` no `backend/.env`. Destrava os testes de integração, de concorrência e de RLS nas condições da regra R19.",
-          "etiquetas": [
-            "Bloqueado pelo usuário",
-            "F1 Fundação"
-          ],
-          "vencimento": "2026-11-08"
-        },
-        {
-          "titulo": "Colocar a SUPABASE_SERVICE_ROLE_KEY no backend/.env",
-          "descricao": "Necessária para o gerente inicial (seed) e para criar usuários de verdade (UC06). Nunca colar no chat.",
-          "etiquetas": [
-            "Bloqueado pelo usuário",
-            "F1 Fundação"
-          ],
-          "vencimento": "2026-11-08"
-        },
-        {
-          "titulo": "Obter a string do pooler do Supabase",
-          "descricao": "A conexão direta é só IPv6 e não funciona no Docker padrão nem em vários provedores. Usar a do pooler em `DATABASE_URL` em produção e no CI.",
-          "etiquetas": [
-            "Bloqueado pelo usuário",
-            "F1 Fundação"
-          ],
-          "vencimento": "2026-11-08"
-        },
         {
           "titulo": "Rotacionar a senha do banco e a chave anon",
           "descricao": "Foram coladas no chat.",

@@ -15,14 +15,15 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 ## Semana atual: S1 (02/11 a 08/11), ver [[Roadmap]]
 
 ### Depende do usuário (bloqueia o fechamento da F1)
-1. Criar o projeto Supabase de **teste** e preencher `TEST_*` no `backend/.env`.
-2. Colocar a `SUPABASE_SERVICE_ROLE_KEY` no `backend/.env`.
-3. String do **pooler** para `DATABASE_URL` (produção e CI).
-4. Rotacionar a senha do banco e a chave anon coladas no chat.
+1. Rotacionar a senha do banco e a chave anon coladas no chat.
+2. Para o CI e a produção: conferir se a `DATABASE_URL` é a string do pooler (a conexão direta é só IPv6).
+
+Resolvido em 2026-10-30: a chave de serviço e as strings de conexão já estão no `.env`. **Não haverá projeto de teste** (a branch do Supabase é recurso pago): por decisão do usuário, os testes de integração rodam no projeto único enquanto ele não tiver dados reais; exceção à R19 autorizada no chat, e a regra pode precisar ser reescrita antes de haver dados reais.
 
 ### Meu trabalho, na ordem
 1. ✅ Backend da feature [[006 - Gerir usuários]] (commit `ac54610`).
-2. ⏳ Fechar a [[000 - Fundação técnica]]: rodar os testes de integração e o do último gerente no projeto de teste; seed do gerente; marcar os CAs 01, 05, 10 e 14. **Bloqueado pelo usuário.**
+2. ✅ [[000 - Fundação técnica]] fechada em 2026-10-30: 26 testes de integração e o seed do gerente (criado pelo próprio Claude, com e-mail fictício e senha aleatória só no `backend/.env`). Os 14 CAs e as 12 tarefas estão ✅; a F1 está marcada no CHECKLIST.
+2b. ✅ [[006 - Gerir usuários]] com os 6 CAs provados com conta real (22 verificações ponta a ponta). Falta só rodar o **app** com essa conta, que fecha também a [[001 - Autenticar]].
 3. ✅ App da F2 feito (login, sessão, menu, T03 e T04), 216 testes. Falta só a prova com conta real.
 4. ✅ **Trello:** quadro montado pelo MCP (ver [[Quadro do Trello]]).
 

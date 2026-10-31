@@ -134,3 +134,19 @@ O usuário deu o `git push` (`4e9de17..9e2ad5f`) e o workflow rodou pela primeir
 - **Trello:** cartão "Pedir o push" removido do `gerar-trello.py` (JSON agora com 57 cartões); cartão da feature 006 atualizado com o novo texto do CA03.
 - **Depois:** regerar os PDFs de `entregas/` antes da próxima entrega ao professor.
 - **WhatsApp:** o pedido de enviar o resumo e o planejamento ao grupo "trabalho semanal de anthony" não foi executado porque o servidor do WhatsApp não devolveu nenhuma conversa.
+
+## Banco único e testes de integração (decisão do usuário)
+
+- **Decisão:** não haverá projeto Supabase de teste nem branch (branch do Supabase é recurso pago). O usuário autorizou, no chat, rodar os testes de integração no projeto único. É uma **exceção à R19**, valendo enquanto o banco não tiver dados reais; antes de haver dados reais, a R19 precisa ser reescrita (o `CLAUDE.md` não foi alterado, porque só o usuário pede isso).
+- **Antes de rodar:** o banco tinha 0 usuários, 0 perfis, 0 gerentes, 17 tabelas e a migration inicial aplicada; só o catálogo fictício do seed (4 peças e 4 serviços). O teste do "último gerente" desativa temporariamente todos os gerentes ativos no `beforeAll`: com um gerente real isso o bloquearia durante o teste, por isso a contagem foi conferida antes.
+- **Resultado:** 26 testes de integração passaram, 0 ignorados (`banco.test.ts` em transação com ROLLBACK, `usuarios.test.ts` com concorrência do último gerente). Depois: 0 usuários, 0 perfis, nenhum resíduo. As credenciais foram passadas só como variáveis do comando, sem gravar em arquivo nem exibir.
+- **CAs:** 000 CA01 e CA05 ✅ (o CA14 já estava); 006 CA06 ✅. O CA10 da 000 depende de `SEED_GERENTE_EMAIL` e `SEED_GERENTE_SENHA` (vazias no `.env`).
+- **Ainda dizem "projeto de teste"** (a atualizar quando o usuário pedir): `CLAUDE.md` (R19), `Arquitetura`, comentários de `backend/test/integracao/*.ts` e `backend/.env.example`.
+
+## Seed do gerente e prova com conta real (feito pelo Claude, a pedido do usuário)
+
+- **Seed:** o usuário pediu para o Claude criar os dados de seed por conta própria. Foram gerados um e-mail fictício (`gerente.seed@example.com`, R28) e uma senha aleatória, gravados só em `backend/.env` (ignorado pelo git; a senha não foi exibida nem registrada em lugar nenhum). `npm run db:seed` criou o catálogo fictício (4 serviços e 4 peças) e o gerente inicial no Supabase Auth, com o perfil GERENTE.
+- **Prova ponta a ponta (22 verificações, 0 falhas):** com a API real e o gerente do seed, num roteiro descartável fora do repositório: login e `GET /me`; senha errada e ausência de token recusadas; criar usuário (a resposta não devolve a senha); e-mail duplicado 409; Atendente sem acesso à lista (403); troca de perfil vale na hora com o mesmo token; redefinir senha (a antiga deixa de valer); inativar (403 em `/me` e sem novo login) e reativar; inativar o último gerente recusado. A conta de teste foi apagada ao final: restou só o gerente do seed (1 usuário, 1 perfil, 1 gerente ativo).
+- **Fechado:** feature 000 (14 CAs ✅, 12 tarefas) e fase F1 no CHECKLIST; feature 006 com os 6 CAs ✅. A 001 continua com CA01 a CA03 🔄: falta rodar o **app** com a conta real (a API já foi provada).
+- **Atenção:** agora existe um gerente real no banco. O teste de integração do "último gerente" desativa e reativa todos os gerentes ativos; não rodar a integração de novo sem lembrar disso (ele é restaurado no `afterAll`, mas o gerente fica inativo durante o teste).
+- **Trello:** a atualização dos cartões (três bloqueados para Concluído, texto, checklist da 000) foi recusada pelo usuário no meio; os 3 cartões foram movidos para Concluído, mas ainda com o texto antigo. Fica pendente.

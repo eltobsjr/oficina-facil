@@ -30,7 +30,7 @@ Entregar **UC01 — Autenticar** para o ator **Todos**. Fluxo completo (principa
 
 | # | Critério | Status |
 |---|---|---|
-| CA01 | Login e senha corretos (Supabase Auth) abrem a sessão; `GET /me` devolve nome e perfil e o app monta o menu do perfil | 🔄 Em progresso — telas e sessão testadas com repositório falso; **falta provar com uma conta real** (precisa de usuário no Supabase) |
+| CA01 | Login e senha corretos (Supabase Auth) abrem a sessão; `GET /me` devolve nome e perfil e o app monta o menu do perfil | 🔄 Em progresso — telas e sessão testadas com repositório falso; API provada com conta real em 2026-10-30 (login e `GET /me` com o perfil); **falta rodar o app com essa conta** |
 | CA02 | Credenciais inválidas negam o acesso com mensagem genérica (sem dizer se o erro foi no login ou na senha) | 🔄 Em progresso — mensagem genérica testada; a tradução do erro real do Supabase (`AuthException`) ainda não foi exercitada |
 | CA03 | Token expirado é renovado pelo app; refresh inválido volta ao login | 🔄 Em progresso — queda da sessão e `GET /me` rejeitado derrubam o usuário (testado com falso); a renovação do token é do `supabase_flutter`, não testada |
 | CA04 | Usuário inativo vê a mensagem de que está desativado | ✅ Concluído — backend devolve `usuario_inativo`; o app mostra "desativado" e desfaz a sessão (testes dos dois lados) |

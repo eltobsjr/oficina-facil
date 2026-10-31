@@ -123,9 +123,6 @@ marcos = [
     cartao('S9 · Folga de Ano-Novo e dívida técnica', 'Sem feature nova: absorve atrasos, revisão geral, PDFs, atualizar o plano. **A decisão 003 precisa estar tomada até o fim desta semana.**', ['Documentação'], SEMANAS[9]),
 ]
 bloqueado = [
-    cartao('Criar o projeto Supabase de teste', 'Preencher `TEST_*` no `backend/.env`. Destrava os testes de integração, de concorrência e de RLS nas condições da regra R19.', ['Bloqueado pelo usuário', 'F1 Fundação'], SEMANAS[1]),
-    cartao('Colocar a SUPABASE_SERVICE_ROLE_KEY no backend/.env', 'Necessária para o gerente inicial (seed) e para criar usuários de verdade (UC06). Nunca colar no chat.', ['Bloqueado pelo usuário', 'F1 Fundação'], SEMANAS[1]),
-    cartao('Obter a string do pooler do Supabase', 'A conexão direta é só IPv6 e não funciona no Docker padrão nem em vários provedores. Usar a do pooler em `DATABASE_URL` em produção e no CI.', ['Bloqueado pelo usuário', 'F1 Fundação'], SEMANAS[1]),
     cartao('Rotacionar a senha do banco e a chave anon', 'Foram coladas no chat.', ['Bloqueado pelo usuário', 'F1 Fundação'], SEMANAS[1]),
     cartao('Testar o app no Android real', 'O celular não foi detectado pelo `adb`. Habilitar a depuração USB.', ['Bloqueado pelo usuário', 'App']),
     cartao('Criar a visão Board no GitHub Projects (opcional)', 'Só pela interface; o `gh` não cria visões. O Trello passa a ser o quadro principal.', ['Bloqueado pelo usuário']),
