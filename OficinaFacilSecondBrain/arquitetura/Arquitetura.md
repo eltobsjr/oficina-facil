@@ -177,12 +177,12 @@ Duas pessoas lançando a mesma peça ao mesmo tempo não deixam o saldo negativo
 | Ambiente | App | Backend | Banco |
 |---|---|---|---|
 | Desenvolvimento | `flutter run` | `npm run dev` (porta 3000, Swagger em `/docs`) | Projeto Supabase de **desenvolvimento** |
-| Teste automatizado e CI | — | `npm test` | Projeto Supabase de **teste**, onde `prisma migrate reset` é permitido; também serve de `shadowDatabaseUrl` |
+| Teste automatizado e CI | — | `npm test` | Não há projeto de teste (decisão do usuário em 2026-10-30; a branch do Supabase é recurso pago). Os testes de integração rodam no projeto único enquanto ele não tiver dados reais; `prisma migrate reset` **não** é permitido |
 | Produção (demonstração) | Web estática + APK | Container Docker em Railway ou Render (a confirmar) | Projeto Supabase separado |
 
 **Conexão com o banco (achado na F1):** a conexão *direta* do Supabase (`db.<projeto>.supabase.co`) só tem endereço IPv6. Funciona na máquina de desenvolvimento, mas **não** em ambientes só IPv4: a rede padrão do Docker e vários provedores de hospedagem. Por isso `DIRECT_URL` (migrations) pode ser a direta, mas `DATABASE_URL` da API em produção e no CI deve ser a string do **pooler** (Supavisor), que tem IPv4. Verificado: o contêiner na rede padrão marcou o banco como indisponível; com a rede do host (IPv6) respondeu `ok`.
 
-Nunca usar o projeto de produção sem liberação explícita. Banco **não** roda em container: Auth e Realtime só existem no Supabase. Testes de integração (concorrência, falha injetada, RLS com a chave publicável) rodam no projeto de teste, nunca no de desenvolvimento compartilhado.
+Nunca usar o projeto de produção sem liberação explícita. Banco **não** roda em container: Auth e Realtime só existem no Supabase. Testes de integração (concorrência, falha injetada, RLS com a chave publicável) rodam hoje no projeto único, por exceção à regra R19 autorizada pelo usuário em 2026-10-30, e só enquanto o banco não tiver dados reais; o teste do último gerente desativa temporariamente todos os gerentes ativos. Antes de haver dados reais é preciso criar um projeto de teste ou reescrever a R19.
 
 ## 9. Qualidade e verificação
 

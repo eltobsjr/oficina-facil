@@ -23,7 +23,7 @@ FASE_DA_FEATURE = {'000': 'F1', '001': 'F2', '006': 'F2', '002': 'F3', '003': 'F
                    '007': 'F5', '008': 'F5', '009': 'F5', '010': 'F5', '011': 'F6', '012': 'F6', '013': 'F6', '014': 'F7',
                    '015': 'F7', '017': 'F7', '016': 'F8', '019': 'F8', '020': 'F9'}
 # Features cujo backend ou app já existem (cartão fica em "Em andamento" e não em "Próximas").
-EM_ANDAMENTO = {'000', '001', '006'}
+EM_ANDAMENTO = {'000', '001', '006'}  # a 000 já está concluída; fica aqui só para não entrar em "Próximas"
 
 ETIQUETAS = [
     {'nome': 'F0 Análise', 'cor': 'sky'}, {'nome': 'F1 Fundação', 'cor': 'black'}, {'nome': 'F2 Acesso', 'cor': 'blue'},
@@ -112,7 +112,13 @@ concluidos = [
 ]
 
 # ---------- em andamento, próximas, bloqueado, decisões ----------
-andamento = [cartao_feature(n) for n in ('000', '001', '006')]
+andamento = [cartao_feature(n) for n in ('001', '006')]
+concluidos.append(cartao_feature('000', True))
+concluidos += [
+    cartao('Projeto de teste dispensado: testes no projeto único', 'Decisão do usuário (30/10/2026): não haverá projeto nem branch de teste (branch do Supabase é recurso pago). Os 26 testes de integração passaram no projeto único, que ainda não tem dados reais. É uma exceção à regra R19, válida enquanto o banco não tiver dados reais.', ['F1 Fundação'], SEMANAS[1], concluido=True),
+    cartao('Chave de serviço no backend/.env (feito)', 'Feito: a `SUPABASE_SERVICE_ROLE_KEY` já está no `backend/.env`, e o gerente inicial do seed foi criado em 30/10/2026.', ['F1 Fundação'], SEMANAS[1], concluido=True),
+    cartao('Strings de conexão do banco no backend/.env (feito)', 'Feito: `DATABASE_URL` e `DIRECT_URL` estão no `backend/.env`. Ao levar para o CI ou a produção, conferir se a `DATABASE_URL` é a do pooler (a conexão direta é só IPv6).', ['F1 Fundação'], SEMANAS[1], concluido=True),
+]
 proximas = [cartao_feature(n) for n in sorted(features, key=lambda k: (SEMANA_DA_FEATURE[k], k)) if n not in EM_ANDAMENTO]
 marcos = [
     cartao('Marco M1 · Login com 4 perfis e gestão de usuários', 'Fim da S2 (15/11/2026).', ['Marco'], SEMANAS[2]),

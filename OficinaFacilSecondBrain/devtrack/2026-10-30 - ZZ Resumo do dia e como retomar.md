@@ -150,3 +150,10 @@ O usuário deu o `git push` (`4e9de17..9e2ad5f`) e o workflow rodou pela primeir
 - **Fechado:** feature 000 (14 CAs ✅, 12 tarefas) e fase F1 no CHECKLIST; feature 006 com os 6 CAs ✅. A 001 continua com CA01 a CA03 🔄: falta rodar o **app** com a conta real (a API já foi provada).
 - **Atenção:** agora existe um gerente real no banco. O teste de integração do "último gerente" desativa e reativa todos os gerentes ativos; não rodar a integração de novo sem lembrar disso (ele é restaurado no `afterAll`, mas o gerente fica inativo durante o teste).
 - **Trello:** a atualização dos cartões (três bloqueados para Concluído, texto, checklist da 000) foi recusada pelo usuário no meio; os 3 cartões foram movidos para Concluído, mas ainda com o texto antigo. Fica pendente.
+
+## Fechamento: Trello sincronizado, Arquitetura atualizada, push
+
+- **Trello:** o usuário pediu para atualizar tudo; cartão da 000 movido para Concluído e marcado (checklist completo), cartão da 006 com os 6 CAs ✅, os 3 cartões de bloqueio resolvidos e renomeados (isto substitui a pendência registrada acima). Leitura final do quadro: 23 em Concluído, 2 em Andamento, 3 em Bloqueado, 18 em Próximas.
+- **Gerador do Trello:** a 000 passa a Concluído e os 3 cartões resolvidos entram na lista; o JSON tem 57 cartões.
+- **Arquitetura:** a nota deixa de falar em "projeto de teste" e registra a exceção à R19 (testes no projeto único, enquanto não houver dados reais). O `CLAUDE.md` (R19) **não** foi alterado; continua dizendo "projeto de teste" e só muda se o usuário pedir.
+- **Commit e push:** pedidos pelo usuário.
