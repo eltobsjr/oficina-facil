@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T01 Login</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app" style="background:#ffffff">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span></span></div>
+  <div class="main" style="justify-content:center">
+    <div class="pad" style="gap:24px;padding:0 24px">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="width:88px;height:88px;border-radius:20px;background:#1f4e79;display:grid;place-items:center">
+          <svg viewBox="0 0 256 256" width="62" height="62" role="img" aria-label="Logo do OficinaFácil"><path fill="#ffffff" fill-rule="evenodd" d="M128 16L225 72V184L128 240L31 184V72Z M67 134L89 112L111 134L167 78L189 100L111 178Z"/></svg>
+        </div>
+        <h1 style="margin:0;font:600 34px/1.1 var(--font-sans);letter-spacing:-.374px;text-align:center">Entrar</h1>
+      </div>
+      <form style="display:flex;flex-direction:column;gap:14px">
+        <div class="f"><label for="email">E-mail</label><input id="email" type="email" value="atendente@example.com"></div>
+        <div class="f"><label for="senha">Senha</label>
+          <div style="position:relative"><input id="senha" type="password" value="••••••••" style="padding-right:48px"><button type="button" class="ic" aria-label="Mostrar senha" style="position:absolute;right:0;top:2px"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div>
+        </div>
+        <div class="note d" role="alert">E-mail ou senha incorretos.</div>
+        <button type="submit" class="btn p w">Entrar</button>
+      </form>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

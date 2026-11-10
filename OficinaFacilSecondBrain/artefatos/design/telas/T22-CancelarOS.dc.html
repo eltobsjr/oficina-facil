@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T22 Cancelar OS</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T15-DetalheOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>OS 0042</h1><span class="chip st ap">Concluída</span></div>
+  <div class="main">
+    <div class="tile"><span class="k">Total a receber</span><span class="big">R$ 226,00</span></div>
+    <div class="pad"><div class="card" style="height:84px"></div><div class="card" style="height:56px"></div></div>
+  </div>
+  <div class="dlg-bg"></div>
+  <div class="dlg" role="dialog" aria-modal="true" aria-labelledby="t">
+    <h2 id="t" style="margin:0;font:600 28px/1.14 var(--font-sans);letter-spacing:.196px">Cancelar a OS 0042?</h2>
+    <p class="t2" style="margin:0">Esta ação não pode ser desfeita. A OS fica cancelada e o histórico é mantido.</p>
+    <div class="f"><label for="motivo">Motivo do cancelamento</label><textarea id="motivo" rows="2">Cliente desistiu do serviço.</textarea></div>
+    <div class="f"><span class="lb">Peças lançadas</span><span class="hint">As peças voltam ao estoque, a menos que você marque “não devolver”.</span>
+      <label class="opt" style="min-height:48px;margin-top:4px"><span class="tx"><span class="t1" style="font-size:14px">Pastilha de freio dianteira</span><br><span class="t3">1 un</span></span><span class="t2">Não devolver</span><input id="nd" type="checkbox"></label></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end"><a href="T15-DetalheOS.dc.html" class="btn s sm">Voltar</a><button type="button" class="btn sm" style="background:var(--danger);color:#fff">Cancelar OS</button></div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T25 Carregando sessão</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app" style="background:#ffffff">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span></span></div>
+  <div class="main" style="align-items:center;justify-content:center;gap:24px">
+    <div style="width:96px;height:96px;border-radius:22px;background:#1f4e79;display:grid;place-items:center">
+      <svg viewBox="0 0 256 256" width="68" height="68" role="img" aria-label="Logo do OficinaFácil"><path fill="#ffffff" fill-rule="evenodd" d="M128 16L225 72V184L128 240L31 184V72Z M67 134L89 112L111 134L167 78L189 100L111 178Z"/></svg>
+    </div>
+    <svg viewBox="0 0 48 48" width="36" height="36" role="img" aria-label="Carregando"><circle cx="24" cy="24" r="18" fill="none" stroke="#e0e0e0" stroke-width="4"/><path d="M24 6a18 18 0 0118 18" fill="none" stroke="#0066cc" stroke-width="4" stroke-linecap="round"/></svg>
+    <div class="t2">Abrindo sua sessão…</div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

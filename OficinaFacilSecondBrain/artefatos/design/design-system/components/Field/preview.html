@@ -1,0 +1,13 @@
+<!-- @dsCard group="Formulário" height=300 subtitle="Campo, erro e busca" -->
+<style>
+  body{margin:0;padding:20px;background:var(--canvas-parchment);font-family:var(--font-sans);display:flex;flex-direction:column;gap:14px;max-width:420px}
+  label{display:block;font:400 14px/1.43 var(--font-sans);letter-spacing:-.224px;color:var(--ink-muted-80);margin-bottom:4px}
+  input{width:100%;box-sizing:border-box;height:48px;background:var(--canvas);border:1px solid var(--hairline);border-radius:var(--radius-sm);padding:0 14px;font:400 17px/1 var(--font-sans);letter-spacing:-.374px;color:var(--ink)}
+  input:focus{outline:2px solid var(--primary-focus)}
+  .err input{border:2px solid var(--danger)}
+  .m{margin-top:4px;font:400 12px/1.2 var(--font-sans);color:var(--danger)}
+  .q{border-radius:var(--radius-pill);height:44px;padding:0 20px;border-color:rgba(0,0,0,.08)}
+</style>
+<div><label for="a">Nome</label><input id="a" value="Carlos Teste"></div>
+<div class="err"><label for="b">CPF ou CNPJ</label><input id="b" value="123.456.789-00"><div class="m">Este documento já está cadastrado.</div></div>
+<div><input class="q" aria-label="Buscar" placeholder="Buscar por nome ou documento"></div>

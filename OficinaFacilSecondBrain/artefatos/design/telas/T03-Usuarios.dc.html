@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T03 Lista de usuários</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Gerente Exemplo · Gerente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar raiz"><h1>Usuários</h1><a href="T04-FormUsuario.dc.html" class="btn p sm">Novo usuário</a></div>
+  <div class="main">
+    <div class="pad">
+      <div class="busca"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg><span>Buscar por nome ou e-mail</span></div>
+      <div class="chips"><span class="chip on">Todos</span><span class="chip">Atendente</span><span class="chip">Mecânico</span><span class="chip">Inativos</span></div>
+      <a href="T04-FormUsuario.dc.html" class="card item"><div class="avatar">GE</div><div class="tx"><div class="t1">Gerente Exemplo</div><div class="t2">gerente@example.com</div></div><span class="t3">Gerente</span></a>
+      <a href="T04-FormUsuario.dc.html" class="card item"><div class="avatar">ME</div><div class="tx"><div class="t1">Maria Exemplo</div><div class="t2">maria@example.com</div></div><span class="t3">Atendente</span></a>
+      <a href="T04-FormUsuario.dc.html" class="card item"><div class="avatar">JT</div><div class="tx"><div class="t1">João Teste</div><div class="t2">joao@example.com</div></div><span class="t3">Mecânico</span></a>
+      <a href="T04-FormUsuario.dc.html" class="card item"><div class="avatar">AL</div><div class="tx"><div class="t1">Ana Almoxarife</div><div class="t2">ana@example.com</div></div><span class="t3">Almoxarife</span></a>
+      <a href="T04-FormUsuario.dc.html" class="card item apagado"><div class="avatar">PS</div><div class="tx"><div class="t1">Pedro Saiu</div><div class="t2">pedro@example.com</div></div><span class="chip st ap">Inativo</span></a>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Menu">
+    <a href="T02-Inicio.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Início</a>
+    <a href="T03-Usuarios.dc.html" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 5a3.5 3.5 0 010 7M18 14c2.2.6 3.5 2.6 3.5 6"/></svg>Usuários</a>
+    <a href="T14-ListaOS.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>OS</a>
+    <a href="T24-Avisos.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4"/></svg>Avisos</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

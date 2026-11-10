@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T08 Lista de serviços</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Gerente Exemplo · Gerente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T02-Inicio.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Serviços</h1><a href="T09-FormServico.dc.html" class="btn p sm">Novo serviço</a></div>
+  <div class="main">
+    <div class="pad">
+      <div class="busca"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg><span>Buscar serviço</span></div>
+      <a href="T09-FormServico.dc.html" class="card item"><div class="tx"><div class="t1">Troca de óleo e filtro</div><div class="t2">Tempo estimado: 40 min</div></div><span class="t1 num">R$ 80,00</span></a>
+      <a href="T09-FormServico.dc.html" class="card item"><div class="tx"><div class="t1">Alinhamento e balanceamento</div><div class="t2">Tempo estimado: 1 h</div></div><span class="t1 num">R$ 120,00</span></a>
+      <a href="T09-FormServico.dc.html" class="card item"><div class="tx"><div class="t1">Revisão de freios</div><div class="t2">Tempo estimado: 1 h 30 min</div></div><span class="t1 num">R$ 150,00</span></a>
+      <a href="T09-FormServico.dc.html" class="card item apagado"><div class="tx"><div class="t1">Diagnóstico eletrônico</div><div class="t2">Tempo estimado: 30 min</div></div><span class="chip st ap">Inativo</span></a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+---
+data: 2026-11-10
+---
+
+# Roteiro de fala: semana 1 e semana 2
+
+Gerado das notas dos slides em `artefatos/slides/semana-1-e-2/` (fonte única, não editar aqui). Ordem de fala: Elto abre, Evillyn, Roberto, Pedro, Elto fecha. Mais detalhes em [[Linha do tempo de slides]].
+
+## 1. OficinaFácil
+
+ELTO (abertura, cerca de 30 segundos). Boa tarde. Somos o grupo do OficinaFácil, o sistema de ordens de serviço de uma oficina mecânica. Hoje contamos duas semanas de trabalho: onde estamos no plano, o que foi feito na semana passada, o que foi feito agora e por que as próximas fases vêm na ordem que vêm. Somos quatro: eu abro e fecho, a Evillyn conta a semana passada, o Roberto conta esta semana, e o Pedro mostra o design e a qualidade do código.
+
+## 2. Linha do tempo: onde estamos
+
+ELTO (cerca de 1 minuto e 20). Este é o plano inteiro: 15 semanas, de 2 de novembro a 14 de fevereiro, em nove fases. Em azul está o que já foi concluído: as fases 1, 2 e 3. Estamos na semana 2, hoje, 10 de novembro, e a fase 3 só estava prevista para a semana que vem, então estamos uma semana à frente, com o marco M1 atingido. Os números em preto embaixo de cada fase são o peso: para cada funcionalidade somamos os critérios de aceitação, os endpoints da API, as telas e as tabelas que ela toca, e somamos por fase. O total do projeto é 254. Já entregamos 73, 29% do peso, em duas das quinze semanas. A fase 5, abrir e orçar a ordem, é a mais pesada, 58, quase um quarto do projeto, por isso ela ganhou três semanas, a maior janela, e a folga de Natal logo depois. As fases 6 e 7 pesam cerca de 31 e 32, duas semanas cada. A fase 9 pesa pouco nessa conta, 6, mas é só porque ela é integração, Android real, publicação e documentos, que não aparece em critério ou endpoint; por isso a medida é uma boa régua, não uma verdade absoluta. Os marcos M1 a M5 marcam as entregas.
+
+## 3. A base ficou de pé
+
+EVILLYN (cerca de 2 minutos). Boa tarde. Na semana passada a gente construiu o alicerce, em três frentes. A primeira foi a especificação: 19 casos de uso, um para cada funcionalidade do sistema, 23 histórias de usuário e 12 decisões registradas, cada uma num arquivo. Cada funcionalidade tem critérios de aceitação, que são as condições que precisam ser provadas para ela ser considerada pronta: no projeto todo são 120. A segunda frente foi a fase 1, a fundação técnica. Ligamos o aplicativo Flutter, a API em Node e o banco no Supabase. A decisão de arquitetura mais importante foi esta: o aplicativo nunca fala direto com o banco, ele fala com a nossa API, e só a API fala com o Supabase. Assim, regras como desconto acima de 10% ou baixa de estoque ficam num lugar seguro e testável. As 17 tabelas já nasceram com segurança por linha, e 26 testes no banco de verdade provam que o aplicativo não consegue escrever nele. A terceira frente foi o primeiro uso real: login com os quatro perfis da oficina e a gestão de usuários pelo gerente, com 216 testes automáticos no aplicativo. Com a base pronta, o Roberto conta o que construímos em cima dela esta semana.
+
+## 4. Duas fases concluídas e provadas
+
+ROBERTO (cerca de 2 minutos). Obrigado, Evillyn. Esta semana concluímos duas fases. A primeira é a fase 3, clientes e veículos, que só estava prevista para a semana que vem, então ganhamos uma semana. O que importa para quem usa: o cliente pode ser pessoa física ou jurídica, e validamos CPF e CNPJ com o dígito verificador. O documento do cliente e a placa do veículo são únicos, e quem garante isso é o banco, não só o código. Aceitamos a placa antiga e a Mercosul. É possível transferir um veículo de dono sem mexer nas ordens de serviço antigas, e inativar um cliente não apaga a história dele: se ele tem ordem ativa, o sistema recusa. Os cinco critérios de cada uma dessas funcionalidades foram provados no banco de verdade. A segunda é a fase 2, o login, que agora está provada no aplicativo real, com a conta do gerente: o sistema pede login, mostra o menu certo para o perfil, a sessão sobrevive ao recarregar e se renova sozinha, e sair volta ao login. O gerente também cria, edita e inativa usuários, e o sistema garante que sempre existe pelo menos um gerente ativo. Seis de seis critérios provados. Nossa regra é essa: funcionalidade só fecha depois de provada de ponta a ponta. Agora, os números.
+
+## 5. Semana passada e agora, em números
+
+ROBERTO (cerca de 1 minuto). Em números: as funcionalidades concluídas foram de 1 para 5, de 21 no total. Os critérios de aceitação provados foram de 25 para 38, de 120. Os testes automáticos do backend foram de 81 para 210, e os do aplicativo de 216 para 351. As telas no aplicativo foram de 6 para 9, das 26 desenhadas. E o quadro Kanban, no Trello, que atualizamos hoje, passou de 23 para 34 cartões em Concluído. Esses números não são de cabeça: vêm de uma página que a gente gera sozinha a partir da documentação do projeto, então estão sempre de acordo com o que foi feito. As cinco funcionalidades prontas são a fundação, o login, clientes, veículos e a gestão de usuários. Passo para o Pedro, que mostra como o sistema se parece e como está o código.
+
+## 6. Design próprio e código testado
+
+PEDRO (cerca de 1 minuto e 30). Eu cuido do design e da qualidade do código. Criamos um design system próprio, com poucas regras para a interface ficar limpa: só uma cor de ação, o azul, em todo botão e link; o dado mais importante de cada tela fica num bloco escuro; os botões de ação são em formato de pílula e não usamos sombra; e o logo continua na cor original da marca. Desenhamos as 26 telas do sistema nesse estilo, e nove delas já estão no aplicativo. Sobre o código: são 561 testes automáticos, 210 no backend e 351 no aplicativo. No backend, cada módulo só pode usar outro pela porta de entrada dele, o arquivo index.ts, e há um teste de arquitetura que quebra se alguém violar essa regra. Fizemos uma revisão de código independente nos dois projetos, e seguimos uma regra simples para não complicar: só viramos componente o que tem dois ou mais usos reais. Devolvo para o Elto mostrar o plano.
+
+## 7. Por que as próximas fases vêm nesta ordem
+
+ELTO (cerca de 1 minuto e 30). Voltando ao plano, agora pelo porquê da ordem. Além do peso de cada fase, existe uma dependência. A fase 4, catálogos e estoque, vem agora porque a ordem de serviço usa serviço e peça, e o estoque precisa existir antes de uma peça ser baixada. A fase 5 abre, diagnostica e orça a ordem: ali nasce a máquina de estados que sustenta tudo o que vem depois, e o desconto fica por último porque estende o orçamento. A fase 6 exige ordem orçada e usa o estoque da fase 4: só se executa com a aprovação do cliente. A fase 7 entrega e cancela: só se paga uma ordem concluída, e cancelar devolve as peças ao estoque. A fase 8 lê tudo que veio antes, com filtros e faturamento. A fase 9 integra e publica. Estamos uma semana à frente, mas não vamos puxar as datas: o Natal e o Ano-Novo caem nas semanas 8 e 9, então a semana a mais vira folga. A justificativa completa está no Roadmap do repositório.
+
+## 8. Próximos passos
+
+ELTO (cerca de 1 minuto, depois perguntas). Para fechar: os próximos passos são a fase 4, catálogos e estoque, que preparam a ordem de serviço, e depois a fase 5, onde nasce o núcleo do sistema, a ordem de serviço com a sua máquina de estados. Seguimos uma semana à frente do plano de 15 semanas, com a folga de fim de ano preservada. Resumindo: em duas semanas, a especificação completa, três fases concluídas e provadas, um design próprio e uma base testada com 561 testes. Agora abrimos para perguntas. Perguntas de arquitetura e banco, a Evillyn responde. De funcionalidades e testes, o Roberto. De design e código, o Pedro.

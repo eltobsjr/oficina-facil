@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T20 Execução e peças usadas</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>João Teste · Mecânico &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T14-ListaOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Execução · OS 0041</h1><span class="chip st ex">Em execução</span></div>
+  <div class="main">
+    <div class="pad" style="gap:12px">
+      <div class="card" style="padding:12px 16px"><div class="t1">Onix 1.4 · QWE4R56</div><div class="t2">Troca de óleo e filtro · Revisão de freios</div></div>
+      <div class="row" style="align-items:center"><span class="sec" style="margin:0">Peças usadas</span><button type="button" class="btn s sm">Lançar peça</button></div>
+      <div class="card item" style="padding:10px 16px"><div class="tx"><div class="t1">Óleo 5W30 (litro)</div><div class="t3">OL-0005</div></div><span class="t1 num">4 un</span><button type="button" class="ic" aria-label="Remover Óleo 5W30"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="card item" style="padding:10px 16px"><div class="tx"><div class="t1">Filtro de óleo</div><div class="t3">FO-0031</div></div><span class="t1 num">1 un</span><button type="button" class="ic" aria-label="Remover Filtro de óleo"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="note d" role="alert">Saldo insuficiente de Pastilha de freio dianteira (restam 0). O almoxarife foi avisado.</div>
+      <div class="sec">Andamento</div>
+      <div><div class="t3">04/11 14:10 · João Teste</div><div class="t2" style="color:var(--ink)">Óleo drenado, filtro substituído.</div></div>
+      <div><div class="t3">04/11 15:02 · João Teste</div><div class="t2" style="color:var(--ink)">Aguardando pastilhas para finalizar os freios.</div></div>
+      <div style="display:flex;gap:10px;align-items:flex-end"><div class="f" style="flex:1"><label for="obs">Nova observação</label><input id="obs" type="text"></div><button type="button" class="btn s" style="height:48px">Anotar</button></div>
+      <div class="grow"></div>
+      <button type="button" class="btn p w">Concluir OS</button>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

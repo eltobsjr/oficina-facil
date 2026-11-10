@@ -1,0 +1,23 @@
+<section id="es-prova" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;letter-spacing:-1px">A prova no app real achou um defeito</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;padding:40px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:80px;font-weight:700;line-height:1;color:#0066cc">1</p>
+<p style="font-size:38px;font-weight:700;line-height:1.2">Provamos no navegador</p>
+<p style="font-size:28px;line-height:1.35;color:#333333">Com a conta real: cai no login, senha errada, entra, vê o menu, recarrega, sai. 6 de 6.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#ffffff;padding:40px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:80px;font-weight:700;line-height:1;color:#0066cc">2</p>
+<p style="font-size:38px;font-weight:700;line-height:1.2">Forçamos o token vencido</p>
+<p style="font-size:28px;line-height:1.35;color:#333333">O app renovava o token, mas a primeira chamada saía com o velho, levava 401 e deslogava a pessoa.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:16px;background:#0066cc;color:#ffffff;padding:40px;border-radius:18px">
+<p style="font-size:80px;font-weight:700;line-height:1">3</p>
+<p style="font-size:38px;font-weight:700;line-height:1.2">Corrigimos e provamos</p>
+<p style="font-size:28px;line-height:1.35">O app renova antes de usar o token. Vencido renova e segue logado; renovação inválida volta ao login.</p>
+</div>
+</div>
+<p style="font-size:32px;font-weight:600;line-height:1.3">Os 216 testes com dublê passavam. Só a prova no app real viu o problema.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#333333">Fala: Pessoa 3 · Feature 001, critério 3</p>
+<aside>PESSOA 3 (cerca de 1 minuto e 20). Esta é a parte de que mais gosto. A gente tinha 216 testes passando para o login, mas todos com dublês, sem rede de verdade. Então, esta semana, rodamos o aplicativo real num navegador, com a conta do gerente, e conferimos seis coisas: sem sessão cai no login, senha errada mostra mensagem genérica, o gerente entra e vê o menu, a sessão sobrevive a recarregar a página e sair volta ao login. Passou. Depois forçamos um token vencido de propósito, e aí apareceu o defeito: o app renovava o token com sucesso, mas a primeira chamada ao servidor saía com o token velho, recebia erro 401 e jogava a pessoa para fora. Na vida real isso acontece com quem volta ao app depois de uma hora. Corrigimos para renovar antes de usar o token, escrevemos testes e provamos de novo no app real. A lição: dublê não substitui a prova de verdade.</aside>
+</section>

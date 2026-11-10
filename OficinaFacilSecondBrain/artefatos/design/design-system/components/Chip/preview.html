@@ -1,0 +1,13 @@
+<!-- @dsCard group="Formulário" height=150 subtitle="Filtros e estados da OS" -->
+<style>
+  body{margin:0;padding:20px;background:var(--canvas-parchment);font-family:var(--font-sans);display:flex;flex-direction:column;gap:14px}
+  .r{display:flex;flex-wrap:wrap;gap:8px}
+  .c{border-radius:var(--radius-pill);padding:7px 14px;font:400 14px/1 var(--font-sans);letter-spacing:-.224px;border:1px solid var(--hairline);background:var(--canvas);color:var(--ink)}
+  .on{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+  .e{padding:5px 11px;font-size:12px;font-weight:600;letter-spacing:-.12px}
+  .ex{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+  .ap{background:var(--canvas-parchment);color:var(--ink);border-color:var(--hairline)}
+  .ca{background:var(--danger-surface);color:var(--danger);border-color:var(--danger-surface)}
+</style>
+<div class="r"><span class="c on">Todas</span><span class="c">Em execução</span><span class="c">Concluídas</span></div>
+<div class="r"><span class="c e ex">Em execução</span><span class="c e ap">Concluída</span><span class="c e ap">Entregue</span><span class="c e ca">Cancelada</span></div>

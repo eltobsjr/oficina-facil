@@ -54,3 +54,11 @@
 - **Verificação final:** backend lint, format e typecheck limpos, 210 testes (31 de integração) e `smoke.sh` 12 de 12; app format e analyze limpos, 351 testes, `flutter build web` e `flutter build apk --debug` passando. Sem resíduo no banco.
 - **Fases F2 (001 e 006) e F3 (002 e 003) marcadas no CHECKLIST.** Roadmap corrigido (não há projeto de teste).
 - **Armadilhas novas:** o build web agora precisa de `--no-web-resources-cdn` onde não há acesso ao CDN do Google; os rebuilds recriam `build/web`, então o servidor estático precisa ser reiniciado; `pgrep -f` com o texto no próprio comando mata o shell (matar sempre pela porta).
+
+## Apresentações e arquivo de artefatos (2026-11-10)
+
+- **Dois conjuntos de slides** (Slides do Claude): semana 1 e semana 2 (8 slides, linha do tempo e onde estamos) e funcionalidades e o livro (7 slides, diagramas lado a lado, cada elemento justificado por um capítulo de *Engenharia de Software Moderna*). Falas para Elto, Evillyn, Roberto e Pedro, nas notas de cada slide.
+- **Diagramas de classes redesenhados na horizontal** (`direction LR`) para ficarem legíveis ao lado da sequência; imagens cortadas no conteúdo.
+- **Roadmap:** seção com o peso das funcionalidades por fase (total 254, 73 concluídos) justificando o calendário.
+- **Pasta `artefatos/` no vault** com a cópia de trabalho do design das telas (26 telas), do design system, dos dois decks e dos diagramas, mais [[00 - Índice de artefatos]] e [[Linha do tempo de slides]]. A [[Convenções]] ganhou a linha correspondente.
+- Pendências: o índice gerado (`00 - Índice`) ainda não lista `artefatos/`; ao próximo `--dry-run` do gerador, decidir se entra. Roadmap, Convenções, Quadro do Trello e `artefatos/` ainda não estão commitados.

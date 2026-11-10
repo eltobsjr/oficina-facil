@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T13 Abrir OS</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T14-ListaOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Abrir OS</h1></div>
+  <form class="main pad" style="gap:12px;padding-top:16px">
+    <div class="f"><span class="lb">Cliente</span>
+      <a href="T05-Clientes.dc.html" class="card item" style="padding:10px 16px"><div class="tx"><div class="t1">Carlos Teste</div><div class="t3 num">123.456.789-00</div></div><span class="t2" style="color:var(--primary)">Trocar</span></a></div>
+    <div class="f"><span class="lb">Veículo</span>
+      <label class="opt on"><input type="radio" name="v" checked><span class="tx"><span class="t1" style="letter-spacing:.04em">ABC1D23</span><br><span class="t3">Gol 1.0 · 2016 · Prata</span></span></label>
+      <label class="opt"><input type="radio" name="v"><span class="tx"><span class="t1" style="letter-spacing:.04em">QWE4R56</span><br><span class="t3">Onix 1.4 · 2020 · Preto</span></span></label>
+      <a href="T07b-FormVeiculo.dc.html" style="font:400 14px/1.43 var(--font-sans);color:var(--primary);text-decoration:none;padding-left:4px">Cadastrar outro veículo</a></div>
+    <div class="f"><label for="km">Quilometragem de entrada</label><div class="suf"><input id="km" type="text" inputmode="numeric" value="84200" class="num"><span>km</span></div></div>
+    <div class="f"><label for="queixa">Queixa do cliente</label><textarea id="queixa" rows="3">Barulho ao frear e pedal baixo.</textarea></div>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Abrir OS</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

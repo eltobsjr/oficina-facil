@@ -29,6 +29,7 @@ Toda a documentação do projeto vive neste vault. O vault fica **dentro do repo
 | Telas e rotas | [[Mapa de telas]] |
 | Auditorias e revisões | `auditorias/` |
 | Logo e identidade visual | [[00 - Identidade visual]] |
+| Artefatos publicados (design das telas, design system, slides) e a linha do tempo de slides | `artefatos/`, índice em [[00 - Índice de artefatos]] |
 | Como gerar notas e PDFs | `metodos/` |
 | PDFs para entrega ao professor (gerados) | `entregas/` |
 | Log de cada sessão | `devtrack/YYYY-MM-DD - Título.md` |

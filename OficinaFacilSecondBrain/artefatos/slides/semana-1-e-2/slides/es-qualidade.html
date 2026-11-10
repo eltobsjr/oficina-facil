@@ -1,0 +1,23 @@
+<section id="es-qualidade" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:128px 128px 160px;display:flex;flex-direction:column;gap:48px">
+<h2 style="font-size:72px;font-weight:700;line-height:1.1;letter-spacing:-1px">Código limpo: revisão e refatoração</h2>
+<div style="display:flex;gap:32px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:40px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:96px;font-weight:700;line-height:1.05">8,5</p>
+<p style="font-size:36px;font-weight:600">nota do backend, de 10</p>
+<p style="font-size:28px;color:#333333">Duplicação de duplicidade e de listas virou código compartilhado. O contrato da API ficou idêntico.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:40px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:96px;font-weight:700;line-height:1.05">7,5</p>
+<p style="font-size:36px;font-weight:600">nota do app, de 10</p>
+<p style="font-size:28px;color:#333333">Formulários e listas repetiam código. Viraram componentes comuns.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#0066cc;color:#ffffff;padding:40px;border-radius:18px">
+<p style="font-size:96px;font-weight:700;line-height:1.05">−41%</p>
+<p style="font-size:36px;font-weight:600">na tela de clientes</p>
+<p style="font-size:28px">De 138 para 81 linhas. Cada formulário perdeu entre 60 e 75 linhas.</p>
+</div>
+</div>
+<p style="font-size:32px;font-weight:600;line-height:1.3">Regra da refatoração: só extrair o que tem dois ou mais usos reais.</p>
+<p style="position:absolute;left:128px;bottom:64px;width:1664px;font-size:24px;color:#333333">Fala: Pessoa 4 · As notas são do revisor, antes da refatoração</p>
+<aside>PESSOA 4 (cerca de 50 segundos). Para qualidade do código, pedimos dois revisores independentes, um para o backend e um para o aplicativo, só de leitura, que deram nota e uma lista de problemas. O backend ficou com 8,5 de 10, o app com 7,5, principalmente por código repetido entre os formulários e entre as listas. Aplicamos a refatoração com uma regra simples: só extrair quando há dois ou mais usos reais, para não criar abstração à toa. Resultado: a tela de clientes caiu de 138 para 81 linhas, cada formulário perdeu de 60 a 75 linhas, e o contrato da API continuou idêntico, o que prova que não mudamos comportamento. Os testes continuaram passando em todas as etapas.</aside>
+</section>

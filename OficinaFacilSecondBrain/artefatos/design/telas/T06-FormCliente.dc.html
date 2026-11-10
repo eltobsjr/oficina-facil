@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T06 Formulário de cliente</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T05-Clientes.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Novo cliente</h1></div>
+  <form class="main pad" style="gap:12px;padding-top:20px">
+    <div class="f"><label for="nome">Nome</label><input id="nome" type="text" value="Carlos Teste"></div>
+    <div class="f err"><label for="doc">CPF ou CNPJ</label><input id="doc" type="text" inputmode="numeric" value="123.456.789-00" class="num" aria-describedby="e1"><span id="e1" class="msg">Este documento já está cadastrado.</span><a href="T07-Veiculos.dc.html" style="font:400 14px/1.43 var(--font-sans);color:var(--primary);text-decoration:none">Abrir o cadastro existente</a></div>
+    <div class="f"><label for="tel">Telefone</label><input id="tel" type="tel" inputmode="numeric" value="(11) 90000-0001" class="num"></div>
+    <div class="f"><label for="mail">E-mail</label><input id="mail" type="email" value="carlos@example.com"></div>
+    <div class="f"><label for="end">Endereço</label><input id="end" type="text" value="Rua Exemplo, 100"></div>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Salvar cliente</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

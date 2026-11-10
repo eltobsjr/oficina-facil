@@ -216,3 +216,52 @@ Toda feature segue as mesmas 9 tarefas, lista marcável no [[CHECKLIST]]: modelo
 | Dois projetos (app e backend) e TypeScript novo | Backend em camadas simples, testes junto da regra |
 | Plano gratuito do Supabase e da hospedagem (pausa por inatividade, IPv6) | Confirmar limites antes de S15; pooler em produção |
 | Enunciado oficial aparecer depois | Specs e telas são regeneráveis (com `--force`) e conferidas contra o enunciado |
+
+## 8. Estado em 2026-11-10 e por que as próximas fases vêm nesta ordem
+
+### Onde estamos
+
+As fases **F1, F2 e F3 estão concluídas** em 2026-11-10, dentro da S2. O plano previa a F3 (clientes e veículos) só na S3 (16 a 22/11), então estamos **uma semana à frente**. O marco **M1** (login com 4 perfis e gestão de usuários) foi atingido. Estado detalhado em [[CHECKLIST]] e no [[2026-11-09 - Diagramas, S3 e design system]].
+
+A semana a mais **não vira data nova**: as datas das fases seguintes ficam como estão e a semana de folga passa a ser maior. Motivo: Natal e Ano-Novo caem nas S8 e S9, e há pendências que dependem do usuário (decisão 003, Android real, hospedagem). Se a F4 terminar cedo, adianta-se a F5, não se corta a folga.
+
+### Por que cada fase vem agora
+
+| Fase | Features | Por que nesta posição |
+|---|---|---|
+| **F4** Catálogos e estoque (S4 e S5) | [[005 - Gerir serviços]], [[004 - Gerir peças]], [[018 - Dar entrada no estoque]] | A OS referencia cliente, veículo, serviço e peça ([[Plano de construção]]): os dois cadastros já existem, faltam os catálogos. A 018 entra aqui porque a baixa de peça da [[013 - Registrar peças usadas]] precisa de saldo, e o saldo só nasce na 004 e na 018. É também a maior fonte de risco técnico (baixa e estorno atômicos, teste de concorrência), então vale resolver cedo, quando quase nada depende dela. Dentro da fase: 005 primeiro (a mais simples), 004, e a 018 por último, porque depende da 004. |
+| **F5** Abrir, diagnosticar e orçar (S6 a S8) | [[007 - Abrir OS]], [[008 - Registrar diagnóstico]], [[009 - Montar orçamento]], [[010 - Autorizar desconto]] | Aqui nasce o núcleo do sistema, a máquina de estados da OS (`transicoes.ts`), e tudo depois pendura nela, por isso a 007 vem primeiro. A 008 e a 009 seguem a ordem do ciclo (`ABERTA` → `DIAGNOSTICADA` → `AGUARDANDO_APROVACAO`). A 010 fica por último porque o desconto é uma extensão da 009 (UC10 estende UC09) e traz a primeira leitura direta do app no banco (avisos por Realtime). A 007 também recebe a trava do cliente que a inativação já usa (feature 002). Fecha no marco M3, antes do Natal. |
+| **S9** Folga | nenhuma | Absorve atraso, a revisão geral e os PDFs. **A decisão 003 (ajuste do orçamento e serviço extra) precisa estar tomada até o fim dela**, porque define o fluxo da F6. |
+| **F6** Aprovação e execução (S10 e S11) | [[011 - Registrar aprovação do cliente]], [[012 - Executar serviço]], [[013 - Registrar peças usadas]] | Exige OS orçada, então só depois da F5. A 011 é o portão da execução (RN03: nada executa sem aprovação). A 012 vem depois dela. A 013 fica por último na fase: depende da 012 e do estoque da F4, e leva o teste de concorrência de duas baixas na mesma peça. |
+| **F7** Concluir, entregar e cancelar (S12 e S13) | [[014 - Concluir OS]], [[015 - Entregar e registrar pagamento]], [[017 - Cancelar OS]] | A 014 precede a 015 (só se entrega OS `CONCLUIDA`). A 015 grava o único dinheiro do sistema. A 017 vem por último porque o estorno de peças no cancelamento depende da 013 (decisão 008). Fecha no marco M4: o ciclo completo da OS pelo app. |
+| **F8** Consulta, histórico e faturamento (S14) | [[016 - Consultar OS]], [[019 - Ver faturamento]] | A consulta com todos os filtros e o histórico só fazem sentido com OS em todos os estados. O faturamento soma os pagamentos da 015, então depende dela e é a última leitura. |
+| **F9** Acabamento e entrega final (S15) | [[020 - Acabamento e entrega final]] | Precisa de tudo pronto: Android real, deploy da API e do web, APK assinado, documentos e a tag. Fica no fim porque é integração, mas os riscos de hospedagem (IPv6, plano gratuito) já foram vistos e a string do pooler IPv4 já está em uso. |
+
+### O peso das funcionalidades e a linha do tempo
+
+Peso de uma funcionalidade = critérios de aceitação + endpoints + telas + tabelas que ela toca. Serve para justificar o tempo de cada fase: fase pesada ganha mais semanas, fase leve é encaixada ao lado de outra. Total de 254; **73 concluídos (29%) em 2 de 15 semanas (13%)**.
+
+| Fase | Peso | Semanas | Leitura |
+|---|---|---|---|
+| F1 e F2 | 46 | S1 e S2 | Base de acesso e usuários: pesada por causa da segurança (JWT, perfis, Auth). Concluída. |
+| F3 | 27 | S3 (adiantada para a S2) | Dois cadastros simples, com unicidade garantida no banco. Concluída. |
+| F4 | 34 | S4 e S5 | Três funcionalidades médias, mas com o risco da baixa de estoque: duas semanas. |
+| F5 | 58 | S6 a S8 | A mais pesada: máquina de estados, orçamento e desconto. Três semanas, a maior fase. |
+| Folga | 0 | S9 | Natal e Ano-Novo, revisão e a decisão 003. |
+| F6 | 31 | S10 e S11 | Aprovação, execução e peças usadas (concorrência). |
+| F7 | 32 | S12 e S13 | Entrega, pagamento e cancelamento com estorno. |
+| F8 | 20 | S14 | Só leituras sobre dados que já existem: uma semana. |
+| F9 | 6 | S15 | Integração e publicação: pouco peso novo, mas é o prazo final. |
+
+O peso **não é esforço exato**, é uma régua para conferir que o calendário não está torto. Quando a régua e o calendário discordam (F3 pesada para uma semana, F8 leve para uma semana), prevalece o risco técnico: o que tem concorrência ou dinheiro ganha folga, o que só lê não.
+
+### O que mudou desde o plano original
+
+- **Design system antes da F4.** Em 2026-11-10 o app ganhou o design system da [[013 - Design system da interface]]. As 26 telas já estão desenhadas, então as telas das próximas features (T08 a T12 na F4) nascem direto no visual novo e não precisam de retrabalho.
+- **Não há projeto de teste**: os testes de integração rodam no projeto de desenvolvimento, que ainda não tem dado real.
+- **O banco usa o pooler IPv4.** A conexão direta (só IPv6) travava a API.
+- **A prova da 001 no app real achou um defeito** (token expirado deslogava o usuário). Por isso, a partir daqui, **cada feature só fecha depois de provada no app real, não só em teste com dublê**.
+
+### Pendências que travam a F4
+
+Quatro decisões do usuário sobre a S3 (regra R3): rota de edição de veículo no [[Mapa de telas]], transferir veículo com OS ativa, veículo para cliente inativo e reativar cliente e veículo. Sem elas a F4 pode começar (não depende delas), mas a F5 não: a 007 abre OS com cliente e veículo.

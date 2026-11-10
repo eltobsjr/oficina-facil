@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T07 Veículos do cliente</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T05-Clientes.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Veículos</h1><a href="T07b-FormVeiculo.dc.html" class="btn p sm">Novo veículo</a></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Cliente</span>
+      <span class="big" style="font-size:28px">Carlos Teste</span>
+      <span class="lead num">123.456.789-00 · (11) 90000-0001</span>
+      <div style="margin-top:10px"><a href="T06-FormCliente.dc.html" class="lk" style="color:var(--primary-on-dark);text-decoration:none;font:400 14px/1.43 var(--font-sans)">Editar cadastro</a></div>
+    </div>
+    <div class="pad">
+      <a href="T07b-FormVeiculo.dc.html" class="card item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V11l2-5h12l2 5v5M4 16h16M4 16v2h3v-2M17 16v2h3v-2"/></svg><div class="tx"><div class="t1" style="letter-spacing:.04em">ABC1D23</div><div class="t2">Gol 1.0 · 2016 · Prata · 84.200 km</div></div><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--ink-muted-80)"><path d="M9 5l7 7-7 7"/></svg></a>
+      <a href="T07b-FormVeiculo.dc.html" class="card item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16V11l2-5h12l2 5v5M4 16h16M4 16v2h3v-2M17 16v2h3v-2"/></svg><div class="tx"><div class="t1" style="letter-spacing:.04em">QWE4R56</div><div class="t2">Onix 1.4 · 2020 · Preto · 41.000 km</div></div><svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--ink-muted-80)"><path d="M9 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

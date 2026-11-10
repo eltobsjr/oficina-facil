@@ -1,0 +1,18 @@
+<section id="f002" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:64px 128px 140px;display:flex;flex-direction:column;gap:24px">
+<h2 style="font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1px">002 · Clientes</h2>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Sequência · Cap. 4.5</p>
+<img src="/_blob/ed5ff4cf5de417cac61082d3d6721865" alt="Diagrama de sequência do cadastro de cliente e da inativação" style="width:804px;height:480px;object-fit:contain">
+<p style="font-size:26px;line-height:1.35;color:#333333">Documento repetido devolve 409 com o cadastro existente. Inativar com OS ativa também devolve 409.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Classes · Cap. 4.3</p>
+<img src="/_blob/f09082da1e606bb2ee13f943d1a90480" alt="Diagrama de classes: Cliente, ServicoClientes e RepositorioClientes" style="width:804px;height:480px;object-fit:contain">
+<p style="font-size:26px;line-height:1.35;color:#333333">Unicidade e inativação ficam no repositório, garantidas pelo banco. O cliente possui veículos e contrata OS.</p>
+</div>
+</div>
+<p style="font-size:28px;font-weight:600;line-height:1.35;background:#272729;color:#ffffff;padding:20px 32px;border-radius:18px">A regra de negócio mora no backend, em transação (Cap. 7); o app só ajuda a pessoa. 5 de 5 critérios provados no banco real (Cap. 8).</p>
+<p style="position:absolute;left:128px;bottom:40px;width:1664px;font-size:24px;color:#333333">Fala: Roberto · Feature 002</p>
+<aside>ROBERTO (cerca de 1 minuto). Clientes. O diagrama de sequência mostra os dois caminhos que importam: cadastrar com um documento que já existe devolve 409 junto com o cadastro existente, e inativar um cliente com ordem de serviço ativa também devolve 409. À direita, o diagrama de classes: o cliente possui veículos e contrata ordens de serviço, e as regras de unicidade e de inativação ficam no repositório, garantidas pelo banco. A regra mora no backend, como diz o capítulo 7, e os cinco critérios foram provados no banco de verdade, que é o capítulo 8.</aside>
+</section>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T19 Aprovação do cliente</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T15-DetalheOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Resposta do cliente · OS 0040</h1></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Orçamento apresentado</span>
+      <span class="big">R$ 248,00</span>
+      <span class="k">Troca de óleo e filtro · Óleo 5W30 × 4</span>
+    </div>
+    <form class="pad" style="gap:14px">
+      <fieldset style="border:0;padding:0;margin:0;display:flex;flex-direction:column;gap:8px">
+        <legend class="sec" style="padding:0 0 8px;margin:0">O cliente</legend>
+        <label class="opt on"><input type="radio" name="res" checked>Aprovou o orçamento</label>
+        <label class="opt"><input type="radio" name="res">Recusou o orçamento</label>
+      </fieldset>
+      <div class="f"><span class="lb">Forma de contato</span><div class="chips"><label class="chip on"><input type="radio" name="canal" checked style="accent-color:#fff">Balcão</label><label class="chip"><input type="radio" name="canal">Telefone</label></div></div>
+      <div class="f"><label for="motivo">Motivo da recusa (obrigatório se recusar)</label><textarea id="motivo" rows="3"></textarea></div>
+      <div class="grow"></div>
+      <button type="submit" class="btn p w">Registrar resposta</button>
+    </form>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T23 Faturamento</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Gerente Exemplo · Gerente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T02-Inicio.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Faturamento</h1></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Total recebido · 01/11/2026 a 30/11/2026</span>
+      <span class="big">R$ 4.560,00</span>
+      <span class="k">Pela data de entrega</span>
+    </div>
+    <div class="pad" style="gap:14px">
+      <div class="chips"><span class="chip">Hoje</span><span class="chip">7 dias</span><span class="chip on">Este mês</span><span class="chip">Outro</span></div>
+      <div class="g2">
+        <div class="card"><div class="t3">OS entregues</div><div class="t1 num" style="font-size:28px">18</div></div>
+        <div class="card"><div class="t3">Ticket médio</div><div class="t1 num" style="font-size:28px">R$ 253,33</div></div>
+      </div>
+      <div class="card" style="display:flex;flex-direction:column;gap:12px">
+        <div class="sec" style="margin:0">Por forma de pagamento</div>
+        <div><div class="row t2"><span>Cartão</span><span class="num">R$ 2.160,00 · 47%</span></div><div style="height:8px;border-radius:4px;background:var(--divider-soft);margin-top:4px"><div style="width:47%;height:8px;border-radius:4px;background:var(--primary)"></div></div></div>
+        <div><div class="row t2"><span>Dinheiro</span><span class="num">R$ 1.200,00 · 26%</span></div><div style="height:8px;border-radius:4px;background:var(--divider-soft);margin-top:4px"><div style="width:26%;height:8px;border-radius:4px;background:var(--primary)"></div></div></div>
+        <div><div class="row t2"><span>Pix</span><span class="num">R$ 1.200,00 · 26%</span></div><div style="height:8px;border-radius:4px;background:var(--divider-soft);margin-top:4px"><div style="width:26%;height:8px;border-radius:4px;background:var(--primary)"></div></div></div>
+      </div>
+      <div class="sec">OS do período</div>
+      <a href="T15-DetalheOS.dc.html" class="card item" style="padding:12px 16px"><div class="tx"><div class="t1" style="font-size:14px">OS 0042 · Carlos Teste</div><div class="t3">Entregue em 08/11</div></div><span class="t1 num" style="font-size:14px">R$ 226,00</span></a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

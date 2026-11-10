@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T24 Notificações</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar raiz"><h1>Avisos</h1><span class="btn s sm">Marcar todos como lidos</span></div>
+  <div class="main">
+    <div class="pad">
+      <a href="T15-DetalheOS.dc.html" class="card item"><span class="dot" role="img" aria-label="Não lido"></span><div class="tx"><div class="t1">Veículo pronto para retirar</div><div class="t2">OS 0042 · ABC1D23 foi concluída.</div><div class="t3">há 5 min</div></div></a>
+      <a href="T18-Descontos.dc.html" class="card item"><span class="dot" role="img" aria-label="Não lido"></span><div class="tx"><div class="t1">Desconto autorizado</div><div class="t2">OS 0041: o gerente autorizou R$ 40,00.</div><div class="t3">há 1 h</div></div></a>
+      <a href="T12-EntradaEstoque.dc.html" class="card item apagado"><span style="width:10px;flex:none"></span><div class="tx"><div class="t1">Saldo insuficiente</div><div class="t2">Filtro de óleo (FO-0031) não tinha saldo na OS 0040.</div><div class="t3">ontem</div></div></a>
+      <a href="T18-Descontos.dc.html" class="card item apagado"><span style="width:10px;flex:none"></span><div class="tx"><div class="t1">Desconto pendente</div><div class="t2">Maria Exemplo pediu 15% de desconto na OS 0038.</div><div class="t3">segunda</div></div></a>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Menu">
+    <a href="T02-Inicio.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Início</a>
+    <a href="T14-ListaOS.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>OS</a>
+    <a href="T05-Clientes.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 5a3.5 3.5 0 010 7M18 14c2.2.6 3.5 2.6 3.5 6"/></svg>Clientes</a>
+    <a href="T24-Avisos.dc.html" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4"/></svg>Avisos</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

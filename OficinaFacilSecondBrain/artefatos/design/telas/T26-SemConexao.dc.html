@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T26 Sem conexão</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app" style="background:#ffffff">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span></span></div>
+  <div class="main" style="align-items:center;justify-content:center;gap:12px;padding:0 32px;text-align:center">
+    <svg class="i" viewBox="0 0 24 24" aria-hidden="true" style="width:48px;height:48px;color:var(--ink-muted-80);stroke-width:1.4"><path d="M2 9a15 15 0 0120 0M5 13a10 10 0 0114 0M8.5 16.5a5 5 0 017 0"/><circle cx="12" cy="20" r="1"/><path d="M3 3l18 18"/></svg>
+    <h1 style="margin:8px 0 0;font:600 34px/1.1 var(--font-sans);letter-spacing:-.374px">Sem conexão</h1>
+    <p style="margin:0" class="t2">Não foi possível falar com o servidor. Confira sua internet e tente de novo.</p>
+    <button type="button" class="btn p" style="margin-top:16px">Tentar de novo</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T07 Formulário de veículo</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T07-Veiculos.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Editar veículo</h1></div>
+  <form class="main pad" style="gap:12px;padding-top:20px">
+    <div class="f"><label for="placa">Placa</label><input id="placa" type="text" value="ABC1D23" style="letter-spacing:.06em"></div>
+    <div class="g2">
+      <div class="f"><label for="marca">Marca</label><input id="marca" type="text" value="Volkswagen"></div>
+      <div class="f"><label for="modelo">Modelo</label><input id="modelo" type="text" value="Gol 1.0"></div>
+      <div class="f"><label for="ano">Ano</label><input id="ano" type="text" inputmode="numeric" value="2016"></div>
+      <div class="f"><label for="cor">Cor</label><input id="cor" type="text" value="Prata"></div>
+    </div>
+    <div class="f"><label for="km">Quilometragem</label><div class="suf"><input id="km" type="text" inputmode="numeric" value="84200" class="num"><span>km</span></div></div>
+    <div class="card item" style="padding:12px 16px"><div class="tx"><div class="t3">Dono</div><div class="t1">Carlos Teste</div></div><a href="T07-Veiculos.dc.html" class="btn s sm">Transferir</a></div>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Salvar veículo</button>
+    <button type="button" class="btn d w">Inativar veículo</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

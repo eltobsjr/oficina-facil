@@ -1,0 +1,65 @@
+{
+  "v": 3,
+  "createdOnFiles": { "v": 1, "at": "2026-11-09T22:00:00Z" },
+  "title": "Telas OficinaFácil",
+  "launch": { "view": "canvas" },
+  "pages": [],
+  "boards": {
+    "Main.dc.html": { "x": 0, "y": 0, "w": 390, "h": 844, "title": "T01 Login" },
+    "T25-Carregando.dc.html": { "x": 470, "y": 0, "w": 390, "h": 844, "title": "T25 Carregando sessão" },
+    "T26-SemConexao.dc.html": { "x": 940, "y": 0, "w": 390, "h": 844, "title": "T26 Sem conexão" },
+    "T02-Inicio.dc.html": { "x": 1410, "y": 0, "w": 390, "h": 844, "title": "T02 Início (Atendente)" },
+
+    "T03-Usuarios.dc.html": { "x": 0, "y": 1200, "w": 390, "h": 844, "title": "T03 Lista de usuários" },
+    "T04-FormUsuario.dc.html": { "x": 470, "y": 1200, "w": 390, "h": 844, "title": "T04 Formulário de usuário" },
+    "T08-Servicos.dc.html": { "x": 940, "y": 1200, "w": 390, "h": 844, "title": "T08 Lista de serviços" },
+    "T09-FormServico.dc.html": { "x": 1410, "y": 1200, "w": 390, "h": 844, "title": "T09 Formulário de serviço" },
+
+    "T05-Clientes.dc.html": { "x": 0, "y": 2400, "w": 390, "h": 844, "title": "T05 Lista de clientes" },
+    "T06-FormCliente.dc.html": { "x": 470, "y": 2400, "w": 390, "h": 844, "title": "T06 Formulário de cliente" },
+    "T07-Veiculos.dc.html": { "x": 940, "y": 2400, "w": 390, "h": 844, "title": "T07 Veículos do cliente" },
+    "T07b-FormVeiculo.dc.html": { "x": 1410, "y": 2400, "w": 390, "h": 844, "title": "T07 Formulário de veículo" },
+
+    "T10-Pecas.dc.html": { "x": 0, "y": 3600, "w": 390, "h": 844, "title": "T10 Lista de peças" },
+    "T11-FormPeca.dc.html": { "x": 470, "y": 3600, "w": 390, "h": 844, "title": "T11 Formulário de peça" },
+    "T12-EntradaEstoque.dc.html": { "x": 940, "y": 3600, "w": 390, "h": 844, "title": "T12 Entrada no estoque" },
+    "T24-Avisos.dc.html": { "x": 1410, "y": 3600, "w": 390, "h": 844, "title": "T24 Notificações" },
+
+    "T13-AbrirOS.dc.html": { "x": 0, "y": 4800, "w": 390, "h": 844, "title": "T13 Abrir OS" },
+    "T14-ListaOS.dc.html": { "x": 470, "y": 4800, "w": 390, "h": 844, "title": "T14 Lista e busca de OS" },
+    "T15-DetalheOS.dc.html": { "x": 940, "y": 4800, "w": 390, "h": 1100, "title": "T15 Detalhe da OS" },
+    "T22-CancelarOS.dc.html": { "x": 1410, "y": 4800, "w": 390, "h": 844, "title": "T22 Cancelar OS" },
+
+    "T16-Diagnostico.dc.html": { "x": 0, "y": 6200, "w": 390, "h": 844, "title": "T16 Diagnóstico" },
+    "T17-Orcamento.dc.html": { "x": 470, "y": 6200, "w": 390, "h": 1000, "title": "T17 Orçamento" },
+    "T18-Descontos.dc.html": { "x": 940, "y": 6200, "w": 390, "h": 844, "title": "T18 Solicitações de desconto" },
+    "T19-Aprovacao.dc.html": { "x": 1410, "y": 6200, "w": 390, "h": 844, "title": "T19 Aprovação do cliente" },
+
+    "T20-Execucao.dc.html": { "x": 0, "y": 7600, "w": 390, "h": 844, "title": "T20 Execução e peças usadas" },
+    "T21-Entrega.dc.html": { "x": 470, "y": 7600, "w": 390, "h": 844, "title": "T21 Pagamento e entrega" },
+    "T23-Faturamento.dc.html": { "x": 940, "y": 7600, "w": 390, "h": 844, "title": "T23 Faturamento" }
+  },
+  "order": [
+    "Main.dc.html", "T25-Carregando.dc.html", "T26-SemConexao.dc.html", "T02-Inicio.dc.html",
+    "T03-Usuarios.dc.html", "T04-FormUsuario.dc.html", "T08-Servicos.dc.html", "T09-FormServico.dc.html",
+    "T05-Clientes.dc.html", "T06-FormCliente.dc.html", "T07-Veiculos.dc.html", "T07b-FormVeiculo.dc.html",
+    "T10-Pecas.dc.html", "T11-FormPeca.dc.html", "T12-EntradaEstoque.dc.html", "T24-Avisos.dc.html",
+    "T13-AbrirOS.dc.html", "T14-ListaOS.dc.html", "T15-DetalheOS.dc.html", "T22-CancelarOS.dc.html",
+    "T16-Diagnostico.dc.html", "T17-Orcamento.dc.html", "T18-Descontos.dc.html", "T19-Aprovacao.dc.html",
+    "T20-Execucao.dc.html", "T21-Entrega.dc.html", "T23-Faturamento.dc.html"
+  ],
+  "notes": {
+    "t0": { "x": 0, "y": -300, "text": "Acesso e sessão", "kind": "title1", "maxW": 1800 },
+    "t1": { "x": 0, "y": 900, "text": "Usuários e serviços (Gerente)", "kind": "title1", "maxW": 1800 },
+    "t2": { "x": 0, "y": 2100, "text": "Clientes e veículos (Atendente)", "kind": "title1", "maxW": 1800 },
+    "t3": { "x": 0, "y": 3300, "text": "Peças, estoque e avisos", "kind": "title1", "maxW": 1800 },
+    "t4": { "x": 0, "y": 4500, "text": "Abrir e consultar OS", "kind": "title1", "maxW": 1800 },
+    "t5": { "x": 0, "y": 5900, "text": "Diagnóstico, orçamento e aprovação", "kind": "title1", "maxW": 1800 },
+    "t6": { "x": 0, "y": 7300, "text": "Execução, entrega e faturamento", "kind": "title1", "maxW": 1800 },
+    "n0": { "x": 1880, "y": 0, "w": 380, "fill": "blue", "text": "Telas T01 a T26 do Mapa de telas, uma por rota, no design system OficinaFácil (azul de ação, tiles claros e escuros, botões em pílula). O logo mantém a cor da marca #1F4E79. Textos e regras vêm das features e dos casos de uso. O que é ⚠️ no vault continua a confirmar." },
+    "n1": { "x": 1880, "y": 1200, "w": 380, "fill": "orange", "text": "O menu inferior é proposta de desenho: o vault define quais telas cada perfil acessa (RN09), não a barra. Hoje o app só tem Início, Clientes e Usuários." }
+  },
+  "designSystems": [
+    { "title": "OficinaFácil", "namespace": "oficinafacil", "artifact": "https://claude.ai/artifact/5eHASyyNSZeUqBQpSApv5X", "version": "1794270908-8279", "copiedAt": "2026-11-09T22:40:00Z" }
+  ]
+}

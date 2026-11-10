@@ -1,0 +1,28 @@
+{
+  "v": 4,
+  "createdOnFiles": { "v": 1, "at": "2026-11-10T13:20:00Z" },
+  "lists": "css",
+  "title": "OficinaFácil: semana 1 e semana 2",
+  "order": ["cover", "tempo", "semana-passada", "es-feito", "es-numeros", "es-design", "roadmap", "fim"],
+  "sections": {
+    "s1": { "description": "Abertura e linha do tempo: onde estamos no plano de 15 semanas.", "start": "cover" },
+    "s2": { "description": "Semana passada: a base técnica e o primeiro caso de uso.", "start": "semana-passada" },
+    "s3": { "description": "Esta semana: duas fases fechadas, a prova no app real, design e qualidade.", "start": "es-feito" },
+    "s4": { "description": "O que vem: por que as próximas fases estão nessa ordem e o que depende de nós.", "start": "roadmap" }
+  },
+  "faces": {
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    }
+  },
+  "designSystems": [
+    {
+      "title": "OficinaFácil",
+      "namespace": "oficinafacil",
+      "artifact": "https://claude.ai/artifact/5eHASyyNSZeUqBQpSApv5X",
+      "version": "1794270909-66fc",
+      "copiedAt": "2026-11-10T13:20:00Z"
+    }
+  ]
+}

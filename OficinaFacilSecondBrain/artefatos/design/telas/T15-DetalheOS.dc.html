@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T15 Detalhe da OS</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}.app{height:1100px}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T14-ListaOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>OS 0042</h1><span class="chip st ap">Concluída</span></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Total a receber</span>
+      <span class="big">R$ 226,00</span>
+      <span class="lead">Carlos Teste · <span style="letter-spacing:.04em">ABC1D23</span></span>
+      <div style="margin-top:12px"><a href="T21-Entrega.dc.html" class="btn p sm">Entregar e receber</a></div>
+    </div>
+    <div class="pad" style="gap:16px">
+      <div class="card" style="display:flex;flex-direction:column;gap:4px">
+        <div class="t1">Carlos Teste</div>
+        <div class="t2 num">123.456.789-00 · (11) 90000-0001</div>
+        <div class="t2">Gol 1.0 2016 · 84.200 km</div>
+      </div>
+      <div><div class="sec">Queixa do cliente</div><div>Barulho ao frear e pedal baixo.</div></div>
+      <div><div class="sec">Diagnóstico · João Teste</div><div>Pastilhas dianteiras no limite e disco com desgaste leve. Trocar pastilhas e sangrar o fluido.</div></div>
+      <div class="card" style="display:flex;flex-direction:column;gap:8px">
+        <div class="sec" style="margin:0">Orçamento</div>
+        <div class="row"><span>Revisão de freios</span><span class="num">R$ 150,00</span></div>
+        <div class="row"><span>Pastilha de freio dianteira × 1</span><span class="num">R$ 96,00</span></div>
+        <div class="row t2"><span>Subtotal</span><span class="num">R$ 246,00</span></div>
+        <div class="row t2"><span>Desconto</span><span class="num">− R$ 20,00</span></div>
+        <div class="row sum t1" style="font-size:21px"><span>Total</span><span class="num">R$ 226,00</span></div>
+      </div>
+      <div><div class="sec">Peças usadas</div><div class="row"><span>Pastilha de freio dianteira</span><span class="num">1 un</span></div></div>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <div class="sec" style="margin:0">Histórico</div>
+        <div class="row" style="justify-content:flex-start;gap:12px;align-items:flex-start"><span class="dot" style="margin-top:7px"></span><div><div class="t1" style="font-size:14px">Concluída</div><div class="t3">05/11 às 17:48 · João Teste</div></div></div>
+        <div class="row" style="justify-content:flex-start;gap:12px;align-items:flex-start"><span class="dot" style="margin-top:7px"></span><div><div class="t1" style="font-size:14px">Em execução</div><div class="t3">04/11 às 14:02 · João Teste</div></div></div>
+        <div class="row" style="justify-content:flex-start;gap:12px;align-items:flex-start"><span class="dot" style="margin-top:7px"></span><div><div class="t1" style="font-size:14px">Aprovada</div><div class="t3">04/11 às 10:15 · Maria Exemplo</div></div></div>
+        <div class="row" style="justify-content:flex-start;gap:12px;align-items:flex-start"><span class="dot" style="margin-top:7px"></span><div><div class="t1" style="font-size:14px">Aberta</div><div class="t3">03/11 às 09:12 · Maria Exemplo</div></div></div>
+      </div>
+      <div class="grow"></div>
+      <a href="T22-CancelarOS.dc.html" class="btn d w">Cancelar OS</a>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1100}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

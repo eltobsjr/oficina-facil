@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T11 Formulário de peça</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Ana Almoxarife · Almoxarife &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T10-Pecas.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Editar peça</h1></div>
+  <form class="main pad" style="gap:12px;padding-top:20px">
+    <div class="f"><label for="cod">Código</label><input id="cod" type="text" value="PF-0012"></div>
+    <div class="f"><label for="desc">Descrição</label><input id="desc" type="text" value="Pastilha de freio dianteira"></div>
+    <div class="g2">
+      <div class="f"><label for="preco">Preço de venda</label><div class="pre"><span>R$</span><input id="preco" type="text" inputmode="numeric" value="96,00" class="num"></div></div>
+      <div class="f"><label for="min">Estoque mínimo</label><input id="min" type="text" inputmode="numeric" value="4"></div>
+    </div>
+    <div class="tile" style="border-radius:var(--radius-lg);flex-direction:row;align-items:center;justify-content:space-between;padding:16px 20px">
+      <div><span class="k">Saldo atual</span><div class="big" style="font-size:28px">2 un</div></div>
+      <a href="T12-EntradaEstoque.dc.html" class="btn p sm">Dar entrada</a>
+    </div>
+    <p class="t2" style="margin:0">O saldo só muda por entrada de estoque ou por peça usada em uma OS. Não dá para editar aqui.</p>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Salvar peça</button>
+    <button type="button" class="btn d w">Inativar peça</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

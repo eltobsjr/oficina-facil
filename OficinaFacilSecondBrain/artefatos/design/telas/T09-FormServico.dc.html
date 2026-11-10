@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T09 Formulário de serviço</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Gerente Exemplo · Gerente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T08-Servicos.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Editar serviço</h1></div>
+  <form class="main pad" style="gap:14px;padding-top:20px">
+    <div class="f"><label for="desc">Descrição</label><input id="desc" type="text" value="Revisão de freios"></div>
+    <div class="f"><label for="valor">Valor da mão de obra</label><div class="pre"><span>R$</span><input id="valor" type="text" inputmode="numeric" value="150,00" class="num"></div><span class="hint">Alterar o valor vale só para orçamentos novos.</span></div>
+    <div class="f"><label for="tempo">Tempo estimado (minutos)</label><input id="tempo" type="text" inputmode="numeric" value="90"></div>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Salvar</button>
+    <button type="button" class="btn d w">Inativar serviço</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

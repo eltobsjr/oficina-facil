@@ -1,0 +1,18 @@
+<section id="f001" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:64px 128px 140px;display:flex;flex-direction:column;gap:24px">
+<h2 style="font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1px">001 · Login e perfil</h2>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Sequência · Cap. 4.5</p>
+<img src="/_blob/ec85d123d486f9295f85e308da47438a" alt="Diagrama de sequência do login: app, API, Supabase Auth e banco" style="width:804px;height:480px;object-fit:contain">
+<p style="font-size:26px;line-height:1.35;color:#333333">A ordem no tempo: entrar, validar o token e buscar o perfil. Perfil inativo ou ausente recebe 403.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Atividades · Cap. 4.6</p>
+<img src="/_blob/4a4395b36af2fb034f22a9606597b9f5" alt="Diagrama de atividades da sessão: renova o token vencido antes de pedir o perfil" style="width:804px;height:480px;object-fit:contain">
+<p style="font-size:26px;line-height:1.35;color:#333333">O mesmo fluxo como decisões. Renovar o token vencido antes da primeira chamada à API.</p>
+</div>
+</div>
+<p style="font-size:28px;font-weight:600;line-height:1.35;background:#272729;color:#ffffff;padding:20px 32px;border-radius:18px">Os critérios de aceitação são os requisitos testáveis (Cap. 3): 6 de 6 provados no app real. Provado de ponta a ponta, não só com dublês (Cap. 8).</p>
+<p style="position:absolute;left:128px;bottom:40px;width:1664px;font-size:24px;color:#333333">Fala: Roberto · Feature 001</p>
+<aside>ROBERTO (cerca de 1 minuto e 30). Login e perfil. À esquerda o diagrama de sequência, do capítulo 4.5: ele mostra a ordem no tempo entre o app, a API, o Supabase e o banco. O app entra, recebe o token, chama a API, a API valida a assinatura e busca o perfil. Se o perfil não existe ou está inativo, volta 403 e a sessão é desfeita. À direita o diagrama de atividades, do capítulo 4.6, que mostra as mesmas decisões como fluxo: ele deixa claro que o token vencido é renovado antes da primeira chamada. Os critérios de aceitação são os requisitos do capítulo 3, e a prova no app real, do capítulo 8, confirma o fluxo de ponta a ponta.</aside>
+</section>

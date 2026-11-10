@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T02 Início</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar raiz"><h1>Início</h1><a href="T13-AbrirOS.dc.html" class="btn p sm">Abrir OS</a></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Pronto para retirar</span>
+      <span class="big">OS 0042</span>
+      <span class="lead">Carlos Teste · ABC1D23</span>
+      <div style="margin-top:12px"><a href="T15-DetalheOS.dc.html" class="btn p sm">Entregar e receber</a></div>
+    </div>
+    <div class="pad">
+      <div class="sec">Atalhos</div>
+      <div class="g2">
+        <a href="T14-ListaOS.dc.html" class="card item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg><span class="t1">Ordens de serviço</span></a>
+        <a href="T05-Clientes.dc.html" class="card item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 5a3.5 3.5 0 010 7M18 14c2.2.6 3.5 2.6 3.5 6"/></svg><span class="t1">Clientes</span></a>
+        <a href="T24-Avisos.dc.html" class="card item"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4"/></svg><span class="t1">Avisos</span><span class="chip st ex">2</span></a>
+      </div>
+      <div class="sec">Em andamento</div>
+      <a href="T15-DetalheOS.dc.html" class="card item">
+        <div class="tx"><div class="t1">OS 0041 · QWE4R56</div><div class="t2">Carolina Fictícia · Onix 2020</div></div>
+        <span class="chip st ex">Em execução</span>
+      </a>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Menu">
+    <a href="T02-Inicio.dc.html" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Início</a>
+    <a href="T14-ListaOS.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>OS</a>
+    <a href="T05-Clientes.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6M16 5a3.5 3.5 0 010 7M18 14c2.2.6 3.5 2.6 3.5 6"/></svg>Clientes</a>
+    <a href="T24-Avisos.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4"/></svg>Avisos</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

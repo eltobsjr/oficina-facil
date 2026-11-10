@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T21 Pagamento e entrega</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T15-DetalheOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Pagamento e entrega</h1></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">OS 0042 · Carlos Teste · ABC1D23</span>
+      <span class="lead">Total a receber</span>
+      <span class="big">R$ 226,00</span>
+    </div>
+    <form class="pad" style="gap:12px">
+      <div class="sec">Pagamentos recebidos</div>
+      <div style="display:flex;gap:8px;align-items:flex-end">
+        <div class="f" style="flex:1.2"><label for="f1">Forma</label><select id="f1"><option>Dinheiro</option><option>Cartão</option><option>Pix</option></select></div>
+        <div class="f" style="flex:1"><label for="v1">Valor</label><input id="v1" type="text" inputmode="numeric" value="100,00" class="num"></div>
+        <button type="button" class="ic" aria-label="Remover pagamento em dinheiro"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div style="display:flex;gap:8px;align-items:flex-end">
+        <div class="f" style="flex:1.2"><label for="f2">Forma</label><select id="f2"><option>Pix</option><option>Cartão</option><option>Dinheiro</option></select></div>
+        <div class="f" style="flex:1"><label for="v2">Valor</label><input id="v2" type="text" inputmode="numeric" value="100,00" class="num"></div>
+        <button type="button" class="ic" aria-label="Remover pagamento em Pix"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <button type="button" class="btn s sm" style="align-self:flex-start">Adicionar forma de pagamento</button>
+      <div class="note d" role="status"><span style="flex:1">Faltam para fechar o total</span><b class="num">R$ 26,00</b></div>
+      <p class="t3" style="margin:0">A soma dos pagamentos precisa ser igual ao total. O sistema não registra troco.</p>
+      <div class="grow"></div>
+      <button type="submit" class="btn x w" disabled>Entregar veículo</button>
+    </form>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

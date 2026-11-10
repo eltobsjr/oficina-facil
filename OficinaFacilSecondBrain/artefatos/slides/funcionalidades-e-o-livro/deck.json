@@ -1,0 +1,47 @@
+{
+  "v": 4,
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-11-10T15:00:00Z"
+  },
+  "lists": "css",
+  "title": "OficinaFácil: funcionalidades e o livro",
+  "order": [
+    "cover",
+    "mapa",
+    "f000",
+    "f001",
+    "f006",
+    "f002",
+    "f003"
+  ],
+  "sections": {
+    "s1": {
+      "description": "Abertura e mapa do livro para o projeto.",
+      "start": "cover"
+    },
+    "s2": {
+      "description": "Fundação, login e usuários com os diagramas e os capítulos.",
+      "start": "f000"
+    },
+    "s3": {
+      "description": "Clientes e veículos com os diagramas e os capítulos.",
+      "start": "f002"
+    }
+  },
+  "faces": {
+    "inter": {
+      "family": "Inter",
+      "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+    }
+  },
+  "designSystems": [
+    {
+      "title": "OficinaFácil",
+      "namespace": "oficinafacil",
+      "artifact": "https://claude.ai/artifact/5eHASyyNSZeUqBQpSApv5X",
+      "version": "1794270909-66fc",
+      "copiedAt": "2026-11-10T15:00:00Z"
+    }
+  ]
+}

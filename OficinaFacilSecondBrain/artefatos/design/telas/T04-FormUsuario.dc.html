@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T04 Formulário de usuário</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Gerente Exemplo · Gerente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T03-Usuarios.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Novo usuário</h1></div>
+  <form class="main pad" style="gap:14px;padding-top:20px">
+    <div class="f"><label for="nome">Nome</label><input id="nome" type="text" value="Carla Nova"></div>
+    <div class="f err"><label for="email">E-mail</label><input id="email" type="email" value="maria@example.com" aria-describedby="e1"><span id="e1" class="msg">Este e-mail já está cadastrado.</span></div>
+    <div class="f"><label for="perfil">Perfil</label><select id="perfil"><option>Atendente</option><option>Mecânico</option><option>Almoxarife</option><option>Gerente</option></select></div>
+    <div class="f"><label for="senha">Senha inicial</label><input id="senha" type="password" value="••••••••"><span class="hint">Mínimo de 8 caracteres.</span></div>
+    <div class="grow"></div>
+    <button type="submit" class="btn p w">Criar usuário</button>
+  </form>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

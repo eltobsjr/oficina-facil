@@ -10,6 +10,8 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 
 Detalhes em [[2026-11-09 - Diagramas, S3 e design system]]. **F1, F2 e F3 concluídas.** 001 provada no app real (inclui a correção da renovação do token); S3 provada com o banco real; design system aplicado ([[013 - Design system da interface]]); refatoração de backend e app feita. Banco: `DATABASE_URL` usa o pooler IPv4.
 
+Artefatos (design das telas, design system, slides) arquivados em `artefatos/`, índice em [[00 - Índice de artefatos]]; slides em [[Linha do tempo de slides]]. Ao fechar cada feature, acrescentar o slide dela ao deck de funcionalidades.
+
 Próximos passos, na ordem:
 1. **Usuário:** decidir os pontos de especificação deixados pela S3 (R3): rota de edição de veículo no Mapa de telas, transferir veículo com OS ativa, cadastrar ou transferir veículo para cliente inativo, reativar cliente e veículo. Antes de codar a F4.
 2. **Usuário:** rotacionar a senha do banco e a chave anon coladas no chat em 30/10.

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T10 Lista de peças</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Ana Almoxarife · Almoxarife &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar raiz"><h1>Peças</h1><a href="T11-FormPeca.dc.html" class="btn p sm">Nova peça</a></div>
+  <div class="main">
+    <div class="pad">
+      <div class="busca"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l5 5"/></svg><span>Buscar por código ou descrição</span></div>
+      <div class="chips"><span class="chip">Todas</span><span class="chip on">Estoque baixo · 2</span></div>
+      <a href="T11-FormPeca.dc.html" class="card item"><div class="tx"><div class="t1">Pastilha de freio dianteira</div><div class="t2">PF-0012 · mínimo 4</div></div><div style="text-align:right"><div class="t1 num">2 un</div><span class="chip st ca" style="margin-top:4px">Estoque baixo</span></div></a>
+      <a href="T11-FormPeca.dc.html" class="card item"><div class="tx"><div class="t1">Filtro de óleo</div><div class="t2">FO-0031 · mínimo 10</div></div><div style="text-align:right"><div class="t1 num">0 un</div><span class="chip st ca" style="margin-top:4px">Estoque baixo</span></div></a>
+      <a href="T11-FormPeca.dc.html" class="card item"><div class="tx"><div class="t1">Óleo 5W30 (litro)</div><div class="t2">OL-0005 · mínimo 20</div></div><div style="text-align:right"><div class="t1 num">36 un</div><div class="t2 num">R$ 42,00</div></div></a>
+      <a href="T11-FormPeca.dc.html" class="card item"><div class="tx"><div class="t1">Vela de ignição</div><div class="t2">VI-0019 · mínimo 8</div></div><div style="text-align:right"><div class="t1 num">24 un</div><div class="t2 num">R$ 28,00</div></div></a>
+    </div>
+  </div>
+  <nav class="tabs" aria-label="Menu">
+    <a href="T02-Inicio.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>Início</a>
+    <a href="T10-Pecas.dc.html" class="on"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8l8-4 8 4v8l-8 4-8-4zM4 8l8 4 8-4M12 12v8"/></svg>Peças</a>
+    <a href="T24-Avisos.dc.html"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4zM10 21h4"/></svg>Avisos</a>
+  </nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

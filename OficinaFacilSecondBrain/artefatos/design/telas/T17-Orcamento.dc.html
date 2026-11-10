@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>T17 Orçamento</title>
+<script src="./support.js"></script>
+<link rel="stylesheet" href="oficina.css">
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+<style>body{margin:0}.app{height:1000px}</style>
+</helmet>
+<div class="app">
+  <div class="gbar"><span class="nome">OficinaFácil</span><span>Maria Exemplo · Atendente &nbsp; <a href="Main.dc.html">Sair</a></span></div>
+  <div class="sbar"><a href="T15-DetalheOS.dc.html" class="back" aria-label="Voltar"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a><h1>Orçamento · OS 0042</h1></div>
+  <div class="main">
+    <div class="tile">
+      <span class="k">Total do orçamento</span>
+      <span class="big">R$ 206,00</span>
+      <span class="k num">Subtotal R$ 246,00 · desconto R$ 40,00 (16,3%)</span>
+    </div>
+    <form class="pad" style="gap:12px">
+      <div class="sec">Serviços</div>
+      <div class="card item" style="padding:10px 16px"><div class="tx"><div class="t1">Revisão de freios</div><div class="t3 num">1 × R$ 150,00</div></div><span class="t1 num">R$ 150,00</span><button type="button" class="ic" aria-label="Remover Revisão de freios"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <button type="button" class="btn s sm" style="align-self:flex-start">Adicionar serviço</button>
+      <div class="sec">Peças</div>
+      <div class="card item" style="padding:10px 16px"><div class="tx"><div class="t1">Pastilha de freio dianteira</div><div class="t3 num">1 × R$ 96,00</div></div><span class="t1 num">R$ 96,00</span><button type="button" class="ic" aria-label="Remover Pastilha de freio dianteira"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+      <div class="note"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l10 18H2zM12 10v5"/></svg><span>Saldo atual da pastilha: 2 un. Dá para orçar, mas confira o estoque.</span></div>
+      <button type="button" class="btn s sm" style="align-self:flex-start">Adicionar peça</button>
+      <div class="f"><label for="desc">Desconto no orçamento</label><div class="pre"><span>R$</span><input id="desc" type="text" inputmode="numeric" value="40,00" class="num"></div></div>
+      <div class="note d" role="alert">Descontos acima de 10% precisam da autorização do gerente.</div>
+      <div class="note"><span class="dot" style="margin-top:6px"></span><span><b>Autorização pendente.</b> Pedida às 10:32. Um aviso chega quando o gerente decidir.</span></div>
+      <div class="grow"></div>
+      <button type="button" class="btn s w">Pedir autorização ao gerente</button>
+      <button type="submit" class="btn x w" disabled>Confirmar orçamento</button>
+    </form>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":1000}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

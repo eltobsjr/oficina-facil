@@ -1,0 +1,31 @@
+<!-- @dsCard height=300 -->
+<style>
+  body{margin:0;background:var(--canvas)}
+  .w{position:relative;width:960px;height:300px;font-family:var(--font-sans)}
+  svg{position:absolute;inset:0}
+  .dark{fill:var(--surface-tile-1)} .brand{fill:var(--primary)} .parch{fill:var(--canvas-parchment)} .hair{fill:var(--hairline)} .ondark{fill:var(--primary-on-dark)} .ink{fill:var(--ink)}
+  h1{position:absolute;left:48px;top:128px;margin:0;font:600 64px/.95 var(--font-sans);letter-spacing:-.28px;color:var(--ink)}
+  p{position:absolute;left:48px;top:206px;margin:0;font:400 14px/1.43 var(--font-sans);letter-spacing:-.224px;color:var(--ink-muted-80);width:440px}
+</style>
+<div class="w">
+<!--
+Blocos: surface-tile-1 (480x104), primary (240x104), canvas-parchment (160x104), hairline (80x104), em faixa no topo; raio radius-lg 18.
+Arranjo: faixa de larguras desiguais sangrando nas bordas, porque a marca se compõe em tiles lado a lado.
+Padrão: pílulas (radius-pill) em primary-on-dark e canvas sobre os blocos, porque a pílula é o sinal de ação da marca.
+Passos e raios: espaço 8/16/24, raios 18 e pílula.
+-->
+<svg width="960" height="300" viewBox="0 0 960 300" aria-hidden="true">
+  <rect class="dark" x="0" y="0" width="480" height="104" rx="18"/>
+  <rect class="brand" x="480" y="0" width="240" height="104" rx="18"/>
+  <rect class="parch" x="720" y="0" width="160" height="104" rx="18"/>
+  <rect class="hair" x="880" y="0" width="80" height="104" rx="18"/>
+  <rect class="ondark" x="48" y="36" width="120" height="32" rx="16"/>
+  <rect class="parch" x="184" y="36" width="72" height="32" rx="16"/>
+  <rect class="brand" x="272" y="36" width="168" height="32" rx="16"/>
+  <rect class="parch" x="512" y="36" width="88" height="32" rx="16"/>
+  <rect class="ink" x="616" y="36" width="72" height="32" rx="16"/>
+  <rect class="brand" x="744" y="36" width="112" height="32" rx="16"/>
+</svg>
+<h1>OficinaFácil</h1>
+<p>Interface quieta, ação em azul.</p>
+</div>
