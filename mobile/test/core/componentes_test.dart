@@ -313,7 +313,7 @@ void main() {
   });
 
   group('BarraGlobal', () {
-    testWidgets('é preta, de 44 px, com o nome do app', (tester) async {
+    testWidgets('é preta, de 52 px, com o nome do app', (tester) async {
       await _montar(
         tester,
         const BarraGlobal(conta: Text('Maria · Atendente')),
@@ -321,7 +321,7 @@ void main() {
 
       expect(find.text('OficinaFácil'), findsOneWidget);
       expect(find.text('Maria · Atendente'), findsOneWidget);
-      expect(tester.getSize(find.byType(BarraGlobal)).height, 44);
+      expect(tester.getSize(find.byType(BarraGlobal)).height, 52);
       final fundo = tester.widget<ColoredBox>(
         find
             .descendant(

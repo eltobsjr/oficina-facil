@@ -78,7 +78,7 @@ class AppShell extends ConsumerWidget {
   }
 }
 
-/// Nome e perfil de quem está logado, com o menu que leva a "Sair".
+/// Conta de quem está logado: iniciais e nome numa pílula translúcida, com o menu que leva a "Sair".
 class _MenuDaConta extends StatelessWidget {
   const _MenuDaConta({required this.descricao, required this.aoSair});
 
@@ -89,7 +89,7 @@ class _MenuDaConta extends StatelessWidget {
   Widget build(BuildContext context) {
     final estilo = Theme.of(
       context,
-    ).textTheme.labelSmall!.copyWith(color: AppTheme.branco);
+    ).textTheme.labelMedium!.copyWith(color: AppTheme.branco);
     return PopupMenuButton<String>(
       tooltip: 'Conta',
       onSelected: (_) => aoSair(),
@@ -98,20 +98,35 @@ class _MenuDaConta extends StatelessWidget {
       ],
       child: ConstrainedBox(
         constraints: const BoxConstraints(minHeight: 44, minWidth: 44),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Flexible(
-              child: Text(
-                descricao,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: estilo,
+        child: Center(
+          child: DecoratedBox(
+            decoration: BoxDecoration(
+              color: AppTheme.branco.withValues(alpha: 0.14),
+              borderRadius: BorderRadius.circular(999),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(14, 7, 8, 7),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Flexible(
+                    child: Text(
+                      descricao,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: estilo,
+                    ),
+                  ),
+                  const SizedBox(width: 4),
+                  const Icon(
+                    Icons.expand_more,
+                    size: 18,
+                    color: AppTheme.branco,
+                  ),
+                ],
               ),
             ),
-            const Icon(Icons.expand_more, size: 18, color: AppTheme.branco),
-          ],
+          ),
         ),
       ),
     );
