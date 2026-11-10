@@ -22,11 +22,11 @@ Objetivo: o que foi feito na semana passada e nesta, a linha do tempo de 15 sema
 | `cover` | Abertura | Elto |
 | `tempo` | Linha do tempo e onde estamos, com o peso de cada fase | Elto |
 | `semana-passada` | Base técnica e login (F0 e F1) | Evillyn |
-| `es-feito` | Fase 3 e a prova da fase 2 no app real, com o defeito do token vencido | Roberto |
-| `es-numeros` | Antes e depois em números, Kanban atualizado | Roberto |
-| `es-design` | Design system e refatoração | Pedro |
-| `roadmap` | Por que as próximas fases vêm nesta ordem | Elto |
-| `fim` | O que depende de nós e perguntas | Elto |
+| `es-feito` | Fase 3 e a prova da fase 2 no app real | Roberto |
+| `es-numeros` | Antes e depois em números, Kanban atualizado | Evillyn |
+| `es-design` | Design system e código testado | Pedro |
+| `roadmap` | Por que as próximas fases vêm nesta ordem | Roberto |
+| `fim` | Próximos passos e perguntas | Pedro |
 
 ## 2. Funcionalidades e o livro (7 slides)
 
@@ -38,8 +38,8 @@ Objetivo: para cada funcionalidade pronta, os diagramas lado a lado e o capítul
 | `mapa` | Do livro ao projeto | 3, 4.3 a 4.6, 5, 7, 8, 9 | Elto |
 | `f000` | Fundação: pacotes e arquitetura em camadas | 4.4, 7, 5, 10 | Evillyn |
 | `f001` | Login e perfil: sequência e atividades | 4.5, 4.6, 3, 8 | Roberto |
-| `f006` | Gestão de usuários: sequência e classes | 4.5, 4.3, 5, 7 | Evillyn |
-| `f002` | Clientes: sequência e classes | 4.5, 4.3, 7, 8 | Roberto |
-| `f003` | Veículos: sequência e classes | 4.5, 4.3 | Pedro |
+| `f006` | Gestão de usuários: sequência e classes | 4.5, 4.3, 5, 7 | Pedro |
+| `f002` | Clientes: sequência e classes | 4.5, 4.3, 7, 8 | Evillyn |
+| `f003` | Veículos: sequência e classes | 4.5, 4.3 | Roberto |
 
 Seções do livro só são citadas onde o capítulo foi lido por inteiro; nos demais casos vale o capítulo. A tabela cobre as funcionalidades concluídas até a F3; as próximas entram aqui quando fecharem ([[CHECKLIST]]).
