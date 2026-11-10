@@ -8,12 +8,14 @@
 import cors from 'cors';
 import express, { type Express } from 'express';
 import helmet from 'helmet';
-import { pinoHttp } from 'pino-http';
 import swaggerUi from 'swagger-ui-express';
 import { type Env, env, origensCors } from './config/env.js';
+import { clientesRouter } from './modules/clientes/index.js';
 import { usuariosRouter } from './modules/usuarios/index.js';
+import { veiculosRouter } from './modules/veiculos/index.js';
 import { pingBanco } from './shared/db/prisma.js';
 import { rotaNaoEncontrada, tratadorDeErros } from './shared/http/erros.js';
+import { logHttp } from './shared/http/log.js';
 import { limitadorEscrita, limitadorGeral } from './shared/http/rate-limit.js';
 import { logger } from './shared/logger.js';
 import { gerarDocumentoOpenApi } from './shared/openapi/registry.js';
@@ -46,22 +48,7 @@ export function criarApp(e: Env = env()): Express {
   app.use(limitadorEscrita());
 
   app.use(express.json({ limit: '1mb' }));
-  app.use(
-    pinoHttp({
-      logger,
-      autoLogging: { ignore: (req) => req.url === '/health' },
-      customLogLevel: (_req, res, err) =>
-        err || res.statusCode >= 500 ? 'error' : res.statusCode >= 400 ? 'warn' : 'info',
-      // Uma linha por requisição: método, rota, status e tempo. Cabeçalhos e corpo ficam fora do log.
-      serializers: {
-        req: (req: { method?: string; url?: string }) => ({ method: req.method, url: req.url }),
-        res: (res: { statusCode?: number }) => ({ statusCode: res.statusCode }),
-      },
-      customSuccessMessage: (req, res, tempoMs) =>
-        `${req.method} ${req.url} → ${res.statusCode} (${Math.round(tempoMs)} ms)`,
-      customErrorMessage: (req, res) => `${req.method} ${req.url} → ${res.statusCode}`,
-    }),
-  );
+  app.use(logHttp(logger));
 
   app.get('/health', async (_req, res) => {
     const banco = await pingBanco();
@@ -73,6 +60,8 @@ export function criarApp(e: Env = env()): Express {
   });
 
   app.use(BASE, usuariosRouter);
+  app.use(BASE, clientesRouter);
+  app.use(BASE, veiculosRouter);
 
   // Gerado depois de todos os routers registrarem seus paths. Em produção o contrato não é exposto.
   if (e.NODE_ENV !== 'production') {

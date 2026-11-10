@@ -219,6 +219,326 @@
         "required": [
           "senha"
         ]
+      },
+      "ListaClientes": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Cliente"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "pagina": {
+            "type": "integer"
+          },
+          "limite": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "itens",
+          "total",
+          "pagina",
+          "limite"
+        ]
+      },
+      "Cliente": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+          },
+          "nome": {
+            "type": "string"
+          },
+          "documento": {
+            "type": "string",
+            "description": "Só dígitos"
+          },
+          "telefone": {
+            "type": "string"
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "endereco": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ativo": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "nome",
+          "documento",
+          "telefone",
+          "email",
+          "endereco",
+          "ativo"
+        ]
+      },
+      "CriarCliente": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120
+          },
+          "documento": {
+            "type": "string",
+            "description": "CPF ou CNPJ, com ou sem máscara; guardado só com dígitos"
+          },
+          "telefone": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 20,
+            "description": "Telefone com DDD, com ou sem máscara",
+            "example": "(11) 91234-5678"
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 254,
+            "format": "email"
+          },
+          "endereco": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 250
+          }
+        },
+        "required": [
+          "nome",
+          "documento",
+          "telefone"
+        ]
+      },
+      "AlterarCliente": {
+        "type": "object",
+        "properties": {
+          "nome": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 120
+          },
+          "documento": {
+            "type": "string",
+            "description": "CPF ou CNPJ, com ou sem máscara; guardado só com dígitos"
+          },
+          "telefone": {
+            "type": "string",
+            "minLength": 8,
+            "maxLength": 20,
+            "description": "Telefone com DDD, com ou sem máscara",
+            "example": "(11) 91234-5678"
+          },
+          "email": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "maxLength": 254,
+            "format": "email"
+          },
+          "endereco": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 250
+          }
+        }
+      },
+      "ListaVeiculos": {
+        "type": "object",
+        "properties": {
+          "itens": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Veiculo"
+            }
+          },
+          "total": {
+            "type": "integer"
+          },
+          "pagina": {
+            "type": "integer"
+          },
+          "limite": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "itens",
+          "total",
+          "pagina",
+          "limite"
+        ]
+      },
+      "Veiculo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+          },
+          "clienteId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+          },
+          "placa": {
+            "type": "string"
+          },
+          "marca": {
+            "type": "string"
+          },
+          "modelo": {
+            "type": "string"
+          },
+          "ano": {
+            "type": "integer"
+          },
+          "cor": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "quilometragem": {
+            "type": "integer"
+          },
+          "ativo": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "clienteId",
+          "placa",
+          "marca",
+          "modelo",
+          "ano",
+          "cor",
+          "quilometragem",
+          "ativo"
+        ]
+      },
+      "CriarVeiculo": {
+        "type": "object",
+        "properties": {
+          "placa": {
+            "type": "string",
+            "description": "Padrão antigo (ABC1234) ou Mercosul (ABC1D23); guardada normalizada"
+          },
+          "marca": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "modelo": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "ano": {
+            "type": "integer",
+            "minimum": 1900,
+            "maximum": 2100
+          },
+          "cor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "quilometragem": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Quilometragem em km, inteiro"
+          }
+        },
+        "required": [
+          "placa",
+          "marca",
+          "modelo",
+          "ano",
+          "quilometragem"
+        ]
+      },
+      "AlterarVeiculo": {
+        "type": "object",
+        "properties": {
+          "placa": {
+            "type": "string",
+            "description": "Padrão antigo (ABC1234) ou Mercosul (ABC1D23); guardada normalizada"
+          },
+          "marca": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          },
+          "modelo": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "ano": {
+            "type": "integer",
+            "minimum": 1900,
+            "maximum": 2100
+          },
+          "cor": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "minLength": 1,
+            "maxLength": 40
+          },
+          "quilometragem": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Quilometragem em km, inteiro"
+          }
+        }
+      },
+      "TransferirVeiculo": {
+        "type": "object",
+        "properties": {
+          "clienteId": {
+            "type": "string",
+            "format": "uuid",
+            "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90",
+            "description": "Novo dono do veículo"
+          }
+        },
+        "required": [
+          "clienteId"
+        ]
       }
     },
     "parameters": {}
@@ -845,6 +1165,1086 @@
           },
           "404": {
             "description": "Usuário não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/clientes": {
+      "get": {
+        "summary": "Lista clientes",
+        "description": "Busca por nome ou documento, paginada. Só o atendente.",
+        "tags": [
+          "clientes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "example": 1
+            },
+            "required": false,
+            "name": "pagina",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "example": 20
+            },
+            "required": false,
+            "name": "limite",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 100,
+              "description": "Busca por nome ou documento (parte do texto)"
+            },
+            "required": false,
+            "description": "Busca por nome ou documento (parte do texto)",
+            "name": "q",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Clientes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListaClientes"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere clientes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra cliente",
+        "description": "Valida o CPF ou CNPJ. Documento já cadastrado devolve 409 com o cadastro existente em `detalhes.existente`.",
+        "tags": [
+          "clientes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarCliente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cliente criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere clientes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Documento já cadastrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/clientes/{id}": {
+      "get": {
+        "summary": "Detalha cliente",
+        "tags": [
+          "clientes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere clientes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Identificador inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Altera cliente",
+        "description": "Envia só o que mudou. `email` e `endereco` aceitam `null` para limpar o campo.",
+        "tags": [
+          "clientes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarCliente"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cliente alterado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere clientes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Documento já cadastrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/clientes/{id}/inativar": {
+      "post": {
+        "summary": "Inativa cliente",
+        "description": "O histórico de OS é mantido. Cliente com OS ativa devolve 409.",
+        "tags": [
+          "clientes"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente inativado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Cliente"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere clientes)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Cliente com OS ativa",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Identificador inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/clientes/{id}/veiculos": {
+      "get": {
+        "summary": "Lista os veículos do cliente",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "example": 1
+            },
+            "required": false,
+            "name": "pagina",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "example": 20
+            },
+            "required": false,
+            "name": "limite",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veículos do cliente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListaVeiculos"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      },
+      "post": {
+        "summary": "Cadastra veículo do cliente",
+        "description": "Valida a placa (ABC1234 ou ABC1D23). Placa já cadastrada devolve 409 com o veículo existente em `detalhes.existente`.",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CriarVeiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Veículo criado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Veiculo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Placa já cadastrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/veiculos": {
+      "get": {
+        "summary": "Busca veículos por placa",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "default": 1,
+              "example": 1
+            },
+            "required": false,
+            "name": "pagina",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 20,
+              "example": 20
+            },
+            "required": false,
+            "name": "limite",
+            "in": "query"
+          },
+          {
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 10,
+              "description": "Placa inteira ou parte dela, com ou sem hífen"
+            },
+            "required": false,
+            "description": "Placa inteira ou parte dela, com ou sem hífen",
+            "name": "placa",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veículos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListaVeiculos"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Parâmetros inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/veiculos/{id}": {
+      "get": {
+        "summary": "Detalha veículo",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veículo",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Veiculo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Veículo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Identificador inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Altera veículo",
+        "description": "Envia só o que mudou. `cor` aceita `null` para limpar o campo.",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AlterarVeiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo alterado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Veiculo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Veículo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Placa já cadastrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/veiculos/{id}/transferir": {
+      "post": {
+        "summary": "Transfere o veículo para outro cliente",
+        "description": "Muda o dono. As OS já abertas mantêm o dono anterior.",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TransferirVeiculo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Veículo transferido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Veiculo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Veículo ou cliente não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Dados inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Limite de requisições excedido"
+          }
+        }
+      }
+    },
+    "/veiculos/{id}/inativar": {
+      "post": {
+        "summary": "Inativa veículo",
+        "tags": [
+          "veiculos"
+        ],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "2f1a7d9e-0c4b-4f2a-9e3d-6b8c1a5d7e90"
+            },
+            "required": true,
+            "name": "id",
+            "in": "path"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Veículo inativado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Veiculo"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Sem token ou token inválido",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Sem permissão (só o atendente gere veículos)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Veículo não encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Erro"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Identificador inválido",
             "content": {
               "application/json": {
                 "schema": {

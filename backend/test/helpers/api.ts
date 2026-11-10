@@ -7,11 +7,14 @@ import { SignJWT, createLocalJWKSet, exportJWK, generateKeyPair } from 'jose';
 import type { Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { criarApp } from '../../src/app.js';
+import { definirDependenciasDeClientes } from '../../src/modules/clientes/index.js';
 import {
   definirDependenciasDeAuth,
   definirDependenciasDeUsuarios,
 } from '../../src/modules/usuarios/index.js';
+import { definirDependenciasDeVeiculos } from '../../src/modules/veiculos/index.js';
 import { criarVerificadorJwt } from '../../src/shared/auth/jwt.js';
+import type { ClientesEmMemoria, VeiculosEmMemoria } from './cadastros-fakes.js';
 import { AdminFalso, type RepositorioEmMemoria } from './usuarios-fakes.js';
 
 export const URL_PROJETO = 'https://projeto-ficticio.supabase.co';
@@ -31,7 +34,15 @@ export interface ApiDeTeste {
   encerrar(): Promise<void>;
 }
 
-export async function iniciarApi(repo: RepositorioEmMemoria): Promise<ApiDeTeste> {
+export interface CadastrosDeTeste {
+  clientes: ClientesEmMemoria;
+  veiculos: VeiculosEmMemoria;
+}
+
+export async function iniciarApi(
+  repo: RepositorioEmMemoria,
+  cadastros?: CadastrosDeTeste,
+): Promise<ApiDeTeste> {
   const { publicKey, privateKey }: ParDeChaves = await generateKeyPair('ES256');
   const jwk = { ...(await exportJWK(publicKey)), kid: 'k1', alg: 'ES256' };
   const admin = new AdminFalso();
@@ -44,6 +55,10 @@ export async function iniciarApi(repo: RepositorioEmMemoria): Promise<ApiDeTeste
     buscaPerfil: (id) => repo.buscarPorId(id),
   });
   definirDependenciasDeUsuarios({ repo, admin: () => admin });
+  if (cadastros) {
+    definirDependenciasDeClientes({ repo: cadastros.clientes });
+    definirDependenciasDeVeiculos({ repo: cadastros.veiculos });
+  }
 
   const servidor: Server = criarApp().listen(0);
   const base = `http://127.0.0.1:${(servidor.address() as AddressInfo).port}/api/v1`;
@@ -72,6 +87,8 @@ export async function iniciarApi(repo: RepositorioEmMemoria): Promise<ApiDeTeste
     encerrar: async () => {
       definirDependenciasDeAuth({});
       definirDependenciasDeUsuarios(undefined);
+      definirDependenciasDeClientes(undefined);
+      definirDependenciasDeVeiculos(undefined);
       await new Promise<void>((ok) => servidor.close(() => ok()));
     },
   };

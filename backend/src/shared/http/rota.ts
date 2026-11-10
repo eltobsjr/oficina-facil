@@ -125,7 +125,7 @@ export function registrarRota<
     const resposta = await def.handler(ctx);
     const status = resposta?.status ?? 200;
     if (status === 204 || resposta?.corpo === undefined) {
-      res.status(status === 200 && resposta?.corpo === undefined ? 204 : status).end();
+      res.status(status === 200 ? 204 : status).end();
       return;
     }
     res.status(status).json(resposta.corpo);

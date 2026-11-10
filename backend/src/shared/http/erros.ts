@@ -7,9 +7,10 @@
 
 import type { ErrorRequestHandler, RequestHandler } from 'express';
 import { ZodError } from 'zod';
-import { Prisma } from '../db/prisma.js';
+import { violouUnicidade } from '../db/unicidade.js';
 import { AppError, NaoEncontrado } from '../errors/app-error.js';
 import { logger } from '../logger.js';
+import { caminhoSemQuery } from './log.js';
 
 export const rotaNaoEncontrada: RequestHandler = (req, _res, next) => {
   next(new NaoEncontrado(`Rota ${req.method} ${req.path}`));
@@ -17,11 +18,12 @@ export const rotaNaoEncontrada: RequestHandler = (req, _res, next) => {
 
 export const tratadorDeErros: ErrorRequestHandler = (erro, req, res, _next) => {
   if (erro instanceof AppError) {
-    if (erro.status >= 500) logger.error({ erro, url: req.originalUrl }, erro.message);
+    if (erro.status >= 500)
+      logger.error({ erro, url: caminhoSemQuery(req.originalUrl) }, erro.message);
     res.status(erro.status).json(erro.toJSON());
     return;
   }
-  if (erro instanceof Prisma.PrismaClientKnownRequestError && erro.code === 'P2002') {
+  if (violouUnicidade(erro)) {
     res.status(409).json({
       erro: {
         codigo: 'conflito',
@@ -48,6 +50,6 @@ export const tratadorDeErros: ErrorRequestHandler = (erro, req, res, _next) => {
     });
     return;
   }
-  logger.error({ erro, url: req.originalUrl }, 'Erro não tratado');
+  logger.error({ erro, url: caminhoSemQuery(req.originalUrl) }, 'Erro não tratado');
   res.status(500).json({ erro: { codigo: 'erro_interno', mensagem: 'Erro interno' } });
 };

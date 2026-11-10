@@ -4,7 +4,9 @@
 
 import { writeFileSync } from 'node:fs';
 // Importar os módulos registra os paths no registry.
+import '../modules/clientes/index.js';
 import '../modules/usuarios/index.js';
+import '../modules/veiculos/index.js';
 import { gerarDocumentoOpenApi } from '../shared/openapi/registry.js';
 
 const documento = gerarDocumentoOpenApi('http://localhost:3000/api/v1');

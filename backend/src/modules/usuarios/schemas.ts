@@ -1,4 +1,4 @@
-import { PaginacaoQuerySchema } from '../../shared/paginacao.js';
+import { PaginacaoQuerySchema, paginaSchema } from '../../shared/paginacao.js';
 import { UuidSchema, z } from '../../shared/openapi/zod.js';
 
 export const PerfilSchema = z
@@ -27,14 +27,7 @@ export const UsuarioSchema = z
   })
   .openapi('Usuario');
 
-export const ListaUsuariosSchema = z
-  .object({
-    itens: z.array(UsuarioSchema),
-    total: z.number().int(),
-    pagina: z.number().int(),
-    limite: z.number().int(),
-  })
-  .openapi('ListaUsuarios');
+export const ListaUsuariosSchema = paginaSchema(UsuarioSchema, 'ListaUsuarios');
 
 export const ListaUsuariosQuerySchema = PaginacaoQuerySchema.extend({
   q: z
