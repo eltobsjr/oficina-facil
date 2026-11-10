@@ -13,6 +13,40 @@ rf: "RF11"
 
 Entregar **UC11 — Registrar aprovação do cliente** para o ator **Atendente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC11.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: aprova ou recusa (forma de contato, motivo)
+  A->>API: POST /os/:id/aprovacao
+  API->>DB: OS está em AGUARDANDO_APROVACAO?
+  alt outro estado
+    API-->>A: 409
+  else aprovou (transação)
+    API->>DB: INSERT aprovacoes
+    API->>DB: UPDATE ordens_servico: APROVADA
+    API->>DB: INSERT historico_transicoes
+  else recusou (transação)
+    API->>DB: INSERT aprovacoes com o motivo
+    API->>DB: UPDATE ordens_servico: CANCELADA
+    API->>DB: INSERT historico_transicoes
+  end
+  API-->>A: 200
+```
+
+### Impacto no sistema
+
+- **Escreve:** `aprovacoes`, `ordens_servico`, `historico_transicoes`. **Estado:** `AGUARDANDO_APROVACAO` → `APROVADA` ou `CANCELADA` (RN03, RN04).
+- **Impacto real:** é o portão da execução: sem aprovação a OS não vai a `EM_EXECUCAO`. Recusar cancela sem passar pela 017.
+- **Fora do MVP:** pedir ajuste e voltar ao orçamento (decisão 003 aberta).
+- **Quem depende desta:** [[012 - Executar serviço]].
+
 ## Referências
 
 | Item | Valor |

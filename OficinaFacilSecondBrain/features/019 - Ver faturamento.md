@@ -13,6 +13,31 @@ rf: "RF19"
 
 Entregar **UC19 — Ver faturamento** para o ator **Gerente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC19.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Gerente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: período (de, ate)
+  A->>API: GET /faturamento
+  API->>DB: soma pagamentos das OS ENTREGUE por data de entrega
+  Note over API,DB: agregação no servidor, em America/Sao_Paulo
+  API-->>A: total, quantidade de OS e ticket médio
+  Note over A: período sem entregas mostra total zero
+```
+
+### Impacto no sistema
+
+- **Escreve:** nada.
+- **Impacto real:** é só uma leitura sobre o que a 015 gravou; se os pagamentos estiverem certos, o faturamento está certo.
+- **Cuidado:** feature deduzida (⚠️, decisão 004).
+- **Quem depende desta:** [[020 - Acabamento e entrega final]].
+
 ## Referências
 
 | Item | Valor |

@@ -13,6 +13,34 @@ rf: "RF05"
 
 Entregar **UC05 — Gerir serviços** para o ator **Gerente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC05.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Gerente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: descrição, valor da mão de obra, tempo estimado
+  A->>API: POST /servicos
+  API->>API: valida: valor maior que zero (422)
+  API->>DB: INSERT servicos
+  API-->>A: 201
+  opt alterar preço ou inativar
+    A->>API: PATCH ou POST /servicos/:id/inativar
+    API->>DB: UPDATE servicos
+    Note over API,DB: orçamentos já montados mantêm o valor,<br/>serviço inativo some dos orçamentos novos
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `servicos`.
+- **Impacto real:** é o preço que o orçamento (009) usa; a regra de congelar o valor nos itens evita que mudar o catálogo reescreva orçamentos antigos.
+- **Quem depende desta:** [[009 - Montar orçamento]].
+
 ## Referências
 
 | Item | Valor |

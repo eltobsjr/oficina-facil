@@ -13,6 +13,37 @@ rf: "RF17"
 
 Entregar **UC17 — Cancelar OS** para o ator **Atendente, Gerente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC17.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente ou Gerente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: motivo e confirmação
+  A->>API: POST /os/:id/cancelar
+  API->>API: perfil é Atendente ou Gerente? (senão 403)
+  API->>DB: OS está antes de ENTREGUE?
+  alt ENTREGUE ou já CANCELADA
+    API-->>A: 409
+  else (uma única transação)
+    API->>DB: UPDATE ordens_servico: CANCELADA, motivo e autor
+    API->>DB: devolve as peças lançadas (exceto "não devolver")
+    API->>DB: INSERT movimentacoes_estoque (estorno) e UPDATE pecas
+    API->>DB: INSERT historico_transicoes
+    API-->>A: 200
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `ordens_servico`, `historico_transicoes`, `pecas_usadas`, `movimentacoes_estoque` (e `pecas`).
+- **Impacto real:** é a única feature que mexe no estoque de volta; se o estorno falhar, o cancelamento inteiro desfaz (R14).
+- **Estado:** qualquer não terminal → `CANCELADA` (RN05, RN06).
+
 ## Referências
 
 | Item | Valor |

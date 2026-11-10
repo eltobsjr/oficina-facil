@@ -13,6 +13,23 @@ rf: "—"
 
 Android, integração, documentos e release.
 
+## Diagrama
+
+Esboço da estrutura e do fluxo desta feature, antes de codar.
+
+```mermaid
+flowchart LR
+  A[Testar no Android e na web] --> B[smoke.sh: ABERTA até ENTREGUE]
+  B --> C[Publicar imagem Docker, API de demonstração, web e APK]
+  C --> D[Atualizar diagramas, UCs, histórias e PDFs]
+  D --> E[Changelog, versão e tag]
+```
+
+### Impacto no sistema
+
+- **Escreve:** nada de negócio.
+- **Impacto real:** prova o sistema inteiro de ponta a ponta e fecha as entregas (R6); só começa com tudo antes disso ✅.
+
 ## Referências
 
 | Item | Valor |

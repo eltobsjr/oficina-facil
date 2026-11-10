@@ -13,6 +13,36 @@ rf: "RF04, RF22"
 
 Entregar **UC04 — Gerir peças** para o ator **Almoxarife**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC04.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Almoxarife
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: código, descrição, preço e estoque mínimo
+  A->>API: POST /pecas
+  API->>API: valida: preço maior que zero (422)
+  API->>DB: código já existe?
+  alt duplicado
+    API-->>A: 409
+  else novo
+    API->>DB: INSERT pecas com saldo 0
+    API-->>A: 201
+  end
+  Note over API,DB: PATCH /pecas/:id nunca aceita saldo.<br/>O saldo só muda por entrada (018) ou baixa (013)
+```
+
+### Impacto no sistema
+
+- **Escreve:** `pecas` (saldo nasce 0).
+- **Impacto real:** é o catálogo que o orçamento (009), as peças usadas (013) e a entrada (018) consomem; o alerta de estoque baixo (US21) sai daqui.
+- **Regra protegida:** RN07 (saldo só por movimentação).
+- **Quem depende desta:** [[009 - Montar orçamento]], [[013 - Registrar peças usadas]], [[018 - Dar entrada no estoque]].
+
 ## Referências
 
 | Item | Valor |

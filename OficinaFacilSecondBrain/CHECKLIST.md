@@ -6,7 +6,7 @@ data: 2026-10-30
 
 Lista mestra de tudo que o projeto precisa ter. Marque com `[x]` conforme avança.
 Stack: Flutter + backend Node/TypeScript + Supabase ([[Arquitetura]]).
-**Semana atual: S1 (02/11 a 08/11)**, ver [[Roadmap]] e [[atual|Prioridades atuais]].
+**Semana atual: S2 (09/11 a 15/11)**, ver [[Roadmap]] e [[atual|Prioridades atuais]].
 
 **Regras para marcar:**
 1. Cada feature de caso de uso tem 9 tarefas fixas (modelo, API, testes da API, contrato, app em dois blocos, testes do app, verificação, documentação). A `000` e a `020` têm tarefas próprias.
@@ -46,6 +46,10 @@ Stack: Flutter + backend Node/TypeScript + Supabase ([[Arquitetura]]).
 - [x] Vault versionado no mesmo repositório do código (decisão do usuário, 2026-10-30)
 - [x] Mudanças de regras do CLAUDE.md aplicadas (ver [[2026-10-30 - Revisão Opus]])
 - [ ] Decidir escopo: anonimização LGPD (RNF09), Plano de testes e Wireframes
+- [x] Diagrama Mermaid e bloco de impacto em todas as features, antes dos critérios (2026-11-09, ver [[2026-11-09 - Diagramas, S3 e design system]])
+- [x] Design system OficinaFácil desenhado nas 26 telas e aplicado no código das 10 telas existentes (decisão [[013 - Design system da interface]], 2026-11-09)
+- [x] Projeto Supabase de desenvolvimento restaurado (estava pausado em 2026-11-09; voltou com os dados em 2026-11-10: 18 tabelas, gerente do seed e catálogo)
+- [ ] Conferir no app real, com sessão, as telas redesenhadas: login, Início do gerente e sair já foram vistos (2026-11-10); faltam usuários, clientes e veículos
 
 ## F1 — Fundação técnica
 
@@ -73,11 +77,11 @@ _Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend
 
 _Login com 4 perfis e gestão de usuários_
 
-- [ ] **Fase F2 concluída**
+- [x] **Fase F2 concluída**
 
 ### [[001 - Autenticar]] (UC01)
 
-- [ ] **001 — Autenticar**
+- [x] **001 — Autenticar**
   - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]] (sem tabela nova)
   - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
   - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
@@ -85,12 +89,12 @@ _Login com 4 perfis e gestão de usuários_
   - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
   - [x] App: telas: telas do Mapa de telas e providers Riverpod
   - [x] Testes do app: domínio e widget cobrindo os CAs (216 testes no app, 0 falhas)
-  - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
-  - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
+  - [x] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
+  - [x] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
 ### [[006 - Gerir usuários]] (UC06)
 
-- [ ] **006 — Gerir usuários**
+- [x] **006 — Gerir usuários**
   - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]] (sem tabela nova: usa `perfis`)
   - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
   - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil (unitários e HTTP passam; o de integração está escrito e não foi executado)
@@ -98,40 +102,40 @@ _Login com 4 perfis e gestão de usuários_
   - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
   - [x] App: telas: telas do Mapa de telas e providers Riverpod
   - [x] Testes do app: domínio e widget cobrindo os CAs
-  - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
-  - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
+  - [x] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
+  - [x] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
 ## F3 — Clientes e veículos
 
 _Cadastros que a OS referencia_
 
-- [ ] **Fase F3 concluída**
+- [x] **Fase F3 concluída**
 
 ### [[002 - Gerir clientes]] (UC02)
 
-- [ ] **002 — Gerir clientes**
-  - [ ] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
-  - [ ] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
-  - [ ] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
-  - [ ] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
-  - [ ] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
-  - [ ] App: telas: telas do Mapa de telas e providers Riverpod
-  - [ ] Testes do app: domínio e widget cobrindo os CAs
-  - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
-  - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
+- [x] **002 — Gerir clientes**
+  - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
+  - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
+  - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
+  - [x] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
+  - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
+  - [x] App: telas: telas do Mapa de telas e providers Riverpod
+  - [x] Testes do app: domínio e widget cobrindo os CAs
+  - [x] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
+  - [x] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
 ### [[003 - Gerir veículos]] (UC03)
 
-- [ ] **003 — Gerir veículos**
-  - [ ] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
-  - [ ] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
-  - [ ] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
-  - [ ] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
-  - [ ] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
-  - [ ] App: telas: telas do Mapa de telas e providers Riverpod
-  - [ ] Testes do app: domínio e widget cobrindo os CAs
-  - [ ] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
-  - [ ] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
+- [x] **003 — Gerir veículos**
+  - [x] Modelo: tabelas e migration Prisma, RLS, gatilhos e índices extras dentro da migration (`--create-only`), conforme [[Modelo de dados]]
+  - [x] API: rota (Zod + perfil), serviço (regra de negócio, transação) e repositório no módulo do backend
+  - [x] Testes da API: Vitest: regras e exceções de cada CA, e permissão por perfil
+  - [x] Contrato: OpenAPI regenerado (`npm run openapi:gerar`) e conferido no Swagger
+  - [x] App: domínio e dados: entidades, contrato do repositório e implementação com `dio`
+  - [x] App: telas: telas do Mapa de telas e providers Riverpod
+  - [x] Testes do app: domínio e widget cobrindo os CAs
+  - [x] Verificação: backend: lint, format, typecheck, test, smoke; app: format, analyze, test, build apk
+  - [x] Documentação: CAs em ✅, devtrack e, se algo mudou, notas do vault e PDFs de `entregas/`
 
 ## F4 — Catálogos e estoque
 

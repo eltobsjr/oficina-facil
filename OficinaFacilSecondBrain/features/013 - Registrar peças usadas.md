@@ -13,6 +13,41 @@ rf: "RF13, RF20"
 
 Entregar **UC13 — Registrar peças usadas** para o ator **Mecânico**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC13.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Mecânico
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: peça e quantidade
+  A->>API: POST /os/:id/pecas-usadas
+  API->>DB: baixa atômica do saldo (transação)
+  alt saldo insuficiente
+    API->>DB: INSERT avisos para o almoxarife
+    API-->>A: recusa sem alterar o saldo
+  else saldo suficiente
+    API->>DB: INSERT pecas_usadas
+    API->>DB: INSERT movimentacoes_estoque (baixa)
+    API->>DB: UPDATE pecas (saldo)
+    API-->>A: 201
+  end
+  opt estornar lançamento ⚠️
+    A->>API: DELETE /os/:id/pecas-usadas/:id
+    API->>DB: devolve o saldo e registra a movimentação
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `pecas_usadas`, `movimentacoes_estoque`, `pecas` e `avisos`.
+- **Impacto real:** é onde o estoque realmente diminui, e a única feature com risco de concorrência no saldo (dois mecânicos, mesma peça; CA05 exige teste).
+- **Depois:** o cancelamento (017) usa estes lançamentos para devolver o saldo.
+- **Quem depende desta:** [[017 - Cancelar OS]].
+
 ## Referências
 
 | Item | Valor |

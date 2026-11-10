@@ -70,7 +70,7 @@ gantt
 ### S1 (02/11 a 08/11): fechar a F1 e backend da F2
 - **F1:** fechada em 2026-10-30; o seed do gerente inicial foi feito (CA10 da feature 000). Só resta rotacionar as credenciais coladas no chat. Não haverá projeto de teste separado (decisão do usuário em 2026-10-30): os testes de integração rodam no projeto único, que ainda não tem dados reais; os 26 passaram e os CAs 01 e 05 foram marcados. A chave de serviço e as strings de conexão já estão configuradas. O primeiro push já foi feito e o CI passou.
 - **Backend da F2 (feature 006):** cliente administrativo do Supabase; listar, criar, detalhar, alterar, redefinir senha, inativar e ativar usuário; compensação ao falhar; banir no Auth ao inativar; último gerente protegido; seed do gerente rodando.
-- **Testes:** permissões por perfil, e-mail duplicado, último gerente, integração no projeto de teste.
+- **Testes:** permissões por perfil, e-mail duplicado, último gerente, integração no projeto de desenvolvimento (não há projeto de teste).
 - **Demonstração:** criar e inativar usuários pela API (Swagger) com o JWT de um gerente real.
 - **Commits:** um para fechar a 000, um para a 006 (backend).
 
@@ -94,7 +94,7 @@ gantt
 - **Decisão a confirmar até aqui:** propostas 007 a 010.
 
 ### S5 (30/11 a 06/12): entrada no estoque (feature 018) e base do estoque
-- **Backend:** entrada com razão; `baixar(tx)` e `estornar(tx)` no `index.ts` de `pecas` com `UPDATE ... WHERE saldo >= q`; **teste de concorrência** no projeto de teste.
+- **Backend:** entrada com razão; `baixar(tx)` e `estornar(tx)` no `index.ts` de `pecas` com `UPDATE ... WHERE saldo >= q`; **teste de concorrência** no projeto de desenvolvimento.
 - **App:** T12 Entrada no estoque com histórico de movimentações.
 - **Demonstração (M2):** cadastros e estoque completos, saldo batendo com o razão.
 - **Commits:** 018. Fecha a F4.
@@ -129,7 +129,7 @@ gantt
 ### S11 (11/01 a 17/01): peças usadas (feature 013)
 - **Backend:** lançar peça com `baixar(tx)`; saldo insuficiente gera aviso ao almoxarife fora da transação desfeita; peça fora do orçamento pede confirmação; remover lançamento estorna.
 - **App:** lançar e remover peça na T20; T15 mostra peças e observações.
-- **Teste:** concorrência na mesma peça no projeto de teste.
+- **Teste:** concorrência na mesma peça no projeto de desenvolvimento.
 - **Demonstração:** o saldo cai e volta corretamente.
 
 ### S12 (18/01 a 24/01): concluir e entregar (features 014 e 015)
@@ -203,7 +203,7 @@ Toda feature segue as mesmas 9 tarefas, lista marcável no [[CHECKLIST]]: modelo
 
 | Decisão | Precisa estar fechada até |
 |---|---|
-| Criar projeto Supabase de **teste**, `SUPABASE_SERVICE_ROLE_KEY` e string do pooler | S1 |
+| ~~Projeto Supabase de teste~~ (não haverá, decisão de 2026-10-30); chave de serviço e string do pooler (`DATABASE_URL` agora usa o pooler IPv4) | feito |
 | Confirmar as propostas 007 a 010 (desconto, estoque, pagamento, avisos) | S5 |
 | **003** (ajuste do orçamento e serviço extra) | fim da S9 |
 | 005 (recorte de entrega) e 011 (UML formal) | conforme o professor pedir |

@@ -38,3 +38,13 @@ google-chrome --headless=new --no-sandbox --disable-gpu --virtual-time-budget=30
 ```
 
 Conferir sempre as páginas com diagramas (`pdftoppm -r 50 -png`): diagramas largos ficam ilegíveis.
+
+## Diagramas e andamento (página navegável)
+
+`metodos/gerar-diagramas.py` lê `features/*.md`, `CHECKLIST.md`, o [[Mapa de telas]] e as páginas do app em `mobile/lib` e gera um HTML único: índice lateral, andamento por fase, telas (no app ou só desenho) e, para cada feature, o diagrama, o impacto, os critérios, a API e as tarefas. Não escreve nada no vault.
+
+```bash
+python3 metodos/gerar-diagramas.py /caminho/diagramas-e-andamento.html
+```
+
+Publica-se o HTML como artifact, no mesmo caminho de arquivo para manter o endereço. Regerar sempre que um critério ou uma tarefa mudar, e quando entrar uma página nova no app (acrescentar o arquivo em `PAGINAS` dentro do script).

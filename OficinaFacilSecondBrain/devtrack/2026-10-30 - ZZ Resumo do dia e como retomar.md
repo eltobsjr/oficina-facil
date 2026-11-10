@@ -157,3 +157,9 @@ O usuário deu o `git push` (`4e9de17..9e2ad5f`) e o workflow rodou pela primeir
 - **Gerador do Trello:** a 000 passa a Concluído e os 3 cartões resolvidos entram na lista; o JSON tem 57 cartões.
 - **Arquitetura:** a nota deixa de falar em "projeto de teste" e registra a exceção à R19 (testes no projeto único, enquanto não houver dados reais). O `CLAUDE.md` (R19) **não** foi alterado; continua dizendo "projeto de teste" e só muda se o usuário pedir.
 - **Commit e push:** pedidos pelo usuário.
+
+## Fim do dia: R19 reescrita e próximos passos
+
+- **`CLAUDE.md` R19:** reescrita a pedido e com a aprovação do usuário (ele respondeu "aprovo" à proposta). Agora diz que existe um único projeto Supabase, sem projeto de teste nem branch (branch é recurso pago), que os testes de integração rodam nele só enquanto não houver dados reais e depois de conferir o estado do banco, e que antes de existir dado real se cria um projeto de teste ou se reescreve a regra. A R10 (`prisma migrate reset` "só no projeto de teste") não foi alterada, porque o usuário aprovou só a R19; sem projeto de teste, o comando fica na prática proibido.
+- **Mensagens e documentos:** o planejamento foi enviado em 8 mensagens curtas aos grupos "documentos" e "Trabalho semanal de Anthony"; os 9 PDFs de `entregas/` foram enviados só ao grupo "documentos".
+- **Próximos passos:** ficam para a semana que vem, por decisão do usuário; a lista está em [[prioridade/atual]].

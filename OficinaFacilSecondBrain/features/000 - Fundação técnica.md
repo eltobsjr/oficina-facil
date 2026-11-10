@@ -13,6 +13,37 @@ rf: "—"
 
 Supabase de desenvolvimento, backend base, banco com RLS, app ligado ao backend, seed e CI.
 
+## Diagrama
+
+Esboço da estrutura e do fluxo desta feature, antes de codar.
+
+```mermaid
+flowchart LR
+  subgraph app[mobile - Flutter]
+    UI[presentation] --> DOM[domain] --- DAT[data dio]
+  end
+  subgraph api[backend - Node 22 e Express 5]
+    MW[helmet, CORS, rate limit, JWT por JWKS] --> MOD[modules] --> PRI[Prisma]
+  end
+  subgraph sb[Supabase]
+    AUTH[Auth]
+    PG[(Postgres com RLS)]
+    RT[Realtime]
+  end
+  DAT -->|HTTPS + Bearer| MW
+  UI -->|login| AUTH
+  PRI --> PG
+  PG --> RT -->|só avisos do próprio usuário| UI
+  CI[CI no GitHub] -.verifica.-> app & api
+```
+
+### Impacto no sistema
+
+- **Escreve:** nada de negócio. Cria o esqueleto: 17 tabelas com RLS, 6 gatilhos de só-inserção, índice parcial de OS ativa, FK para `auth.users`, seed do gerente.
+- **Por que importa:** tudo que vem depois herda daqui a segurança (JWT, perfil, 401/403, erro único) e as camadas; sem isso nenhuma feature entra.
+- **Se falhar:** o app passaria a poder escrever no banco ou um módulo importaria o interior de outro (os testes de RLS e de arquitetura barram isso).
+- **Quem depende desta:** [[001 - Autenticar]].
+
 ## Referências
 
 | Item | Valor |

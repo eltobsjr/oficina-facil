@@ -13,6 +13,40 @@ rf: "RF03"
 
 Entregar **UC03 — Gerir veículos** para o ator **Atendente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC03.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: placa, marca, modelo, ano, cor, km
+  A->>API: POST /clientes/:id/veiculos
+  API->>API: valida formato da placa (422)
+  API->>DB: placa já cadastrada?
+  alt duplicada
+    API-->>A: 409 e o veículo existente
+  else nova
+    API->>DB: INSERT veiculos ligado ao cliente
+    API-->>A: 201
+  end
+  opt transferir de dono
+    A->>API: POST /veiculos/:id/transferir
+    API->>DB: troca o cliente do veículo
+    Note over API,DB: OS já criadas mantêm o dono anterior ⚠️
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `veiculos`.
+- **Impacto real:** o índice único parcial de OS ativa é por veículo; é ele que impede duas OS abertas no mesmo carro (007).
+- **Cuidado:** a transferência é fluxo deduzido (⚠️) até o usuário confirmar (R3).
+- **Quem depende desta:** [[007 - Abrir OS]].
+
 ## Referências
 
 | Item | Valor |
@@ -30,11 +64,11 @@ Entregar **UC03 — Gerir veículos** para o ator **Atendente**. Fluxo completo 
 
 | # | Critério | Status |
 |---|---|---|
-| CA01 | Cadastrar veículo vinculado a um cliente, com placa, marca, modelo, ano, cor e quilometragem ⚠️ | 🔲 Pendente |
-| CA02 | Placa duplicada é recusada e exibe o veículo existente | 🔲 Pendente |
-| CA03 | Placa em formato inválido é recusada | 🔲 Pendente |
-| CA04 | Buscar por placa ou por cliente e alterar os dados | 🔲 Pendente |
-| CA05 | Transferir o veículo para outro cliente mantém o histórico de OS com o dono anterior ⚠️ | 🔲 Pendente |
+| CA01 | Cadastrar veículo vinculado a um cliente, com placa, marca, modelo, ano, cor e quilometragem ⚠️ | ✅ Concluído |
+| CA02 | Placa duplicada é recusada e exibe o veículo existente | ✅ Concluído. Provado com o banco real em 2026-11-10 (210 testes do backend, 31 de integração em `backend/test/integracao/cadastros.test.ts`): a placa é única no banco |
+| CA03 | Placa em formato inválido é recusada | ✅ Concluído |
+| CA04 | Buscar por placa ou por cliente e alterar os dados | ✅ Concluído |
+| CA05 | Transferir o veículo para outro cliente mantém o histórico de OS com o dono anterior ⚠️ | ✅ Concluído. Provado com o banco real em 2026-11-10 (210 testes do backend, 31 de integração em `backend/test/integracao/cadastros.test.ts`): transferir mantém o cliente das OS já abertas |
 
 Legenda: 🔲 Pendente · 🔄 Em progresso · ✅ Concluído · ❌ Descartado. ⚠️ = fluxo deduzido, conferir com o documento oficial.
 

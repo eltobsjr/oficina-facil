@@ -13,6 +13,37 @@ rf: "RF07"
 
 Entregar **UC07 — Abrir OS** para o ator **Atendente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC07.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: cliente, veículo, queixa e quilometragem
+  A->>API: POST /os
+  API->>API: valida: queixa obrigatória (422)
+  API->>DB: veículo tem OS ativa?
+  alt já tem
+    API-->>A: 409 e a OS existente
+  else livre (transação)
+    API->>DB: INSERT ordens_servico (ABERTA, número único)
+    API->>DB: INSERT historico_transicoes
+    API-->>A: 201 com o número da OS
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `ordens_servico` e `historico_transicoes`. **Estado:** nasce `ABERTA` (RN01).
+- **Impacto real:** é o início de todo o ciclo; sem ela nenhuma feature de 008 em diante tem o que operar.
+- **Regra protegida:** uma OS ativa por veículo, garantida pelo índice parcial do banco e não só pelo código.
+- **Concorrência:** ao inserir a OS, travar a linha do cliente com `SELECT ... FOR UPDATE`, como a inativação de cliente da [[002 - Gerir clientes]] já faz. Sem isso, a inativação pode passar na contagem de OS ativas enquanto a OS é criada em paralelo. Pede teste de integração de concorrência.
+- **Quem depende desta:** [[008 - Registrar diagnóstico]], [[016 - Consultar OS]].
+
 ## Referências
 
 | Item | Valor |

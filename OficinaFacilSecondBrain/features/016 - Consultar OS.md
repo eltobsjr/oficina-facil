@@ -13,6 +13,33 @@ rf: "RF16, RF21"
 
 Entregar **UC16 — Consultar OS** para o ator **Atendente, Gerente, Mecânico (fila)**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC16.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente, Gerente ou Mecânico
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: filtros (número, cliente, placa, estado, período)
+  A->>API: GET /os
+  API->>API: perfil é Mecânico?
+  API->>DB: SELECT ordens_servico (somente leitura)
+  Note over API,DB: Mecânico só vê ABERTA, APROVADA e EM_EXECUCAO<br/>e não recebe documento nem telefone do cliente
+  API-->>A: lista
+  U->>A: abre uma OS
+  A->>API: GET /os/:id e GET /os/:id/historico
+  API-->>A: dados, orçamento, peças e transições
+```
+
+### Impacto no sistema
+
+- **Escreve:** nada (CA06). Estende o `GET /os` criado na 007 com filtros.
+- **Impacto real:** é a janela que cada perfil tem sobre o ciclo; a restrição do mecânico é uma regra de privacidade (LGPD) e de RN09, aplicada no servidor.
+- **Cuidado:** cliente e placa nos filtros não podem ir para log (dado pessoal).
+
 ## Referências
 
 | Item | Valor |

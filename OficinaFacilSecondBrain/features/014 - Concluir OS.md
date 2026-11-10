@@ -13,6 +13,36 @@ rf: "RF14, RF20"
 
 Entregar **UC14 — Concluir OS** para o ator **Mecânico**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC14.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Mecânico
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: Concluir OS
+  A->>API: POST /os/:id/concluir
+  API->>DB: OS está em EM_EXECUCAO?
+  alt outro estado
+    API-->>A: 409
+  else (transação)
+    API->>DB: UPDATE ordens_servico: CONCLUIDA e data/hora
+    API->>DB: INSERT historico_transicoes
+    API->>DB: INSERT avisos para o atendente
+    API-->>A: 200
+  end
+  DB-->>A: Realtime: veículo pronto
+```
+
+### Impacto no sistema
+
+- **Escreve:** `ordens_servico`, `historico_transicoes`, `avisos`. **Estado:** `EM_EXECUCAO` → `CONCLUIDA`.
+- **Impacto real:** é o que habilita a entrega e o pagamento (015) e avisa o atendente de que o cliente pode ser chamado.
+- **Quem depende desta:** [[015 - Entregar e registrar pagamento]].
+
 ## Referências
 
 | Item | Valor |

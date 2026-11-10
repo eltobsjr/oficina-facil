@@ -13,6 +13,40 @@ rf: "RF09"
 
 Entregar **UC09 — Montar orçamento** para o ator **Atendente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC09.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: serviços, peças e desconto
+  A->>API: PUT /os/:id/orcamento
+  API->>DB: grava itens_orcamento (valores em centavos)
+  API-->>A: subtotal, desconto e total calculados no servidor
+  U->>A: Confirmar
+  A->>API: POST /os/:id/orcamento/confirmar
+  API->>API: desconto acima de 10% do subtotal?
+  alt acima de 10% sem autorização aprovada e válida
+    API-->>A: 409 (veja a feature 010)
+  else até 10% ou autorizado (transação)
+    API->>DB: confirma orcamentos
+    API->>DB: UPDATE ordens_servico: AGUARDANDO_APROVACAO
+    API->>DB: INSERT historico_transicoes
+    API-->>A: 200
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `orcamentos`, `itens_orcamento`, `ordens_servico`, `historico_transicoes`. **Estado:** `DIAGNOSTICADA` → `AGUARDANDO_APROVACAO`.
+- **Impacto real:** o total daqui é o valor que o pagamento (015) tem de igualar e que o faturamento (019) soma.
+- **Regra protegida:** RN02 (10%) é decidida no servidor; o app só ajuda.
+- **Quem depende desta:** [[010 - Autorizar desconto]], [[011 - Registrar aprovação do cliente]].
+
 ## Referências
 
 | Item | Valor |

@@ -13,6 +13,36 @@ rf: "RF10"
 
 Entregar **UC10 — Autorizar desconto** para o ator **Atendente (solicita), Gerente (decide)**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC10.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente e Gerente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: pede autorização (desconto acima de 10%)
+  A->>API: POST /os/:id/orcamento/solicitacao-desconto
+  API->>DB: INSERT autorizacoes_desconto (PENDENTE)
+  API->>DB: INSERT avisos DESCONTO_PENDENTE para o gerente
+  DB-->>A: Realtime entrega o aviso ao app do gerente
+  Note over U,A: o gerente abre a lista de pendentes
+  A->>API: POST /solicitacoes-desconto/:id/decisao (JWT do gerente)
+  API->>API: perfil é GERENTE? (senão 403)
+  API->>DB: UPDATE decisão: gerente, valor autorizado (≤ pedido), data
+  API->>DB: INSERT avisos DESCONTO_DECIDIDO para o atendente
+  DB-->>A: Realtime entrega o aviso ao atendente
+  Note over API,DB: se subtotal ou desconto mudar depois,<br/>a autorização perde a validade
+```
+
+### Impacto no sistema
+
+- **Escreve:** `autorizacoes_desconto` e `avisos`.
+- **Impacto real:** é a primeira feature que usa Realtime e a única leitura direta do app no banco (só os `avisos` do próprio usuário, por RLS). Também cria a infraestrutura de avisos que 013 e 014 reutilizam.
+- **Destrava:** a confirmação do orçamento acima de 10% (009, CA06 e CA07).
+
 ## Referências
 
 | Item | Valor |

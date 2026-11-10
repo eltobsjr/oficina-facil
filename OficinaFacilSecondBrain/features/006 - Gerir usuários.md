@@ -13,6 +13,40 @@ rf: "RF06"
 
 Entregar **UC06 — Gerir usuários** para o ator **Gerente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC06.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Gerente
+  participant A as App Flutter
+  participant API as API Express
+  participant Auth as Supabase Auth
+  participant DB as Postgres (RLS)
+  U->>A: nome, e-mail, perfil e senha inicial
+  A->>API: POST /usuarios
+  API->>DB: e-mail já existe em perfis?
+  API->>Auth: cria a conta (chave de serviço)
+  API->>DB: INSERT perfis
+  alt gravar o perfil falhou
+    API->>Auth: remove a conta criada
+  end
+  API-->>A: 201 (sem senha)
+  opt inativar
+    A->>API: POST /usuarios/:id/inativar
+    API->>DB: UPDATE perfis (trava: ao menos um gerente ativo)
+    API->>Auth: bane a conta
+    Note over API,Auth: se o banimento falhar, o perfil volta a ativo
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `perfis` e a conta no Supabase Auth (dois sistemas: por isso a compensação em caso de falha).
+- **Impacto real:** é a única porta para criar acesso ao sistema. Perfil trocado vale na hora (001); inativar derruba o login.
+- **Regra protegida:** nunca fica sem gerente ativo (provado com teste de concorrência).
+
 ## Referências
 
 | Item | Valor |

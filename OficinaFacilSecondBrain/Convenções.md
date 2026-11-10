@@ -25,6 +25,7 @@ Toda a documentação do projeto vive neste vault. O vault fica **dentro do repo
 | Contrato da API (gerado) e OpenAPI do backend | [[Endpoints]] |
 | Decisões (uma por arquivo) | `decisions/`, índice em [[00 - Índice de decisões]] |
 | Critérios de aceitação de cada feature | `features/NNN - Nome.md` |
+| Diagrama Mermaid e impacto de cada feature (antes dos critérios) | `features/NNN - Nome.md`, seção Diagrama |
 | Telas e rotas | [[Mapa de telas]] |
 | Auditorias e revisões | `auditorias/` |
 | Logo e identidade visual | [[00 - Identidade visual]] |

@@ -13,6 +13,33 @@ rf: "RF18"
 
 Entregar **UC18 — Dar entrada no estoque** para o ator **Almoxarife**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC18.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Almoxarife
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: quantidade, custo unitário e nota de origem
+  A->>API: POST /pecas/:id/entradas
+  API->>API: quantidade maior que zero? (422)
+  API->>DB: (transação) UPDATE pecas: saldo + quantidade
+  API->>DB: INSERT movimentacoes_estoque (entrada, responsável, data)
+  API-->>A: 201
+  U->>A: ver razão do estoque
+  A->>API: GET /pecas/:id/movimentacoes
+```
+
+### Impacto no sistema
+
+- **Escreve:** `pecas` (saldo) e `movimentacoes_estoque`.
+- **Impacto real:** é a única forma de aumentar saldo; sem ela a baixa da 013 esbarra em saldo zero. Por isso a 013 depende desta.
+- **Cuidado:** feature deduzida (⚠️, decisão 004).
+- **Quem depende desta:** [[013 - Registrar peças usadas]].
+
 ## Referências
 
 | Item | Valor |

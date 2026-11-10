@@ -13,6 +13,37 @@ rf: "RF12"
 
 Entregar **UC12 — Executar serviço** para o ator **Mecânico**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC12.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Mecânico
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: Iniciar execução
+  A->>API: POST /os/:id/execucao
+  API->>DB: OS está em APROVADA?
+  alt não aprovada
+    API-->>A: 409
+  else (transação)
+    API->>DB: UPDATE ordens_servico: EM_EXECUCAO e data de início
+    API->>DB: INSERT historico_transicoes
+    API-->>A: 200
+  end
+  U->>A: anota o andamento
+  A->>API: POST /os/:id/observacoes
+  API->>DB: INSERT observacoes
+```
+
+### Impacto no sistema
+
+- **Escreve:** `ordens_servico`, `historico_transicoes`, `observacoes`. **Estado:** `APROVADA` → `EM_EXECUCAO` (RN03).
+- **Impacto real:** só em `EM_EXECUCAO` o mecânico pode lançar peças (013) e concluir (014).
+- **Quem depende desta:** [[013 - Registrar peças usadas]], [[014 - Concluir OS]].
+
 ## Referências
 
 | Item | Valor |

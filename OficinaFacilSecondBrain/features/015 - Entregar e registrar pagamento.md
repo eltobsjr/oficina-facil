@@ -13,6 +13,37 @@ rf: "RF15"
 
 Entregar **UC15 — Entregar e registrar pagamento** para o ator **Atendente**. Fluxo completo (principal, alternativos e exceções) em [[Casos de uso]], seção UC15.
 
+## Diagrama
+
+Esboço do comportamento (diagrama de sequência), antes de codar. Tudo vem de [[Casos de uso]], [[Modelo de dados]] e [[Endpoints]]; o que é ⚠️ continua a confirmar.
+
+```mermaid
+sequenceDiagram
+  actor U as Atendente
+  participant A as App Flutter
+  participant API as API Express
+  participant DB as Postgres (RLS)
+  U->>A: formas e valores recebidos
+  A->>API: POST /os/:id/entregar com pagamentos[]
+  API->>DB: OS está em CONCLUIDA?
+  API->>API: soma dos pagamentos = total? (centavos)
+  alt soma diferente ou estado errado
+    API-->>A: 409 ou 422, nada é gravado
+  else (uma única transação)
+    API->>DB: INSERT pagamentos (só inserção)
+    API->>DB: UPDATE ordens_servico: ENTREGUE e quem entregou
+    API->>DB: INSERT historico_transicoes
+    API-->>A: 200
+  end
+```
+
+### Impacto no sistema
+
+- **Escreve:** `pagamentos`, `ordens_servico`, `historico_transicoes`. **Estado:** `CONCLUIDA` → `ENTREGUE` (terminal, RN05 e RN08).
+- **Impacto real:** é o único lugar onde entra dinheiro no sistema; o faturamento (019) soma exatamente estes registros.
+- **Regra protegida:** pagamentos são só de inserção (gatilho do banco barra alteração); sem troco no sistema.
+- **Quem depende desta:** [[019 - Ver faturamento]].
+
 ## Referências
 
 | Item | Valor |
