@@ -37,11 +37,11 @@ ELTO (cerca de 1 minuto). Seguimos o Scrum, como no livro Engenharia de Software
 
 ### 5. O app nunca fala direto com o banco (Evillyn)
 
-EVILLYN (cerca de 1 minuto). A decisão de arquitetura mais importante foi que o aplicativo nunca conversa direto com o banco. Ele fala com a nossa API em Node, e só a API fala com o Supabase. Por quê? Porque a regra de negócio, como desconto acima de 10% ou baixa de estoque, precisa ser imposta num lugar seguro e testável, e o aplicativo pode ser adulterado. Além disso, todas as tabelas têm segurança por linha: mesmo com a chave pública do app, ele não lê nem escreve nada, só os próprios avisos. O perfil do usuário é lido do banco a cada requisição, então trocar o perfil de alguém vale na hora.
+EVILLYN (cerca de 1 minuto). A decisão mais importante da arquitetura é esta: o aplicativo nunca fala direto com o banco de dados. O app, no celular ou na web, mostra as telas e confere se os campos foram preenchidos, mas não decide nada sozinho. Quem decide é a nossa API, em Node: é ela que aplica as regras da oficina, como o desconto acima de 10% ou a baixa de estoque, e confere quem está logado e o que essa pessoa pode fazer. O Supabase guarda os dados, faz o login e envia avisos na hora. Por que assim? Porque um aplicativo pode ser alterado por alguém mal-intencionado, e a regra precisa ficar num lugar seguro. Além disso, cada tabela do banco só mostra dados a quem tem permissão, o perfil é conferido a cada pedido, então trocar o perfil de alguém vale na hora, e os valores em dinheiro são guardados em centavos, para não ter erro de arredondamento.
 
 ### 6. As telas que já funcionam (Evillyn)
 
-EVILLYN (cerca de 1 minuto). Estas são telas reais do aplicativo, com dados fictícios. À esquerda, o login: a pessoa entra com e-mail e senha e o menu mostra só o que o perfil dela pode usar. No meio, a lista de usuários, que só o gerente acessa, com busca, filtro por perfil, criação e inativação. À direita, a lista de clientes, usada pelo atendente, com busca por nome ou documento e acesso aos veículos de cada cliente. O mesmo código roda na web e no Android. Em seguida o Roberto mostra os diagramas que explicam como cada uma dessas partes funciona por dentro.
+EVILLYN (cerca de 1 minuto). Estas são telas do aplicativo funcionando, com dados de exemplo. À esquerda, o login: a pessoa entra com e-mail e senha e vê apenas o menu do seu perfil; um mecânico, por exemplo, não vê a parte de usuários. No meio, a lista de usuários, que só o gerente acessa: ele busca, filtra por perfil, cria e desativa usuários. À direita, a lista de clientes, usada pelo atendente: ele busca por nome ou CPF e CNPJ e abre os veículos de cada cliente. O mesmo código funciona na web e no Android. Em seguida, o Roberto mostra os diagramas que explicam como essas telas funcionam por dentro.
 
 ### 7. Design próprio e código testado (Pedro)
 
@@ -69,7 +69,7 @@ ROBERTO (cerca de 50 segundos). Semana 2, usuários. O cenário é o gerente cri
 
 ### 13. Semana 2 · Pacotes do app (Roberto)
 
-ROBERTO (cerca de 40 segundos). Semana 2, estrutura do app. Cada funcionalidade tem três pastas: presentation, com as telas; domain, com as coisas e os contratos; e data, com a conversa com a API. As setas apontam para o domain, que não conhece nem tela nem rede, e só a data usa o ApiClient, no pacote core, que é compartilhado.
+ROBERTO (cerca de 40 segundos). Semana 2, estrutura do app. Cada funcionalidade tem três pastas: presentation, com as telas; domain, com os dados, como o Usuário; e data, com a conversa com a API. As setas apontam para o domain, que não conhece nem tela nem rede, e só a data usa o ApiClient, no pacote core, que é compartilhado.
 
 ### 14. Semana 2 · Classes de sessão e usuários (Roberto)
 
@@ -93,11 +93,11 @@ ROBERTO (cerca de 45 segundos). Semana 3, classes. Um cliente possui vários ve�
 
 ### 19. Por que as próximas fases vêm nesta ordem (Elto)
 
-ELTO (cerca de 1 minuto e 30). Agora, o porquê da ordem das próximas fases, além do peso de cada uma. A fase 4, catálogos e estoque, vem primeiro porque a ordem de serviço usa serviço e peça, e o estoque precisa existir antes de uma peça ser baixada. A fase 5 abre, diagnostica e orça a ordem: ali nasce a máquina de estados que sustenta o resto, e o desconto fica por último porque estende o orçamento. A fase 6 exige ordem orçada: só se executa com a aprovação do cliente. A fase 7 entrega e cancela: só se paga ordem concluída. A fase 8 lê tudo que veio antes, com filtros e faturamento, e a fase 9 integra e publica. As datas não mudam: a semana a mais vira folga, por causa do Natal e do Ano-Novo.
+ELTO (cerca de 1 minuto e 30). Agora, o porquê da ordem das próximas fases, além do peso de cada uma. A fase 4, catálogos e estoque, vem primeiro porque a ordem de serviço usa serviço e peça, e o estoque precisa existir antes de uma peça ser baixada. A fase 5 abre, diagnostica e orça a ordem: ali nasce o controle das etapas da ordem, que sustenta o resto, e o desconto fica por último porque depende do orçamento. A fase 6 exige ordem orçada: só se executa com a aprovação do cliente. A fase 7 entrega e cancela: só se paga ordem concluída. A fase 8 lê tudo que veio antes, com filtros e faturamento, e a fase 9 integra e publica. Estamos uma semana adiantados: as datas ficam iguais e essa semana vira folga a mais no Natal e no Ano-Novo.
 
 ### 20. Próximos passos (Elto)
 
-ELTO (cerca de 40 segundos, depois perguntas). Para fechar: os próximos passos são a fase 4, catálogos e estoque, e depois a fase 5, onde nasce a ordem de serviço com a sua máquina de estados. Seguimos uma semana à frente do plano, com a folga de fim de ano preservada. Em duas semanas temos a especificação completa, três fases concluídas e provadas, um design próprio e uma base com 561 testes. Agora abrimos para perguntas. Arquitetura e banco: Evillyn. Diagramas: Roberto. Plano e processo: eu. Design e código: Pedro.
+ELTO (cerca de 40 segundos, depois perguntas). Para fechar: os próximos passos são a fase 4, catálogos e estoque, e depois a fase 5, onde nasce o coração do sistema, a ordem de serviço passando por todas as etapas. Seguimos uma semana à frente do plano, com a folga de fim de ano preservada. Em duas semanas temos a especificação completa, três fases concluídas e provadas, um design próprio e uma base com 561 testes. Agora abrimos para perguntas. Arquitetura e banco: Evillyn. Diagramas: Roberto. Plano e processo: eu. Design e código: Pedro.
 
 ## Se perguntarem
 

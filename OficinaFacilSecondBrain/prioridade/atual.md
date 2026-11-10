@@ -8,7 +8,7 @@ Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi f
 
 ## Atualização de 2026-11-10, noite (apresentação)
 
-Apresentação única ao professor pronta (20 slides; Roberto só nos diagramas), com roteiro e PDFs em `~/Downloads/OficinaFácil/`; ver [[Linha do tempo de slides]]. Diagramas por semana refeitos no modelo do ToolRent. Quadro do Trello em Scrum, ainda privado (a Évillyn precisa torná-lo público). Próximo: F4 (005, 004, 018).
+Apresentação única ao professor pronta (20 slides; Roberto só nos diagramas), com roteiro e PDFs em `~/Downloads/OficinaFácil/`; ver [[Linha do tempo de slides]]. Diagramas por semana refeitos no modelo do ToolRent. Quadro do Trello em Scrum e público. Próximo: F4 (005, 004, 018).
 
 ## Atualização de 2026-11-10, fim da tarde
 

@@ -39,6 +39,11 @@ Continuação de [[2026-11-10 - Slides, artefatos, deploy no Render e APK]].
 - A sequência de usuários passou a mostrar só criar; inativar ficou descrito no texto.
 - Commit e push a pedido do usuário ("commita pusha documenta").
 
+## Clareza dos slides e Trello público
+
+- A Evillyn achou estranhas frases da parte dela ("só mostra e ajuda: nunca é a única barreira"). Revisei o texto de todos os slides e troquei jargão por português direto: arquitetura, telas, linha do tempo, processo, design, pacotes, ordem das fases e próximos passos ("máquina de estados", "contratos", "porta index.ts" e "73 de 254 de peso"). Roteiro e PDFs regenerados.
+- O quadro do Trello ficou público (confirmado pelo MCP).
+
 ## Pendências
 
 - **Trello:** o MCP não muda a visibilidade; o usuário precisa deixar o quadro público pelo menu do quadro e renomeá-lo ("Kanban Quadro Modelo"). Depois, acrescentar o link no README. Os itens das listas "Tarefas" ainda têm texto técnico longo (144 itens); a pasta "Em andamento" está vazia, o que é esperado entre features.

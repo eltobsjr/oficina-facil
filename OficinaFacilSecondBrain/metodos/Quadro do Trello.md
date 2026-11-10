@@ -4,7 +4,7 @@ data: 2026-10-30
 
 # Quadro do Trello
 
-Quadro: https://trello.com/b/6ae4da0b233ab7b22fcc5814
+Quadro (público): https://trello.com/b/M2YYMwOu/kanban-quadro-modelo
 
 O quadro espelha o vault: nada é inventado nele. A especificação completa está em `metodos/trello-quadro.json`, gerada por `metodos/gerar-trello.py` a partir de `features/`, do [[CHECKLIST]] e do [[Roadmap]].
 
@@ -54,4 +54,4 @@ O Trello é uma **vista** do vault; em caso de divergência, vale o vault.
 - 2026-11-10 (fechamento da F2 e da F3): cartões 001, 006, 002 e 003 com a descrição dos critérios ✅, checklists completos, movidos para Concluído e marcados como feitos; marco M1 em Concluído. Criados 6 cartões "Semana 2 · ..." em Concluído (S3 no backend e no app, design system e telas, rebranding, refatoração, correção do CA03, diagramas e página de andamento, Supabase restaurado) e o cartão "Decidir os 4 pontos deixados pela S3" em Decisões, com vencimento em 2026-11-16. O cartão-guia agora diz onde estamos. A lista "Em andamento" ficou vazia de propósito. O quadro tem o nome do modelo ("Kanban Quadro Modelo"). O `trello-quadro.json` não foi regerado: os cartões novos existem só no Trello.
 
 - 2026-11-10 (noite): API publicada no Render ([[014 - Hospedagem da API no Render]]) e APK de debug gerado. O cartão de hospedagem do backend, se existir no quadro, pode ir para Concluído; o quadro não foi alterado nesta etapa.
-- 2026-11-10 (Scrum): listas reorganizadas como Product Backlog, Sprint Backlog, Em andamento (máx. 2), Impedimentos e Concluído; cartões de história reescritos no formato "Como… quero… para…" com critérios e `[Peso N]` no título (o MCP não cria etiquetas); criados os cartões de 002 e 003, que faltavam. O quadro continua **privado**: a conta do Elto não tem permissão para mudar a visibilidade (só a criadora, Évillyn). O `trello-quadro.json` e o `gerar-trello.py` ainda refletem a estrutura antiga.
+- 2026-11-10 (Scrum): listas reorganizadas como Product Backlog, Sprint Backlog, Em andamento (máx. 2), Impedimentos e Concluído; cartões de história reescritos no formato "Como… quero… para…" com critérios e `[Peso N]` no título (o MCP não cria etiquetas); criados os cartões de 002 e 003, que faltavam. O quadro ficou **público** em 2026-11-10 (mudado pela equipe no Trello; confirmado pelo MCP). O `trello-quadro.json` e o `gerar-trello.py` ainda refletem a estrutura antiga.
