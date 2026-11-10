@@ -28,6 +28,9 @@ class UsuariosFalso implements UsuariosRepository {
   /// Falha lançada pela próxima operação (e só por ela).
   Object? falharNaProxima;
 
+  /// Enquanto `true`, toda listagem da segunda página em diante falha (a primeira funciona).
+  var falharPaginasSeguintes = false;
+
   final listagens = <(FiltroUsuarios, int)>[];
   final criacoes = <Map<String, Object?>>[];
   final alteracoes = <Map<String, Object?>>[];
@@ -50,6 +53,7 @@ class UsuariosFalso implements UsuariosRepository {
   }) async {
     listagens.add((filtro, pagina));
     _falhaSeHouver();
+    if (falharPaginasSeguintes && pagina > 1) throw const SemConexaoException();
     final texto = filtro.texto.toLowerCase();
     final filtrados = usuarios
         .where((u) => filtro.perfil == null || u.perfil == filtro.perfil)

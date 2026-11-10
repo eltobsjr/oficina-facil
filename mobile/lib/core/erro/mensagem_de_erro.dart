@@ -11,7 +11,10 @@ String mensagemDeErro(Object erro) {
       'usuario_sem_perfil' =>
         'Este usuário não tem perfil cadastrado. Procure o gerente.',
       'ultimo_gerente' => 'Não é possível: este é o último gerente ativo.',
-      'conflito' => erro.mensagem,
+      'conflito' ||
+      'cliente_com_os_ativa' ||
+      'documento_duplicado' ||
+      'placa_duplicada' => erro.mensagem,
       'validacao' => 'Alguns dados não são válidos. Confira e tente de novo.',
       'nao_autorizado' => 'Sua sessão expirou. Entre novamente.',
       'proibido' => 'Você não tem permissão para esta ação.',

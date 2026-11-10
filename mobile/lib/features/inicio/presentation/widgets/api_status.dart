@@ -16,11 +16,6 @@ class ApiStatus extends ConsumerWidget {
       AsyncError() => 'Servidor indisponível',
       _ => 'Verificando servidor…',
     };
-    return Text(
-      texto,
-      style: Theme.of(
-        context,
-      ).textTheme.bodySmall?.copyWith(color: Theme.of(context).hintColor),
-    );
+    return Text(texto, style: Theme.of(context).textTheme.bodySmall);
   }
 }

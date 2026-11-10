@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import '../../../../core/lista_paginada.dart';
 import '../../../../core/network/api_client.dart';
 import '../../../../core/perfil.dart';
 import '../../data/usuarios_repository_api.dart';
@@ -27,81 +28,29 @@ final filtroUsuariosProvider =
       FiltroUsuariosNotifier.new,
     );
 
-/// Páginas já carregadas da lista, com o necessário para rolar até carregar mais.
-class ListaDeUsuarios {
-  const ListaDeUsuarios({
-    required this.itens,
-    required this.total,
-    required this.pagina,
-    this.carregandoMais = false,
-    this.falhouAoCarregarMais = false,
-  });
-
-  final List<Usuario> itens;
-  final int total;
-  final int pagina;
-  final bool carregandoMais;
-  final bool falhouAoCarregarMais;
-
-  bool get temMais => itens.length < total;
-
-  ListaDeUsuarios copiarCom({
-    List<Usuario>? itens,
-    int? pagina,
-    bool? carregandoMais,
-    bool? falhouAoCarregarMais,
-  }) {
-    return ListaDeUsuarios(
-      itens: itens ?? this.itens,
-      total: total,
-      pagina: pagina ?? this.pagina,
-      carregandoMais: carregandoMais ?? this.carregandoMais,
-      falhouAoCarregarMais: falhouAoCarregarMais ?? this.falhouAoCarregarMais,
-    );
-  }
-}
-
-class UsuariosListaNotifier extends AsyncNotifier<ListaDeUsuarios> {
+class UsuariosListaNotifier extends AsyncNotifier<ListaPaginada<Usuario>>
+    with CarregaMais<Usuario> {
   @override
-  Future<ListaDeUsuarios> build() async {
-    final filtro = ref.watch(filtroUsuariosProvider);
-    final primeira = await ref
-        .read(usuariosRepositoryProvider)
-        .listar(filtro, pagina: 1);
-    return ListaDeUsuarios(
-      itens: primeira.itens,
-      total: primeira.total,
-      pagina: 1,
-    );
+  Future<ListaPaginada<Usuario>> build() {
+    ref.watch(filtroUsuariosProvider);
+    return buscarPagina(1);
   }
 
-  Future<void> carregarMais() async {
-    final atual = state.value;
-    if (atual == null || atual.carregandoMais || !atual.temMais) return;
-    state = AsyncData(
-      atual.copiarCom(carregandoMais: true, falhouAoCarregarMais: false),
+  @override
+  Future<ListaPaginada<Usuario>> buscarPagina(int pagina) async {
+    final resultado = await ref
+        .read(usuariosRepositoryProvider)
+        .listar(ref.read(filtroUsuariosProvider), pagina: pagina);
+    return ListaPaginada(
+      itens: resultado.itens,
+      total: resultado.total,
+      pagina: resultado.pagina,
     );
-    try {
-      final proxima = await ref
-          .read(usuariosRepositoryProvider)
-          .listar(ref.read(filtroUsuariosProvider), pagina: atual.pagina + 1);
-      state = AsyncData(
-        atual.copiarCom(
-          itens: [...atual.itens, ...proxima.itens],
-          pagina: proxima.pagina,
-          carregandoMais: false,
-        ),
-      );
-    } catch (_) {
-      state = AsyncData(
-        atual.copiarCom(carregandoMais: false, falhouAoCarregarMais: true),
-      );
-    }
   }
 }
 
 final usuariosListaProvider =
-    AsyncNotifierProvider<UsuariosListaNotifier, ListaDeUsuarios>(
+    AsyncNotifierProvider<UsuariosListaNotifier, ListaPaginada<Usuario>>(
       UsuariosListaNotifier.new,
       // Sem repetição automática: o erro aparece na tela com "Tentar de novo".
       retry: (_, _) => null,

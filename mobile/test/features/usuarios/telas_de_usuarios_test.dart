@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:oficina_facil/app.dart';
-import 'package:oficina_facil/core/network/api_client.dart';
 import 'package:oficina_facil/core/network/api_exception.dart';
 import 'package:oficina_facil/core/perfil.dart';
-import 'package:oficina_facil/features/autenticacao/presentation/providers/sessao_provider.dart';
+import 'package:oficina_facil/core/widgets/cartao_de_lista.dart';
 import 'package:oficina_facil/features/usuarios/presentation/providers/usuarios_providers.dart';
 
+import '../../helpers/abrir_app.dart';
 import '../../helpers/autenticacao_falsa.dart';
+import '../../helpers/campos.dart';
 import '../../helpers/usuarios_falso.dart';
 
 UsuariosFalso _repositorio() => UsuariosFalso([
@@ -20,28 +19,14 @@ UsuariosFalso _repositorio() => UsuariosFalso([
 
 /// Abre o app como gerente e entra em Usuários pelo atalho da tela inicial.
 Future<void> _abrirUsuarios(WidgetTester tester, UsuariosFalso fake) async {
-  tester.view.physicalSize = const Size(900, 1400);
-  tester.view.devicePixelRatio = 1;
-  addTearDown(tester.view.reset);
-
-  await tester.pumpWidget(
-    ProviderScope(
-      overrides: [
-        autenticacaoRepositoryProvider.overrideWithValue(
-          AutenticacaoFalsa(sessaoInicial: usuarioGerente),
-        ),
-        usuariosRepositoryProvider.overrideWithValue(fake),
-        apiSaudeProvider.overrideWith((ref) async => true),
-      ],
-      child: const OficinaFacilApp(),
-    ),
+  await abrirApp(
+    tester,
+    autenticacao: AutenticacaoFalsa(sessaoInicial: usuarioGerente),
+    overrides: [usuariosRepositoryProvider.overrideWithValue(fake)],
   );
-  await tester.pumpAndSettle();
-  await tester.tap(find.widgetWithText(ActionChip, 'Usuários'));
+  await tester.tap(find.widgetWithText(CartaoDeLista, 'Usuários'));
   await tester.pumpAndSettle();
 }
-
-Finder _campo(String rotulo) => find.widgetWithText(TextFormField, rotulo);
 
 /// Toca num chip da fileira de filtros, que rola na horizontal: leva o chip à tela antes.
 Future<void> _tocarChip(WidgetTester tester, String rotulo) async {
@@ -112,6 +97,49 @@ void main() {
       expect(find.text('Ana Atendente'), findsNothing);
     });
 
+    testWidgets('a busca só dispara depois de 400 ms sem digitar', (
+      tester,
+    ) async {
+      final fake = _repositorio();
+      await _abrirUsuarios(tester, fake);
+      final antes = fake.listagens.length;
+
+      await tester.enterText(find.byType(TextField).first, 'marc');
+      await tester.pump(const Duration(milliseconds: 399));
+      expect(fake.listagens.length, antes, reason: 'ainda esperando');
+
+      await tester.pump(const Duration(milliseconds: 1));
+      await tester.pumpAndSettle();
+      expect(fake.listagens.length, antes + 1);
+      expect(fake.listagens.last.$1.texto, 'marc');
+    });
+
+    testWidgets(
+      'falha ao carregar mais mostra "Tentar carregar mais" e a tentativa '
+      'seguinte completa a lista',
+      (tester) async {
+        final fake = UsuariosFalso([
+          for (var i = 1; i <= 40; i++) usuario('u$i', nome: 'Usuário $i'),
+        ], tamanhoDaPagina: 20);
+        await _abrirUsuarios(tester, fake);
+        expect(find.text('Tentar carregar mais'), findsNothing);
+
+        fake.falharPaginasSeguintes = true;
+        await tester.drag(find.byType(ListView), const Offset(0, -1500));
+        await tester.pumpAndSettle();
+
+        expect(fake.listagens.last.$2, 2);
+        expect(find.text('Tentar carregar mais'), findsOneWidget);
+
+        fake.falharPaginasSeguintes = false;
+        await tester.tap(find.text('Tentar carregar mais'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Tentar carregar mais'), findsNothing);
+        expect(fake.listagens.last.$2, 2, reason: 'a tentativa deu certo');
+      },
+    );
+
     testWidgets('filtra por perfil e por situação', (tester) async {
       await _abrirUsuarios(tester, _repositorio());
 
@@ -132,13 +160,10 @@ void main() {
   group('T04 criar usuário', () {
     testWidgets('o botão Novo usuário abre o formulário', (tester) async {
       await _abrirUsuarios(tester, _repositorio());
-      await tester.tap(
-        find.widgetWithText(FloatingActionButton, 'Novo usuário'),
-      );
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Novo usuário');
 
       expect(find.text('Novo usuário'), findsOneWidget);
-      expect(_campo('Senha inicial'), findsOneWidget);
+      expect(campoDeTexto('Senha inicial'), findsOneWidget);
     });
 
     testWidgets('campos vazios mostram o que falta e nada é enviado', (
@@ -146,13 +171,9 @@ void main() {
     ) async {
       final fake = _repositorio();
       await _abrirUsuarios(tester, fake);
-      await tester.tap(
-        find.widgetWithText(FloatingActionButton, 'Novo usuário'),
-      );
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Novo usuário');
 
-      await tester.tap(find.widgetWithText(FilledButton, 'Salvar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Salvar');
 
       expect(find.text('Informe o nome'), findsOneWidget);
       expect(find.text('Informe o e-mail'), findsOneWidget);
@@ -169,17 +190,13 @@ void main() {
     ) async {
       final fake = _repositorio();
       await _abrirUsuarios(tester, fake);
-      await tester.tap(
-        find.widgetWithText(FloatingActionButton, 'Novo usuário'),
-      );
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Novo usuário');
 
-      await tester.enterText(_campo('Nome'), 'Nova Pessoa');
-      await tester.enterText(_campo('E-mail'), 'nova@teste.local');
+      await tester.enterText(campoDeTexto('Nome'), 'Nova Pessoa');
+      await tester.enterText(campoDeTexto('E-mail'), 'nova@teste.local');
       await _escolherPerfil(tester, 'Almoxarife');
-      await tester.enterText(_campo('Senha inicial'), 'senha-forte-1');
-      await tester.tap(find.widgetWithText(FilledButton, 'Salvar'));
-      await tester.pumpAndSettle();
+      await tester.enterText(campoDeTexto('Senha inicial'), 'senha-forte-1');
+      await tocarBotao<FilledButton>(tester, 'Salvar');
 
       expect(fake.criacoes.single, {
         'nome': 'Nova Pessoa',
@@ -200,22 +217,18 @@ void main() {
     ) async {
       final fake = _repositorio();
       await _abrirUsuarios(tester, fake);
-      await tester.tap(
-        find.widgetWithText(FloatingActionButton, 'Novo usuário'),
-      );
-      await tester.pumpAndSettle();
-      await tester.enterText(_campo('Nome'), 'Nova Pessoa');
-      await tester.enterText(_campo('E-mail'), 'a1@teste.local');
+      await tocarBotao<FilledButton>(tester, 'Novo usuário');
+      await tester.enterText(campoDeTexto('Nome'), 'Nova Pessoa');
+      await tester.enterText(campoDeTexto('E-mail'), 'a1@teste.local');
       await _escolherPerfil(tester, 'Mecânico');
-      await tester.enterText(_campo('Senha inicial'), 'senha-forte-1');
+      await tester.enterText(campoDeTexto('Senha inicial'), 'senha-forte-1');
 
       fake.falharNaProxima = const ApiException(
         status: 409,
         codigo: 'conflito',
         mensagem: 'E-mail já cadastrado',
       );
-      await tester.tap(find.widgetWithText(FilledButton, 'Salvar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Salvar');
 
       expect(find.text('E-mail já cadastrado'), findsOneWidget);
       expect(
@@ -241,7 +254,10 @@ void main() {
       expect(find.text('Editar usuário'), findsOneWidget);
       expect(find.text('Ana Atendente'), findsOneWidget);
       final email = tester.widget<TextField>(
-        find.descendant(of: _campo('E-mail'), matching: find.byType(TextField)),
+        find.descendant(
+          of: campoDeTexto('E-mail'),
+          matching: find.byType(TextField),
+        ),
       );
       expect(email.enabled, isFalse);
       expect(find.text('Senha inicial'), findsNothing);
@@ -251,10 +267,9 @@ void main() {
       final fake = _repositorio();
       await abrirAna(tester, fake);
 
-      await tester.enterText(_campo('Nome'), 'Ana Souza');
+      await tester.enterText(campoDeTexto('Nome'), 'Ana Souza');
       await _escolherPerfil(tester, 'Almoxarife');
-      await tester.tap(find.widgetWithText(FilledButton, 'Salvar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Salvar');
 
       expect(fake.alteracoes.single, {
         'id': 'a1',
@@ -273,8 +288,7 @@ void main() {
       await tester.tap(find.text('Inativar usuário'));
       await tester.pumpAndSettle();
       expect(find.textContaining('não conseguirá mais entrar'), findsOneWidget);
-      await tester.tap(find.widgetWithText(FilledButton, 'Inativar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Inativar');
 
       expect(fake.inativados, ['a1']);
       expect(find.text('Usuário inativado.'), findsOneWidget);
@@ -301,8 +315,7 @@ void main() {
 
       await tester.tap(find.text('Reativar usuário'));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(FilledButton, 'Reativar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Reativar');
 
       expect(fake.ativados, ['x1']);
       expect(find.text('Inativar usuário'), findsOneWidget);
@@ -323,8 +336,7 @@ void main() {
       );
       await tester.tap(find.text('Inativar usuário'));
       await tester.pumpAndSettle();
-      await tester.tap(find.widgetWithText(FilledButton, 'Inativar'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Inativar');
 
       expect(
         find.text('Não é possível: este é o último gerente ativo.'),
@@ -342,8 +354,7 @@ void main() {
       await tester.tap(find.text('Redefinir senha'));
       await tester.pumpAndSettle();
       await tester.enterText(find.byType(TextFormField).last, 'curta');
-      await tester.tap(find.widgetWithText(FilledButton, 'Redefinir'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Redefinir');
       expect(
         find.text('A senha precisa ter pelo menos 8 caracteres'),
         findsOneWidget,
@@ -351,8 +362,7 @@ void main() {
       expect(fake.senhas, isEmpty);
 
       await tester.enterText(find.byType(TextFormField).last, 'senha-nova-9');
-      await tester.tap(find.widgetWithText(FilledButton, 'Redefinir'));
-      await tester.pumpAndSettle();
+      await tocarBotao<FilledButton>(tester, 'Redefinir');
 
       expect(fake.senhas, ['senha-nova-9']);
       expect(find.text('Senha redefinida.'), findsOneWidget);

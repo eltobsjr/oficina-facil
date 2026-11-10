@@ -21,7 +21,6 @@ class OficinaFacilApp extends ConsumerWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       theme: AppTheme.light,
-      darkTheme: AppTheme.dark,
       routerConfig: ref.watch(appRouterProvider),
     );
   }

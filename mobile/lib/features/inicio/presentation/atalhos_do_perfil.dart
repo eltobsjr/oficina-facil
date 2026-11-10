@@ -14,6 +14,12 @@ class Atalho {
 /// Atalhos da tela inicial de cada perfil. Só telas que já existem; cresce a cada fase.
 List<Atalho> atalhosDoPerfil(Perfil perfil) {
   return [
+    if (perfil == Perfil.atendente)
+      const Atalho(
+        rotulo: 'Clientes',
+        rota: AppRoutes.clientes,
+        icone: Icons.people_outline,
+      ),
     if (perfil == Perfil.gerente)
       const Atalho(
         rotulo: 'Usuários',

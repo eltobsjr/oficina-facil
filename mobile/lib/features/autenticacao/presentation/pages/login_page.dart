@@ -2,6 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../../core/erro/mensagem_de_erro.dart';
+import '../../../../core/shell/moldura_de_entrada.dart';
+import '../../../../core/theme/app_theme.dart';
+import '../../../../core/validacao/validadores.dart';
+import '../../../../core/widgets/aviso_de_erro.dart';
+import '../../../../core/widgets/botao_com_progresso.dart';
+import '../../../../core/widgets/campo_rotulado.dart';
+import '../../../../core/widgets/largura_maxima.dart';
 import '../../domain/entities/falha_login.dart';
 import '../providers/sessao_provider.dart';
 
@@ -50,57 +57,52 @@ class _LoginPageState extends ConsumerState<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final tema = Theme.of(context);
-    return Scaffold(
-      body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            padding: const EdgeInsets.all(24),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 400),
-              child: AutofillGroup(
-                child: Form(
-                  key: _formulario,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Center(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(24),
-                          child: Image.asset(
-                            'assets/images/logo.png',
-                            width: 96,
-                            height: 96,
-                            semanticLabel: 'Logo do OficinaFácil',
-                          ),
+    return MolduraDeEntrada(
+      filho: Center(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+          child: LarguraMaxima(
+            largura: 400,
+            child: AutofillGroup(
+              child: Form(
+                key: _formulario,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Center(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Image.asset(
+                          'assets/images/logo.png',
+                          width: 88,
+                          height: 88,
+                          semanticLabel: 'Logo do OficinaFácil',
                         ),
                       ),
-                      const SizedBox(height: 24),
-                      Text(
-                        'Entrar',
-                        textAlign: TextAlign.center,
-                        style: tema.textTheme.headlineMedium,
-                      ),
-                      const SizedBox(height: 24),
-                      TextFormField(
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                      'Entrar',
+                      textAlign: TextAlign.center,
+                      style: tema.textTheme.headlineLarge,
+                    ),
+                    const SizedBox(height: 24),
+                    CampoRotulado(
+                      rotulo: 'E-mail',
+                      child: TextFormField(
                         controller: _email,
                         enabled: !_entrando,
                         keyboardType: TextInputType.emailAddress,
                         textInputAction: TextInputAction.next,
                         autofillHints: const [AutofillHints.username],
-                        decoration: const InputDecoration(
-                          labelText: 'E-mail',
-                          border: OutlineInputBorder(),
-                        ),
-                        validator: (valor) {
-                          final texto = valor?.trim() ?? '';
-                          if (texto.isEmpty) return 'Informe o e-mail';
-                          if (!texto.contains('@')) return 'E-mail inválido';
-                          return null;
-                        },
+                        validator: Validadores.emailObrigatorio,
                       ),
-                      const SizedBox(height: 16),
-                      TextFormField(
+                    ),
+                    const SizedBox(height: AppTheme.espacoEntreCampos),
+                    CampoRotulado(
+                      rotulo: 'Senha',
+                      child: TextFormField(
                         controller: _senha,
                         enabled: !_entrando,
                         obscureText: !_senhaVisivel,
@@ -108,8 +110,6 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                         autofillHints: const [AutofillHints.password],
                         onFieldSubmitted: (_) => _entrar(),
                         decoration: InputDecoration(
-                          labelText: 'Senha',
-                          border: const OutlineInputBorder(),
                           suffixIcon: IconButton(
                             tooltip: _senhaVisivel
                                 ? 'Ocultar senha'
@@ -123,36 +123,24 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                                 setState(() => _senhaVisivel = !_senhaVisivel),
                           ),
                         ),
-                        validator: (valor) => (valor == null || valor.isEmpty)
-                            ? 'Informe a senha'
-                            : null,
-                      ),
-                      if (_erro != null) ...[
-                        const SizedBox(height: 16),
-                        Semantics(
-                          liveRegion: true,
-                          child: Text(
-                            _erro!,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(color: tema.colorScheme.error),
-                          ),
+                        validator: Validadores.obrigatorio(
+                          'Informe a senha',
+                          aparar: false,
                         ),
-                      ],
-                      const SizedBox(height: 24),
-                      FilledButton(
-                        onPressed: _entrando ? null : _entrar,
-                        child: _entrando
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                ),
-                              )
-                            : const Text('Entrar'),
                       ),
+                    ),
+                    if (_erro != null) ...[
+                      const SizedBox(height: AppTheme.espacoEntreCampos),
+                      AvisoDeErro(_erro!),
                     ],
-                  ),
+                    const SizedBox(height: 24),
+                    BotaoComProgresso(
+                      rotulo: 'Entrar',
+                      rotuloDeProgresso: 'Entrando',
+                      carregando: _entrando,
+                      aoPressionar: _entrar,
+                    ),
+                  ],
                 ),
               ),
             ),

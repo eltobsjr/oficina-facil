@@ -69,6 +69,19 @@ void main() {
       );
     });
 
+    test('conflitos de cadastro usam a mensagem da API', () {
+      for (final codigo in [
+        'cliente_com_os_ativa',
+        'documento_duplicado',
+        'placa_duplicada',
+      ]) {
+        expect(
+          mensagemDeErro(_erro(409, codigo, 'Mensagem em português')),
+          'Mensagem em português',
+        );
+      }
+    });
+
     test('conflito usa a mensagem da API (já é em português)', () {
       expect(
         mensagemDeErro(_erro(409, 'conflito', 'E-mail já cadastrado')),

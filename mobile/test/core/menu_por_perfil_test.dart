@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:oficina_facil/core/perfil.dart';
+import 'package:oficina_facil/core/router/acesso_por_perfil.dart';
 import 'package:oficina_facil/core/shell/menu_por_perfil.dart';
 
 void main() {
@@ -11,12 +12,15 @@ void main() {
       ]);
     });
 
-    test('os demais perfis só têm Início por enquanto', () {
-      for (final perfil in [
-        Perfil.atendente,
-        Perfil.mecanico,
-        Perfil.almoxarife,
-      ]) {
+    test('o atendente tem Início e Clientes', () {
+      expect(menuDoPerfil(Perfil.atendente).map((i) => i.rotulo), [
+        'Início',
+        'Clientes',
+      ]);
+    });
+
+    test('mecânico e almoxarife só têm Início por enquanto', () {
+      for (final perfil in [Perfil.mecanico, Perfil.almoxarife]) {
         expect(menuDoPerfil(perfil).map((i) => i.rotulo), ['Início']);
       }
     });
@@ -26,7 +30,7 @@ void main() {
       for (final perfil in Perfil.values) {
         for (final item in menuDoPerfil(perfil)) {
           expect(
-            item.rota == '/' || perfil == Perfil.gerente,
+            AcessoPorPerfil.permite(perfil, item.rota),
             isTrue,
             reason: '${perfil.name} vê ${item.rotulo}',
           );

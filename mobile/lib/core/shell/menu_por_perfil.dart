@@ -23,6 +23,12 @@ List<ItemMenu> menuDoPerfil(Perfil perfil) {
       rota: AppRoutes.inicio,
       icone: Icons.home_outlined,
     ),
+    if (perfil == Perfil.atendente)
+      const ItemMenu(
+        rotulo: 'Clientes',
+        rota: AppRoutes.clientes,
+        icone: Icons.people_outline,
+      ),
     if (perfil == Perfil.gerente)
       const ItemMenu(
         rotulo: 'Usuários',

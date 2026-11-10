@@ -10,6 +10,17 @@ abstract final class AppRoutes {
   static const semConexao = '/sem-conexao';
   static const usuarios = '/usuarios';
   static const usuarioNovo = '/usuarios/novo';
+  static const clientes = '/clientes';
+  static const clienteNovo = '/clientes/novo';
+
+  static String usuario(String id) => '/usuarios/$id';
+  static String cliente(String id) => '/clientes/$id';
+  static String veiculosDoCliente(String clienteId) =>
+      '/clientes/$clienteId/veiculos';
+  static String veiculoNovo(String clienteId) =>
+      '/clientes/$clienteId/veiculos/novo';
+  static String veiculo(String clienteId, String veiculoId) =>
+      '/clientes/$clienteId/veiculos/$veiculoId';
 }
 
 /// Decide para onde mandar o usuário. Devolve `null` quando a rota atual está correta.

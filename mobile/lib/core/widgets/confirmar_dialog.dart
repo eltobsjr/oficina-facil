@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_theme.dart';
+
 /// Pergunta de confirmação para ações que não se desfazem. Devolve `true` se o usuário confirmar.
 Future<bool> confirmar(
   BuildContext context, {
@@ -13,16 +15,15 @@ Future<bool> confirmar(
     builder: (contexto) => AlertDialog(
       title: Text(titulo),
       content: Text(mensagem),
+      actionsPadding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
       actions: [
-        TextButton(
+        OutlinedButton(
           onPressed: () => Navigator.of(contexto).pop(false),
           child: const Text('Cancelar'),
         ),
         FilledButton(
           style: destrutivo
-              ? FilledButton.styleFrom(
-                  backgroundColor: Theme.of(contexto).colorScheme.error,
-                )
+              ? FilledButton.styleFrom(backgroundColor: AppTheme.perigo)
               : null,
           onPressed: () => Navigator.of(contexto).pop(true),
           child: Text(rotuloConfirmar),

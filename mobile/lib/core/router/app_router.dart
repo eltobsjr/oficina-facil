@@ -5,9 +5,13 @@ import 'package:go_router/go_router.dart';
 import '../../features/autenticacao/presentation/pages/login_page.dart';
 import '../../features/autenticacao/presentation/pages/paginas_de_sessao.dart';
 import '../../features/autenticacao/presentation/providers/sessao_provider.dart';
+import '../../features/clientes/presentation/pages/cliente_form_page.dart';
+import '../../features/clientes/presentation/pages/clientes_page.dart';
 import '../../features/inicio/presentation/pages/inicio_page.dart';
 import '../../features/usuarios/presentation/pages/usuario_form_page.dart';
 import '../../features/usuarios/presentation/pages/usuarios_page.dart';
+import '../../features/veiculos/presentation/pages/veiculo_form_page.dart';
+import '../../features/veiculos/presentation/pages/veiculos_do_cliente_page.dart';
 import '../shell/app_shell.dart';
 import 'redirecionamento.dart';
 
@@ -54,6 +58,45 @@ final appRouterProvider = Provider<GoRouter>((ref) {
                 path: ':id',
                 builder: (context, state) =>
                     UsuarioFormPage(usuarioId: state.pathParameters['id']),
+              ),
+            ],
+          ),
+          GoRoute(
+            path: AppRoutes.clientes,
+            builder: (context, state) => const ClientesPage(),
+            routes: [
+              // `novo` vem antes de `:id`, senão "novo" seria lido como um id.
+              GoRoute(
+                path: 'novo',
+                builder: (context, state) => const ClienteFormPage(),
+              ),
+              GoRoute(
+                path: ':id',
+                builder: (context, state) =>
+                    ClienteFormPage(clienteId: state.pathParameters['id']),
+                routes: [
+                  GoRoute(
+                    path: 'veiculos',
+                    builder: (context, state) => VeiculosDoClientePage(
+                      clienteId: state.pathParameters['id']!,
+                    ),
+                    routes: [
+                      GoRoute(
+                        path: 'novo',
+                        builder: (context, state) => VeiculoFormPage(
+                          clienteId: state.pathParameters['id']!,
+                        ),
+                      ),
+                      GoRoute(
+                        path: ':veiculoId',
+                        builder: (context, state) => VeiculoFormPage(
+                          clienteId: state.pathParameters['id']!,
+                          veiculoId: state.pathParameters['veiculoId'],
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ],
           ),

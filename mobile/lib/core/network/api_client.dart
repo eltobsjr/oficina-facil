@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../config/app_config.dart';
 import 'api_exception.dart';
+import 'token_da_sessao.dart';
 
 /// Cliente HTTP da API do backend. Anexa o token do Supabase quando há sessão.
 class ApiClient {
@@ -75,8 +76,15 @@ class ApiClient {
 final apiClientProvider = Provider<ApiClient>((ref) {
   return ApiClient(
     baseUrl: AppConfig.apiUrl,
-    token: () async =>
-        Supabase.instance.client.auth.currentSession?.accessToken,
+    token: () {
+      final auth = Supabase.instance.client.auth;
+      return tokenDaSessao(
+        sessao: () => auth.currentSession,
+        renovar: () async {
+          await auth.refreshSession();
+        },
+      );
+    },
   );
 });
 
