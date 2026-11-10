@@ -22,6 +22,7 @@
     "db:migrate:dev": "prisma migrate dev",
     "db:status": "prisma migrate status",
     "db:seed": "tsx prisma/seed.ts",
+    "db:trocar-gerente": "tsx prisma/trocar-gerente.ts",
     "openapi:gerar": "tsx src/scripts/gerar-openapi.ts"
   },
   "dependencies": {
