@@ -9,6 +9,34 @@
   Flutter (web e Android) · Node.js/TypeScript · Supabase
 </p>
 
+<p align="center">
+  <img alt="Flutter" src="https://img.shields.io/badge/Flutter-3.44-02569B?style=for-the-badge&logo=flutter&logoColor=white">
+  <img alt="Dart" src="https://img.shields.io/badge/Dart-3.12-0175C2?style=for-the-badge&logo=dart&logoColor=white">
+  <img alt="Node" src="https://img.shields.io/badge/Node-22-339933?style=for-the-badge&logo=nodedotjs&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-Express_5-3178C6?style=for-the-badge&logo=typescript&logoColor=white">
+  <img alt="Supabase" src="https://img.shields.io/badge/Supabase-Postgres-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white">
+</p>
+
+<p align="center">
+  <img alt="Status" src="https://img.shields.io/badge/status-F1_a_F3_conclu%C3%ADdas-yellow?style=flat-square">
+  <img alt="Casos de uso" src="https://img.shields.io/badge/casos_de_uso-19-blue?style=flat-square">
+  <img alt="Hist%C3%B3rias" src="https://img.shields.io/badge/hist%C3%B3rias-23-blue?style=flat-square">
+  <img alt="Uso" src="https://img.shields.io/badge/uso-acad%C3%AAmico-lightgrey?style=flat-square">
+</p>
+
+<p align="center">
+  Projeto da disciplina de Análise e Projeto de Sistemas · Professor: Anthony
+</p>
+
+<p align="center">
+  <a href="https://github.com/eltobsjr/oficina-facil">Repositório</a> ·
+  <a href="https://oficina-facil.onrender.com/health">API no ar</a> ·
+  <a href="https://trello.com/b/M2YYMwOu/kanban-quadro-modelo">Quadro do Trello</a> ·
+  <a href="OficinaFacilSecondBrain/00%20-%20%C3%8Dndice.md">Documentação (vault)</a> ·
+  <a href="OficinaFacilSecondBrain/Roadmap.md">Roadmap</a> ·
+  <a href="#15-glossário">Glossário</a>
+</p>
+
 ---
 
 ## Sumário
@@ -27,8 +55,11 @@
 12. [Roadmap](#12-roadmap)
 13. [Identidade visual](#13-identidade-visual)
 14. [Documentação](#14-documentação)
-15. [Convenções](#15-convenções)
-16. [Contexto acadêmico](#16-contexto-acadêmico)
+15. [Glossário](#15-glossário)
+16. [Fluxo de trabalho](#16-fluxo-de-trabalho)
+17. [Claude neste projeto](#17-claude-neste-projeto)
+18. [Convenções](#18-convenções)
+19. [Equipe e contexto acadêmico](#19-equipe-e-contexto-acadêmico)
 
 ---
 
@@ -46,30 +77,30 @@ O que o sistema resolve:
 - **Visão gerencial:** consulta de OS e faturamento por período.
 
 **Em construção:** vai funcionar em **web e Android**, com dados compartilhados entre os aparelhos (o atendente no
-navegador verá o que o mecânico atualizou no celular). Hoje já existem a API base, o banco com segurança por linha, o
-login com menu por perfil e a gestão de usuários; os demais casos de uso ainda não foram construídos.
+navegador verá o que o mecânico atualizou no celular). Já estão prontos o login com menu por perfil, a gestão de
+usuários, clientes e veículos, e a API está publicada para demonstração; as ordens de serviço e o estoque vêm nas
+próximas fases.
 
 ## 2. Estado atual
 
-A **Entrega 1** está concluída, a análise e o planejamento estão prontos e a construção começou: a fundação técnica
-(F1) está feita no essencial e a F2 (acesso e usuários) está em andamento.
+A análise e o planejamento estão prontos, e as fases **F1 (fundação), F2 (acesso e usuários) e F3 (clientes e
+veículos) estão concluídas**, com os critérios de aceitação provados no banco real. A próxima é a **F4** (serviços,
+peças e entrada de estoque). O andamento por feature está no CHECKLIST e a linha do tempo no Roadmap, ambos no vault.
 
 | Área | Situação |
 |---|---|
-| App Flutter (web e Android) com tema, rotas, login, menu por perfil e telas de usuários | ✅ |
-| `StatusOrdemServico` no domínio, com testes | ✅ |
-| Logo, nome e ícones (web e Android) | ✅ |
 | Requisitos, casos de uso, histórias, modelo de dados, arquitetura, decisões | ✅ |
-| Checklist e roadmap de desenvolvimento | ✅ |
-| Backend (Node/TypeScript), projeto Supabase de desenvolvimento, migration inicial com RLS, CI | ✅ |
-| UC01 (autenticar) e UC06 (gerir usuários) | 🔄 código pronto; falta a prova com conta real |
-| Testes de integração, de concorrência e de RLS | ⏳ dependem do projeto Supabase de teste |
-| Os demais casos de uso (UC02 a UC05, UC07 a UC19) | ⏳ |
+| Fundação: app Flutter, backend Node/TypeScript, Supabase com RLS, CI | ✅ |
+| UC01 autenticar e UC06 gerir usuários | ✅ |
+| UC02 gerir clientes e UC03 gerir veículos | ✅ |
+| Design system "OficinaFácil" aplicado às telas existentes | ✅ |
+| API publicada no Render e APK de demonstração | ✅ |
+| UC05 serviços, UC04 peças e UC18 entrada de estoque (F4) | ⏳ próxima |
+| Demais casos de uso (UC07 a UC17 e UC19) | ⏳ |
 | Teste em dispositivo Android | ⏳ |
 
-Das 12 decisões, 5 estão aceitas (persistência, autenticação, conferência com o enunciado, backend e estrutura do
-repositório), 4 propostas (regras de desconto, estoque, pagamento e avisos) e 3 abertas (ajuste do orçamento, recorte
-de entrega e UML formal). UC18 e UC19 foram deduzidos (o resumo oficial descreve 17 casos de uso).
+UC18 e UC19 foram deduzidos (o resumo oficial descreve 17 casos de uso). A lista das decisões, com o estado de cada
+uma (aceita, proposta ou aberta), está em `decisions/` no vault.
 
 ## 3. Perfis de usuário
 
@@ -91,7 +122,19 @@ Os 19 casos de uso, agrupados:
 | **Estoque e gestão** | UC18 Dar entrada no estoque · UC19 Ver faturamento |
 
 Relações: UC12 **inclui** UC13; UC10 **estende** UC09; UC17 **estende** UC16.
-Fluxos completos, pré e pós-condições e exceções ficam no vault (nota **Casos de uso**).
+Fluxos completos, pré e pós-condições e exceções ficam no vault, na nota [Casos de uso](OficinaFacilSecondBrain/requisitos/Casos%20de%20uso.md).
+
+### Telas já prontas
+
+Prints do app real (dados fictícios). O mapa completo das 26 telas está em [Mapa de telas](OficinaFacilSecondBrain/telas/Mapa%20de%20telas.md).
+
+<p align="center">
+  <img src="OficinaFacilSecondBrain/artefatos/slides/telas-e-diagramas-por-semana/imagens/p_t01_login.png" alt="Tela de login" width="31%">
+  <img src="OficinaFacilSecondBrain/artefatos/slides/telas-e-diagramas-por-semana/imagens/p_t03_usuarios.png" alt="Lista de usuários" width="31%">
+  <img src="OficinaFacilSecondBrain/artefatos/slides/telas-e-diagramas-por-semana/imagens/p_t05_clientes.png" alt="Lista de clientes" width="31%">
+</p>
+
+Diagramas de pacotes, classes e implementação por semana: [diagramas/](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md).
 
 ## 5. Ciclo de vida da OS
 
@@ -123,7 +166,7 @@ Nove regras (RN01 a RN09) governam o sistema. As principais, em resumo:
 - **Cancelar** vale em qualquer estado antes da entrega; só atendente e gerente cancelam.
 - Cada perfil só vê e faz o que a matriz de casos de uso permite.
 
-O texto completo de cada regra está na nota **Casos de uso** do vault (seção 1.2).
+O texto completo de cada regra está em [Casos de uso](OficinaFacilSecondBrain/requisitos/Casos%20de%20uso.md), seção 1.2.
 
 ## 7. Arquitetura
 
@@ -229,16 +272,16 @@ Antes de qualquer commit, na parte alterada:
 | App (`mobile/`) | `dart format --output=none --set-exit-if-changed lib test`, `flutter analyze`, `flutter test`, `flutter build web`, `flutter build apk --debug` |
 | Backend (`backend/`) | `npm run lint && npm run format:check && npm run typecheck && npm test` e `bash scripts/smoke.sh` |
 
-Hoje: 216 testes no app e 79 no backend passando (26 de integração do backend ficam ignorados até existir o projeto Supabase de teste).
+Hoje: 351 testes no app e 179 no backend passando; 31 testes de integração do backend só rodam com o banco de desenvolvimento liberado (um único projeto Supabase, sem dado real).
 
 ## 12. Roadmap
 
 | Fase | Entrega | Casos de uso |
 |---|---|---|
 | F0 | Entrega 1 e base de documentação | ✅ concluída |
-| F1 | Fundação: Supabase, backend base, banco com RLS, app ligado ao backend, CI | ✅ no essencial |
-| F2 | Acesso e usuários | UC01, UC06 (🔄 em andamento) |
-| F3 | Clientes e veículos | UC02, UC03 |
+| F1 | Fundação: Supabase, backend base, banco com RLS, app ligado ao backend, CI | ✅ concluída |
+| F2 | Acesso e usuários | UC01, UC06 ✅ |
+| F3 | Clientes e veículos | UC02, UC03 ✅ |
 | F4 | Catálogos e estoque | UC05, UC04, UC18 |
 | F5 | Abrir, diagnosticar e orçar | UC07 a UC10 |
 | F6 | Aprovação e execução | UC11 a UC13 |
@@ -249,7 +292,7 @@ Hoje: 216 testes no app e 79 no backend passando (26 de integração do backend 
 Marcos: **M1** login com 4 perfis (F2) · **M2** cadastros e estoque (F4) · **M3** OS orçada (F5) ·
 **M4** ciclo completo até a entrega (F7) · **M5** sistema completo em web e Android (F9).
 Cada feature segue as mesmas 9 tarefas (modelo, API, testes da API, contrato, app em dois blocos, testes do app,
-verificação, documentação). O acompanhamento é feito num quadro do Trello, que é uma vista do vault; a lista mestra é o CHECKLIST.
+verificação, documentação). O acompanhamento é feito num quadro do Trello, que é uma vista do vault; a lista mestra é o CHECKLIST. Calendário e peso de cada fase: nota Roadmap.
 
 ## 13. Identidade visual
 
@@ -263,25 +306,89 @@ A porca remete à oficina; o check, à tarefa concluída. O kit completo (SVGs, 
 
 ## 14. Documentação
 
-Toda a documentação fica no vault `OficinaFacilSecondBrain/`, **versionado neste mesmo repositório**. Ponto de partida:
-nota `00 - Índice`. Principais notas:
+Toda a documentação fica no vault `OficinaFacilSecondBrain/`, **versionado neste mesmo repositório**. Ponto de partida: [00 - Índice](OficinaFacilSecondBrain/00%20-%20%C3%8Dndice.md).
 
-| Nota | Conteúdo |
+| Documento | O que responde |
 |---|---|
-| Requisitos | Requisitos funcionais e não funcionais, glossário |
-| Casos de uso | Atores, regras RN01 a RN09, diagramas e os 19 fluxos |
-| Histórias de usuário | 23 histórias com critérios |
-| Arquitetura | Stack, responsabilidades, autenticação, segurança, ambientes |
-| Modelo de dados | Diagrama ER, enums, restrições, RLS |
-| Endpoints | Contrato da API por caso de uso |
-| Roadmap | Fases, dependências, marcos e riscos |
-| CHECKLIST | Lista mestra marcável do que construir |
-| `decisions/` | 12 decisões, uma por arquivo (5 aceitas, 4 propostas, 3 abertas) |
-| `features/` | Uma especificação por feature, com critérios de aceitação |
+| [Visão geral](OficinaFacilSecondBrain/OficinaF%C3%A1cil%20%E2%80%94%20Vis%C3%A3o%20Geral.md) | Que problema resolvemos e para quem |
+| [Requisitos](OficinaFacilSecondBrain/requisitos/Requisitos.md) | RF, RNF e o glossário completo |
+| [Casos de uso](OficinaFacilSecondBrain/requisitos/Casos%20de%20uso.md) | Atores, regras RN01 a RN09 e os 19 fluxos |
+| [Histórias de usuário](OficinaFacilSecondBrain/requisitos/Hist%C3%B3rias%20de%20usu%C3%A1rio.md) | 23 histórias com critérios |
+| [Rastreabilidade](OficinaFacilSecondBrain/requisitos/Rastreabilidade.md) | Do requisito até a tela e a tabela |
+| [Arquitetura](OficinaFacilSecondBrain/arquitetura/Arquitetura.md) | Stack, camadas, autenticação, segurança e ambientes |
+| [Modelo de dados](OficinaFacilSecondBrain/arquitetura/Modelo%20de%20dados.md) | Diagrama ER, enums, restrições e RLS |
+| [Diagramas](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md) | Pacotes, classes e implementação, por semana |
+| [Endpoints](OficinaFacilSecondBrain/api/Endpoints.md) | Contrato da API por caso de uso |
+| [Mapa de telas](OficinaFacilSecondBrain/telas/Mapa%20de%20telas.md) | As 26 telas e quem acessa cada uma |
+| [Roadmap](OficinaFacilSecondBrain/Roadmap.md) | As 15 semanas, os marcos e os riscos |
+| [CHECKLIST](OficinaFacilSecondBrain/CHECKLIST.md) | Lista mestra do que construir |
+| [Features](OficinaFacilSecondBrain/features/) | Uma especificação por feature, com critérios e diagrama |
+| [Decisões](OficinaFacilSecondBrain/decisions/00%20-%20%C3%8Dndice%20de%20decis%C3%B5es.md) | 14 decisões, uma por arquivo, com o estado de cada uma |
+| [Devtrack](OficinaFacilSecondBrain/devtrack/) | Um registro por sessão de trabalho |
+| [Artefatos](OficinaFacilSecondBrain/artefatos/00%20-%20%C3%8Dndice%20de%20artefatos.md) | Design das telas, design system e slides |
+| [Convenções](OficinaFacilSecondBrain/Conven%C3%A7%C3%B5es.md) | Onde cada coisa vive no vault |
 
-Os PDFs para entrega ao professor são gerados em `OficinaFacilSecondBrain/entregas/`.
+Os PDFs para entrega ao professor são gerados em [entregas/](OficinaFacilSecondBrain/entregas/).
 
-## 15. Convenções
+## 15. Glossário
+
+Os termos que mais aparecem. O glossário completo está em [Requisitos](OficinaFacilSecondBrain/requisitos/Requisitos.md), seção 3.
+
+| Termo | Significado |
+|---|---|
+| **OS** | Ordem de serviço: o registro que acompanha um veículo na oficina |
+| **OS ativa** | OS em qualquer estado, exceto `ENTREGUE` e `CANCELADA` |
+| **Estado** | Posição da OS no ciclo (`ABERTA`, `DIAGNOSTICADA`, `AGUARDANDO_APROVACAO`, `APROVADA`, `EM_EXECUCAO`, `CONCLUIDA`, `ENTREGUE`, `CANCELADA`) |
+| **Perfil** | Papel do usuário: atendente, mecânico, almoxarife ou gerente |
+| **Diagnóstico** | Parecer técnico do mecânico sobre o defeito |
+| **Orçamento** | Serviços e peças com valores e desconto, montado depois do diagnóstico |
+| **Autorização de desconto** | Pedido do atendente, decidido pelo gerente, para desconto acima de 10% do subtotal |
+| **Peça usada** | Peça consumida numa OS; baixa o estoque |
+| **Saldo e estoque mínimo** | Quantidade em estoque e o limite abaixo do qual a peça é destacada |
+| **Movimentação de estoque** | Entrada, baixa ou estorno; o saldo resulta delas |
+| **Estorno** | Devolução ao estoque de uma peça lançada |
+| **Aviso** | Notificação dentro do app (OS concluída, saldo insuficiente, desconto pendente) |
+| **Faturamento** | Soma dos pagamentos das OS entregues no período |
+| **Centavos** | Unidade em que todo valor monetário é guardado, sempre inteiro |
+| **RLS** | Segurança por linha do Postgres: decide quem lê e escreve cada linha |
+| **JWT / JWKS** | Token de sessão do Supabase e as chaves públicas que o backend usa para conferi-lo |
+
+## 16. Fluxo de trabalho
+
+O trabalho segue uma **feature por vez, na ordem do CHECKLIST**, e só começa quando as dependências da feature estão concluídas.
+
+```mermaid
+flowchart LR
+  A[Requisito<br/>no vault] --> B[Feature<br/>critérios de aceitação]
+  B --> C[Código<br/>app + backend]
+  C --> D[Verificação<br/>testes e build]
+  D --> E[Documentação<br/>CHECKLIST e devtrack]
+  E --> F[Commit]
+```
+
+| Ferramenta | Papel |
+|---|---|
+| Vault `OficinaFacilSecondBrain/` | Fonte única: requisitos, critérios, decisões, CHECKLIST e logs de sessão |
+| [Trello](https://trello.com/b/M2YYMwOu/kanban-quadro-modelo) | Vista do vault em Kanban: em que etapa cada feature está. O quadro é espelho; em divergência vale o vault |
+| GitHub | Código, CI e o vault versionado, direto na `main`, um commit por feature ou fase |
+
+Regras que sustentam o fluxo: mudança de comportamento atualiza primeiro os critérios e as notas do vault e só
+então o código; nada de requisito, tela ou endpoint fora do vault sem aprovação; commit só com a verificação
+passando. Cada feature tem o seu diagrama (sequência, classes ou atividades) no próprio arquivo em `features/`.
+
+## 17. Claude neste projeto
+
+O projeto é desenvolvido com apoio do Claude Code, com o contexto guardado no próprio repositório:
+
+| Arquivo | Papel |
+|---|---|
+| `CLAUDE.md` | Regras invioláveis do projeto: documentação só no vault, sem inventar requisito, verificar antes de afirmar, segredos fora do git |
+| `OficinaFacilSecondBrain/devtrack/` | Log de cada sessão: o que foi feito, arquivos, decisões e pendências |
+| `OficinaFacilSecondBrain/prioridade/atual.md` | A próxima ação, para retomar de onde parou |
+
+Mudanças só são commitadas ao fim de uma feature ou fase, em português e sem linha de coautoria; push só sob pedido.
+
+## 18. Convenções
 
 - Commits em português, sem linha de coautoria, um por feature concluída ou fase de construção. Push só quando o usuário pedir.
 - Código limpo: sem arquivo, dependência ou código sem uso.
@@ -289,7 +396,14 @@ Os PDFs para entrega ao professor são gerados em `OficinaFacilSecondBrain/entre
 - Dinheiro em centavos inteiros; regras de negócio no backend; segredos fora do git.
 - Todas as regras, incluindo as inegociáveis, estão no `CLAUDE.md`.
 
-## 16. Contexto acadêmico
+## 19. Equipe e contexto acadêmico
+
+| Integrante |
+|---|
+| Elto |
+| Evillyn |
+| Roberto |
+| Pedro |
 
 Projeto da disciplina **Análise e Projeto de Sistemas**. O professor (Anthony) pede uma entrega por semana, cada uma
 com diagrama UML e código correspondente. Os atores, a OS de 8 estados e os casos de uso UC01 a UC17 vêm do enunciado;
@@ -297,3 +411,7 @@ UC18, UC19 e as histórias de usuário foram deduzidos; o professor não entrego
 registra que a conferência fica pendente até ele pedir.
 
 Repositório: `github.com/eltobsjr/oficina-facil`
+
+---
+
+<p align="center"><strong>OficinaFácil</strong> · Análise e Projeto de Sistemas · 2026<br><em>Projeto acadêmico, sem fins comerciais.</em></p>

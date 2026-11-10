@@ -1,0 +1,20 @@
+<section id="s3-pacotes" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:64px 128px 120px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;flex-direction:column;gap:6px">
+<h2 style="font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1px">Semana 3 · Pacotes e classes</h2>
+<p style="font-size:28px;color:#333333">Clientes e veículos (features 002 e 003)</p>
+</div>
+<div style="display:flex;gap:24px">
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Pacotes · como as peças se ligam</p>
+<img src="/_blob/c97b49504e9cf0f738ca57dce767fa41" alt="Diagrama de pacotes: módulos de clientes e veículos no backend e features no app" style="width:804px;height:480px;object-fit:contain;background:#f5f5f7;border-radius:12px">
+<p style="font-size:26px;line-height:1.35;color:#333333">No backend, veículos pergunta ao módulo de clientes pela porta index.ts. No app, os veículos aparecem dentro do cliente.</p>
+</div>
+<div style="flex:1;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
+<p style="font-size:28px;font-weight:700;color:#0066cc">Classes · cliente possui veículos</p>
+<img src="/_blob/9ace7a7a7c6d4ddc2f1dcc5313d44d20" alt="Diagrama de classes: Cliente, Veiculo, os repositórios e as exceções de duplicidade" style="width:804px;height:480px;object-fit:contain;background:#f5f5f7;border-radius:12px">
+<p style="font-size:26px;line-height:1.35;color:#333333">Um cliente possui vários veículos. Documento e placa repetidos viram um erro próprio que traz o cadastro existente.</p>
+</div>
+</div>
+<p style="position:absolute;left:128px;bottom:40px;width:1664px;font-size:24px;color:#333333">Semana 3 · Fonte: diagramas/S3 no vault</p>
+<aside>Semana 3. Pacotes: clientes e veículos se ligam por um só ponto, então dá para mexer em um sem quebrar o outro. Classes: Cliente possui vários Veiculo. Nada é apagado, só inativado, para manter o histórico.</aside>
+</section>

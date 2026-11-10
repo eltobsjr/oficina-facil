@@ -18,6 +18,7 @@ Os links são privados (só o dono abre; compartilhar é pelo menu Share do arte
 | Identidade visual (logo e cor da marca) | https://claude.ai/artifact/3CYpv85NYJk2pAgktuJzjk | [[00 - Identidade visual]] | Mudar o logo ou a cor da marca |
 | Slides: semana 1 e semana 2 | https://claude.ai/artifact/Ktxh4bk6rxeJggvM1bpdnw | `artefatos/slides/semana-1-e-2/` | Retrato de 2026-11-10; só muda se o plano mudar, e então regerar o roteiro |
 | Slides: funcionalidades e o livro | https://claude.ai/artifact/5jb6B33UDoHsTpXGG7SAhw | `artefatos/slides/funcionalidades-e-o-livro/` | Ao fechar cada feature, acrescentar o slide dela |
+| Slides: telas e diagramas por semana | https://claude.ai/artifact/UsDXKHoeGbjtHZzrzDvjdH | `artefatos/slides/telas-e-diagramas-por-semana/` | Ao fechar cada semana: nova pasta em `diagramas/`, novos prints e um slide |
 
 ## Material de apresentação
 

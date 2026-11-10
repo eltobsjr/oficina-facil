@@ -1,0 +1,17 @@
+{
+  "v": 4,
+  "createdOnFiles": {"v": 1, "at": "2026-11-10T18:30:00Z"},
+  "lists": "css",
+  "title": "OficinaFácil: telas e diagramas por semana",
+  "order": ["cover", "s1", "s2-login", "s2-usuarios", "s2-pacotes", "s3-clientes", "s3-veiculos", "s3-pacotes"],
+  "sections": {
+    "a": {"description": "Abertura.", "start": "cover"},
+    "b": {"description": "Semana 1: o backend e onde o sistema roda.", "start": "s1"},
+    "c": {"description": "Semana 2: login e usuários, com as telas reais.", "start": "s2-login"},
+    "d": {"description": "Semana 3: clientes e veículos, com as telas reais.", "start": "s3-clientes"}
+  },
+  "faces": {
+    "inter": {"family": "Inter", "href": "https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"}
+  },
+  "designSystems": []
+}

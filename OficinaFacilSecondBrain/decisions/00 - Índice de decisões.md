@@ -22,3 +22,4 @@ Um arquivo por decisão. O número da decisão é o número do arquivo (D1 = 001
 | 012 | [[012 - Estrutura do repositório]] | aceita |
 | 013 | [[013 - Design system da interface]] | aceita |
 | 014 | [[014 - Hospedagem da API no Render]] | aceita |
+| 015 | [[015 - Scrum e Kanban no projeto]] | proposta |
