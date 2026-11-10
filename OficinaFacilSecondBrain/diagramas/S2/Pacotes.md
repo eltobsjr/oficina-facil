@@ -2,40 +2,65 @@
 data: 2026-11-10
 ---
 
-# S2 · Pacotes do app
+# S2 · Diagrama de pacotes do app
 
-Semana 2 (09/11 a 15/11): login, sessão e usuários no app. Features: [[001 - Autenticar]] e [[006 - Gerir usuários]]. Camadas gerais em [[Diagramas]].
+Semana 2 (09/11 a 15/11): login, sessão e usuários no app. Features: [[001 - Autenticar]] e [[006 - Gerir usuários]]. Tipo: **pacotes**. Camadas gerais em [[Diagramas]].
+
+**Para que serve:** mostrar como as duas features do app se organizam e do que dependem.
 
 ```mermaid
-flowchart TB
-  subgraph autenticacao[features/autenticacao]
-    a1[presentation<br/>login e sessão]
-    a2[domain<br/>UsuarioSessao e contrato]
-    a3[data<br/>fala com a API]
+flowchart TD
+  subgraph AUT["features/autenticacao"]
+    direction TB
+    AP["presentation<br/>LoginPage, SessaoNotifier"]
+    AD["domain<br/>UsuarioSessao,<br/>AutenticacaoRepository"]
+    AT["data<br/>AutenticacaoRepositoryApi,<br/>ProvedorDeSessao"]
   end
-  subgraph usuarios[features/usuarios]
-    u1[presentation<br/>lista e formulário]
-    u2[domain<br/>Usuario e contrato]
-    u3[data<br/>fala com a API]
-  end
-  core[core<br/>tema, rotas, rede, widgets]
 
-  a1 --> a2
-  a3 --> a2
-  u1 --> u2
-  u3 --> u2
-  a1 --> core
-  u1 --> core
-  a3 --> core
-  u3 --> core
+  subgraph USU["features/usuarios"]
+    direction TB
+    UP["presentation<br/>UsuariosPage, UsuarioFormPage"]
+    UD["domain<br/>Usuario,<br/>UsuariosRepository"]
+    UT["data<br/>UsuariosRepositoryApi"]
+  end
+
+  subgraph CORE["core"]
+    direction TB
+    NET["network<br/>ApiClient"]
+    ROT["router<br/>acesso por perfil"]
+    WID["widgets e theme"]
+  end
+
+  AP -.-> AD
+  AT -.-> AD
+  UP -.-> UD
+  UT -.-> UD
+  AT -.-> NET
+  UT -.-> NET
+  AP -.-> ROT
+  AP -.-> WID
+  UP -.-> WID
+
+  classDef feat fill:#DBEAFE,stroke:#1E40AF,color:#0F172A
+  classDef core fill:#F1F5F9,stroke:#475569,color:#0F172A
+  class AP,AD,AT,UP,UD,UT feat
+  class NET,ROT,WID core
 ```
 
-## Como ler
+## Legenda
 
-- Cada feature tem três pastas: **presentation** (telas), **domain** (as coisas e os contratos) e **data** (quem conversa com a API).
-- As setas apontam para `domain`: ele não conhece telas nem rede.
-- `core` é o que todas usam: tema, rotas por perfil, cliente da API e componentes.
+| Elemento | Significa |
+|---|---|
+| Caixa grande | Um pacote |
+| Seta tracejada | A origem **usa** o destino |
+| Azul / cinza | Código da feature / código compartilhado (`core`) |
 
-## Por que é assim
+## O que o diagrama diz
 
-O `domain` ficando limpo deixa trocar a tela ou a API sem mexer nas regras. A regra de negócio mesmo fica no backend; o app só ajuda a pessoa.
+- Cada feature tem três pastas com papéis diferentes: **presentation** (telas), **domain** (as coisas e os contratos) e **data** (a conversa com a API).
+- As setas apontam para `domain`, que não conhece tela nem rede.
+- Só `data` usa o `ApiClient`.
+
+## O que **não** aparece
+
+`domain` não depende de nada. `presentation` não usa `ApiClient`. Uma feature não usa a pasta `data` da outra.

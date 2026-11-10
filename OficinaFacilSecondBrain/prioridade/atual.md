@@ -6,6 +6,10 @@ data: 2026-10-30
 
 Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi feito e como retomar: [[2026-10-30 - ZZ Resumo do dia e como retomar]].
 
+## Atualização de 2026-11-10, noite (apresentação)
+
+Apresentação única ao professor pronta (20 slides; Roberto só nos diagramas), com roteiro e PDFs em `~/Downloads/OficinaFácil/`; ver [[Linha do tempo de slides]]. Diagramas por semana refeitos no modelo do ToolRent. Quadro do Trello em Scrum, ainda privado (a Évillyn precisa torná-lo público). Próximo: F4 (005, 004, 018).
+
 ## Atualização de 2026-11-10, fim da tarde
 
 Veja [[2026-11-10 - Diagramas por semana, prints e Trello]]. Prontos: diagramas S1 a S3 em `diagramas/` ([[00 - Índice de diagramas]]), deck de slides com prints reais, README e Trello revisados. **Para o usuário:** deixar o quadro do Trello público e renomeá-lo (o MCP não faz); decidir se quer glossário, DoD e DoR; mandar commitar. Ao fechar cada semana: nova pasta em `diagramas/`, prints e slide.

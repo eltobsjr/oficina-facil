@@ -12,14 +12,16 @@ O quadro espelha o vault: nada é inventado nele. A especificação completa est
 
 | Lista | O que tem |
 |---|---|
-| ✅ Concluído | O que já foi feito: análise, documentação, F1, backend e app de usuários |
-| 🔄 Em andamento | Features 000, 001 e 006, com as tarefas e os critérios de aceitação |
-| ⛔ Bloqueado (depende do usuário) | Projeto Supabase de teste, chave de serviço, pooler, push, rotação de credenciais, Android real |
-| ❓ Decisões | 003, 005, 011, propostas 007 a 010 e o escopo de LGPD, plano de testes e wireframes |
-| ⏭️ Próximas, em ordem de execução | As demais features, uma por cartão, com a semana no título, vencimento no fim da semana e as 9 tarefas |
+| 📖 Leia primeiro | Cartão-guia: como ler o quadro, DoR, DoD e o peso |
+| 🎯 Sprint Backlog (semana) | As histórias da sprint da semana, que cumprem a DoR |
+| 🔄 Em andamento (máx. 2) | O que está sendo feito agora |
+| ⛔ Impedimentos | O que só o dono do projeto destrava |
+| 📋 Product Backlog (por prioridade) | As demais histórias, uma por cartão, com a semana e o `[Peso N]` no título |
+| ❓ Decisões | Perguntas que precisam de resposta antes de certas features |
 | 🏁 Marcos e folga | M1 a M5 e a semana 9 de folga |
+| ✅ Concluído (cumpre a DoD) | O que já foi entregue |
 
-Cada cartão de feature tem a descrição com os critérios de aceitação e o status de cada um, o caminho da especificação no repositório e um checklist "Tarefas" com as 9 tarefas padrão (ou as da fundação). Etiquetas por fase (F1 a F9), por área (Backend, App, Documentação) e as especiais Marco, Decisão e "Bloqueado pelo usuário".
+Regras do quadro (Scrum e Kanban): [[Scrum e Kanban no projeto]] e decisão [[015 - Scrum e Kanban no projeto]]. Cada cartão de feature tem a descrição com os critérios de aceitação e o status de cada um, o caminho da especificação no repositório e um checklist "Tarefas" com as 9 tarefas padrão (ou as da fundação). Etiquetas por fase (F1 a F9), por área (Backend, App, Documentação) e as especiais Marco, Decisão e "Bloqueado pelo usuário".
 
 ## Como ligar o Trello ao Claude Code
 
@@ -52,3 +54,4 @@ O Trello é uma **vista** do vault; em caso de divergência, vale o vault.
 - 2026-11-10 (fechamento da F2 e da F3): cartões 001, 006, 002 e 003 com a descrição dos critérios ✅, checklists completos, movidos para Concluído e marcados como feitos; marco M1 em Concluído. Criados 6 cartões "Semana 2 · ..." em Concluído (S3 no backend e no app, design system e telas, rebranding, refatoração, correção do CA03, diagramas e página de andamento, Supabase restaurado) e o cartão "Decidir os 4 pontos deixados pela S3" em Decisões, com vencimento em 2026-11-16. O cartão-guia agora diz onde estamos. A lista "Em andamento" ficou vazia de propósito. O quadro tem o nome do modelo ("Kanban Quadro Modelo"). O `trello-quadro.json` não foi regerado: os cartões novos existem só no Trello.
 
 - 2026-11-10 (noite): API publicada no Render ([[014 - Hospedagem da API no Render]]) e APK de debug gerado. O cartão de hospedagem do backend, se existir no quadro, pode ir para Concluído; o quadro não foi alterado nesta etapa.
+- 2026-11-10 (Scrum): listas reorganizadas como Product Backlog, Sprint Backlog, Em andamento (máx. 2), Impedimentos e Concluído; cartões de história reescritos no formato "Como… quero… para…" com critérios e `[Peso N]` no título (o MCP não cria etiquetas); criados os cartões de 002 e 003, que faltavam. O quadro continua **privado**: a conta do Elto não tem permissão para mudar a visibilidade (só a criadora, Évillyn). O `trello-quadro.json` e o `gerar-trello.py` ainda refletem a estrutura antiga.

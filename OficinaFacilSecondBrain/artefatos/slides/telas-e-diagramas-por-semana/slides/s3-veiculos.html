@@ -1,20 +1,11 @@
-<section id="s3-veiculos" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:64px 128px 120px;display:flex;flex-direction:column;gap:24px">
-<div style="display:flex;flex-direction:column;gap:6px">
-<h2 style="font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1px">Semana 3 · Veículos</h2>
-<p style="font-size:28px;color:#333333">Feature 003, Gerir veículos: a tela real e o fluxo por trás dela</p>
+<section id="s3-veiculos" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:48px 128px 100px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:32px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><h2 style="font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1px">Semana 3 · Veículos</h2><p style="font-size:28px;color:#333333">Feature 003, Gerir veículos · Cada cliente tem seus veículos.</p><p style="font-size:28px;line-height:1.35;color:#1d1d1f"><b>O que mostra:</b> O serviço confirma com o módulo de clientes que o novo dono existe. Só o dono muda; o histórico de OS fica com o anterior.</p></div>
+<img src="/_blob/4ef5d3625f8fae2720fbe3fb21c2ffab" alt="Print da tela" style="width:240px;height:150px;object-fit:contain;background:#ffffff;border:1px solid #e0e0e0;border-radius:12px">
 </div>
-<div style="display:flex;gap:24px">
-<div style="flex:5;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
-<p style="font-size:28px;font-weight:700;color:#0066cc">Tela real · Veículos de um cliente</p>
-<img src="/_blob/4ef5d3625f8fae2720fbe3fb21c2ffab" alt="Tela com os veículos de um cliente: placa, marca, modelo e ano" style="width:700px;height:437px;object-fit:contain;background:#f5f5f7;border-radius:12px">
-<p style="font-size:26px;line-height:1.35;color:#333333">Cada cliente tem seus veículos. Dá para cadastrar, editar, inativar e transferir para outro cliente.</p>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center;background:#ffffff;padding:20px;border:1px solid #e0e0e0;border-radius:18px">
+<img src="/_blob/9359168187f8adf09221af6abfe518d1" alt="Diagrama de sequência · transferir veículo" style="width:1616px;height:559px;object-fit:contain;background:#ffffff">
 </div>
-<div style="flex:6;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
-<p style="font-size:28px;font-weight:700;color:#0066cc">Sequência · cadastrar e transferir</p>
-<img src="/_blob/2ea4439d229d30eaa88f75056442c680" alt="Diagrama de sequência do cadastro e da transferência de veículo" style="width:900px;height:560px;object-fit:contain;background:#f5f5f7;border-radius:12px">
-<p style="font-size:26px;line-height:1.35;color:#333333">Placa repetida volta com o veículo que já existe. Na transferência o histórico de OS fica com o dono anterior.</p>
-</div>
-</div>
-<p style="position:absolute;left:128px;bottom:40px;width:1664px;font-size:24px;color:#333333">Semana 3 · Prints do app real, com dados fictícios</p>
-<aside>Veículos. A placa é única e em formato válido. Transferir muda o dono, mas as ordens de serviço antigas continuam ligadas ao dono anterior.</aside>
+<p style="position:absolute;left:128px;bottom:32px;width:1664px;font-size:24px;color:#333333">Fala: Roberto · Diagrama de sequência · transferir veículo · azul = app, âmbar = backend, verde = Supabase</p>
+<aside>ROBERTO (cerca de 45 segundos). Semana 3, veículos. O cenário é transferir um veículo para outro cliente. A rota chama o ServicoVeiculos, que pergunta ao módulo de clientes, pela porta dele, se o novo cliente existe. Só então troca o dono do veículo no banco. A nota no fim lembra a regra: as ordens de serviço antigas continuam ligadas ao dono anterior.</aside>
 </section>

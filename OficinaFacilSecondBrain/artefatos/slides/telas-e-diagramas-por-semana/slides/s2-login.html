@@ -1,20 +1,11 @@
-<section id="s2-login" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:64px 128px 120px;display:flex;flex-direction:column;gap:24px">
-<div style="display:flex;flex-direction:column;gap:6px">
-<h2 style="font-size:56px;font-weight:700;line-height:1.1;letter-spacing:-1px">Semana 2 · Login</h2>
-<p style="font-size:28px;color:#333333">Feature 001, Autenticar: a tela real e o fluxo por trás dela</p>
+<section id="s2-login" data-transition="fade" style="background:#f5f5f7;color:#1d1d1f;font-family:'Inter', sans-serif;padding:48px 128px 100px;display:flex;flex-direction:column;gap:16px">
+<div style="display:flex;gap:32px;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><h2 style="font-size:52px;font-weight:700;line-height:1.1;letter-spacing:-1px">Semana 2 · Login</h2><p style="font-size:28px;color:#333333">Feature 001, Autenticar · A pessoa entra com e-mail e senha.</p><p style="font-size:28px;line-height:1.35;color:#1d1d1f"><b>O que mostra:</b> O Supabase confere a senha e devolve um token. A API confere o token e busca o perfil; conta inativa é recusada.</p></div>
+<img src="/_blob/a21ca4bc18da490eb7ebbeb769ff9b83" alt="Print da tela" style="width:240px;height:150px;object-fit:contain;background:#ffffff;border:1px solid #e0e0e0;border-radius:12px">
 </div>
-<div style="display:flex;gap:24px">
-<div style="flex:5;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
-<p style="font-size:28px;font-weight:700;color:#0066cc">Tela real · Entrar</p>
-<img src="/_blob/a21ca4bc18da490eb7ebbeb769ff9b83" alt="Tela de login do app com campos de e-mail e senha" style="width:700px;height:437px;object-fit:contain;background:#f5f5f7;border-radius:12px">
-<p style="font-size:26px;line-height:1.35;color:#333333">A pessoa entra com e-mail e senha. Se a conta estiver inativa ou sem perfil, o app avisa com uma mensagem clara.</p>
+<div style="display:flex;flex-direction:column;gap:8px;align-items:center;background:#ffffff;padding:20px;border:1px solid #e0e0e0;border-radius:18px">
+<img src="/_blob/cc6792b151fcdfa7dc36ff1a628949e3" alt="Diagrama de sequência · entrar no sistema" style="width:1550px;height:700px;object-fit:contain;background:#ffffff">
 </div>
-<div style="flex:6;display:flex;flex-direction:column;gap:12px;background:#ffffff;padding:24px;border:1px solid #e0e0e0;border-radius:18px">
-<p style="font-size:28px;font-weight:700;color:#0066cc">Sequência · o que acontece ao entrar</p>
-<img src="/_blob/dbe083d7773b3c2df35f571324c008bf" alt="Diagrama de sequência do login: app, API, Supabase Auth e Postgres" style="width:900px;height:560px;object-fit:contain;background:#f5f5f7;border-radius:12px">
-<p style="font-size:26px;line-height:1.35;color:#333333">O Supabase confere a senha e devolve um JWT. A API valida o JWT, busca o perfil e o app mostra só o que aquele perfil pode usar.</p>
-</div>
-</div>
-<p style="position:absolute;left:128px;bottom:40px;width:1664px;font-size:24px;color:#333333">Semana 2 · Prints do app real, com dados fictícios</p>
-<aside>Login. À esquerda a tela real do app. À direita o fluxo: o app pede o login ao Supabase, recebe o JWT, chama GET /me, a API valida o JWT e busca o perfil na tabela de perfis. Conta inativa ou sem perfil recebe 403 e a sessão é desfeita.</aside>
+<p style="position:absolute;left:128px;bottom:32px;width:1664px;font-size:24px;color:#333333">Fala: Roberto · Diagrama de sequência · entrar no sistema · azul = app, âmbar = backend, verde = Supabase</p>
+<aside>ROBERTO (cerca de 50 segundos). Semana 2, login. Este é um diagrama de sequência: cada caixa no topo é um objeto do código, e os números dão a ordem das chamadas. As cores mostram onde cada objeto está: azul no app, âmbar no backend e verde no Supabase. A pessoa informa e-mail e senha; o SessaoNotifier pede ao Auth do Supabase para conferir a senha e recebe um token. Com o token, chama a API, que confere o token e busca o perfil no banco. Se a conta está ativa, o app abre o menu do perfil; se está inativa ou sem perfil, a API responde 403 e a sessão é encerrada com uma mensagem.</aside>
 </section>

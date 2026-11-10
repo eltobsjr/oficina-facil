@@ -22,9 +22,28 @@ Continuação de [[2026-11-10 - Slides, artefatos, deploy no Render e APK]].
 - Limites: o MCP não cria etiquetas (o peso foi para o título); os itens da lista "Tarefas" continuam com texto técnico; os cards antigos de documentação em Concluído não têm peso.
 - README reformulado com links e glossário.
 
+## Apresentação consolidada
+
+- Os decks foram reunidos numa **apresentação única ao professor** (17 slides), só com o relevante: projeto, plano, processo (Scrum e Kanban), arquitetura, telas reais, design e código, os diagramas por semana e próximos passos. Saíram o defeito do token, notas de revisor, pendências internas e segredos.
+- Falas: Elto 4 slides, Evillyn 2, Pedro 3, Roberto 8 (**só diagramas**, a pedido do usuário). Roteiro completo em `artefatos/slides/telas-e-diagramas-por-semana/Roteiro da apresentação.md`, gerado das notas. Os dois decks antigos ficam arquivados.
+
+## Diagramas refeitos no modelo do ToolRent
+
+- O usuário achou os diagramas dos slides confusos (sequências do esboço das features, com as caixas repetidas no topo e no rodapé). Refiz **todos** no modelo do repositório de referência: cada arquivo tem notação, legenda, explicação e "o que não aparece". Tipos do livro (cap. 4): pacotes, classes, sequência e atividades. Participantes das sequências são objetos reais do código; `mirrorActors` desligado.
+- O diagrama de implementação foi **retirado** (fora do conjunto do livro); a fronteira de rede está no diagrama de pacotes do sistema (S1).
+- Novos: S2 atividades do login, sequências de login, usuários, clientes e veículos; classes de domínio com atributos e multiplicidade. Deck passou a 20 slides (Roberto: 11, só diagramas). PDFs de `~/Downloads/OficinaFácil` substituídos.
+
+## Sequências legíveis
+
+- Crítica do usuário: os diagramas de sequência ficavam pequenos e confusos. Problemas: até 7 participantes, 21 passos com dois cenários, linhas de vida riscando o texto, tudo no mesmo azul. Refeitos com até 6 participantes, um cenário cada, faixas `box` por camada, linhas tracejadas claras, auréola branca no texto e passos numerados; nos slides, o print virou miniatura no título e o diagrama ocupa a largura (texto de 22 a 26 px em tela cheia).
+- A sequência de usuários passou a mostrar só criar; inativar ficou descrito no texto.
+- Commit e push a pedido do usuário ("commita pusha documenta").
+
 ## Pendências
 
 - **Trello:** o MCP não muda a visibilidade; o usuário precisa deixar o quadro público pelo menu do quadro e renomeá-lo ("Kanban Quadro Modelo"). Depois, acrescentar o link no README. Os itens das listas "Tarefas" ainda têm texto técnico longo (144 itens); a pasta "Em andamento" está vazia, o que é esperado entre features.
 - Glossário, DoD e DoR (inspirados no ToolRent) **não** foram criados: são regras novas e dependem de aprovação (R3).
-- Commit do README, de `diagramas/`, dos artefatos e deste devtrack (R8: o usuário não pediu).
 - Regerar `entregas/` antes da próxima entrega ao professor (R6).
+- Aplicar o mesmo tratamento visual aos diagramas de pacotes e de classes, se o usuário quiser.
+- Atualizar `trello-quadro.json` e `gerar-trello.py` para a estrutura Scrum do quadro.
+- Papéis de Product Owner e Scrum Master (decisão 015).

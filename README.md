@@ -134,7 +134,7 @@ Prints do app real (dados fictícios). O mapa completo das 26 telas está em [Ma
   <img src="OficinaFacilSecondBrain/artefatos/slides/telas-e-diagramas-por-semana/imagens/p_t05_clientes.png" alt="Lista de clientes" width="31%">
 </p>
 
-Diagramas de pacotes, classes e implementação por semana: [diagramas/](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md).
+Diagramas de pacotes, classes, sequência e atividades por semana: [diagramas/](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md).
 
 ## 5. Ciclo de vida da OS
 
@@ -317,7 +317,7 @@ Toda a documentação fica no vault `OficinaFacilSecondBrain/`, **versionado nes
 | [Rastreabilidade](OficinaFacilSecondBrain/requisitos/Rastreabilidade.md) | Do requisito até a tela e a tabela |
 | [Arquitetura](OficinaFacilSecondBrain/arquitetura/Arquitetura.md) | Stack, camadas, autenticação, segurança e ambientes |
 | [Modelo de dados](OficinaFacilSecondBrain/arquitetura/Modelo%20de%20dados.md) | Diagrama ER, enums, restrições e RLS |
-| [Diagramas](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md) | Pacotes, classes e implementação, por semana |
+| [Diagramas](OficinaFacilSecondBrain/diagramas/00%20-%20%C3%8Dndice%20de%20diagramas.md) | Pacotes, classes, sequência e atividades, por semana |
 | [Endpoints](OficinaFacilSecondBrain/api/Endpoints.md) | Contrato da API por caso de uso |
 | [Mapa de telas](OficinaFacilSecondBrain/telas/Mapa%20de%20telas.md) | As 26 telas e quem acessa cada uma |
 | [Roadmap](OficinaFacilSecondBrain/Roadmap.md) | As 15 semanas, os marcos e os riscos |
