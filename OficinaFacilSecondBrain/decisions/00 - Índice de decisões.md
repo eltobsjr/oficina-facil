@@ -21,3 +21,4 @@ Um arquivo por decisão. O número da decisão é o número do arquivo (D1 = 001
 | 011 | [[011 - Diagramas em Mermaid e UML formal]] | aberta |
 | 012 | [[012 - Estrutura do repositório]] | aceita |
 | 013 | [[013 - Design system da interface]] | aceita |
+| 014 | [[014 - Hospedagem da API no Render]] | aceita |

@@ -42,7 +42,7 @@ Stack: Flutter + backend Node/TypeScript + Supabase ([[Arquitetura]]).
 - [ ] Decisões 003, 005 e 011 abertas; 007 a 010 propostas, confirmar (ver [[00 - Índice de decisões]])
 - [ ] Criar a visão Board no GitHub Projects
 - [ ] Decidir se `identidade-visual/opcoes-v2/` fica no vault ou sai
-- [ ] Escolher hospedagem do backend (Railway ou Render) e confirmar planos gratuitos
+- [x] Escolher hospedagem do backend: Render, API no ar em 2026-11-10 ([[014 - Hospedagem da API no Render]])
 - [x] Vault versionado no mesmo repositório do código (decisão do usuário, 2026-10-30)
 - [x] Mudanças de regras do CLAUDE.md aplicadas (ver [[2026-10-30 - Revisão Opus]])
 - [ ] Decidir escopo: anonimização LGPD (RNF09), Plano de testes e Wireframes

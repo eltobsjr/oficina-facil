@@ -178,7 +178,8 @@ Duas pessoas lançando a mesma peça ao mesmo tempo não deixam o saldo negativo
 |---|---|---|---|
 | Desenvolvimento | `flutter run` | `npm run dev` (porta 3000, Swagger em `/docs`) | Projeto Supabase de **desenvolvimento** |
 | Teste automatizado e CI | — | `npm test` | Não há projeto de teste (decisão do usuário em 2026-10-30; a branch do Supabase é recurso pago). Os testes de integração rodam no projeto único enquanto ele não tiver dados reais; `prisma migrate reset` **não** é permitido |
-| Produção (demonstração) | Web estática + APK | Container Docker em Railway ou Render (a confirmar) | Projeto Supabase separado |
+| Demonstração (no ar desde 2026-11-10) | APK de debug apontando para a API ([[Rodar o projeto]]) | Web Service Docker no Render, `backend/` como Root Directory ([[014 - Hospedagem da API no Render]]) | O mesmo projeto Supabase de desenvolvimento, enquanto não houver dado real |
+| Produção final (S15) | Web estática + APK assinado | Mesmo serviço do Render | Projeto Supabase separado (a criar) |
 
 **Conexão com o banco (achado na F1):** a conexão *direta* do Supabase (`db.<projeto>.supabase.co`) só tem endereço IPv6. Funciona na máquina de desenvolvimento, mas **não** em ambientes só IPv4: a rede padrão do Docker e vários provedores de hospedagem. Por isso `DIRECT_URL` (migrations) pode ser a direta, mas `DATABASE_URL` da API em produção e no CI deve ser a string do **pooler** (Supavisor), que tem IPv4. Verificado: o contêiner na rede padrão marcou o banco como indisponível; com a rede do host (IPv6) respondeu `ok`.
 

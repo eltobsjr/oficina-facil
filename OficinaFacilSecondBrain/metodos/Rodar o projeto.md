@@ -76,3 +76,41 @@ Sem `--dart-define-from-file=env.json` o app recusa iniciar e explica o que falt
     flutter build apk --debug --dart-define-from-file=env.json
   ```
 - **`pkill -f` no mesmo comando que o contém** mata o próprio shell; encerre processos pela porta (`ss -ltnp`).
+
+## Publicar a API no Render
+
+Decisão e variáveis em [[014 - Hospedagem da API no Render]]. Passos:
+
+1. Render → New Web Service, repositório `oficina-facil`, ramo `main`, linguagem Docker.
+2. **Root Directory `backend/`** (resolve o monorepo); plano gratuito; health check `/health`.
+3. Variáveis de ambiente no painel: `NODE_ENV=production`, `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `DATABASE_URL` (pooler IPv4). Não definir `PORT`.
+4. Depois do deploy, `GET /health` deve responder `{"status":"ok","banco":"ok"}`, e `GET /api/v1/me` sem token deve responder 401.
+5. Segredos só no painel do Render e no `backend/.env`; nunca no chat nem no vault (R20).
+
+## Gerar o APK apontando para a API publicada
+
+O app guarda `API_URL` em tempo de compilação. Para não alterar o `mobile/env.json` (que aponta para o `localhost`), compile com uma cópia temporária:
+
+```bash
+cd mobile
+# copie env.json para um arquivo temporário (fora do repositório) com API_URL=https://oficina-facil.onrender.com/api/v1
+flutter build apk --debug --dart-define-from-file=<arquivo temporário>
+# resultado: build/app/outputs/flutter-apk/app-debug.apk; apague o arquivo temporário depois
+```
+
+O APK de debug tem cerca de 187 MB. Para enviar ao celular, use link (Drive ou WhatsApp para si mesmo): o Gmail bloqueia anexo `.apk`. No celular, permitir instalar apps de fontes desconhecidas para o navegador ou o Drive. A primeira chamada pode demorar por causa do plano gratuito do Render.
+
+## Gerar os PDFs dos slides
+
+Os slides são HTML (`artefatos/slides/<deck>/slides/*.html` e `deck.json`). Para o PDF de entrega: montar uma página única com todas as seções na ordem do `deck.json`, sem as notas (`<aside>`), com `@page` de 1920×1080, e imprimir com o Chrome (Playwright em Python, `google-chrome` do sistema). As imagens do deck de funcionalidades vêm de `diagramas/`. O roteiro (`Roteiro de fala.md`) vira PDF em A4 a partir do próprio Markdown. Conferir visualmente ao menos duas páginas antes de enviar.
+
+## Trocar o gerente principal
+
+Para o projeto Supabase de desenvolvimento, quando o gerente do seed (fictício) deve dar lugar a uma conta real:
+
+1. No `backend/.env` (ignorado pelo git) defina `NOVO_GERENTE_EMAIL`, `NOVO_GERENTE_SENHA` e, se quiser, `NOVO_GERENTE_NOME`. Nenhum e-mail ou senha real vai para o código ou para o vault (R20, R28, R30).
+2. `cd backend && npm run db:trocar-gerente`.
+3. O script cria o novo gerente no Auth e em `perfis`, e **apaga todos os outros usuários**. Ele **recusa rodar** se já existir cliente, veículo ou ordem de serviço, para nunca apagar dado real (R19).
+4. Mantenha `SEED_GERENTE_EMAIL` e `SEED_GERENTE_SENHA` iguais aos novos, para `npm run db:seed` não recriar o gerente antigo.
+
+Não há cadastro aberto no app de propósito: só o gerente cria contas (UC06, RN09).

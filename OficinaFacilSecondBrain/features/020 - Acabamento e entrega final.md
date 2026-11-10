@@ -50,7 +50,7 @@ flowchart LR
 | CA01 | App testado em dispositivo Android e layout ajustado para telas pequenas | 🔲 Pendente |
 | CA02 | Layout web responsivo conferido | 🔲 Pendente |
 | CA03 | Teste de integração (smoke.sh) cobre o fluxo completo `ABERTA` até `ENTREGUE` contra o Supabase de dev | 🔲 Pendente |
-| CA04 | Imagem Docker do backend publicada e API de demonstração no ar; web publicado e APK gerado | 🔲 Pendente |
+| CA04 | Imagem Docker do backend publicada e API de demonstração no ar; web publicado e APK gerado | 🔄 Em progresso: API no ar no Render e APK de debug gerado em 2026-11-10; faltam o web e o APK assinado |
 | CA05 | Diagramas, casos de uso, histórias e PDFs atualizados com o que mudou | 🔲 Pendente |
 | CA06 | Changelog, versão e tag criados | 🔲 Pendente |
 

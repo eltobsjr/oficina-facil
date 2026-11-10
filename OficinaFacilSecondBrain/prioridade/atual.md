@@ -6,7 +6,11 @@ data: 2026-10-30
 
 Editada à mão a cada sessão. Estado em [[CHECKLIST]]. Resumo do que já foi feito e como retomar: [[2026-10-30 - ZZ Resumo do dia e como retomar]].
 
-## Atualização de 2026-11-10 (leia primeiro)
+## Atualização de 2026-11-10, noite (leia primeiro)
+
+Veja [[2026-11-10 - Slides, artefatos, deploy no Render e APK]]. **A API está no ar** em https://oficina-facil.onrender.com ([[014 - Hospedagem da API no Render]]) e há um APK de debug apontando para ela. O que o usuário precisa fazer agora: **rotacionar a senha do banco e a chave `service_role`** (foram coladas no chat em 2026-11-10; atualizar `backend/.env` e o painel do Render), instalar o APK no celular e testar login, usuários, clientes e veículos. Slides e roteiro prontos (cada pessoa fala em dois slides); PDFs em `~/Downloads`.
+
+## Atualização de 2026-11-10
 
 Detalhes em [[2026-11-09 - Diagramas, S3 e design system]]. **F1, F2 e F3 concluídas.** 001 provada no app real (inclui a correção da renovação do token); S3 provada com o banco real; design system aplicado ([[013 - Design system da interface]]); refatoração de backend e app feita. Banco: `DATABASE_URL` usa o pooler IPv4.
 
