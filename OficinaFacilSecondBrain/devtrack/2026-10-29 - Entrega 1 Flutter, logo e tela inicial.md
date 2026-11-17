@@ -1,3 +1,8 @@
+---
+tipo: devtrack
+data: 2026-10-29
+---
+
 # 2026-10-29 — Entrega 1 Flutter, logo e tela inicial
 
 ## O que foi feito

@@ -1,3 +1,8 @@
+---
+tipo: devtrack
+data: 2026-10-30
+---
+
 # 2026-10-30 — Resumo do dia e como retomar
 
 **Leia este arquivo primeiro na próxima sessão.** Ele resume tudo que foi feito em 2026-10-30, o estado exato do projeto e por onde recomeçar. Os detalhes de cada parte estão nos outros devtracks do dia: [[2026-10-30 - Casos de uso, histórias de usuário e PDFs]] e [[2026-10-30 - F1 Fundação técnica]].

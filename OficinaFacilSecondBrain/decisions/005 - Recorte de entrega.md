@@ -1,4 +1,5 @@
 ---
+tipo: decisao
 data: 2026-10-30
 status: aberta
 ---

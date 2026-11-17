@@ -1,3 +1,7 @@
+---
+tipo: commit
+---
+
 # 37f5333 — Estrutura inicial Flutter (web e Android) com Clean Architecture
 
 **Data:** 2026-10-29

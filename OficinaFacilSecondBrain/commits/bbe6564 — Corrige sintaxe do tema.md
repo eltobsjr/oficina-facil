@@ -1,3 +1,7 @@
+---
+tipo: commit
+---
+
 # bbe6564 — Corrige sintaxe do tema
 
 **Data:** 2026-10-29

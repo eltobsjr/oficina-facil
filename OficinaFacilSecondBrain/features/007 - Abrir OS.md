@@ -1,4 +1,5 @@
 ---
+tipo: feature
 data: 2026-10-30
 status: planejada
 fase: F5

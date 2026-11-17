@@ -1,3 +1,8 @@
+---
+tipo: devtrack
+data: 2026-10-30
+---
+
 # 2026-10-30 — F1: fundação técnica (feature 000)
 
 ## O que foi feito

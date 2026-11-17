@@ -1,3 +1,7 @@
+---
+tipo: commit
+---
+
 # 108a0af — Logo (porca com check), ícones web/Android e identidade visual
 
 **Data:** 2026-10-29

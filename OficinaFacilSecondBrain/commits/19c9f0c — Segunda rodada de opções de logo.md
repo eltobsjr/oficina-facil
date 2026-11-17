@@ -1,3 +1,7 @@
+---
+tipo: commit
+---
+
 # 19c9f0c — Adiciona segunda rodada de opções de logo
 
 **Data:** 2026-10-29

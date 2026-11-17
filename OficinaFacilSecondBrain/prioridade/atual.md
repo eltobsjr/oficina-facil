@@ -1,4 +1,5 @@
 ---
+tipo: prioridade
 data: 2026-10-30
 ---
 

@@ -1,3 +1,7 @@
+---
+tipo: commit
+---
+
 # 6a809b9 — Tela inicial com logo, nome e etapas da OS
 
 **Data:** 2026-10-29

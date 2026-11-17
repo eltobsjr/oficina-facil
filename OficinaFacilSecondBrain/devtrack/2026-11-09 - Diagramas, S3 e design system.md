@@ -1,3 +1,8 @@
+---
+tipo: devtrack
+data: 2026-11-09
+---
+
 # 2026-11-09 — Diagramas, S3 e design system
 
 ## O que foi feito

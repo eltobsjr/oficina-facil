@@ -1,3 +1,8 @@
+---
+tipo: devtrack
+data: 2026-10-30
+---
+
 # 2026-10-30 — Análise completa, nova stack e vault como fonte única
 
 ## O que foi feito

@@ -1,4 +1,5 @@
 ---
+tipo: decisao
 data: 2026-11-10
 status: aceita
 ---
